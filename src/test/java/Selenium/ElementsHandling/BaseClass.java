@@ -9,7 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 public class BaseClass {
     static WebDriver driver;
     static Actions action;
-    static Alert alert;
     static JavascriptExecutor js;
 
     public static void setup() {
