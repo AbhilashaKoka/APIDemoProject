@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
-public class BaseClass {
+public class BaseSetUp {
     static WebDriver driver;
     static Actions action;
     static JavascriptExecutor js;
