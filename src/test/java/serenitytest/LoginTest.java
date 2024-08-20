@@ -1,6 +1,6 @@
 package serenitytest;
-
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,8 +9,9 @@ import org.openqa.selenium.*;
 
 
 @RunWith(SerenityRunner.class)
-public class LoginTest {
-    @Managed
+public class LoginTest extends PageObject {
+
+    @Managed(driver="chrome")
     WebDriver driver;
 //    static Actions action;
 //    static Alert alert;
@@ -18,7 +19,9 @@ public class LoginTest {
 
     @Test
     public void doLogin() throws InterruptedException {
-        driver.get("https://demoqa.com");
+        open();
+      //  driver.get("https://demoqa.com");
+
 //       js=(JavascriptExecutor) driver;
 //       js.executeScript("window.scrollBy(0,300)");
 //
