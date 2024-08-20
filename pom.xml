@@ -175,6 +175,10 @@
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.version}</version>
+                <configuration>
+<!--                    <tags>${tags}</tags>-->
+                    <reports>single-page-html</reports>
+                </configuration>
                 <executions>
                     <execution>
                         <id>serenity-reports</id>
