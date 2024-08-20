@@ -1,5 +1,4 @@
 package serenitytest;
-
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -17,7 +16,6 @@ public class LoginTest extends PageObject{
     @Managed(driver="chrome")
     WebDriver driver;
 
-    JavascriptExecutor js;
 
     @FindBy(xpath="//*[@id='permanentAddress']")
     WebElement PermanentAddr;
@@ -27,8 +25,7 @@ public class LoginTest extends PageObject{
     @Test
     public void doLogin() throws InterruptedException {
         open();
-        js=(JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,300)");
+        evaluateJavascript("window.scrollBy(0,300)");
         $("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]").click();
         getDriver().findElement((By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"))).click();
         find(By.xpath("//*[@id=\"userName\"]")).sendKeys("sita");
