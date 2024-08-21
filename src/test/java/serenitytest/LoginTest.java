@@ -1,9 +1,7 @@
 package serenitytest;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
-import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +15,8 @@ public class LoginTest extends PageObject{
     WebDriver driver;
 
 
-    @FindBy(xpath="//*[@id='permanentAddress']")
-    WebElement PermanentAddr;
+//    @FindBy(xpath="//*[@id='permanentAddress']")
+//    WebElement PermanentAddr;
 
 
     @Title("Executing a login Test")
@@ -32,7 +30,7 @@ public class LoginTest extends PageObject{
         find(By.xpath("//*[@id=\"userEmail\"]")).sendKeys("sita@gmail.com");
         typeInto($("//*[@id=\"currentAddress\"]"),"sita@gmail.com");
         typeInto($("//*[@id=\"permanentAddress\"]"), "sita@gmail.com");
-        find(By.xpath("//*[@id=\"submit\"]")).submit();
+        $(By.xpath("//*[@id=\"submit\"]")).submit();
 
 //       Set<WebElementFacade> ele3 = find(By.xpath("//*[@id=\"output\"]//p"));
 //       if(ele3.size()!=0){

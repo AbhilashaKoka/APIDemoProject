@@ -1,15 +1,35 @@
 package org.example.lamdaAndStream;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Employee {
+    private int id;
+    private String name;
+    private int age;
+    private  String gender;
+    private String department;
+    private String organization;
+    private long salary;
+    private String city;
 
-    String name;
-    int age;
-    String gender;
-    String department;
-    String organization;
+    public Employee(int id, String name,
+                    int age, String gender,
+                    String department, String organization,
+                    long salary, String city) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.department = department;
+        this.organization = organization;
+        this.salary = salary;
+        this.city = city;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -51,42 +71,21 @@ public class Employee {
         this.organization = organization;
     }
 
-    public Employee(String name, int age, String gender, String department, String organization) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.department = department;
-        this.organization = organization;
+    public long getSalary() {
+        return salary;
+    }
+
+    public void setSalary(long salary) {
+        this.salary = salary;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
 
-    public static void main(String[] args) {
-        List<Employee> employees = Arrays.asList(
-        new Employee("Amit Singh", 34, "Male", "Finance", "Infosys"),
-        new Employee("Deepa Patil", 29, "Female", "IT", "TCS"),
-        new Employee("Rajesh Kumar", 42, "Male", "Finance", "Infosys"),
-        new Employee("Lalitha Bhatt", 28, "Male", "IT", "TCS"),
-        new Employee("Suresh Raina", 30, "Female", "IT", "TCS")
-        );
-
-        long maleInInfosys = employees.stream().filter(
-                e -> "Male".equals(e.getGender()) && "Infosys".equals(e.getOrganization())).count();
-        long femaleInInfosys = employees.stream().filter(
-                e -> "Female".equals(e.getGender()) && "Infosys".equals(e.getOrganization())).count();
-        long maleInTCS = employees.stream().filter(
-                e -> "Male".equals(e.getGender()) && "TCS".equals(e.getOrganization())).count();
-        long femaleInTCS = employees.stream().filter(
-                e -> "Female".equals(e.getGender()) && "TCS".equals(e.getOrganization())).count();
-
-        System.out.println("Male Employee in Infosys "+maleInInfosys);
-        System.out.println("Female Employee in Infosys"+femaleInInfosys);
-        System.out.println("Male Employee in TCS"+maleInTCS);
-        System.out.println("Female Employee in TCS"+femaleInTCS);
-
-        employees.stream().map(Employee::getDepartment).distinct().forEach( System.out::println);
-
-
-
-
-    }
 }

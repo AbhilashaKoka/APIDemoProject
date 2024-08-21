@@ -1,5 +1,4 @@
 package serenitytest;
-
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
 import net.serenitybdd.core.pages.PageObject;
@@ -26,7 +25,7 @@ public class UploadTest extends PageObject {
     @Test
     public void HandlingUploadAndDownload() throws InterruptedException {
         open();
-        //  driver.get("https://demoqa.com");
+
         evaluateJavascript("window.scrollBy(0,300)");
 
         find(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]")).click();
