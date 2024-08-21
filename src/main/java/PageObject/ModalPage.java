@@ -8,13 +8,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class ModalPage extends AbstractComponent{
-    static WebDriver driver;
+public class ModalPage{
+    static WebDriver webDriver;
     static Actions action;
+
+
     public ModalPage(WebDriver driver)
     {
-        super(driver);
-        this.driver=driver;
+
+        webDriver=driver;
         PageFactory.initElements(driver, this);
 
     }
@@ -54,7 +56,7 @@ public class ModalPage extends AbstractComponent{
         AlertFramesAndWindow_frame.click();
         ModalDialog_Span.click();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,350)");
 
         System.out.println(modalWrapper_Span.getAttribute("innerText"));

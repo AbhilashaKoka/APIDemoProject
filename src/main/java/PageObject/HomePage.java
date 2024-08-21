@@ -1,21 +1,18 @@
 package PageObject;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends AbstractComponent{
+public class HomePage{
 
-   static WebDriver driver;
+     static WebDriver webDriver;
+
     public HomePage(WebDriver driver)
     {
-
-        super(driver);
-        this.driver=driver;
-        PageFactory.initElements(driver, this);
+         webDriver=driver;
+         PageFactory.initElements(webDriver, this);
 
     }
 
@@ -40,7 +37,7 @@ public class HomePage extends AbstractComponent{
     private WebElement TextBox_Span;
 
     public void SubmitDetails(){
-
+        AbstractComponent.scrollWindowUp(Element_frame);
         Element_frame.click();
         TextBox_Span.click();
 

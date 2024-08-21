@@ -9,13 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class UploadAndDownloadPage extends AbstractComponent{
+public class UploadAndDownloadPage {
 
-     static WebDriver driver;
+     static WebDriver webDriver;
     public UploadAndDownloadPage(WebDriver driver)
     {
-        super(driver);
-        this.driver=driver;
+
+        webDriver=driver;
         PageFactory.initElements(driver, this);
 
     }

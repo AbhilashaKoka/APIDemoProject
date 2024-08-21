@@ -6,13 +6,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class WebTablePage extends AbstractComponent{
+public class WebTablePage{
 
-    static WebDriver driver;
+    static WebDriver webDriver;
     public WebTablePage(WebDriver driver)
     {
-        super(driver);
-        this.driver=driver;
+
+        webDriver=driver;
         PageFactory.initElements(driver, this);
 
     }
@@ -62,13 +62,13 @@ public class WebTablePage extends AbstractComponent{
     Elements_frame.click();
     WebTable_Span.click();
     Search_Box.sendKeys("Kierra", Keys.ENTER);
-       JavascriptExecutor js=(JavascriptExecutor) driver;
+       JavascriptExecutor js=(JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,300)");
         for(WebElement row:table_row)
         {
             row.findElement(By.xpath("//div[@class=\"action-buttons\"]//span[@title=\"Edit\"]")).click();
 
-            driver.switchTo().activeElement();
+            webDriver.switchTo().activeElement();
             break;
       }
         submit_Button.click();
