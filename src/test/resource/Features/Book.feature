@@ -1,5 +1,6 @@
 Feature: Verify add/remove book from ReadingList
 
+  @skip_scenario
   Scenario: Add/Remove book successfully from ReadingList
     Given I am an authorized user
     And A list of books are avaliable

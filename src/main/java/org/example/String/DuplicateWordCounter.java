@@ -12,7 +12,6 @@ public class DuplicateWordCounter {
         String[] words=normalizedStr.split("\\W+");
 
         Map<String, Integer> wordCountMap=new HashMap<>();
-
         for(String word:words){
             if(wordCountMap.containsKey(word)){
                 wordCountMap.put(word,wordCountMap.get(word)+1);
@@ -20,14 +19,16 @@ public class DuplicateWordCounter {
             else {
                 wordCountMap.put(word,1);
             }
-
         }
+
+
         System.out.println("Duplicate words in the String:");
-        for(Map.Entry<String, Integer> entry:wordCountMap.entrySet()){
-            if(entry.getValue()>1){
-                System.out.println(entry.getKey()+":"+entry.getValue());
-            }
-        }
+            for(Map.Entry<String, Integer> entry:wordCountMap.entrySet()){
 
+             if(entry.getValue()>1)
+             {
+                System.out.println(entry.getKey()+":"+entry.getValue());
+             }
+        }
     }
 }

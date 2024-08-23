@@ -14,20 +14,18 @@ public class DuplicateCharacterFinder {
     }
 
     public static void duplicateCharacterCount(String input){
-
         String[] strings=input.split("");
         Map<String, Integer> strCount=new HashMap<>();
-
         for(String str:strings){
             strCount.put(str,strCount.getOrDefault(str,0)+1);
-
         }
+
 
         for(Map.Entry<String, Integer> entry:strCount.entrySet()){
             if(entry.getValue()>1)
-            {
-                System.out.println("Duplicate Character:"+entry.getKey()+":"+entry.getValue());
-            }
+             {
+              System.out.println("Duplicate Character:"+entry.getKey()+":"+entry.getValue());
+             }
         }
 
 

@@ -12,13 +12,14 @@ public class CharacterCount {
 
         String input = scanner.nextLine();
         Map<Character, Integer> charCount = countCharacters(input);
-
         System.out.println("Occurrences of each character:");
+
 
         for (Map.Entry<Character, Integer> entry : charCount.entrySet()){
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
-        }
+
+    }
 
     public static Map<Character, Integer> countCharacters(String input) {
         Map<Character, Integer> charCountMap = new HashMap<>();

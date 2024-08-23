@@ -1,13 +1,10 @@
 package org.example.String;
-
-import io.cucumber.java.sl.In;
-
 import java.util.Hashtable;
 import java.util.Map;
 
 public class FindOccurrenceOfWordInString {
-        public static void main(String[] args) {
 
+        public static void main(String[] args) {
         String text="this is a test this is only a test";
 
         String[] words=text.split(" ");
@@ -17,7 +14,7 @@ public class FindOccurrenceOfWordInString {
         {
             if(wordCount.containsKey(word))
             {
-                wordCount.put(word, wordCount.get(word)+1);
+            wordCount.put(word, wordCount.get(word)+1);
             }
             else {
                 wordCount.put(word,1);

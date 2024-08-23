@@ -13,11 +13,9 @@ public class DuplicateWordFinder{
         String[] words = str.split("");
         Map<String, Integer> wordCountMap = new HashMap<>();
 
-
         for (String word : words) {
             wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
         }
-
 
         for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
             if (entry.getValue() > 1) {

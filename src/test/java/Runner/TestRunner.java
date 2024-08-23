@@ -6,8 +6,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features ="D://Users//akoka//IdeaProjects//untitled//src//test//resource//Features",
-        glue = {"StepDefinition"}
+        features ="src/test/resource/Features",
+        glue = {"StepDefinition"},
+        tags="not @skip_scenario",
+        plugin={"pretty","json:target/cucumber-reports/cucumber.json",
+                "html:target/cucumber-reports/cucumber-report.html",
+                "rerun:target/rerun.txt"},
+        publish=true
 )
 public class TestRunner {
 

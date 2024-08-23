@@ -1,5 +1,8 @@
 package StepDefinition;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,18 +13,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+
 import java.util.List;
 
 
 public class ElementStepDefs{
-    WebDriver driver;
-    JavascriptExecutor js;
-    Actions action;
+
+    static WebDriver driver;
+    static JavascriptExecutor js;
+    static Actions action;
 
 
-    @Before
-    public void beforeSteps()
-    {
+    @Given("User is on Landing Page")
+    public void user_is_on_landing_page() {
+        System.out.println("User is Landing Page!!");
         System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -29,17 +34,12 @@ public class ElementStepDefs{
         action = new Actions(driver);
         js = (JavascriptExecutor) driver;
         driver.get("https://demoqa.com");
-        js=(JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
         WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         ele.click();
         WebElement textbox=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
         textbox.click();
-    }
-
-    @Given("User is on Landing Page")
-    public void user_is_on_landing_page() {
-        System.out.println("User is Landing Page!!");
     }
 
     @When("User enter details username, email, current address, permanent address")
@@ -81,6 +81,7 @@ public class ElementStepDefs{
         System.out.println("Verfied!!");
 
     }
+
 
 
 }

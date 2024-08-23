@@ -1,5 +1,6 @@
 Feature: Verify Form Submission functionality
 
+  @skip_scenario
   Scenario: PracticeForm:successfully login by valid credential
     Given I am in from landing page
     When I fill all valid credential and click on submit

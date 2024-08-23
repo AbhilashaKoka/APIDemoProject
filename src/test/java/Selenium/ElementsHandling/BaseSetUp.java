@@ -13,7 +13,8 @@ public class BaseSetUp {
     public static void setup() {
         System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
+      //  options.addArguments("start-maximized");
+       options.addArguments("headless");
         driver = new ChromeDriver(options);
         action = new Actions(driver);
     }

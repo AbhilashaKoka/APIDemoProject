@@ -1,5 +1,6 @@
 package StepDefinition;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,13 +12,14 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 public class FormSteps {
+    static WebDriver driver;
+    static JavascriptExecutor js;
+    static Actions action;
 
-    WebDriver driver;
-    JavascriptExecutor js;
-    Actions action;
 
     @Given("I am in from landing page")
     public void i_am_in_from_landing_page() {
+        System.out.println("User is in Landing Page!!!");
         System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -25,12 +27,14 @@ public class FormSteps {
         action = new Actions(driver);
         js = (JavascriptExecutor) driver;
         driver.get("https://demoqa.com");
-        js.executeScript("window.scrollBy(0,350)");
-        WebElement formFrames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Forms\")]"));
-        formFrames.click();
-        WebElement PracticeForms=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Practice Form\")]"));
-        PracticeForms.click();
+        js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)");
+         WebElement formFrames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Forms\")]"));
+         formFrames.click();
+         WebElement PracticeForms=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Practice Form\")]"));
+         PracticeForms.click();
     }
+
     @When("I fill all valid credential and click on submit")
     public void i_fill_all_valid_credential_and_click_on_submit(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
         WebElement PracticeForm = driver.findElement(By.xpath("//*[@class=\"practice-form-wrapper\"]"));
