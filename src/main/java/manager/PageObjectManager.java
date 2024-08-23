@@ -1,6 +1,6 @@
 package manager;
 
-import PageObject.HomePage;
+import pageObject.HomePage;
 import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {
