@@ -20,9 +20,10 @@ public class SelectRecord {
                 double price = resultSet.getDouble("price");
                 System.out.println("ID:" + id + ",Name:" + name + ",Description:" + description + ",Price:" + price);
             }
-            }catch(SQLException e){
+            }catch(SQLException e)
+        {
         e.printStackTrace();
     }
-}
+  }
 }
 
