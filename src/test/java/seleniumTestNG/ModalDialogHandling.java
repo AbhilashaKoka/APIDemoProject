@@ -8,7 +8,8 @@ import org.openqa.selenium.WebElement;
 
 public class ModalDialogHandling extends BaseSetUp {
 
-    public static void HandlingModalDialog() throws InterruptedException {
+    public static Boolean HandlingModalDialog() throws InterruptedException {
+        Boolean bol=false;
         WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
         Window_Frames.click();
         WebElement ModalDialogs_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Modal Dialogs\")]"));
@@ -35,6 +36,8 @@ public class ModalDialogHandling extends BaseSetUp {
         WebElement closeButton1=driver.findElement(By.xpath("//*[@id=\"closeLargeModal\"]"));
         action.moveToElement(modalBox1).perform();
         action.moveToElement(closeButton1).click().perform();
+        bol=true;
+        return bol;
 
     }
 }

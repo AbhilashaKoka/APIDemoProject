@@ -12,7 +12,8 @@ public class Button extends BaseSetUp {
 
 
 
-    public static void HandlingButton(){
+    public static Boolean HandlingButton(){
+        Boolean bol=false;
         WebElement Elements_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Elements_Frames.click();
         WebElement Button_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Buttons\")]"));
@@ -56,7 +57,8 @@ public class Button extends BaseSetUp {
         WebElement outputForClick = driver.findElement(By.xpath(" //*[@id=\"dynamicClickMessage\"]"));
         String text3 = outputForClick.getAttribute("innerText");
         Assertions.assertEquals("You have done a dynamic click", text3);
-
+bol=true;
+        return bol;
     }
 
 }

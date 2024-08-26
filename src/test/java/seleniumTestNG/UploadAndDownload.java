@@ -15,7 +15,8 @@ import java.nio.file.Path;
 public class UploadAndDownload extends BaseSetUp {
 
 
-    public static void HandlingUploadAndDownload() throws InterruptedException {
+    public static Boolean HandlingUploadAndDownload() throws InterruptedException {
+        Boolean bol=false;
         WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Element_Frames.click();
         WebElement UploadAndDownload_Span=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Upload and Download\")]"));
@@ -48,6 +49,7 @@ public class UploadAndDownload extends BaseSetUp {
         uploadButton.sendKeys("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
         WebElement FilePath=driver.findElement(By.xpath(" //*[@id=\"uploadedFilePath\"]"));
         Assertions.assertEquals("C:\\fakepath\\sampleFile.jpeg",FilePath.getAttribute("innerText"));
-
+        bol=true;
+        return bol;
     }
 }

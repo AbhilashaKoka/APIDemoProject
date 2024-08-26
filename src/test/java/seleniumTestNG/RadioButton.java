@@ -10,7 +10,8 @@ public class RadioButton extends BaseSetUp {
 
 
 
-    public static void HandlingRadioBUtton(){
+    public static Boolean HandlingRadioBUtton(){
+        Boolean bol=false;
         WebElement Elements_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
         Elements_Frames.click();
         WebElement RadioButton_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Radio Button\")]"));
@@ -21,6 +22,7 @@ public class RadioButton extends BaseSetUp {
 
             elem.click();
         }
-
+        bol=true;
+return  bol;
     }
 }

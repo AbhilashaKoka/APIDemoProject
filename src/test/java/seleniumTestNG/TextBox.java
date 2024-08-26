@@ -11,7 +11,8 @@ import java.util.List;
 public class TextBox extends BaseSetUp {
 
 
-    public static void HandlingTextBox() throws InterruptedException {
+    public static Boolean HandlingTextBox() throws InterruptedException {
+       Boolean bol=false;
         WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Element_Frames.click();
         WebElement TextBox_Span=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
@@ -41,7 +42,7 @@ public class TextBox extends BaseSetUp {
         }
           //  System.out.println(name.toString());
         Thread.sleep(1000);
-
-
+bol=true;
+return bol;
     }
 }

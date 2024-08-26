@@ -11,7 +11,8 @@ public class Forms extends BaseSetUp {
     public Forms() {
     }
 
-    public static void HandlingForm() throws InterruptedException {
+    public static Boolean HandlingForm() throws InterruptedException {
+        Boolean bol=false;
         WebElement Forms_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Forms\")]"));
         Forms_Frames.click();
         WebElement PracticeForm_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Practice Form\")]"));
@@ -75,6 +76,9 @@ public class Forms extends BaseSetUp {
         action.moveToElement(modalCloseButton).click().perform();
         modalCloseButton.sendKeys(Keys.ESCAPE);
         js.executeScript("window.scrollBy(0,-350)");
+
+        bol=true;
+        return bol;
 
     }
 }

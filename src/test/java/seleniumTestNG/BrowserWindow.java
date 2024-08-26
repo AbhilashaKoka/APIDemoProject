@@ -13,8 +13,8 @@ public class BrowserWindow extends BaseSetUp {
 
     }
 
-    public static void HandlingBrowserWindow() throws InterruptedException {
-
+    public static Boolean HandlingBrowserWindow() throws InterruptedException {
+        Boolean bol=false;
         WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
         Window_Frames.click();
         WebElement BrowserWindows_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Browser Windows\")]"));
@@ -84,7 +84,7 @@ public class BrowserWindow extends BaseSetUp {
 //            driver.manage().window().fullscreen();
 
         }
-
-
+bol=true;
+return bol;
     }
 }

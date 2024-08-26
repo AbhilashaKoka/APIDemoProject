@@ -25,7 +25,6 @@ public class ElementStepDefs{
 
     @Given("User is on Landing Page")
     public void user_is_on_landing_page() {
-
         System.out.println("User is Landing Page!!");
         System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();

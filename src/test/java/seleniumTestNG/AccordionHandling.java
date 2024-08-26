@@ -14,8 +14,8 @@ public class AccordionHandling extends BaseSetUp {
     public AccordionHandling() {
     }
 
-    public static void HandlingAccordion(){
-
+    public static Boolean HandlingAccordion(){
+        Boolean bol=false;
         WebElement Widgets_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
         Widgets_Frames.click();
         WebElement Accordian_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Accordian\")]"));
@@ -37,6 +37,7 @@ public class AccordionHandling extends BaseSetUp {
 //            System.out.println(driver.findElement(By.xpath("//*[@class=\"card-body\" and @id=\"section1Content\"]/p")).getAttribute("nonExistingAttribute"));
 
           }
-
+        bol=true;
+return bol;
     }
 }

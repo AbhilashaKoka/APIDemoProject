@@ -12,7 +12,8 @@ public class DataPicker  extends BaseSetUp {
 
 
 
-    public static void HandlingDataPicker(){
+    public static Boolean HandlingDataPicker(){
+        Boolean bol=false;
         WebElement Widgets_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
         Widgets_Frames.click();
         WebElement DatePicker_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Date Picker\")]"));
@@ -25,6 +26,8 @@ public class DataPicker  extends BaseSetUp {
             String day = week.findElement(By.xpath("//*[@class=\"react-datepicker__week\"]/div[@role=\"option\"]")).getAttribute("innerText");
         }
 
+        bol=true;
+       return bol;
     }
 
 }

@@ -9,7 +9,8 @@ public class FramesHandling extends BaseSetUp {
     public FramesHandling() {
     }
 
-    public static void HandlingFrame(){
+    public static Boolean HandlingFrame(){
+        Boolean bol=false;
         WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
         Window_Frames.click();
         WebElement Frames_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Frames\")]"));
@@ -26,6 +27,8 @@ public class FramesHandling extends BaseSetUp {
         driver.switchTo().frame("frame2");
         System.out.println(iframes2.getAttribute("innerText"));
         driver.switchTo().defaultContent();
+        bol=true;
+        return bol;
 
     }
 }

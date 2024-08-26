@@ -1,5 +1,6 @@
 package seleniumTestNG;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static seleniumTestNG.Button.HandlingButton;
@@ -36,13 +37,12 @@ public class TestClass extends BaseSetUp{
 
    @Test
        public void TestButton() {
-
-       HandlingButton();
+       Assert.assertEquals( HandlingButton(), true);
         }
     @Test
     public void TestCheckBox() {
 
-       HandlingCheckBox();
+      Assert.assertEquals(HandlingCheckBox(),true);
     }
     @Test
     public void TestDatePicker() {

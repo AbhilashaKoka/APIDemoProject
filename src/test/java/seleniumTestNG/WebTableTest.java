@@ -10,7 +10,8 @@ import java.util.List;
 
 public class WebTableTest extends BaseSetUp {
 
-    public static void HandlingWebTableTest(){
+    public static Boolean HandlingWebTableTest(){
+        Boolean bol=false;
         WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Element_Frames.click();
         WebElement WebTables_Span=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Web Tables\")]"));
@@ -40,6 +41,7 @@ public class WebTableTest extends BaseSetUp {
         //    System.out.println(RegistrationTitle.getAttribute("innerText"));
 
         }
-
+        bol=true;
+return bol;
         }
 }

@@ -12,7 +12,8 @@ public class AlertsHandling extends BaseSetUp {
 
     }
 
-    public static void HandlingAlert(){
+    public static Boolean HandlingAlert(){
+        Boolean bol=false;
         WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
         Window_Frames.click();
         WebElement Alerts_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Alerts\")]"));
@@ -42,6 +43,7 @@ public class AlertsHandling extends BaseSetUp {
         promptButton.click();
         System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
-
+        bol=true;
+return  bol;
     }
 }
