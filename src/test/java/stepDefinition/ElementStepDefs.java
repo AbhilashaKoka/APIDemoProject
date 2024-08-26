@@ -1,6 +1,5 @@
 package stepDefinition;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import testData.TextBoxDetails;
-
 import java.util.List;
 import java.util.Map;
 
@@ -88,84 +86,48 @@ public class ElementStepDefs{
 
     }
 
-//    @When("User enter details {string}, {string}, {string}, {string}")
-//    public void user_enter_details(String string, String string2, String string3, String string4) {
-//        // Write code here that turns the phrase above into concrete actions
-//
-//    }
-//
-//
-//    @When("User enter details {string}, {string}, {string}, {string}")
-//    public void user_enter_details(String string, String string2, String string3, String string4) {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-
-//    @When("User enter details")
-//    public void user_enter_details(DataTable dataTable) {
-//        // Write code here that turns the phrase above into concrete actions
-//        // For automatic transformation, change DataTable to one of
-//        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-//        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-//        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-//        //
-//        // For other transformations you can register a DataTableType.
-//
-//        List<List<String>> data=dataTable.asLists();
-//                                data.get(0).get(0);//first row first coloumn
-//
-//        throw new PendingException();
-//    }
-
-//    @When("User enter details")
-//    public void user_enter_details(DataTable dataTable) {
-//        // Write code here that turns the phrase above into concrete actions
-//        // For automatic transformation, change DataTable to one of
-//        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-//        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-//        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-//        //
-//        // For other transformations you can register a DataTableType.
-//
-//       List<Map<String, String>> data=dataTable.asMaps();
-//
-//
-//        throw new io.cucumber.java.PendingException();
-//    }
+    @When("User TextBox Details {string}, {string}, {string}, {string}")
+    public void user_text_box_details(String username, String email, String currAddr, String peraddr) {
+        System.out.println("username:"+username);
+        System.out.println("email:"+email);
+        System.out.println("current Addr:"+currAddr);
+        System.out.println("permanent Addr:"+peraddr);
+    }
 
 
-//    @When("User enter details")
-//    public void user_enter_details(DataTable dataTable) {
-//        // Write code here that turns the phrase above into concrete actions
-//        // For automatic transformation, change DataTable to one of
-//        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-//        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-//        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-//        //
-//        // For other transformations you can register a DataTableType.
-//
-//
-//        for(Map<String, String> data:dataTable.asMaps(String.class,String.class))
-//        {
-//            data.get("uname");
-//            data.get("email");
-//            data.get("curraddr");
-//            data.get("permaddr");
-//        }
-//        throw new io.cucumber.java.PendingException();
-//    }
+
+    @When("User TextBox values {string}, {string}, {string}, {string}")
+    public void user_text_box_values(String username1, String email1, String currAddr1, String peraddr1) {
+        System.out.println("username:"+username1);
+        System.out.println("email:"+email1);
+        System.out.println("current Addr:"+currAddr1);
+        System.out.println("permanent Addr:"+peraddr1);
+    }
 
 
-    @When("User enter details")
-    public void user_enter_details(List<TextBoxDetails> textBoxDetails) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
 
+    @When("User enter textBox values List of List")
+    public void user_enter_text_box_values_list_of_list(DataTable dataTable) {
+     List<List<String>> table=dataTable.asLists();
+     table.get(0).get(0);
+
+    }
+
+
+
+    @When("User enter textbox values List of Map")
+    public void user_enter_textbox_values_list_of_map(DataTable dataTable) {
+     List<Map<String, String>> table2=dataTable.asMaps();
+     table2.get(0).get("uname");
+        table2.get(0).get("email");
+        table2.get(0).get("curraddr");
+        table2.get(0).get("permaddr");
+    }
+
+
+
+    @When("User enter details values using testdataClass")
+    public void user_enter_details_values_using_testdata_class(List<TextBoxDetails> textBoxDetails) {
 
         for (TextBoxDetails textBoxDetails1 : textBoxDetails) {
             textBoxDetails1.getUsername();
@@ -174,6 +136,7 @@ public class ElementStepDefs{
             textBoxDetails1.getPermanentaddress();
         }
     }
+
 
 
 }
