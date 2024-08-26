@@ -1,18 +1,24 @@
 package pageObject;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import testData.TextBoxDetails;
 
-public class HomePage{
+public class HomePage extends AbstractComponent{
 
-     static WebDriver webDriver;
+   static WebDriver driver;
 
     public HomePage(WebDriver driver)
     {
-         webDriver=driver;
-         PageFactory.initElements(webDriver, this);
+        super(driver);
+
+
+        this.driver=driver;
+        PageFactory.initElements(driver, this);
 
     }
 
@@ -36,16 +42,17 @@ public class HomePage{
     @FindBy(how = How.XPATH, using = "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]")
     private WebElement TextBox_Span;
 
-    public void SubmitDetails(){
-        AbstractComponent.scrollWindowUp(Element_frame);
+    public void SubmitDetails(TextBoxDetails textBoxDetails) throws InterruptedException {
+        Thread.sleep(1000);
+        scrollWindowUp(Element_frame);
         Element_frame.click();
         TextBox_Span.click();
 
-        UserName.sendKeys("XYZ");
-        Email.sendKeys("xyz@gmail.com");
+        UserName.sendKeys(textBoxDetails.getUsername());
+        Email.sendKeys(textBoxDetails.getEmail());
 
-        CurrentAddr.sendKeys("DownTown, GreenStreet Lane43, London");
-        PermanentAddr.sendKeys("London,UK");
+        CurrentAddr.sendKeys(textBoxDetails.getCurrentaddress());
+        PermanentAddr.sendKeys(textBoxDetails.getPermanentaddress());
 
         SubmitButton.click();
     }

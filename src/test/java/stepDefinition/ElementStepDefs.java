@@ -40,6 +40,12 @@ public class ElementStepDefs{
 
     @When("User enter details username, email, current address, permanent address")
     public void user_enter_details_username_email_current_address_permanent_address() throws InterruptedException {
+
+        // HomePage homePage=new HomePage();
+//        String username="Sita";
+//        TextBoxDetails textBoxDetails= FileReaderManager.getInstance().getJsonDataReader().getTextBoxDetailsByUserName(username);
+//      if(homePage.SubmitDetails(textBoxDetails))
+
         String sText=js.executeScript("return document.title;").toString();
         WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
         String sText1=js.executeScript("return document.title;").toString();
