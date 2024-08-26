@@ -1,6 +1,20 @@
-{
+[
+  {
   "username":"sita",
   "email":"sita@gmail.com",
   "currentaddress":"sdsfgsggg" ,
   "permanentaddress": "afdfsff"
+},
+{
+"username":"geeta",
+"email":"geeta@gmail.com",
+"currentaddress":"sdsfgsggg" ,
+"permanentaddress": "afdfsff"
+},
+{
+"username":"rita",
+"email":"rita@gmail.com",
+"currentaddress":"sdsfgsggg" ,
+"permanentaddress": "afdfsff"
 }
+]
