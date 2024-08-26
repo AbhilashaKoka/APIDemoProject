@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class BatchUpdate {
 
@@ -14,7 +13,7 @@ public class BatchUpdate {
 
     public static void main(String[] args) {
         try(
-                Connection connection=DBReader.getConnection();
+                Connection connection= JDBCExample.getConnection();
                 PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_PRODUCT_SQL))
         {
             Object[][] productUpdates={
