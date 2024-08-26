@@ -16,7 +16,7 @@ public class BatchInsert {
         };
 
         try(
-                Connection connection=DBReader.getConnection();
+                Connection connection= JDBCExample.getConnection();
                 Statement statement=connection.createStatement())
         {
             for(String sql:insertSQLs){

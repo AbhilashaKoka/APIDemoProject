@@ -16,7 +16,7 @@ public class CreateTable {
                 ")";
 
         try(
-                Connection connection=DBReader.getConnection();
+                Connection connection= JDBCExample.getConnection();
                 Statement statement=connection.createStatement())
                 {
                     statement.execute(createTableSQL);
