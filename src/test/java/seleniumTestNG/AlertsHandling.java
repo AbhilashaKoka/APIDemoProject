@@ -13,10 +13,11 @@ public class AlertsHandling extends BaseSetUp {
     }
 
     public static void HandlingAlert(){
-        setup();
-        driver.get("https://demoqa.com/alerts");
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,350)");
+        WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
+        Window_Frames.click();
+        WebElement Alerts_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Alerts\")]"));
+        Alerts_span.click();
+
         WebElement AlertWrapper=driver.findElement(By.xpath("//*[@id=\"javascriptAlertsWrapper\"]"));
         System.out.println(AlertWrapper.getAttribute("innerText"));
         WebElement alertButton=driver.findElement(By.xpath("//button[@id=\"alertButton\"]"));
@@ -41,6 +42,6 @@ public class AlertsHandling extends BaseSetUp {
         promptButton.click();
         System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
-        shutDown();
+
     }
 }

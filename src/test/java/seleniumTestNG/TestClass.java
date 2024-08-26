@@ -32,14 +32,17 @@ import static seleniumTestNG.UploadAndDownload.HandlingUploadAndDownload;
 import static seleniumTestNG.WebTableTest.HandlingWebTableTest;
 
 
-public class TestClass {
+public class TestClass extends BaseSetUp{
+
    @Test
        public void TestButton() {
-        HandlingButton();
+
+       HandlingButton();
         }
     @Test
     public void TestCheckBox() {
-        HandlingCheckBox();
+
+       HandlingCheckBox();
     }
     @Test
     public void TestDatePicker() {

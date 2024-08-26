@@ -11,22 +11,11 @@ import java.util.List;
 public class TextBox extends BaseSetUp {
 
 
-    public TextBox() {
-    }
-
     public static void HandlingTextBox() throws InterruptedException {
-        setup();
-        driver.get("https://demoqa.com");
-
-         js=(JavascriptExecutor) driver;
-         js.executeScript("window.scrollBy(0,300)");
-
-         WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
-         ele.click();
-        WebElement textbox=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
-        textbox.click();
-
-
+        WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
+        Element_Frames.click();
+        WebElement TextBox_Span=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
+        TextBox_Span.click();
         String sText=js.executeScript("return document.title;").toString();
         WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
         String sText1=js.executeScript("return document.title;").toString();
@@ -53,8 +42,6 @@ public class TextBox extends BaseSetUp {
           //  System.out.println(name.toString());
         Thread.sleep(1000);
 
-    //   driver.quit();
 
-shutDown();
     }
 }

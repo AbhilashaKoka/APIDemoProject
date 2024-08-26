@@ -1,15 +1,16 @@
 package seleniumTestNG;
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class Tabs extends BaseSetUp {
 
-    public Tabs() {
-    }
 
     public static void HandlingTabs() {
-       setup();
-        driver.get("https://demoqa.com/tabs");
-        shutDown();
+        WebElement Widgets_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
+        Widgets_Frames.click();
+        WebElement Tab_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Tabs\")]"));
+
     }
 }

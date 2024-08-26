@@ -11,13 +11,12 @@ import java.util.List;
 
 public class CheckBox  extends BaseSetUp {
 
-    public CheckBox() {
-    }
 
     public static void HandlingCheckBox(){
-        setup();
-        driver.get("https://demoqa.com/checkbox");
-       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement Elements_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
+        Elements_Frames.click();
+        WebElement CheckBox_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Check Box\")]"));
+        CheckBox_span.click();
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("  button[title=\"Toggle\"]")));
         JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -43,7 +42,5 @@ public class CheckBox  extends BaseSetUp {
         WebElement sortDesktop3=driver.findElement(By.xpath("//span[@class=\"rct-title\"][ contains(text(),\"React\")]//following::button[1][@title=\"Toggle\"]"));
         sortDesktop3.click();
 
-
-        shutDown();
     }
 }

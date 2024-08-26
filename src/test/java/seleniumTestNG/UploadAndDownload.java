@@ -13,14 +13,14 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 
 public class UploadAndDownload extends BaseSetUp {
-    public UploadAndDownload(){
 
-    }
 
     public static void HandlingUploadAndDownload() throws InterruptedException {
-        setup();
-        Actions action = new Actions(driver);
-        driver.get("https://demoqa.com/upload-download");
+        WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
+        Element_Frames.click();
+        WebElement UploadAndDownload_Span=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Upload and Download\")]"));
+        UploadAndDownload_Span.click();
+
 
         Path pathOfDownloadFolder=Paths.get("D:\\Users\\akoka\\Downloads");
         if(Files.exists(pathOfDownloadFolder)&& Files.isDirectory(pathOfDownloadFolder)){
@@ -48,6 +48,6 @@ public class UploadAndDownload extends BaseSetUp {
         uploadButton.sendKeys("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
         WebElement FilePath=driver.findElement(By.xpath(" //*[@id=\"uploadedFilePath\"]"));
         Assertions.assertEquals("C:\\fakepath\\sampleFile.jpeg",FilePath.getAttribute("innerText"));
-     shutDown();
+
     }
 }

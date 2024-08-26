@@ -8,12 +8,11 @@ import org.openqa.selenium.WebElement;
 
 public class ModalDialogHandling extends BaseSetUp {
 
-
-    public ModalDialogHandling() {
-    }
-
     public static void HandlingModalDialog() throws InterruptedException {
-        setup();
+        WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
+        Window_Frames.click();
+        WebElement ModalDialogs_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Modal Dialogs\")]"));
+        ModalDialogs_span.click();
         driver.get("https://demoqa.com/modal-dialogs");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)");
@@ -36,6 +35,6 @@ public class ModalDialogHandling extends BaseSetUp {
         WebElement closeButton1=driver.findElement(By.xpath("//*[@id=\"closeLargeModal\"]"));
         action.moveToElement(modalBox1).perform();
         action.moveToElement(closeButton1).click().perform();
-        shutDown();
+
     }
 }
