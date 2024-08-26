@@ -1,4 +1,4 @@
-package seleniumWebdriver;
+package seleniumTestNG;
 
 public class Resizable extends BaseSetUp {
 

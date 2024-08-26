@@ -1,35 +1,35 @@
-package seleniumWebdriver;
+package seleniumTestNG;
 
 import org.testng.annotations.Test;
 
-import static seleniumWebdriver.Button.HandlingButton;
-import static seleniumWebdriver.CheckBox.HandlingCheckBox;
+import static seleniumTestNG.Button.HandlingButton;
+import static seleniumTestNG.CheckBox.HandlingCheckBox;
 
-import static seleniumWebdriver.DataPicker.HandlingDataPicker;
-import static seleniumWebdriver.BrowserWindow.HandlingBrowserWindow;
-import static seleniumWebdriver.AutoComplete.HandlingAutomComplete;
-import static seleniumWebdriver.AlertsHandling.HandlingAlert;
-import static seleniumWebdriver.AccordionHandling.HandlingAccordion;
-import static seleniumWebdriver.Draggable.HandlingDraggable;
-import static seleniumWebdriver.Droppable.HandlingDroppable;
-import static seleniumWebdriver.Forms.HandlingForm;
-import static seleniumWebdriver.FramesHandling.HandlingFrame;
-import static seleniumWebdriver.Links.HandlingLInk;
-import static seleniumWebdriver.Menu.HandlingMenu;
-import static seleniumWebdriver.ModalDialogHandling.HandlingModalDialog;
-import static seleniumWebdriver.MultipleFrameHandling.HandlingMultipleFrames;
-import static seleniumWebdriver.ProgressBar.HandlingProgressBar;
-import static seleniumWebdriver.RadioButton.HandlingRadioBUtton;
-import static seleniumWebdriver.Resizable.HandlingResizable;
-import static seleniumWebdriver.Selectable.HandlingSelectable;
-import static seleniumWebdriver.SelectMenu.HandlingSelectMenu;
-import static seleniumWebdriver.Slider.HandlingSlider;
-import static seleniumWebdriver.Sortable.HandlingSortable;
-import static seleniumWebdriver.Tabs.HandlingTabs;
-import static seleniumWebdriver.TextBox.HandlingTextBox;
-import static seleniumWebdriver.ToolTips.HandlingToolTip;
-import static seleniumWebdriver.UploadAndDownload.HandlingUploadAndDownload;
-import static seleniumWebdriver.WebTableTest.HandlingWebTableTest;
+import static seleniumTestNG.DataPicker.HandlingDataPicker;
+import static seleniumTestNG.BrowserWindow.HandlingBrowserWindow;
+import static seleniumTestNG.AutoComplete.HandlingAutomComplete;
+import static seleniumTestNG.AlertsHandling.HandlingAlert;
+import static seleniumTestNG.AccordionHandling.HandlingAccordion;
+import static seleniumTestNG.Draggable.HandlingDraggable;
+import static seleniumTestNG.Droppable.HandlingDroppable;
+import static seleniumTestNG.Forms.HandlingForm;
+import static seleniumTestNG.FramesHandling.HandlingFrame;
+import static seleniumTestNG.Links.HandlingLInk;
+import static seleniumTestNG.Menu.HandlingMenu;
+import static seleniumTestNG.ModalDialogHandling.HandlingModalDialog;
+import static seleniumTestNG.MultipleFrameHandling.HandlingMultipleFrames;
+import static seleniumTestNG.ProgressBar.HandlingProgressBar;
+import static seleniumTestNG.RadioButton.HandlingRadioBUtton;
+import static seleniumTestNG.Resizable.HandlingResizable;
+import static seleniumTestNG.Selectable.HandlingSelectable;
+import static seleniumTestNG.SelectMenu.HandlingSelectMenu;
+import static seleniumTestNG.Slider.HandlingSlider;
+import static seleniumTestNG.Sortable.HandlingSortable;
+import static seleniumTestNG.Tabs.HandlingTabs;
+import static seleniumTestNG.TextBox.HandlingTextBox;
+import static seleniumTestNG.ToolTips.HandlingToolTip;
+import static seleniumTestNG.UploadAndDownload.HandlingUploadAndDownload;
+import static seleniumTestNG.WebTableTest.HandlingWebTableTest;
 
 
 public class TestClass {

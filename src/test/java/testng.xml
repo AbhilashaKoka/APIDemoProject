@@ -14,7 +14,7 @@
 <!--    <test name="SeleniumWebDriverTest">-->
 
 <!--        <classes>-->
-<!--            <class name="seleniumWebdriver.TestClass"></class>-->
+<!--            <class name="seleniumTestNG.TestClass"></class>-->
 
 <!--        </classes>-->
 <!--    </test>-->

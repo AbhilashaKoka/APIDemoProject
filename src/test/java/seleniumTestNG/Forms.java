@@ -1,4 +1,4 @@
-package seleniumWebdriver;
+package seleniumTestNG;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 

@@ -1,4 +1,4 @@
-package seleniumWebdriver;
+package seleniumTestNG;
 
 public class Droppable extends BaseSetUp {
     public Droppable() {
