@@ -215,7 +215,7 @@
                 <configuration>
                     <!--					<includes>-->
                     <!--						<include>com.spring.demo.SpringTestNGTest</include>-->
-                    <!--						<include>com.spring.demo.runner.TestRunner</include>-->
+                    <!--						<include>com.spring.demo.selenium.demo.runner.TestRunner</include>-->
                     <!--					</includes>-->
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/java/com/spring/demo/testng.xml</suiteXmlFile>
