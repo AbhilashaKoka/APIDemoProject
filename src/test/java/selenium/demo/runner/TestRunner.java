@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
         features ="src/test/resource/Features",
         glue = {"selenium/demo/stepDefinition"},
         tags="not @skip_scenario",
-        plugin={"pretty","json:target/cucumber-reports/cucumber.json",
+        plugin={"pretty","json:target/cucumber.json",
                          "rerun:target/rerun.txt"},
         publish=true
 )
