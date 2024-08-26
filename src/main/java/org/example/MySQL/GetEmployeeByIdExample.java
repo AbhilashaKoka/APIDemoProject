@@ -1,5 +1,4 @@
 package org.example.MySQL;
-
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -24,7 +23,8 @@ public class GetEmployeeByIdExample {
                  BigDecimal salary=callableStatement.getBigDecimal(4);
 
                  System.out.println("Employee Details-ID:1, Name:"+name+",Department:"+department+",Salary:"+salary);
-       }catch(SQLException e){
+               }
+             catch(SQLException e){
                  e.printStackTrace();
              }
     }

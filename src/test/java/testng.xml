@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" verbose="10" configfailurepolicy="skip" parallel="true">
+
+<!--    <test name="SeleniumTest">-->
+<!--        <classes>-->
+<!--            <class name="runner.TestRunner"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="SerenityTest">-->
+<!--        <classes>-->
+<!--            <class name="serenitytest.LoginTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="SeleniumWebDriverTest">
+
+        <classes>
+            <class name="seleniumWebdriver.TestClass"></class>
+
+        </classes>
+    </test>
+</suite>

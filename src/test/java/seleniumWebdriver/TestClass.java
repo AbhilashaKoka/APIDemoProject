@@ -1,5 +1,7 @@
 package seleniumWebdriver;
-import org.junit.jupiter.api.Test;
+
+import org.testng.annotations.Test;
+
 import static seleniumWebdriver.Button.HandlingButton;
 import static seleniumWebdriver.CheckBox.HandlingCheckBox;
 
@@ -30,8 +32,8 @@ import static seleniumWebdriver.UploadAndDownload.HandlingUploadAndDownload;
 import static seleniumWebdriver.WebTableTest.HandlingWebTableTest;
 
 
-public class JunitTestRunner {
-   @Test()
+public class TestClass {
+   @Test
        public void TestButton() {
         HandlingButton();
         }

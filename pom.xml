@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cucumber.version>7.18.1</cucumber.version>
         <junit.version>5.10.0</junit.version>
+        <testNG.vesion>7.9.0</testNG.vesion>
         <selenium.version>4.18.1</selenium.version>
         <apache.common>3.12.0</apache.common>
         <restassured.version>5.5.0</restassured.version>
@@ -24,6 +25,8 @@
         <serenity.version>4.2.0</serenity.version>
         <serenity.maven.version>4.2.0</serenity.maven.version>
         <mysql.version>8.0.33</mysql.version>
+        <maven.cucumber.reporting>3.0.0</maven.cucumber.reporting>
+        <surefire.version>2.22.2</surefire.version>
     </properties>
     <dependencies>
         <dependency>
@@ -49,6 +52,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testNG.vesion}</version>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>${hamcrest-all.version}</version>
@@ -70,6 +78,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
@@ -190,6 +205,39 @@
                         <id>serenity-reports</id>
                         <phase>post-integration-test</phase>
                         <goals><goal>aggregate</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <!--					<includes>-->
+                    <!--						<include>com.spring.demo.SpringTestNGTest</include>-->
+                    <!--						<include>com.spring.demo.runner.TestRunner</include>-->
+                    <!--					</includes>-->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/java/com/spring/demo/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>${maven.cucumber.reporting}</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>cucumberReporting</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-reports-html</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

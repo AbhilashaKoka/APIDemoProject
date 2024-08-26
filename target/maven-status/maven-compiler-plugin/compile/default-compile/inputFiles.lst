@@ -1,4 +1,5 @@
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\lamdaAndStream\RemoveDuplicates.java
+D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\MySQL\GetEmployeeByIdExample.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\Number\LargestOfThreeNumber.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\pageObject\PracticalFormPage.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\String\VowelConsonantCounter.java
@@ -8,7 +9,6 @@ D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\dataProvider\JsonDataRe
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\lamdaAndStream\FindFirstRepeatedCharacter.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\Number\FibonacciSeries.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\pageObject\UploadAndDownloadPage.java
-D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\MySQL\DBReader.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\Number\FindPrimeNumbers.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\manager\WebDriverManager.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\Number\ReverseNumber.java
@@ -70,8 +70,10 @@ D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\String\chec
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\lamdaAndStream\SumOfDigits.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\Number\diamondTest1.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\String\AddCharacterToTheString.java
+D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\MySQL\InsertEmployeeExample.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\String\DuplicateCharacterFinder.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\lamdaAndStream\ReverseString.java
+D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\MySQL\JDBCExample.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\String\SwapTwoString.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\String\ReverseString.java
 D:\Users\akoka\IdeaProjects\APIDemoProject\src\main\java\org\example\MySQL\DeleteRecord.java

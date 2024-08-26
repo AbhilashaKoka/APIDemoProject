@@ -50,14 +50,7 @@ public class ElementStepDefs{
 
         String sText=js.executeScript("return document.title;").toString();
         WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
-        String sText1=js.executeScript("return document.title;").toString();
-        System.out.println(sText1);
-        String sText2=js.executeScript("return document.domain;").toString();
-        System.out.println(sText2);
-        String sText3=js.executeScript("return document.URL;").toString();
-        System.out.println(sText3);
         js.executeScript("arguments[0].scrollIntoView;",element);
-        js.executeScript("location.reload()");
         js.executeScript("document.getElementById('userName').value='sita';");
         js.executeScript("document.getElementById('userEmail').value='sita@gmail.com';");
         js.executeScript("document.getElementById('currentAddress').value='sita@gmail.com';");
@@ -97,11 +90,25 @@ public class ElementStepDefs{
 
 
     @When("User TextBox values {string}, {string}, {string}, {string}")
-    public void user_text_box_values(String username1, String email1, String currAddr1, String peraddr1) {
-        System.out.println("username:"+username1);
-        System.out.println("email:"+email1);
-        System.out.println("current Addr:"+currAddr1);
-        System.out.println("permanent Addr:"+peraddr1);
+    public void user_text_box_values(String username1, String email1, String currAddr1, String peraddr1) throws InterruptedException {
+        String sText=js.executeScript("return document.title;").toString();
+        WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
+        js.executeScript("arguments[0].scrollIntoView;",element);
+        js.executeScript("document.getElementById('userName').value='"+username1+"';");
+        js.executeScript("document.getElementById('userEmail').value='"+email1+"';");
+        js.executeScript("document.getElementById('currentAddress').value='"+currAddr1+"';");
+        js.executeScript("document.getElementById('permanentAddress').value='"+peraddr1+"';");
+        js.executeScript("document.getElementById('submit').click();");
+        List<WebElement> ele3=driver.findElements(By.xpath("//*[@id=\"output\"]//p"));
+        if(ele3.size()!=0){
+            System.out.println(ele3.size()+"Element found as tag name as input \n");
+            for(WebElement inputele:ele3)
+            {
+                System.out.println(inputele.getText());
+            }
+        }
+        //  System.out.println(name.toString());
+        Thread.sleep(1000);
     }
 
 
