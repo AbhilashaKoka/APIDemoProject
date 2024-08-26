@@ -12,7 +12,7 @@ public class InsertMultipleRecords {
 
 
         try(
-                Connection connection= JDBCExample.getConnection();
+                Connection connection=DBReader.getConnection();
                 Statement statement=connection.createStatement())
                {
                 statement.executeUpdate(insert1);

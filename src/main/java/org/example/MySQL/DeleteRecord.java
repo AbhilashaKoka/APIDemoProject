@@ -10,7 +10,7 @@ public class DeleteRecord {
         String deleteSQL="DELETE FROM products WHERE name='Laptop'";
 
         try(
-                Connection connection= JDBCExample.getConnection();
+                Connection connection=DBReader.getConnection();
                 Statement statement=connection.createStatement())
         {
             int rowDeleted=statement.executeUpdate(deleteSQL);

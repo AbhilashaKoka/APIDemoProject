@@ -7,7 +7,7 @@ public class UpdateRecord {
     public static void main(String[] args) {
         String updateSQL="UPDATE products SET price =80000.00 WHERE name= 'Laptop'";
         try(
-                Connection connection= JDBCExample.getConnection();
+                Connection connection=DBReader.getConnection();
                 Statement statement=connection.createStatement())
         {
             int RowUpdated=statement.executeUpdate(updateSQL);

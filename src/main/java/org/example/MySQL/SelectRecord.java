@@ -10,7 +10,7 @@ public class SelectRecord {
         String selectSQL = "SELECT * FROM products";
 
         try (
-                Connection connection = JDBCExample.getConnection();
+                Connection connection = DBReader.getConnection();
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(selectSQL)) {
             while (resultSet.next()) {
