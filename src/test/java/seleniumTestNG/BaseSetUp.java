@@ -1,4 +1,5 @@
 package seleniumTestNG;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -24,11 +25,16 @@ public class BaseSetUp {
 
     @BeforeMethod
     public static void setup() {
-        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         //  options.addArguments("headless");
-        driver = new ChromeDriver(options);
+         driver=new ChromeDriver(options);
+//        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        //  options.addArguments("headless");
+//        driver = new ChromeDriver(options);
         action = new Actions(driver);
         driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;

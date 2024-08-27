@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 @Listeners(seleniumTestNG.TestStatusListener.class)
 public class TestClass extends BaseSetUp{
 
-   @Test(description = "Verify textBox",enabled = false)
+   @Test(description = "Verify textBox",enabled = false,priority = 1)
        public void TestButton() {
               Assert.assertEquals( Button.HandlingButton(), true);
         }
