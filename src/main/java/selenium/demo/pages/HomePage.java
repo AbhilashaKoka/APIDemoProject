@@ -1,4 +1,4 @@
-package selenium.demo.pageObject;
+package selenium.demo.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -28,8 +28,10 @@ public class HomePage {
     private WebElement TextBox_Span;
 
 
-    public void SubmitDetails(TextBoxDetails textBoxDetails) throws InterruptedException {
-        Thread.sleep(1000);
+    public boolean SubmitDetails(TextBoxDetails textBoxDetails) {
+
+       Boolean bol=false;
+        WebDriverManager.scrollWindow();
         Element_frame.click();
         TextBox_Span.click();
 
@@ -40,5 +42,7 @@ public class HomePage {
         PermanentAddr.sendKeys(textBoxDetails.getPermanentaddress());
 
         SubmitButton.click();
+        bol=true;
+        return bol;
     }
 }

@@ -1,9 +1,8 @@
-package selenium.demo.pageObject;
-import org.openqa.selenium.WebDriver;
+package selenium.demo.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;

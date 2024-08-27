@@ -1,4 +1,4 @@
-package selenium.demo.pageObject;
+package selenium.demo.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

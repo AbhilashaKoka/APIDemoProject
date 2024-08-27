@@ -1,5 +1,5 @@
 package selenium.demo.dataProvider;
-import selenium.demo.pageObject.FileReaderManager;
+import selenium.demo.pages.FileReaderManager;
 import selenium.demo.testData.PracticeFormsDetails;
 import selenium.demo.testData.TextBoxDetails;
 import java.io.BufferedReader;
@@ -11,13 +11,31 @@ import java.util.List;
 import com.google.gson.Gson;
 
 public class JsonDataReader {
-private final String TextBoxFilePath=System.getProperty("user.dir")+ FileReaderManager.getInstance().getConfigFileReader().getTestDataResourcePath()+"TextBoxData.json";//configs//TextBoxData.json";
-private final String PracticalFormsDetailsFilePath=System.getProperty("user.dir")+FileReaderManager.getInstance().getConfigFileReader().getTestDataResourcePath()+"PracticeFormData.json";
-private List<TextBoxDetails>  textBoxDetails;
+private final String TextBoxFilePath;//configs//TextBoxData.json";
+
+    {
+        try {
+            TextBoxFilePath = System.getProperty("user.dir")+ FileReaderManager.getInstance().getConfigFileReader().getTestDataResourcePath()+"TextBoxData.json";
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private final String PracticalFormsDetailsFilePath;
+
+    {
+        try {
+            PracticalFormsDetailsFilePath = System.getProperty("user.dir")+FileReaderManager.getInstance().getConfigFileReader().getTestDataResourcePath()+"PracticeFormData.json";
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private List<TextBoxDetails>  textBoxDetails;
 private List<PracticeFormsDetails> practiceFormsDetails;
 
 
-    public JsonDataReader() throws IOException {
+    public JsonDataReader() {
         textBoxDetails=getTextBoxDetails();
         practiceFormsDetails=getPracticeFormsDetails();
     }

@@ -11,7 +11,7 @@ public class ConfigFileReader {
     private final String propertyFilePath="Configs//Configuration.properties";
 
 
-    public ConfigFileReader() throws IOException {
+    public ConfigFileReader() {
         BufferedReader reader=null;
        try {
            reader = new BufferedReader(new FileReader(propertyFilePath));

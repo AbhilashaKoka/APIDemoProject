@@ -20,35 +20,45 @@ public class ElementStepDefs{
     static WebDriver driver;
     static JavascriptExecutor js;
     static Actions action;
+    HomePage homePage;
+    JsonDataReader jsonDataReader;
 
+    public ElementStepDefs(TestContext testContext) throws IOException {
+        super(testContext);
+        homePage=testContext.getPageObjectManager().getHomePage();
+        jsonDataReader=testContext.getFileReaderManager().getJsonDataReader();
+
+    }
 
 
     @Given("User is on Landing Page")
     public void user_is_on_landing_page() {
 
-        System.out.println("User is Landing Page!!");
-        System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        action = new Actions(driver);
-        js = (JavascriptExecutor) driver;
-        driver.get("https://demoqa.com");
-        js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,300)");
-        WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
-        ele.click();
-        WebElement textbox=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
-        textbox.click();
+      System.out.println("User is Landing Page!!");
+//        System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        driver = new ChromeDriver(options);
+//        action = new Actions(driver);
+//        js = (JavascriptExecutor) driver;
+//        driver.get("https://demoqa.com");
+//        js = (JavascriptExecutor) driver;
+//        js.executeScript("window.scrollBy(0,300)");
+//        WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
+//        ele.click();
+//        WebElement textbox=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
+//        textbox.click();
     }
 
     @When("User enter details username, email, current address, permanent address")
     public void user_enter_details_username_email_current_address_permanent_address() throws InterruptedException {
 
-        // HomePage homePage=new HomePage();
-//        String username="Sita";
-//        TextBoxDetails textBoxDetails= FileReaderManager.getInstance().getJsonDataReader().getTextBoxDetailsByUserName(username);
-//      if(homePage.SubmitDetails(textBoxDetails))
+        TextBoxDetails textBoxDetails=jsonDataReader.getTextBoxDetailsByUserName("sita");
+        if(homePage.SubmitDetails(textBoxDetails))
+        {
+
+        }
+
 
         String sText=js.executeScript("return document.title;").toString();
         WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
