@@ -13,12 +13,14 @@ import java.util.List;
 public class Links  extends BaseSetUp {
 
 
-    public Links() {
-    }
+    public  static Boolean HandlingLInk(){
+        Boolean bol=false;
+        WebElement Elements_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
+        Elements_Frames.click();
+        WebElement Links_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Links\")]"));
+        Links_span.click();
 
-    public  static void HandlingLInk(){
-        setup();
-        driver.get("https://demoqa.com/links");
+
         List<WebElement> Links = driver.findElements(By.xpath("//*[@id=\"linkWrapper\"]/p/a"));
         System.out.println(Links.size());
         for (WebElement link : Links) {
@@ -44,6 +46,7 @@ public class Links  extends BaseSetUp {
                 System.out.println(url + "-" + "is a broken link");
             }
         }
-        shutDown();
+        bol=true;
+return bol;
     }
 }
