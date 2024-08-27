@@ -1,11 +1,16 @@
 package selenium.demo.stepDefinition;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.JavascriptExecutor;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import selenium.demo.cucumberContext.TestContext;
-import selenium.demo.pages.WebDriverManager;
-;
+
+import java.io.IOException;
 
 public class BaseSetup {
 
@@ -14,14 +19,29 @@ public class BaseSetup {
 
     public BaseSetup(TestContext testContext) {
         this.testContext = testContext;
-        driver=testContext.getWebDriverManager().getDriver();
+
     }
 
 
     @Before
-    public void setup(Scenario scenario)
-    {
+    public void setup(Scenario scenario) {
         System.out.println(scenario.getName());
-        driver.get("https://demoqa.com");
+        driver = testContext.getWebDriverManager().getDriver();
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        //  options.addArguments("headless");
+//        driver=new ChromeDriver(options);
+         driver.get("https://demoqa.com");
+    }
+
+    @After
+    public void TearDownTest(Scenario scenario) throws IOException {
+        if (scenario.isFailed()) {
+            final byte[] src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(src, "image/png", scenario.getName());
+
+
+        }
     }
 }

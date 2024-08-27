@@ -5,7 +5,7 @@ Feature: Verify TestBox Login Page
     And Click on Submit
     Then user should able to verify the detail on output area
 
-  @skip_scenario
+
 #Hard Coding Value
   Scenario: TextBox:Successful login with valid Credential
       When User enter details username, email, current address, permanent address
@@ -19,7 +19,7 @@ Feature: Verify TestBox Login Page
       |uname|email|curraddr|permaddr|
       |sita |sita@gmail.com|ADSADS|ADSAFFA|
 
-
+  @skip_scenario
    #directly passing value in scenario
   Scenario: DataDriven test for TextBox directly passing value in scenario:Successful login with valid Credential
     When User TextBox values "sita", "sita@gmail.com", "afsfsgds", "adsaf"

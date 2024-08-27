@@ -10,29 +10,34 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import selenium.demo.cucumberContext.TestContext;
 import selenium.demo.testData.TextBoxDetails;
 import java.util.List;
 import java.util.Map;
 
 
-public class ElementStepDefs{
+public class ElementStepDefs {
 
-    static WebDriver driver;
+
+          WebDriver driver;
     static JavascriptExecutor js;
     static Actions action;
 
+    public ElementStepDefs(TestContext testContext) {
+        driver=testContext.getWebDriverManager().getDriver();
+    }
 
 
     @Given("User is on Landing Page")
     public void user_is_on_landing_page() {
         System.out.println("User is Landing Page!!");
-        System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        action = new Actions(driver);
-        js = (JavascriptExecutor) driver;
-        driver.get("https://demoqa.com");
+//        System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        driver = new ChromeDriver(options);
+//        action = new Actions(driver);
+//        js = (JavascriptExecutor) driver;
+//        driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
         WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));

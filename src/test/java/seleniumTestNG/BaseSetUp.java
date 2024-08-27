@@ -27,23 +27,23 @@ public class BaseSetUp {
         System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-      //  options.addArguments("headless");
+        //  options.addArguments("headless");
         driver = new ChromeDriver(options);
         action = new Actions(driver);
         driver.get("https://demoqa.com");
-        js=(JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
     }
 
 
-    public void FailedScreenshot(String testMethodName){
-        File src=( (TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        Date d=new Date();
-        String Timestamp=d.toString().replace(":","_").replace(" ","_");
-        try{
-            FileUtils.copyFile(src,new File("D:/Users/akoka/IdeaProjects/APIDemoProject/Screenshots/"+testMethodName+"_"+Timestamp+".png"));
+    public void FailedScreenshot(String testMethodName) {
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        Date d = new Date();
+        String Timestamp = d.toString().replace(":", "_").replace(" ", "_");
+        try {
+            FileUtils.copyFile(src, new File("C:/Users/Abhilasha/IdeaProjects/Spring_Course-master/APIDemoProject/Screenshots/" + testMethodName + "_" + Timestamp + ".png"));
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -51,12 +51,16 @@ public class BaseSetUp {
 
 
     @AfterMethod
-    public static void shutDown(){
+    public static void shutDown() {
         driver.quit();
     }
 
 
+    public void Scrollwindow() {
 
 
+    js =(JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,300)");
+}
 
 }
