@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,9 +31,17 @@ WebDriver driver;
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public  void HandlingUploadAndDownload() throws InterruptedException {
+
+    public boolean UploadAndDownloadlandingPage(){
+        boolean bol=false;
         Element_frame.click();
         UploadDownload_Span.click();
+        bol=true;
+        return bol;
+    }
+
+    public  boolean HandlingUploadAndDownload() throws InterruptedException {
+    boolean bol=false;
 
         Path pathOfDownloadFolder= Paths.get("D:\\Users\\akoka\\Downloads");
 
@@ -56,8 +63,8 @@ WebDriver driver;
             }
 
         uploadButton.sendKeys("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
-
-
+bol=true;
+return bol;
       //  Assertions.assertEquals("C:\\fakepath\\sampleFile.jpeg",FilePath.getAttribute("innerText"));
 
    }

@@ -5,7 +5,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import selenium.demo.manager.DriverManager;
 import selenium.demo.testData.PracticeFormsDetails;
-
 import java.util.List;
 
 

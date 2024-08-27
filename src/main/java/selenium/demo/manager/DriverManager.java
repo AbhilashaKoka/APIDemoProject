@@ -72,7 +72,7 @@ public class DriverManager {
 
     public static void MoveToElement(WebElement element) {
         action = new Actions(driver);
-        action.moveToElement(element).click().perform();
+        action.moveToElement(element).perform();
     }
 
 

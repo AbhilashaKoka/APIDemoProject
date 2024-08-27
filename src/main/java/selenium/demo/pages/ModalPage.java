@@ -48,28 +48,32 @@ WebDriver driver;
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public  void HandlingModal () throws InterruptedException {
+
+
+    public boolean ModalLandingPage()
+    {
+        boolean bol=false;
         AlertFramesAndWindow_frame.click();
         ModalDialog_Span.click();
-
         DriverManager.scrollWindow();
+        bol=true;
+        return bol;
 
+    }
+    public  boolean HandlingModal () throws InterruptedException {
+boolean bol=false;
         System.out.println(modalWrapper_Span.getAttribute("innerText"));
         small_Button.click();
-
-
-//        WebDriverManager(modal_Button).perform();
-//         action.moveToElement(close_Button).click().perform();
-//
-//        Thread.sleep(3000);
-//         large_Button.click();
-//        js.executeScript("window.scrollBy(0,400)");
-//
-//
-//
-//        action.moveToElement(modal1_Button).perform();
-//        action.moveToElement(close1_Button).click().perform();
-
-      //  shutDown();
+        DriverManager.MoveToElement(modal_Button);
+        DriverManager.MoveToElement(close_Button);
+        close_Button.click();
+        Thread.sleep(3000);
+         large_Button.click();
+        DriverManager.scrollWindow();
+        DriverManager.MoveToElement(modal1_Button);
+        DriverManager.MoveToElement(close1_Button);
+        close1_Button.click();
+        bol=true;
+        return bol;
     }
 }
