@@ -6,7 +6,7 @@ import org.testng.ITestResult;
 public class TestStatusListener extends BaseSetUp implements ITestListener {
 
     public void onTestFailure(ITestResult result){
-        System.out.println("Test case Failed");
+        System.out.println("****TEST CASE FAILED****");
         try
         {
          FailedScreenshot(result.getName());
