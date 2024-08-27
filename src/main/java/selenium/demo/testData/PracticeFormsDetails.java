@@ -9,6 +9,7 @@ public class PracticeFormsDetails {
     String DOB;
     String Subject;
     String Hobbies;
+    String FilePath;
     String CurrentAddr;
     String State;
     String City;
@@ -103,4 +104,11 @@ public class PracticeFormsDetails {
     }
 
 
+    public String getFilePath() {
+        return FilePath;
+    }
+
+    public void setFilePath(String filePath) {
+        FilePath = filePath;
+    }
 }

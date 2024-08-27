@@ -6,7 +6,7 @@ Background:
 
   @skip_scenario
   Scenario: PracticeForm:successfully login by valid credential
-      When I fill all valid credential and click on submit
+      When I enter details firstname, lastname,gender,email,mobile,dob,subject,hobbies,currentaddr,state,city
 
   @skip_scenario
     ##List<Map<Key,Value>>

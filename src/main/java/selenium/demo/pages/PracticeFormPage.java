@@ -1,13 +1,10 @@
 package selenium.demo.pages;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import selenium.demo.manager.DriverManager;
+import selenium.demo.testData.PracticeFormsDetails;
 
 import java.util.List;
 
@@ -15,6 +12,8 @@ import java.util.List;
 public class PracticeFormPage {
 
 WebDriver driver;
+
+
     @FindBy(how = How.XPATH, using = "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Forms\")]")
     private WebElement Frame_forms;
 
@@ -72,30 +71,37 @@ WebDriver driver;
         PageFactory.initElements(driver, this);
     }
 
-
-    public void SubmitPracticeForm() {
+    public boolean PracticeFormLandingPage()
+    {
+        boolean bol=false;
         DriverManager.scrollWindowUp(Frame_formFrames);
         Frame_formFrames.click();
         PracticeForms.click();
-        DriverManager.scrollWindowUp(InputBox_FirstName);
-        InputBox_FirstName.sendKeys("xyz", Keys.TAB);
-        InputBox_LastName.sendKeys("ABC", Keys.TAB);
-        InputBox_Email.sendKeys("XYZ@gmail.com", Keys.TAB);
-        DriverManager.scrollWindowUp(RadioButton_Male);
+        bol=true;
+        return bol;
+    }
 
+
+    public boolean SubmitPracticeForm(PracticeFormsDetails practiceFormsDetails) {
+        boolean bol=false;
+        DriverManager.scrollWindowUp(InputBox_FirstName);
+        InputBox_FirstName.sendKeys(practiceFormsDetails.getFirstName(), Keys.TAB);
+        InputBox_LastName.sendKeys(practiceFormsDetails.getLastName(), Keys.TAB);
+        InputBox_Email.sendKeys(practiceFormsDetails.getEmail(), Keys.TAB);
+        DriverManager.scrollWindowUp(RadioButton_Male);
         if(!RadioButton_Male.isSelected()){
             DriverManager.MoveToElement(RadioButton_Male);
             RadioButton_Male.sendKeys(Keys.TAB);
         }
         DriverManager.scrollWindowUp(Inputbox_Mobile);
 
-        Inputbox_Mobile.sendKeys("90249234234", Keys.TAB);
+        Inputbox_Mobile.sendKeys(practiceFormsDetails.getMobile(), Keys.TAB);
         DriverManager.scrollWindowUp(Inputbox_DateOfBirth);
 
-        Inputbox_DateOfBirth.sendKeys("25 JAN 2024", Keys.TAB, Keys.ENTER, Keys.TAB);
+        Inputbox_DateOfBirth.sendKeys(practiceFormsDetails.getDOB(), Keys.TAB, Keys.ENTER, Keys.TAB);
         DriverManager.scrollWindowUp(Inputbox_Subject);
 
-        Inputbox_Subject.sendKeys("Computer Science",Keys.TAB, Keys.TAB);
+        Inputbox_Subject.sendKeys(practiceFormsDetails.getSubject(),Keys.TAB, Keys.TAB);
         DriverManager.scrollWindowUp(CheckBox_Hobbies);
 
         if(!CheckBox_Hobbies.isSelected()) {
@@ -103,27 +109,29 @@ WebDriver driver;
             CheckBox_Hobbies.sendKeys(Keys.TAB, Keys.TAB);
         }
 
-        Upload_Picture.sendKeys("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
+        Upload_Picture.sendKeys(practiceFormsDetails.getFilePath());
         DriverManager.scrollWindowUp(TextArea_CurrentAdress);
-        TextArea_CurrentAdress.sendKeys("adafafdhdlhdgl",Keys.TAB);
-        DropDown_States.sendKeys("Uttar Pradesh", Keys.TAB,Keys.TAB);
-        DropDown_City.sendKeys("Agra",Keys.TAB,Keys.TAB);
+        TextArea_CurrentAdress.sendKeys(practiceFormsDetails.getCurrentAddr(),Keys.TAB);
+        DropDown_States.sendKeys(practiceFormsDetails.getState(), Keys.TAB,Keys.TAB);
+        DropDown_City.sendKeys(practiceFormsDetails.getCity(),Keys.TAB,Keys.TAB);
         submitButton.submit();
+
+        bol=true;
+        return bol;
     }
 
 
-    public void HandlingModalBox()
+    public boolean HandlingModalBox()
     {
-
-
+        boolean bol=false;
+        DriverManager.MoveToElement(ModalBox);
         for(WebElement rows:Table_Coloumn) {
             String str1 = rows.findElement(By.xpath("td[1]")).getAttribute("innerText");
             String str2 = rows.findElement(By.xpath("td[2]")).getAttribute("innerText");
             System.out.println(str1 + ":" + str2);
         }
-
         Button_ModalBoxClose.sendKeys(Keys.ESCAPE);
-
-
+        bol=true;
+        return bol;
     }
 }

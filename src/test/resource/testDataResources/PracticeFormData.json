@@ -8,6 +8,7 @@
   "DOB":"28 JUN 1983",
   "Subject":"Computer Science",
   "Hobbies":"Reading",
+    "FilePath": "D:\\Users\\akoka\\Downloads\\sampleFile.jpeg",
   "CurrentAddr": "adsffsfff",
   "State":"Uttar Pradesh",
   "City":"Agra"
@@ -22,6 +23,7 @@
 "DOB":"28 JUN 1984",
 "Subject":"Computer Science",
 "Hobbies":"Reading",
+  "FilePath": "D:\\Users\\akoka\\Downloads\\sampleFile.jpeg",
 "CurrentAddr": "adsffsfff",
 "State":"Uttar Pradesh",
 "City":"Agra"
