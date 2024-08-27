@@ -1,4 +1,7 @@
 package selenium.demo.enums;
 
-public class DriverType {
+public enum DriverType {
+	FIREFOX,
+	CHROME,
+	INTERNETEXPLORER;
 }
