@@ -1,4 +1,4 @@
-package selenium.demo.pages;
+package selenium.demo.manager;
 
 import selenium.demo.dataProvider.ConfigFileReader;
 import selenium.demo.dataProvider.JsonDataReader;

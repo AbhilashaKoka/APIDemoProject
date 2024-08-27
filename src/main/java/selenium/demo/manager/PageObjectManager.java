@@ -1,7 +1,9 @@
-package selenium.demo.pages;
+package selenium.demo.manager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import selenium.demo.pages.HomePage;
+import selenium.demo.pages.PracticeFormPage;
 
 public class PageObjectManager {
     private HomePage homePage;

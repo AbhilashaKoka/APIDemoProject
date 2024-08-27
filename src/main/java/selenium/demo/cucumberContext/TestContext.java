@@ -1,7 +1,7 @@
 package selenium.demo.cucumberContext;
-import selenium.demo.pages.FileReaderManager;
-import selenium.demo.pages.PageObjectManager;
-import selenium.demo.pages.DriverManager;
+import selenium.demo.manager.FileReaderManager;
+import selenium.demo.manager.PageObjectManager;
+import selenium.demo.manager.DriverManager;
 
 public class TestContext {
     private final PageObjectManager pageObjectManager;

@@ -1,5 +1,5 @@
 package selenium.demo.dataProvider;
-import selenium.demo.pages.FileReaderManager;
+import selenium.demo.manager.FileReaderManager;
 import selenium.demo.testData.PracticeFormsDetails;
 import selenium.demo.testData.TextBoxDetails;
 import java.io.BufferedReader;

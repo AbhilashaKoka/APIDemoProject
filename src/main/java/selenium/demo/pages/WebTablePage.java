@@ -2,6 +2,7 @@ package selenium.demo.pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import selenium.demo.manager.DriverManager;
 
 import java.util.List;
 
