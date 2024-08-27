@@ -7,8 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import selenium.demo.cucumberContext.TestContext;
 import selenium.demo.testData.TextBoxDetails;
@@ -31,13 +29,6 @@ public class ElementStepDefs {
     @Given("User is on Landing Page")
     public void user_is_on_landing_page() {
         System.out.println("User is Landing Page!!");
-//        System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized");
-//        driver = new ChromeDriver(options);
-//        action = new Actions(driver);
-//        js = (JavascriptExecutor) driver;
-//        driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
         WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
@@ -48,12 +39,6 @@ public class ElementStepDefs {
 
     @When("User enter details username, email, current address, permanent address")
     public void user_enter_details_username_email_current_address_permanent_address() throws InterruptedException {
-
-        // HomePage homePage=new HomePage();
-//        String username="Sita";
-//        TextBoxDetails textBoxDetails= FileReaderManager.getInstance().getJsonDataReader().getTextBoxDetailsByUserName(username);
-//      if(homePage.SubmitDetails(textBoxDetails))
-
         String sText=js.executeScript("return document.title;").toString();
         WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
         js.executeScript("arguments[0].scrollIntoView;",element);

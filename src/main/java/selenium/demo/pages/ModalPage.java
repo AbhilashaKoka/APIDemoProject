@@ -45,7 +45,7 @@ public class ModalPage {
         AlertFramesAndWindow_frame.click();
         ModalDialog_Span.click();
 
-        WebDriverManager.scrollWindow();
+        DriverManager.scrollWindow();
 
         System.out.println(modalWrapper_Span.getAttribute("innerText"));
         small_Button.click();

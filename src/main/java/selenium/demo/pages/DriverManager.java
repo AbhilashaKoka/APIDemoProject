@@ -1,4 +1,5 @@
 package selenium.demo.pages;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,13 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 
-public class WebDriverManager {
+public class DriverManager {
     public static WebDriver driver;
     static JavascriptExecutor js;
     static Actions action;
     static WebElement element;
 
-    public WebDriverManager() {
+    public DriverManager() {
     }
 
     public WebDriver getDriver() {
@@ -25,10 +26,15 @@ public class WebDriverManager {
     }
 
        private WebDriver createDriver( ) {
-        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+//        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        return driver = new ChromeDriver(options);
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        return driver = new ChromeDriver(options);
+        //  options.addArguments("headless");
+           return  driver=new ChromeDriver(options);
         }
 
 

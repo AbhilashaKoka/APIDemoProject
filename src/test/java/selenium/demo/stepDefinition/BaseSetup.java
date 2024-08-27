@@ -2,12 +2,9 @@ package selenium.demo.stepDefinition;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import selenium.demo.cucumberContext.TestContext;
 
 import java.io.IOException;
@@ -27,11 +24,6 @@ public class BaseSetup {
     public void setup(Scenario scenario) {
         System.out.println(scenario.getName());
         driver = testContext.getWebDriverManager().getDriver();
-//        WebDriverManager.chromedriver().setup();
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized");
-//        //  options.addArguments("headless");
-//        driver=new ChromeDriver(options);
          driver.get("https://demoqa.com");
     }
 

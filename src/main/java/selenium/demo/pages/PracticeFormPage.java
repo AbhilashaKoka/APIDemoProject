@@ -67,38 +67,38 @@ public class PracticeFormPage {
 
 
     public void SubmitPracticeForm() {
-        WebDriverManager.scrollWindowUp(Frame_formFrames);
+        DriverManager.scrollWindowUp(Frame_formFrames);
         Frame_formFrames.click();
         PracticeForms.click();
-        WebDriverManager.scrollWindowUp(InputBox_FirstName);
+        DriverManager.scrollWindowUp(InputBox_FirstName);
 
         InputBox_FirstName.sendKeys("xyz", Keys.TAB);
         InputBox_LastName.sendKeys("ABC", Keys.TAB);
         InputBox_Email.sendKeys("XYZ@gmail.com", Keys.TAB);
-        WebDriverManager.scrollWindowUp(RadioButton_Male);
+        DriverManager.scrollWindowUp(RadioButton_Male);
 
         if(!RadioButton_Male.isSelected()){
-            WebDriverManager.MoveToElement(RadioButton_Male);
+            DriverManager.MoveToElement(RadioButton_Male);
             RadioButton_Male.sendKeys(Keys.TAB);
         }
-        WebDriverManager.scrollWindowUp(Inputbox_Mobile);
+        DriverManager.scrollWindowUp(Inputbox_Mobile);
 
         Inputbox_Mobile.sendKeys("90249234234", Keys.TAB);
-        WebDriverManager.scrollWindowUp(Inputbox_DateOfBirth);
+        DriverManager.scrollWindowUp(Inputbox_DateOfBirth);
 
         Inputbox_DateOfBirth.sendKeys("25 JAN 2024", Keys.TAB, Keys.ENTER, Keys.TAB);
-        WebDriverManager.scrollWindowUp(Inputbox_Subject);
+        DriverManager.scrollWindowUp(Inputbox_Subject);
 
         Inputbox_Subject.sendKeys("Computer Science",Keys.TAB, Keys.TAB);
-        WebDriverManager.scrollWindowUp(CheckBox_Hobbies);
+        DriverManager.scrollWindowUp(CheckBox_Hobbies);
 
         if(!CheckBox_Hobbies.isSelected()) {
-            WebDriverManager.MoveToElement(CheckBox_Hobbies);
+            DriverManager.MoveToElement(CheckBox_Hobbies);
             CheckBox_Hobbies.sendKeys(Keys.TAB, Keys.TAB);
         }
 
         Upload_Picture.sendKeys("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
-        WebDriverManager.scrollWindowUp(TextArea_CurrentAdress);
+        DriverManager.scrollWindowUp(TextArea_CurrentAdress);
         TextArea_CurrentAdress.sendKeys("adafafdhdlhdgl",Keys.TAB);
         DropDown_States.sendKeys("Uttar Pradesh", Keys.TAB,Keys.TAB);
         DropDown_City.sendKeys("Agra",Keys.TAB,Keys.TAB);

@@ -31,7 +31,7 @@ public class HomePage {
     public boolean SubmitDetails(TextBoxDetails textBoxDetails) {
 
        Boolean bol=false;
-        WebDriverManager.scrollWindow();
+        DriverManager.scrollWindow();
         Element_frame.click();
         TextBox_Span.click();
 

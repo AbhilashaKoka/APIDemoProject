@@ -1,18 +1,18 @@
 package selenium.demo.cucumberContext;
 import selenium.demo.pages.FileReaderManager;
 import selenium.demo.pages.PageObjectManager;
-import selenium.demo.pages.WebDriverManager;
+import selenium.demo.pages.DriverManager;
 
 public class TestContext {
     private final PageObjectManager pageObjectManager;
-    private final WebDriverManager webDriverManager;
+    private final DriverManager driverManager;
     private final FileReaderManager fileReaderManager;
 
 
     public TestContext()
     {
-        webDriverManager=new WebDriverManager();
-        pageObjectManager= new PageObjectManager(webDriverManager.getDriver());
+        driverManager =new DriverManager();
+        pageObjectManager= new PageObjectManager(driverManager.getDriver());
         fileReaderManager=new FileReaderManager();
     }
 
@@ -20,8 +20,8 @@ public class TestContext {
     public PageObjectManager getPageObjectManager() {
         return pageObjectManager;
     }
-    public WebDriverManager getWebDriverManager() {
-        return webDriverManager;
+    public DriverManager getWebDriverManager() {
+        return driverManager;
     }
     public FileReaderManager getFileReaderManager(){return fileReaderManager;}
 }
