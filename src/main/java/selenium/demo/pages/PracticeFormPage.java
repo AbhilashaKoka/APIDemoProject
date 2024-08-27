@@ -2,9 +2,11 @@ package selenium.demo.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import selenium.demo.manager.DriverManager;
 
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 
 public class PracticeFormPage {
 
-
+WebDriver driver;
     @FindBy(how = How.XPATH, using = "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Forms\")]")
     private WebElement Frame_forms;
 
@@ -65,6 +67,10 @@ public class PracticeFormPage {
     @FindBy(how = How.XPATH, using ="//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Practice Form\")]")
     private WebElement PracticeForms;
 
+    public PracticeFormPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
 
     public void SubmitPracticeForm() {
@@ -72,7 +78,6 @@ public class PracticeFormPage {
         Frame_formFrames.click();
         PracticeForms.click();
         DriverManager.scrollWindowUp(InputBox_FirstName);
-
         InputBox_FirstName.sendKeys("xyz", Keys.TAB);
         InputBox_LastName.sendKeys("ABC", Keys.TAB);
         InputBox_Email.sendKeys("XYZ@gmail.com", Keys.TAB);

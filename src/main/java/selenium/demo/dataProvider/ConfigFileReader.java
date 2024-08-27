@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class ConfigFileReader {
     private Properties properties;
-    private final String propertyFilePath=System.getProperty("user.dir")+"\\Configs\\Configuration.properties";
+    private final String propertyFilePath="src/test/resource/Configs/Configuration.properties";
 
 
     public ConfigFileReader() {

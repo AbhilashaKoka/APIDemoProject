@@ -1,7 +1,9 @@
 package selenium.demo.pages;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -10,7 +12,7 @@ import java.nio.file.Paths;
 
 
 public class UploadAndDownloadPage  {
-
+WebDriver driver;
 
 
     @FindBy(how= How.XPATH,using="//*[@id=\"app\"]/div/div/div/div[2]/div[2]")
@@ -26,7 +28,10 @@ public class UploadAndDownloadPage  {
     @FindBy(how = How.XPATH, using = "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Upload and Download\")]")
     private WebElement UploadDownload_Span;
 
-
+    public UploadAndDownloadPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
     public  void HandlingUploadAndDownload() throws InterruptedException {
         Element_frame.click();
         UploadDownload_Span.click();

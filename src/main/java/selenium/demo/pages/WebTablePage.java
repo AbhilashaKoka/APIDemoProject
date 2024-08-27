@@ -2,6 +2,7 @@ package selenium.demo.pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import selenium.demo.manager.DriverManager;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class WebTablePage{
 
-
+WebDriver driver;
 
     @FindBy(how = How.XPATH, using = "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]")
     private WebElement Elements_frame;
@@ -51,6 +52,10 @@ public class WebTablePage{
     @FindBy(how = How.XPATH, using = "//div[@class=\"modal-content\"]//div/div[contains(text(), \"Registration Form\")]")
     private WebElement Registration_Modal;
 
+    public WebTablePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public  void HandlingWebTable(){
     Elements_frame.click();

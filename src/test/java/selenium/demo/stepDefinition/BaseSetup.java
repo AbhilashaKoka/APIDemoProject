@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import selenium.demo.cucumberContext.TestContext;
 import java.io.IOException;
 
+
 public class BaseSetup {
 
     TestContext testContext;
@@ -25,7 +26,10 @@ public class BaseSetup {
         driver = testContext.getDriverManager().getDriver();
 
          driver.get("https://demoqa.com");
+        //Reporter.assignAuthor("ToolsQA - Lakshay Sharma");
     }
+
+
 
 
     @After

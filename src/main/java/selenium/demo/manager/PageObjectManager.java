@@ -18,13 +18,13 @@ public class PageObjectManager {
 
     public HomePage getHomePage()
     {
-        return (homePage==null)?homePage=new HomePage():homePage;
+        return (homePage==null)?homePage=new HomePage(driver):homePage;
 
     }
 
     public PracticeFormPage getPracticePage()
     {
-        return (practiceFormPage==null)?practiceFormPage=new PracticeFormPage():practiceFormPage;
+        return (practiceFormPage==null)?practiceFormPage=new PracticeFormPage(driver):practiceFormPage;
 
     }
 

@@ -9,7 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import selenium.demo.cucumberContext.TestContext;
+import selenium.demo.dataProvider.JsonDataReader;
+import selenium.demo.manager.FileReaderManager;
+import selenium.demo.pages.HomePage;
 import selenium.demo.testData.TextBoxDetails;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -20,43 +25,31 @@ public class ElementStepDefs {
           WebDriver driver;
     static JavascriptExecutor js;
     static Actions action;
-
+   FileReaderManager fileReaderManager;
+HomePage homePage;
     public ElementStepDefs(TestContext testContext) {
         driver=testContext.getDriverManager().getDriver();
+        homePage=testContext.getPageObjectManager().getHomePage();
+        fileReaderManager=testContext.getFileReaderManager();
     }
 
 
     @Given("User is on Landing Page")
     public void user_is_on_landing_page() {
         System.out.println("User is Landing Page!!");
-        js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,300)");
-        WebElement ele= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
-        ele.click();
-        WebElement textbox=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
-        textbox.click();
+        homePage.HomeLandingPage();
     }
 
     @When("User enter details username, email, current address, permanent address")
     public void user_enter_details_username_email_current_address_permanent_address() throws InterruptedException {
-        String sText=js.executeScript("return document.title;").toString();
-        WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
-        js.executeScript("arguments[0].scrollIntoView;",element);
-        js.executeScript("document.getElementById('userName').value='sita';");
-        js.executeScript("document.getElementById('userEmail').value='sita@gmail.com';");
-        js.executeScript("document.getElementById('currentAddress').value='sita@gmail.com';");
-        js.executeScript("document.getElementById('permanentAddress').value='sita@gmail.com';");
-        js.executeScript("document.getElementById('submit').click();");
-        List<WebElement> ele3=driver.findElements(By.xpath("//*[@id=\"output\"]//p"));
-        if(ele3.size()!=0){
-            System.out.println(ele3.size()+"Element found as tag name as input \n");
-            for(WebElement inputele:ele3)
-            {
-                System.out.println(inputele.getText());
-            }
-        }
-        //  System.out.println(name.toString());
-        Thread.sleep(1000);
+      try{
+          TextBoxDetails textBoxDetails=fileReaderManager.getJsonDataReader().getTextBoxDetailsByUserName("sita");
+          homePage.SubmitDetails(textBoxDetails);
+      }catch (IOException ex){
+          ex.printStackTrace();
+      }
+
+
     }
 
     @When("Click on Submit")

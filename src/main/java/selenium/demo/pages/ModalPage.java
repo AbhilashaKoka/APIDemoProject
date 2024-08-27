@@ -1,14 +1,16 @@
 package selenium.demo.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import selenium.demo.manager.DriverManager;
 
 
 public class ModalPage {
 
-
+WebDriver driver;
 
 
     @FindBy(how = How.XPATH, using = "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]")
@@ -42,6 +44,10 @@ public class ModalPage {
     private WebElement close1_Button;
 
 
+    public ModalPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
     public  void HandlingModal () throws InterruptedException {
         AlertFramesAndWindow_frame.click();
         ModalDialog_Span.click();

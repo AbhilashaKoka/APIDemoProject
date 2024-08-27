@@ -6,25 +6,24 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import selenium.demo.cucumberContext.TestContext;
 
 import java.util.List;
 
 public class FormSteps {
-    static WebDriver driver;
+    WebDriver driver;
     static JavascriptExecutor js;
     static Actions action;
+
+    public FormSteps(TestContext testContext) {
+        driver=testContext.getDriverManager().getDriver();
+    }
+
 
 
     @Given("I am in from landing page")
     public void i_am_in_from_landing_page() {
         System.out.println("User is in Landing Page!!!");
-        System.setProperty("Webdriver.driver.chrome", "D:\\Users\\akoka\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        action = new Actions(driver);
-        js = (JavascriptExecutor) driver;
-        driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
          WebElement formFrames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Forms\")]"));
@@ -85,9 +84,10 @@ public class FormSteps {
     }
     @Then("I am able to verify form details successfully")
     public void i_am_able_to_verify_form_details_successfully() {
-        WebElement modalBox=driver.findElement(By.xpath("//*[@class=\"modal-dialog modal-lg\"]"));
+
+      //  WebElement modalBox=driver.findElement(By.xpath("//*[@class=\"modal-dialog modal-lg\"]"));
         WebElement modalCloseButton=driver.findElement(By.xpath(" //*[@class=\"modal-dialog modal-lg\"]/div/div[3]/button[@type=\"button\"]"));
-        action.moveToElement(modalBox).perform();
+     //   action.moveToElement(modalBox).perform();
         List<WebElement> coloumn=driver.findElements(By.xpath("//table[@class=\"table table-dark table-striped table-bordered table-hover\"]/tbody/tr"));
         for(WebElement rows:coloumn) {
             String str1 = rows.findElement(By.xpath("td[1]")).getAttribute("innerText");
