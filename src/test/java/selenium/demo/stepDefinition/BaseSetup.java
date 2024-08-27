@@ -10,7 +10,6 @@ import java.io.IOException;
 
 
 public class BaseSetup {
-
     TestContext testContext;
     WebDriver driver;
 
@@ -24,9 +23,8 @@ public class BaseSetup {
     public void setup(Scenario scenario) {
         System.out.println(scenario.getName());
         driver = testContext.getDriverManager().getDriver();
-
          driver.get("https://demoqa.com");
-        //Reporter.assignAuthor("ToolsQA - Lakshay Sharma");
+
     }
 
 

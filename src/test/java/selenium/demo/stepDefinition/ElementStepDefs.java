@@ -3,13 +3,8 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import selenium.demo.cucumberContext.TestContext;
-import selenium.demo.dataProvider.JsonDataReader;
 import selenium.demo.manager.FileReaderManager;
 import selenium.demo.pages.HomePage;
 import selenium.demo.testData.TextBoxDetails;
@@ -20,12 +15,9 @@ import java.util.Map;
 
 
 public class ElementStepDefs {
+       WebDriver driver;
+       FileReaderManager fileReaderManager;
 
-
-          WebDriver driver;
-    static JavascriptExecutor js;
-    static Actions action;
-   FileReaderManager fileReaderManager;
 HomePage homePage;
     public ElementStepDefs(TestContext testContext) {
         driver=testContext.getDriverManager().getDriver();
@@ -75,24 +67,7 @@ HomePage homePage;
 
     @When("User TextBox values {string}, {string}, {string}, {string}")
     public void user_text_box_values(String username1, String email1, String currAddr1, String peraddr1) throws InterruptedException {
-        String sText=js.executeScript("return document.title;").toString();
-        WebElement element= driver.findElement(By.xpath("//*[contains(text(),\"Text Box\")]"));
-        js.executeScript("arguments[0].scrollIntoView;",element);
-        js.executeScript("document.getElementById('userName').value='"+username1+"';");
-        js.executeScript("document.getElementById('userEmail').value='"+email1+"';");
-        js.executeScript("document.getElementById('currentAddress').value='"+currAddr1+"';");
-        js.executeScript("document.getElementById('permanentAddress').value='"+peraddr1+"';");
-        js.executeScript("document.getElementById('submit').click();");
-        List<WebElement> ele3=driver.findElements(By.xpath("//*[@id=\"output\"]//p"));
-        if(ele3.size()!=0){
-            System.out.println(ele3.size()+"Element found as tag name as input \n");
-            for(WebElement inputele:ele3)
-            {
-                System.out.println(inputele.getText());
-            }
-        }
-        //  System.out.println(name.toString());
-        Thread.sleep(1000);
+        System.out.println("test");
     }
 
 

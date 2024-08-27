@@ -3,27 +3,24 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import selenium.demo.cucumberContext.TestContext;
 import selenium.demo.manager.FileReaderManager;
 import selenium.demo.pages.PracticeFormPage;
 import selenium.demo.testData.PracticeFormsDetails;
-
 import java.io.IOException;
-import java.util.List;
+
 
 public class PracticeFormSteps {
     WebDriver driver;
     PracticeFormPage practiceFormPage;
     FileReaderManager fileReaderManager;
 
-    public PracticeFormSteps(TestContext testContext) {
 
+    public PracticeFormSteps(TestContext testContext) {
         driver=testContext.getDriverManager().getDriver();
         practiceFormPage=testContext.getPageObjectManager().getPracticePage();
         fileReaderManager=testContext.getFileReaderManager();
     }
-
 
 
     @Given("I am in from landing page")
@@ -50,8 +47,6 @@ public class PracticeFormSteps {
 
     }
 
-
-
     @When("I fill all valid List of Map details Values and click on submit")
     public void i_fill_all_valid_list_of_map_details_values_and_click_on_submit(io.cucumber.datatable.DataTable dataTable) {
         System.out.println("listofMap");
@@ -61,9 +56,5 @@ public class PracticeFormSteps {
     public void i_fill_all_valid_list_of_list_and_click_on_submit(io.cucumber.datatable.DataTable dataTable) {
         System.out.println("ListofList");
     }
-
-
-
-
 
 }
