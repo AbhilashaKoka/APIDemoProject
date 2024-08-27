@@ -22,7 +22,7 @@ public class ElementStepDefs {
     static Actions action;
 
     public ElementStepDefs(TestContext testContext) {
-        driver=testContext.getWebDriverManager().getDriver();
+        driver=testContext.getDriverManager().getDriver();
     }
 
 

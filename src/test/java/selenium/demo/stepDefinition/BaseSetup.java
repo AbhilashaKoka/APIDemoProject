@@ -23,7 +23,7 @@ public class BaseSetup {
     @Before
     public void setup(Scenario scenario) {
         System.out.println(scenario.getName());
-        driver = testContext.getWebDriverManager().getDriver();
+        driver = testContext.getDriverManager().getDriver();
          driver.get("https://demoqa.com");
     }
 

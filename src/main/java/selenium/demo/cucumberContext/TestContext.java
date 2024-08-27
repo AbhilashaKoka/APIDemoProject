@@ -20,7 +20,7 @@ public class TestContext {
     public PageObjectManager getPageObjectManager() {
         return pageObjectManager;
     }
-    public DriverManager getWebDriverManager() {
+    public DriverManager getDriverManager() {
         return driverManager;
     }
     public FileReaderManager getFileReaderManager(){return fileReaderManager;}
