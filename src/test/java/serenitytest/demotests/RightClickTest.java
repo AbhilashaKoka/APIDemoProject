@@ -1,4 +1,4 @@
-package serenitytest.testCases;
+package serenitytest.demotests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,19 +9,20 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class MouseOverTest extends PageObject {
+public class RightClickTest extends PageObject {
 
 
 	@Managed(driver="edge")
 	WebDriver driver;
 	
 	
+	
 	@Test
-	public void mouseOver() {
-		
+	public void slider() {
+		//http://deluxe-menu.com/popup-mode-sample.html
 		open();
-		withAction().moveToElement($("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/a")).perform();
-		$("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/ul/li[1]/a").click();
+		
+		withAction().contextClick($("/html/body/div/table/tbody/tr/td[2]/div[2]/table[1]/tbody/tr/td[3]/p[2]/img")).perform();
 	
 		
 		try {

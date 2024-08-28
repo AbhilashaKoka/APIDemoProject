@@ -1,4 +1,4 @@
-package serenitytest.testCases;
+package serenitytest.demotests;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package serenitytest.testCases;
+package serenitytest.demotests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

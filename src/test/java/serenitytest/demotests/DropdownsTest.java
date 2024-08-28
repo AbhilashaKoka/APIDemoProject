@@ -1,4 +1,4 @@
-package serenitytest.testCases;
+package serenitytest.demotests;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class LinksTest extends PageObject {
+public class DropdownsTest extends PageObject {
 
 
 	@Managed(driver="edge")
@@ -32,21 +32,23 @@ public class LinksTest extends PageObject {
 		
 		//find(By.id("searchLanguage")).getSelectOptions()
 		
-	WebElementFacade section = $("//*[@id=\"www-wikipedia-org\"]/div[6]/div[3]");
+		WebElementFacade dropdown = find(By.id("searchLanguage"));
 		
-		//section.thenFindAll(By.tagName("a"));
-	
+		List<WebElementFacade> values =	dropdown.thenFindAll(By.tagName("option"));
 		
-		List<WebElementFacade> links =	section.thenFindAll(By.tagName("a"));
+		/*
+		 * WebElementFacade section2 = find(By.id("section2"));
+		 * section2.thenFindAll(By.id("abc")).get(2).sendKeys("sdfsd");
+		 */
+		
+		
 		
 		//0 - 65
-		//System.out.println(links.get(7).getText());
+		System.out.println(values.get(7).getText());
 		
-		
-		
-		for(WebElementFacade link:links) {
+		for(WebElementFacade value:values) {
 			
-			System.out.println("Link text is :"+link.getText()+"---Printing URL----"+link.getAttribute("href"));
+			System.out.println(value.getAttribute("lang"));
 			
 		}
 		
@@ -55,7 +57,7 @@ public class LinksTest extends PageObject {
 		
 		
 		
-		System.out.println("Total count of links are : "+links.size());
+		System.out.println("Total values in dropdown are : "+values.size());
 		
 		try {
 			Thread.sleep(3000);

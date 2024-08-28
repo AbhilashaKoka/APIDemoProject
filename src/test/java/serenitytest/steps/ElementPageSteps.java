@@ -1,6 +1,5 @@
 package serenitytest.steps;
 import net.serenitybdd.annotations.Step;
-import net.serenitybdd.core.steps.UIInteractions;
 import serenitytest.pagesObject.ElementPage;
 
 
@@ -27,9 +26,5 @@ public void InitialSetUp()
     }
 
 
-//    stepMethod
-//@Step
-//@Step
-//@Step
-//@Step
+
 }

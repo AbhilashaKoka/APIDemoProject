@@ -1,4 +1,4 @@
-package serenitytest.testCases;
+package serenitytest.tests;
 
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;

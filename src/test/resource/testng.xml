@@ -10,7 +10,7 @@
 <!--    </test>-->
 <!--    <test name="SerenityTest">-->
 <!--        <classes>-->
-<!--            <class name="serenitytest.testCases.ElementTest"></class>-->
+<!--            <class name="serenitytest.demotests.ElementTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
     <test name="SeleniumTest">

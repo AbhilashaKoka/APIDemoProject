@@ -1,4 +1,4 @@
-package serenitytest.testCases;
+package serenitytest.demotests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class RightClickTest extends PageObject {
+public class ResizableTest extends PageObject {
 
 
 	@Managed(driver="edge")
@@ -19,11 +19,12 @@ public class RightClickTest extends PageObject {
 	
 	@Test
 	public void slider() {
-		//http://deluxe-menu.com/popup-mode-sample.html
+		//https://jqueryui.com/resources/demos/resizable/default.html
 		open();
 		
-		withAction().contextClick($("/html/body/div/table/tbody/tr/td[2]/div[2]/table[1]/tbody/tr/td[3]/p[2]/img")).perform();
-	
+		withAction().dragAndDropBy($("//*[@id=\"resizable\"]/div[3]"), 400, 400).perform();
+		
+		
 		
 		try {
 			Thread.sleep(3000);
