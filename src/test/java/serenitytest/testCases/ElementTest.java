@@ -1,6 +1,7 @@
 package serenitytest.testCases;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
+import net.serenitybdd.core.pages.ListOfWebElementFacades;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -26,7 +27,6 @@ public class ElementTest extends PageObject{
         setImplicitTimeout(10, ChronoUnit.SECONDS);
         WebElementFacade Element_Frames=$("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]");
         Element_Frames.click();
-
         WebElementFacade TextBox_Span=$("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]");
         TextBox_Span.click();
        //withTimeoutOf(Duration.ofSeconds(10),TextBox_Span)
@@ -41,11 +41,12 @@ public class ElementTest extends PageObject{
         InputBox_PremAddr.typeAndEnter("asdasf");
         WebElementFacade Button_Submit=$("//*[@id=\"submit\"]");
         Button_Submit.submit();
-//       ArrayList<WebElementFacade> ele3 = $("//*[@id=\"output\"]//p");
-//           for(WebElementFacade inputele:ele3)
-//           {
-//               System.out.println(inputele.getText());
-//           }
+          ListOfWebElementFacades ele3 = findAll(By.xpath("//*[@id=\"output\"]//p"));
+           for(WebElementFacade inputele:ele3)
+           {
+               System.out.println(inputele.getText());
+
+           }
        }
     }
 
