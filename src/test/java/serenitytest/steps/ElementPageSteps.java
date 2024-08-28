@@ -21,8 +21,7 @@ public void InitialSetUp()
 
     @Step
     public void LoginToElement(){
-
-
+     elementPage.EnterDetailsInElementPage();
     }
 
 

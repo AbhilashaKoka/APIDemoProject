@@ -1,5 +1,4 @@
 package serenitytest.tests;
-
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -27,5 +26,6 @@ public class ElementPageTest {
     public void LoginToElement()
     {
      elementPageSteps.LandingPage();
+     elementPageSteps.LoginToElement();
     }
 }
