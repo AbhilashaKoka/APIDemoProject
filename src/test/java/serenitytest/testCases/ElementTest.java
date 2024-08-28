@@ -1,4 +1,4 @@
-package serenitytest;
+package serenitytest.testCases;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
 import net.serenitybdd.core.pages.PageObject;
@@ -7,16 +7,11 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Set;
 
 
 @RunWith(SerenityRunner.class)
-public class LoginTest extends PageObject{
+public class ElementTest extends PageObject{
 
     @Managed(driver="edge")
     WebDriver driver;
@@ -31,6 +26,7 @@ public class LoginTest extends PageObject{
         setImplicitTimeout(10, ChronoUnit.SECONDS);
         WebElementFacade Element_Frames=$("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]");
         Element_Frames.click();
+
         WebElementFacade TextBox_Span=$("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]");
         TextBox_Span.click();
        //withTimeoutOf(Duration.ofSeconds(10),TextBox_Span)
