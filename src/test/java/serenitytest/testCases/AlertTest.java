@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 
 
 @RunWith(SerenityRunner.class)
-public class HandlingAlert extends PageObject {
+public class AlertTest extends PageObject {
 
 	@Managed(driver="chrome")
 	WebDriver driver;

@@ -13,7 +13,7 @@ import net.serenitybdd.annotations.Managed;
 import net.thucydides.core.pages.components.HtmlTable;
 
 @RunWith(SerenityRunner.class)
-public class HandlingWebTables extends PageObject {
+public class WebTablesTest extends PageObject {
 	
 	
 	@Managed()

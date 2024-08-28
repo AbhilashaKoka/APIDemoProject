@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import net.serenitybdd.core.pages.PageObject;
@@ -15,12 +14,11 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.junit.runners.SerenityRunner;
 
 import net.serenitybdd.annotations.Managed;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @RunWith(SerenityRunner.class)
-public class HandlingCheckboxes extends PageObject {
+public class CheckboxesTest extends PageObject {
 
 
 

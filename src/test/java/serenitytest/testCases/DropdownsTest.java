@@ -13,7 +13,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingDropdowns extends PageObject {
+public class DropdownsTest extends PageObject {
 	
 	
 	@Managed()

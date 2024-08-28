@@ -9,7 +9,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingRightClick extends PageObject {
+public class MouseOverTest extends PageObject {
 	
 	
 	@Managed()
@@ -18,11 +18,11 @@ public class HandlingRightClick extends PageObject {
 	
 	
 	@Test
-	public void slider() {
-		//http://deluxe-menu.com/popup-mode-sample.html
-		open();
+	public void mouseOver() {
 		
-		withAction().contextClick($("/html/body/div/table/tbody/tr/td[2]/div[2]/table[1]/tbody/tr/td[3]/p[2]/img")).perform();
+		open();
+		withAction().moveToElement($("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/a")).perform();
+		$("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/ul/li[1]/a").click();
 	
 		
 		try {

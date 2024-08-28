@@ -1,15 +1,17 @@
 package serenitytest.testCases;
-
+import net.serenitybdd.annotations.Managed;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+
 import net.serenitybdd.core.pages.PageObject;
+
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.serenitybdd.annotations.Managed;
+
 
 @RunWith(SerenityRunner.class)
-public class HandlingMouseOver extends PageObject {
+public class DragandDropTest extends PageObject {
 	
 	
 	@Managed()
@@ -18,12 +20,12 @@ public class HandlingMouseOver extends PageObject {
 	
 	
 	@Test
-	public void mouseOver() {
-		
+	public void draganddrop() {
+		//https://jqueryui.com/resources/demos/droppable/default.html
 		open();
-		withAction().moveToElement($("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/a")).perform();
-		$("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/ul/li[1]/a").click();
-	
+		
+		withAction().dragAndDrop($("//*[@id=\"draggable\"]"), $("//*[@id=\"droppable\"]")).perform();
+		
 		
 		try {
 			Thread.sleep(3000);

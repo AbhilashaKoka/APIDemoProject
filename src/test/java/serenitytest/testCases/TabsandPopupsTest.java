@@ -11,7 +11,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingTabsandPopups extends PageObject {
+public class TabsandPopupsTest extends PageObject {
 	
 	
 	@Managed()

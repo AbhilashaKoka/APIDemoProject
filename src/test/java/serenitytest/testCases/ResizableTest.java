@@ -1,17 +1,15 @@
 package serenitytest.testCases;
-import net.serenitybdd.annotations.Managed;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-
 import net.serenitybdd.core.pages.PageObject;
-
 import net.serenitybdd.junit.runners.SerenityRunner;
-
+import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingDragandDrop extends PageObject {
+public class ResizableTest extends PageObject {
 	
 	
 	@Managed()
@@ -20,11 +18,12 @@ public class HandlingDragandDrop extends PageObject {
 	
 	
 	@Test
-	public void draganddrop() {
-		//https://jqueryui.com/resources/demos/droppable/default.html
+	public void slider() {
+		//https://jqueryui.com/resources/demos/resizable/default.html
 		open();
 		
-		withAction().dragAndDrop($("//*[@id=\"draggable\"]"), $("//*[@id=\"droppable\"]")).perform();
+		withAction().dragAndDropBy($("//*[@id=\"resizable\"]/div[3]"), 400, 400).perform();
+		
 		
 		
 		try {

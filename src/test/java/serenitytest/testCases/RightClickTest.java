@@ -9,7 +9,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingResizable extends PageObject {
+public class RightClickTest extends PageObject {
 	
 	
 	@Managed()
@@ -19,12 +19,11 @@ public class HandlingResizable extends PageObject {
 	
 	@Test
 	public void slider() {
-		//https://jqueryui.com/resources/demos/resizable/default.html
+		//http://deluxe-menu.com/popup-mode-sample.html
 		open();
 		
-		withAction().dragAndDropBy($("//*[@id=\"resizable\"]/div[3]"), 400, 400).perform();
-		
-		
+		withAction().contextClick($("/html/body/div/table/tbody/tr/td[2]/div[2]/table[1]/tbody/tr/td[3]/p[2]/img")).perform();
+	
 		
 		try {
 			Thread.sleep(3000);

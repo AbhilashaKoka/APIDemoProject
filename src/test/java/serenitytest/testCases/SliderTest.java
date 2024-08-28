@@ -9,7 +9,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingSlider extends PageObject {
+public class SliderTest extends PageObject {
 	
 	
 	@Managed()

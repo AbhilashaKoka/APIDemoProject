@@ -13,7 +13,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingTryIt extends PageObject {
+public class TryItTest extends PageObject {
 	
 	
 	@Managed()

@@ -13,7 +13,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingLinks extends PageObject {
+public class LinksTest extends PageObject {
 	
 	
 	@Managed()
