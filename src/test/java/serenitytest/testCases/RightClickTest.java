@@ -10,9 +10,9 @@ import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
 public class RightClickTest extends PageObject {
-	
-	
-	@Managed()
+
+
+	@Managed(driver="edge")
 	WebDriver driver;
 	
 	

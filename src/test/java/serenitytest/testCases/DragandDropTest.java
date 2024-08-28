@@ -12,9 +12,9 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 
 @RunWith(SerenityRunner.class)
 public class DragandDropTest extends PageObject {
-	
-	
-	@Managed()
+
+
+	@Managed(driver="edge")
 	WebDriver driver;
 	
 	

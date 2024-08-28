@@ -12,9 +12,9 @@ import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
 public class TabsandPopupsTest extends PageObject {
-	
-	
-	@Managed()
+
+
+	@Managed(driver="edge")
 	WebDriver driver;
 	
 	

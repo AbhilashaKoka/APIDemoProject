@@ -10,11 +10,10 @@ import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
 public class SliderTest extends PageObject {
-	
-	
-	@Managed()
+
+
+	@Managed(driver="edge")
 	WebDriver driver;
-	
 	
 	
 	@Test

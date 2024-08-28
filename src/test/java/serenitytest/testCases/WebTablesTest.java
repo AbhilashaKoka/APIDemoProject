@@ -14,11 +14,10 @@ import net.thucydides.core.pages.components.HtmlTable;
 
 @RunWith(SerenityRunner.class)
 public class WebTablesTest extends PageObject {
-	
-	
-	@Managed()
+
+
+	@Managed(driver="edge")
 	WebDriver driver;
-	
 	
 	
 	@Test

@@ -14,17 +14,12 @@ import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
 public class DropdownsTest extends PageObject {
-	
-	
-	@Managed()
+
+
+	@Managed(driver="edge")
 	WebDriver driver;
 	
-	/*
-	 * 
-	 * English - US
-	 * English - UK
-	 * 
-	 */
+
 	
 	@Test
 	public void webElementTest() {
