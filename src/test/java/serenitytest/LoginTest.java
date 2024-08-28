@@ -2,46 +2,55 @@ package serenitytest;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Set;
 
 
 @RunWith(SerenityRunner.class)
 public class LoginTest extends PageObject{
 
-    @Managed(driver="chrome")
+    @Managed(driver="edge")
     WebDriver driver;
-
-
-//    @FindBy(xpath="//*[@id='permanentAddress']")
-//    WebElement PermanentAddr;
 
 
     @Title("Executing a login Test")
     @Test
-    public void doLogin() throws InterruptedException {
+    public void doLogin(){
         open();
+        System.out.println(getTitle());
         evaluateJavascript("window.scrollBy(0,300)");
-        $("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]").click();
-        getDriver().findElement((By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"))).click();
-        find(By.xpath("//*[@id=\"userName\"]")).sendKeys("sita");
-        find(By.xpath("//*[@id=\"userEmail\"]")).sendKeys("sita@gmail.com");
-        typeInto($("//*[@id=\"currentAddress\"]"),"sita@gmail.com");
-        typeInto($("//*[@id=\"permanentAddress\"]"), "sita@gmail.com");
-        $(By.xpath("//*[@id=\"submit\"]")).submit();
-
-//       Set<WebElementFacade> ele3 = find(By.xpath("//*[@id=\"output\"]//p"));
-//       if(ele3.size()!=0){
-//           System.out.println(ele3.size()+"Element found as tag name as input \n");
-//           for(WebElement inputele:ele3)
+        setImplicitTimeout(10, ChronoUnit.SECONDS);
+        WebElementFacade Element_Frames=$("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]");
+        Element_Frames.click();
+        WebElementFacade TextBox_Span=$("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]");
+        TextBox_Span.click();
+       //withTimeoutOf(Duration.ofSeconds(10),TextBox_Span)
+       // waitForCondition().until(ExpectedConditions.visibilityOfElementLocated(TextBox_Span));
+        WebElementFacade InputBox_UserName=$( "//*[@id=\"userName\"]");
+        InputBox_UserName.typeAndEnter("sita");
+        WebElementFacade InputBox_Email=$("//*[@id=\"userEmail\"]");
+        InputBox_Email.typeAndEnter("sita@gmail.com");
+        WebElementFacade InputBox_CurrAddr=$( "//*[@id=\"currentAddress\"]");
+        InputBox_CurrAddr.typeAndEnter("dasds");
+        WebElementFacade InputBox_PremAddr=$("//*[@id=\"permanentAddress\"]");
+        InputBox_PremAddr.typeAndEnter("asdasf");
+        WebElementFacade Button_Submit=$("//*[@id=\"submit\"]");
+        Button_Submit.submit();
+//       ArrayList<WebElementFacade> ele3 = $("//*[@id=\"output\"]//p");
+//           for(WebElementFacade inputele:ele3)
 //           {
 //               System.out.println(inputele.getText());
 //           }
-//       }
-
-
+       }
     }
 
-}
+

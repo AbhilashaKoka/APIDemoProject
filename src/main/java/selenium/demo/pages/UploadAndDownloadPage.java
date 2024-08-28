@@ -43,7 +43,7 @@ WebDriver driver;
     public  boolean HandlingUploadAndDownload() throws InterruptedException {
     boolean bol=false;
 
-        Path pathOfDownloadFolder= Paths.get("D:\\Users\\akoka\\Downloads");
+        Path pathOfDownloadFolder= Paths.get(System.getProperty("user.home")+"\\Downloads");
 
         if(Files.exists(pathOfDownloadFolder)&& Files.isDirectory(pathOfDownloadFolder)){
             System.out.println("Directory Exist!!");
@@ -54,7 +54,7 @@ WebDriver driver;
 
         DownloadButton.click();
         Thread.sleep(5000);
-        File currentFile=new File("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
+        File currentFile=new File(System.getProperty("user.home")+"\\Downloads\\sampleFile.jpeg");
         if(currentFile.exists()){
             System.out.println("File Exist!!");
         }
@@ -62,7 +62,7 @@ WebDriver driver;
             System.out.println("File does not exist!!!");
             }
 
-        uploadButton.sendKeys("D:\\Users\\akoka\\Downloads\\sampleFile.jpeg");
+        uploadButton.sendKeys(System.getProperty("user.home")+"\\Downloads\\sampleFile.jpeg");
 bol=true;
 return bol;
       //  Assertions.assertEquals("C:\\fakepath\\sampleFile.jpeg",FilePath.getAttribute("innerText"));

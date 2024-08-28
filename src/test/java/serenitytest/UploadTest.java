@@ -2,6 +2,7 @@ package serenitytest;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -15,7 +16,7 @@ import java.nio.file.Paths;
 
 
 @RunWith(SerenityRunner.class)
-public class UploadTest extends PageObject {
+public class UploadTest extends PageObject{
 
     @Managed(driver="chrome")
     WebDriver driver;
@@ -28,8 +29,10 @@ public class UploadTest extends PageObject {
 
         evaluateJavascript("window.scrollBy(0,300)");
 
-        find(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]")).click();
-        find(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Upload and Download\")]")).click();
+        WebElementFacade Button_Element=find(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
+        Button_Element.click();
+        WebElementFacade Span_UploadAndDownload=find(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Upload and Download\")]"));
+        Span_UploadAndDownload.click();
 
         Path pathOfDownloadFolder = Paths.get(System.getProperty("user.home")+"\\Downloads");
         if (Files.exists(pathOfDownloadFolder) && Files.isDirectory(pathOfDownloadFolder)) {
