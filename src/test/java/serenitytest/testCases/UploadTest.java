@@ -26,9 +26,7 @@ public class UploadTest extends PageObject{
     @Test
     public void HandlingUploadAndDownload() throws InterruptedException {
         open();
-
         evaluateJavascript("window.scrollBy(0,300)");
-
         WebElementFacade Button_Element=find(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Button_Element.click();
         WebElementFacade Span_UploadAndDownload=find(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Upload and Download\")]"));

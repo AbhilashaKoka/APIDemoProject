@@ -13,7 +13,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class TryItTest extends PageObject {
+public class FramesTest extends PageObject {
 
 
 	@Managed(driver="edge")
@@ -23,7 +23,6 @@ public class TryItTest extends PageObject {
 	
 	@Test
 	public void handlingAlert() {
-		//https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_submit_get
 		open();
 		
 		getDriver().switchTo().frame("iframeResult");

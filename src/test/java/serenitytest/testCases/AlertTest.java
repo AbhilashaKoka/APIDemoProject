@@ -16,6 +16,7 @@ public class AlertTest extends PageObject {
 
 	@Managed(driver="chrome")
 	WebDriver driver;
+//code to implement in each test method
 
 	@Test
 	public void handlingAlert() {
