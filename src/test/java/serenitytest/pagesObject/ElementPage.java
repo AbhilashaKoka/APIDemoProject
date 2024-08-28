@@ -22,11 +22,8 @@ public class ElementPage extends PageObject {
     @FindBy(xpath="//*[@id=\"permanentAddress\"]")
     WebElementFacade InputBox_PremAddr;
 
-
-            @FindBy(xpath="//*[@id=\"submit\"]")
-            WebElementFacade Button_Submit;
-
-
+    @FindBy(xpath="//*[@id=\"submit\"]")
+    WebElementFacade Button_Submit;
 
 
 
