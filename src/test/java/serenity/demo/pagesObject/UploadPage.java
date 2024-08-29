@@ -1,4 +1,4 @@
-package serenitytest.pagesObject;
+package serenity.demo.pagesObject;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -52,8 +52,7 @@ public class UploadPage extends PageObject {
     evaluateJavascript("window.scrollBy(0,350)");
     Button_Download.click();
         Thread.sleep(3000);
-    // waitFor(String.valueOf(Duration.millis(1000)));
-    File currentFile = new File(System.getProperty("user.home")+"\\Downloads\\sampleFile.jpeg");
+       File currentFile = new File(System.getProperty("user.home")+"\\Downloads\\sampleFile.jpeg");
         if (currentFile.exists()) {
         System.out.println("File Exist!!");
     } else {

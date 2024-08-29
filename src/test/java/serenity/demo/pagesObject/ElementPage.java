@@ -1,4 +1,4 @@
-package serenitytest.pagesObject;
+package serenity.demo.pagesObject;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;

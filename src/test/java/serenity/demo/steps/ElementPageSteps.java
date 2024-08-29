@@ -1,6 +1,6 @@
-package serenitytest.steps;
+package serenity.demo.steps;
 import net.serenitybdd.annotations.Step;
-import serenitytest.pagesObject.ElementPage;
+import serenity.demo.pagesObject.ElementPage;
 
 
 public class ElementPageSteps{

@@ -1,15 +1,17 @@
-package serenitytest.demotests;
-
+package serenity.demo.demotests;
+import net.serenitybdd.annotations.Managed;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+
 import net.serenitybdd.core.pages.PageObject;
+
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.serenitybdd.annotations.Managed;
+
 
 @RunWith(SerenityRunner.class)
-public class RightClickTest extends PageObject {
+public class DragandDropTest extends PageObject {
 
 
 	@Managed(driver="edge")
@@ -18,12 +20,12 @@ public class RightClickTest extends PageObject {
 	
 	
 	@Test
-	public void slider() {
-		//http://deluxe-menu.com/popup-mode-sample.html
+	public void draganddrop() {
+		//https://jqueryui.com/resources/demos/droppable/default.html
 		open();
 		
-		withAction().contextClick($("/html/body/div/table/tbody/tr/td[2]/div[2]/table[1]/tbody/tr/td[3]/p[2]/img")).perform();
-	
+		withAction().dragAndDrop($("//*[@id=\"draggable\"]"), $("//*[@id=\"droppable\"]")).perform();
+		
 		
 		try {
 			Thread.sleep(3000);

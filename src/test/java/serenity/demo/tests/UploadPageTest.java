@@ -1,5 +1,4 @@
-package serenitytest.tests;
-
+package serenity.demo.tests;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -7,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import serenitytest.steps.UploadPageSteps;
+import serenity.demo.steps.UploadPageSteps;
 
 
 @RunWith(SerenityRunner.class)

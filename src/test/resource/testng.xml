@@ -3,17 +3,17 @@
 <!--<listeners>-->
 <!--    <listener class-name="seleniumTestNG.TestStatusListener"></listener>-->
 <!--</listeners>-->
-<!--    <test name="SeleniumTest">-->
+<!--    <test name="SeleniumBDD">-->
 <!--        <classes>-->
 <!--            <class name="selenium.demo.runner.TestRunner"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
 <!--    <test name="SerenityTest">-->
 <!--        <classes>-->
-<!--            <class name="serenitytest.demotests.ElementTest"></class>-->
+<!--            <class name="demotests.serenity.demo.ElementTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="SeleniumTest">
+    <test name="SeleniumTestNG">
         <classes>
             <class name="seleniumTestNG.TestClass"></class>
         </classes>

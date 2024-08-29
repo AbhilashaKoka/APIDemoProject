@@ -1,4 +1,4 @@
-package serenitytest.demotests;
+package serenity.demo.demotests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,20 +9,22 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class MouseOverTest extends PageObject {
+public class ResizableTest extends PageObject {
 
 
 	@Managed(driver="edge")
 	WebDriver driver;
 	
 	
-	@Test
-	public void mouseOver() {
-		
-		open();
-		withAction().moveToElement($("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/a")).perform();
-		$("//*[@id=\"navbar-collapse-1\"]/ul/li[3]/ul/li[1]/a").click();
 	
+	@Test
+	public void slider() {
+		//https://jqueryui.com/resources/demos/resizable/default.html
+		open();
+		
+		withAction().dragAndDropBy($("//*[@id=\"resizable\"]/div[3]"), 400, 400).perform();
+		
+		
 		
 		try {
 			Thread.sleep(3000);

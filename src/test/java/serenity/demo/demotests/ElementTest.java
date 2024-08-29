@@ -1,4 +1,4 @@
-package serenitytest.demotests;
+package serenity.demo.demotests;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Title;
 import net.serenitybdd.core.pages.ListOfWebElementFacades;

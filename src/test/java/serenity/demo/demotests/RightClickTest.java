@@ -1,4 +1,4 @@
-package serenitytest.demotests;
+package serenity.demo.demotests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,30 +9,21 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class SliderTest extends PageObject {
+public class RightClickTest extends PageObject {
 
 
 	@Managed(driver="edge")
 	WebDriver driver;
 	
 	
+	
 	@Test
 	public void slider() {
-		//https://jqueryui.com/resources/demos/slider/default.html
+		//http://deluxe-menu.com/popup-mode-sample.html
 		open();
-		int size = $("//*[@id=\"slider\"]").getSize().width/2;
 		
-		withAction().dragAndDropBy($("//*[@id=\"slider\"]/span"), size, 0).perform();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		withAction().dragAndDropBy($("//*[@id=\"slider\"]/span"), -size, 0).perform();
-		
-		
+		withAction().contextClick($("/html/body/div/table/tbody/tr/td[2]/div[2]/table[1]/tbody/tr/td[3]/p[2]/img")).perform();
+	
 		
 		try {
 			Thread.sleep(3000);

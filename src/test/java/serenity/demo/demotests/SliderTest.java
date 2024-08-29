@@ -1,4 +1,4 @@
-package serenitytest.demotests;
+package serenity.demo.demotests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,20 +9,28 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class ResizableTest extends PageObject {
+public class SliderTest extends PageObject {
 
 
 	@Managed(driver="edge")
 	WebDriver driver;
 	
 	
-	
 	@Test
 	public void slider() {
-		//https://jqueryui.com/resources/demos/resizable/default.html
+		//https://jqueryui.com/resources/demos/slider/default.html
 		open();
+		int size = $("//*[@id=\"slider\"]").getSize().width/2;
 		
-		withAction().dragAndDropBy($("//*[@id=\"resizable\"]/div[3]"), 400, 400).perform();
+		withAction().dragAndDropBy($("//*[@id=\"slider\"]/span"), size, 0).perform();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		withAction().dragAndDropBy($("//*[@id=\"slider\"]/span"), -size, 0).perform();
 		
 		
 		

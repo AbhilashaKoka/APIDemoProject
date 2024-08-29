@@ -1,4 +1,4 @@
-package serenitytest.demotests;
+package serenity.demo.demotests;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
