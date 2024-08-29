@@ -3,19 +3,19 @@
 <!--<listeners>-->
 <!--    <listener class-name="seleniumTestNG.TestStatusListener"></listener>-->
 <!--</listeners>-->
-<!--    <test name="SeleniumBDD">-->
-<!--        <classes>-->
-<!--            <class name="selenium.demo.runner.TestRunner"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SeleniumBDD">
+        <classes>
+            <class name="selenium.demo.runner.TestRunner"></class>
+        </classes>
+    </test>
 <!--    <test name="SerenityTest">-->
 <!--        <classes>-->
 <!--            <class name="demotests.serenity.demo.ElementTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="SeleniumTestNG">
-        <classes>
-            <class name="seleniumTestNG.TestClass"></class>
-        </classes>
-    </test>
+<!--    <test name="SeleniumTestNG">-->
+<!--        <classes>-->
+<!--            <class name="seleniumTestNG.TestClass"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
