@@ -4,7 +4,7 @@ Background:
   Given I am in from landing page
   Then I am able to verify form details successfully
 
-  @skip_scenario
+
   Scenario: PracticeForm:successfully login by valid credential
       When I enter details firstname, lastname,gender,email,mobile,dob,subject,hobbies,currentaddr,state,city
 
