@@ -18,12 +18,11 @@ public class AlertsHandling extends BaseSetUp {
         Window_Frames.click();
         WebElement Alerts_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Alerts\")]"));
         Alerts_span.click();
-
         WebElement AlertWrapper=driver.findElement(By.xpath("//*[@id=\"javascriptAlertsWrapper\"]"));
         System.out.println(AlertWrapper.getAttribute("innerText"));
         WebElement alertButton=driver.findElement(By.xpath("//button[@id=\"alertButton\"]"));
         alertButton.click();
-     //   driver.switchTo().alert().dismiss();
+     // driver.switchTo().alert().dismiss();
         driver.switchTo().alert().getText();
         driver.switchTo().alert().accept();
         WebElement timeralertbutton=driver.findElement(By.xpath("//button[@id=\"timerAlertButton\"]"));
@@ -32,18 +31,15 @@ public class AlertsHandling extends BaseSetUp {
         wait.until(ExpectedConditions.alertIsPresent());
         System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
-
-
         WebElement confirmButton=driver.findElement(By.xpath("//button[@id=\"confirmButton\"]"));
         confirmButton.click();
         System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
-
         WebElement promptButton=driver.findElement(By.xpath("//button[@id=\"promtButton\"]"));
         promptButton.click();
         System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
         bol=true;
-return  bol;
+        return  bol;
     }
 }

@@ -1,7 +1,5 @@
 package selenium.demo.endToendAPITest;
-import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import selenium.demo.model.Request.AddBookRequest;
@@ -12,12 +10,13 @@ import selenium.demo.model.Response.Book;
 import selenium.demo.model.Response.Books;
 import selenium.demo.model.Response.Token;
 import selenium.demo.model.Response.UserAccount;
-
 import java.util.List;
 import java.util.Map;
+import io.restassured.path.json.JsonPath;
+import org.json.JSONObject;
 
 
-public class E2E_Tests {
+public class E2E_Tests{
     static String userId;
     static String bookId;
      static String token;
@@ -27,7 +26,7 @@ public class E2E_Tests {
 
     public static void main(String[] args)
     {
-        JsonObject requestParam;
+        JSONObject requestParam;
         RestAssured.baseURI=baseUrl;
         RequestSpecification request=RestAssured.given();
         Response response;
@@ -35,9 +34,9 @@ public class E2E_Tests {
 
         //Create User
         request.header("Content-Type","application/json");
-        requestParam=new JsonObject();
-        requestParam.add("userName",""+UserName+"");
-        requestParam.add("password",""+Password+"");
+        requestParam=new JSONObject();
+        requestParam.put("userName",""+UserName+"" );
+        requestParam.put("password",""+Password+"");
         response=request.body(requestParam.toString()).post("/Account/v1/User");
         userId=response.getBody().jsonPath().getString("userID");
         System.out.println(response.getStatusLine());
@@ -73,8 +72,6 @@ public class E2E_Tests {
        System.out.println("User  Details:"+response.getStatusLine());
 
 
-
-
         //Get Books Details
         response= request.get("/BookStore/v1/Books");
         System.out.println("Books Details:"+response.getStatusLine());
@@ -108,8 +105,6 @@ public class E2E_Tests {
            UserAccount userAccount=response.getBody().as(UserAccount.class);
            String bookIsAdded=userAccount.books.get(0).isbn;
 
-
-
         //Remove Book By bookID and UserId
         request.header("Authorization","Bearer "+token).
                 header("Content-Type","application/json");
@@ -118,9 +113,6 @@ public class E2E_Tests {
         System.out.println(" Remove Books is removed User ID:"+response.getStatusLine());
         UserAccount userAccount1=response.getBody().as(UserAccount.class);
         int bookIsRemoved=userAccount1.books.size();
-
-
-
 
     }
 }

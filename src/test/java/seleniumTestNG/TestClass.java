@@ -19,18 +19,22 @@ public class TestClass extends BaseSetUp{
     public void TestDatePicker() {
         Assert.assertEquals( DataPicker.HandlingDataPicker(),true);
    }
+
     @Test(description = "verify BrowserWindow",enabled = true)
      public void TestBrowserWindow() throws InterruptedException {
        Assert.assertEquals(BrowserWindow.HandlingBrowserWindow(),true);
    }
-    @Test(description = "verify AutoComplete",enabled = false)
+
+    @Test(description = "verify AutoComplete",enabled = true)
     public void TestAutoComplete() {
         Assert.assertEquals( AutoComplete.HandlingAutomComplete(),true);
    }
+
     @Test(description = "verify Alert",enabled = false)
      public void TestAlert() {
         Assert.assertEquals( AlertsHandling.HandlingAlert(),true);
    }
+
     @Test(description = "verify Accordion",enabled = false)
       public void TestAccordion() {
          Assert.assertEquals(AccordionHandling.HandlingAccordion(),true);

@@ -6,8 +6,7 @@ import java.util.Map;
 public class NonRepeatedCharacter {
     public static void main(String args[]) {
         String text = "Java Guides";
-
-        char result = findNonRepeatedCharated(text);
+        char result = findNonRepeatedCharater(text);
         if (result != '\0'){
             System.out.println("The Non repeated character is:" + result);
         } else {
@@ -15,12 +14,10 @@ public class NonRepeatedCharacter {
         }
 
     }
-    public static char findNonRepeatedCharated(String input) {
+    public static char findNonRepeatedCharater(String input) {
         Map<Character, Integer> charCount = new HashMap<>();
-
         for (char c:input.toCharArray()){
             charCount.put(c,charCount.getOrDefault(c,0)+1);
-
         }
         for(char ch:input.toCharArray()){
             if(charCount.get(ch)==1){
