@@ -1,6 +1,6 @@
-package org.example.javaDemo;
+package org.example.javaDemo.JavaNumberPrograms;
 
-public class StarPatterm {
+public class StarPattern {
     public static void main(String args[]){
         int i, j, row=6;
 
