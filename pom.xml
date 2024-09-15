@@ -17,7 +17,7 @@
         <selenium.version>4.18.1</selenium.version>
         <apache.common>3.12.0</apache.common>
         <restassured.version>5.5.0</restassured.version>
-        <json.version>20230618</json.version>
+        <json.version>20240303</json.version>
         <WebDriverManager.version>5.9.2</WebDriverManager.version>
         <jackson.version>2.17.2</jackson.version>
         <common-io.version>2.4</common-io.version>
