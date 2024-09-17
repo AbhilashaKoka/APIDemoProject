@@ -1,6 +1,4 @@
-package org.example.javaDemo.JavaNumberPrograms;
-
-import java.sql.SQLOutput;
+package org.example.javaDemo.JavaArrayPrograms;
 
 public class CopyArray {
 

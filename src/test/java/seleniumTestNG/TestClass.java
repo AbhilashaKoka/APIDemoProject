@@ -9,141 +9,141 @@ public class TestClass extends BaseSetUp{
 
    @Test(description = "Verify textBox",enabled = false,priority = 1)
        public void TestButton() {
-              Assert.assertEquals( Button.HandlingButton(), true);
+              Assert.assertEquals( SeleElemHandling.HandlingButton(), true);
         }
     @Test(description = "Verify CheckBox",enabled = false)
     public void TestCheckBox() {
-      Assert.assertEquals(CheckBox.HandlingCheckBox(),true);
+      Assert.assertEquals(SeleElemHandling.HandlingCheckBox(),true);
     }
     @Test(description = "verify datapicker",enabled = false)
     public void TestDatePicker() {
-        Assert.assertEquals( DataPicker.HandlingDataPicker(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingDataPicker(),true);
    }
 
     @Test(description = "verify BrowserWindow",enabled = true)
      public void TestBrowserWindow() throws InterruptedException {
-       Assert.assertEquals(BrowserWindow.HandlingBrowserWindow(),true);
+       Assert.assertEquals(SeleElemHandling.HandlingBrowserWindow(),true);
    }
 
     @Test(description = "verify AutoComplete",enabled = true)
     public void TestAutoComplete() {
-        Assert.assertEquals( AutoComplete.HandlingAutomComplete(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingAutomComplete(),true);
    }
 
     @Test(description = "verify Alert",enabled = false)
      public void TestAlert() {
-        Assert.assertEquals( AlertsHandling.HandlingAlert(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingAlert(),true);
    }
 
     @Test(description = "verify Accordion",enabled = false)
       public void TestAccordion() {
-         Assert.assertEquals(AccordionHandling.HandlingAccordion(),true);
+         Assert.assertEquals(SeleElemHandling.HandlingAccordion(),true);
    }
 
     @Test(description = "verify PracticeForm",enabled = false)
     public void TestPracticeForm() throws InterruptedException {
-        Assert.assertEquals(Forms.HandlingForm(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingForm(),true);
     }
 
     @Test(description = "verify Frames",enabled = false)
     public void TestFrame() {
-        Assert.assertEquals( FramesHandling.HandlingFrame(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingFrame(),true);
     }
     @Test(description = "verify Links",enabled = false)
     public void TestLink() {
-        Assert.assertEquals(Links.HandlingLInk(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingLInk(),true);
     }
 
     @Test(description = "verify Menu",enabled = false)
     public void TestMenu() {
-        Assert.assertEquals( Menu.HandlingMenu(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingMenu(),true);
     }
     @Test(description = "verify ModalDialog",enabled = false)
     public void TestModalDialog() throws InterruptedException {
-        Assert.assertEquals(ModalDialogHandling.HandlingModalDialog(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingModalDialog(),true);
     }
 
     @Test(description = "verify MultipleFrames",enabled = false)
     public void TestMultipleFrame(){
-       Assert.assertEquals(MultipleFrameHandling.HandlingMultipleFrames(),true);
+       Assert.assertEquals(SeleElemHandling.HandlingMultipleFrames(),true);
 
     }
     @Test(description = "verify ProgressBar",enabled = false)
     public void TestProgressBar()
     {
-        Assert.assertEquals( ProgressBar.HandlingProgressBar(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingProgressBar(),true);
     }
 
     @Test(description = "verify RadioButton",enabled = false)
     public void TestRadioButton() {
-        Assert.assertEquals(RadioButton.HandlingRadioBUtton(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingRadioBUtton(),true);
     }
     @Test(description = "verify Resizable",enabled = false)
         public void TestResizable()
         {
-            Assert.assertEquals(Resizable.HandlingResizable(),true);
+            Assert.assertEquals(SeleElemHandling.HandlingResizable(),true);
         }
 
 
     @Test(description = "verify Selectable",enabled = false)
     public void TestSelectable()
     {
-        Assert.assertEquals(Selectable.HandlingSelectable(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingSelectable(),true);
     }
     @Test(description = "verify SelectMenu",enabled = false)
     public void TestSelectMenu()
     {
-        Assert.assertEquals(SelectMenu.HandlingSelectMenu(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingSelectMenu(),true);
     }
 
 
     @Test(description = "verify Slider",enabled = false)
     public void TestSlider()
     {
-        Assert.assertEquals( Slider.HandlingSlider(),true);
+        Assert.assertEquals( SeleElemHandling.HandlingSlider(),true);
     }
 
     @Test(description = "verify Sortable",enabled = false)
     public void TestSortable(){
-        Assert.assertEquals(Sortable.HandlingSortable(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingSortable(),true);
     }
 
     @Test(description = "verify Tabs",enabled = false)
     public void TestTabs(){
-        Assert.assertEquals(Tabs.HandlingTabs(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingTabs(),true);
     }
     @Test(description = "verify TextBox",enabled = false)
     public void TestTextBox() throws InterruptedException {
-        Assert.assertEquals(TextBox.HandlingTextBox(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingTextBox(),true);
     }
 
     @Test(description = "verify ToolTips",enabled = false)
     public void TestToolTip()
     {
-        Assert.assertEquals(ToolTips.HandlingToolTip(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingToolTip(),true);
     }
 
     @Test(description = "verify Upload",enabled = false)
     public void TestUpload() throws InterruptedException {
-        Assert.assertEquals(UploadAndDownload.HandlingUploadAndDownload(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingUploadAndDownload(),true);
     }
 
     @Test(description = "verify WebTable",enabled = false)
     public void TestWebTable()
     {
-        Assert.assertEquals(WebTableTest.HandlingWebTableTest(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingWebTableTest(),true);
     }
 
     @Test(description = "verify Draggable",enabled = false)
     public void TestDraggable()
     {
-        Assert.assertEquals(Draggable.HandlingDraggable(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingDraggable(),true);
     }
 
     @Test(description = "verify Droppable",enabled = false)
     public void TestDroppable()
     {
-        Assert.assertEquals(Droppable.HandlingDroppable(),true);
+        Assert.assertEquals(SeleElemHandling.HandlingDroppable(),true);
     }
     }
 
