@@ -17,6 +17,7 @@
         <selenium.version>4.18.1</selenium.version>
         <apache.common>3.12.0</apache.common>
         <restassured.version>5.5.0</restassured.version>
+        <json.version>20240303</json.version>
         <WebDriverManager.version>5.9.2</WebDriverManager.version>
         <jackson.version>2.17.2</jackson.version>
         <common-io.version>2.4</common-io.version>
@@ -47,6 +48,11 @@
             <artifactId>rest-assured</artifactId>
             <version>${restassured.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -169,7 +175,11 @@
     </dependencies>
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>

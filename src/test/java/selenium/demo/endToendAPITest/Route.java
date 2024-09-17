@@ -1,7 +1,7 @@
 package selenium.demo.endToendAPITest;
 
 public class Route {
-   public static final String BOOKSTORE="/BookStore";
+    public static final String BOOKSTORE="/BookStore";
     public static final String ACCOUNT="/Account";
     public static final String VERSION="/v1";
 
