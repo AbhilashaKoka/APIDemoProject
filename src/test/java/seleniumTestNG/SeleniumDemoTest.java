@@ -17,21 +17,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class SeleElemHandling extends BaseSetUp {
+public class SeleniumDemoTest extends BaseSetUp {
 
 
     public static Boolean HandlingAccordion(){
         Boolean bol=false;
         WebElement Widgets_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
         Widgets_Frames.click();
+
         WebElement Accordian_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Accordian\")]"));
         Accordian_span.click();
+
         WebElement accordianContainer=driver.findElement(By.xpath(" //*[@id=\"accordianContainer\"]"));
         System.out.println(accordianContainer.getAttribute("innerText"));
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)");
+
         List<WebElement> accordiansLIst=driver.findElements(By.xpath(" //div[@id=\"accordianContainer\"]//following::div[@class=\"accordion\"]"));
         int size=accordiansLIst.size();
+
         for(WebElement ele:accordiansLIst){
             action.moveToElement(ele).perform();
             action.moveToElement(ele.findElement(By.xpath("//*[@class=\"card-header\"]"))).clickAndHold().perform();
@@ -53,28 +58,37 @@ public class SeleElemHandling extends BaseSetUp {
         Boolean bol=false;
         WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
         Window_Frames.click();
+
         WebElement Alerts_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Alerts\")]"));
         Alerts_span.click();
+
         WebElement AlertWrapper=driver.findElement(By.xpath("//*[@id=\"javascriptAlertsWrapper\"]"));
         System.out.println(AlertWrapper.getAttribute("innerText"));
+
         WebElement alertButton=driver.findElement(By.xpath("//button[@id=\"alertButton\"]"));
         alertButton.click();
-        // driver.switchTo().alert().dismiss();
+
         driver.switchTo().alert().getText();
+
         driver.switchTo().alert().accept();
+
         WebElement timeralertbutton=driver.findElement(By.xpath("//button[@id=\"timerAlertButton\"]"));
         timeralertbutton.click();
+
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5000));
         wait.until(ExpectedConditions.alertIsPresent());
         System.out.println(driver.switchTo().alert().getText());
+
         driver.switchTo().alert().accept();
         WebElement confirmButton=driver.findElement(By.xpath("//button[@id=\"confirmButton\"]"));
         confirmButton.click();
         System.out.println(driver.switchTo().alert().getText());
+
         driver.switchTo().alert().accept();
         WebElement promptButton=driver.findElement(By.xpath("//button[@id=\"promtButton\"]"));
         promptButton.click();
         System.out.println(driver.switchTo().alert().getText());
+
         driver.switchTo().alert().accept();
         bol=true;
         return  bol;
@@ -88,8 +102,10 @@ public class SeleElemHandling extends BaseSetUp {
 
         WebElement firstPlaceholder=driver.findElement(By.xpath("//div[@class=\"auto-complete__input\"]//input[@id=\"autoCompleteMultipleInput\" and @type=\"text\"]"));
         firstPlaceholder.sendKeys("Green");
+
         firstPlaceholder.sendKeys(Keys.TAB);
         firstPlaceholder.sendKeys(Keys.TAB);
+
         WebElement secondPlaceHolder=driver.findElement(By.xpath("//*[@class=\"css-1g6gooi\"]/div[@class=\"auto-complete__input\"]/input[@id=\"autoCompleteMultipleInput\" and @type =\"text\"]"));
         secondPlaceHolder.sendKeys("Green");
         // secondPlaceHolder.sendKeys(Keys.TAB);
@@ -102,12 +118,16 @@ public class SeleElemHandling extends BaseSetUp {
         Boolean bol=false;
         WebElement Window_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Alerts, Frame & Windows\")]"));
         Window_Frames.click();
+
         WebElement BrowserWindows_span=driver.findElement(By.xpath( "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Browser Windows\")]"));
         BrowserWindows_span.click();
+
         WebElement BrowserWindow=driver.findElement(By.xpath("//*[@id=\"browserWindows\"]"));
         System.out.println(BrowserWindow.getAttribute("innerText"));
+
         WebElement tabButton=driver.findElement(By.xpath("//*[@id=\"tabButton\"]"));
         String parentWindow= driver.getWindowHandle();
+
         System.out.println("Parent Tab");
         tabButton.click();
         ArrayList<String> handles=new ArrayList<>(driver.getWindowHandles());
