@@ -1,4 +1,4 @@
-package org.example.javaDemo.JavaArrayPrograms;
+package org.example.javaDemo.Arrays;
 
 public class CopyArray {
 

@@ -15,7 +15,7 @@
 <!--    </test>-->
     <test name="SeleniumTestNG">
         <classes>
-            <class name="seleniumTestNG.TestClass"></class>
+            <class name="seleniumTestNG.TestNGTestClass"></class>
         </classes>
     </test>
 </suite>

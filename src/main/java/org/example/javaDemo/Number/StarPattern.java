@@ -1,4 +1,4 @@
-package org.example.javaDemo.JavaNumberPrograms;
+package org.example.javaDemo.Number;
 
 public class StarPattern {
     public static void main(String args[]){

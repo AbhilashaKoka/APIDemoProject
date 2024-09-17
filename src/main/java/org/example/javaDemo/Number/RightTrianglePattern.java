@@ -1,4 +1,4 @@
-package org.example.javaDemo.JavaNumberPrograms;
+package org.example.javaDemo.Number;
 
 import java.util.Scanner;
 
