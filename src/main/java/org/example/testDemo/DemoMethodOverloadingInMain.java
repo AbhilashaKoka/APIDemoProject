@@ -10,11 +10,10 @@ public class DemoMethodOverloadingInMain {
     }
 
 
-
-
     public static void main(Double[] args) {
         System.out.println("Double[] args main method called");
         System.out.println(Arrays.toString(args));
     }
+
     }
 
