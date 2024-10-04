@@ -19,12 +19,12 @@ import org.json.JSONObject;
 
 
 public class E2E_Tests{
-     static  String baseUrl="https://bookstore.toolsqa.com";
-      static   JSONObject requestParam;
+      static  String baseUrl="https://bookstore.toolsqa.com";
+       static   JSONObject requestParam;
 
 
 
-           public static String CreateUser(String UserName, String Password) {
+            public  String CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -40,7 +40,7 @@ public class E2E_Tests{
         }
 
 
-           public static String GenerateToken( String UserName, String Password) {
+            public  String GenerateToken( String UserName, String Password) {
             RestAssured.baseURI = baseUrl;
             RequestSpecification request = RestAssured.given();
             AuthorizationRequest authRequest = new AuthorizationRequest(UserName, Password);
@@ -53,7 +53,7 @@ public class E2E_Tests{
             return token;
         }
 
-         public static void AUthorizedUser(String UserName, String Password) {
+           public  void AUthorizedUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -63,8 +63,8 @@ public class E2E_Tests{
             System.out.println("Authorized User:" + response.getStatusLine());
         }
 
-    public static void getUserData(String userId, String token) {
-        RestAssured.baseURI = baseUrl;
+          public static void getUserData(String userId, String token) {
+         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
         Response res = httpRequest.get("/Account/v1/User/"+userId);
@@ -73,8 +73,8 @@ public class E2E_Tests{
         System.out.println("Data from the GET API- "+rbdy);
     }
 
-    public static void BookofUser(String token, String userId) {
-             RestAssured.baseURI=baseUrl;
+            public static void BookofUser(String token, String userId) {
+              RestAssured.baseURI=baseUrl;
              RequestSpecification request=RestAssured.given();
              Response response;
              request.header("Authorization", "Bearer " + token)
@@ -84,8 +84,8 @@ public class E2E_Tests{
              System.out.println("User  Details:" + response.getStatusLine());
          }
 
-        public static String GetBooksDetails() {
-            RestAssured.baseURI=baseUrl;
+            public static String GetBooksDetails() {
+             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
             response = request.get("/BookStore/v1/Books");
@@ -100,7 +100,7 @@ public class E2E_Tests{
         }
 
 
-        public static Book[] GetBookDetailsbyISBNNUmber(String bookId) {
+            public static Book[] GetBookDetailsbyISBNNUmber(String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -144,6 +144,7 @@ public class E2E_Tests{
             int bookIsRemoved = userAccount1.books.size();
         }
 
+
         public static void deleteBook(String token, String userId, String isbn) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
@@ -155,7 +156,7 @@ public class E2E_Tests{
     }
 
 
-       public static void IteratingHeaders() {
+          public static void IteratingHeaders() {
            RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";
            RequestSpecification httpRequest = RestAssured.given();
            Response response = httpRequest.get("");
@@ -164,10 +165,12 @@ public class E2E_Tests{
                System.out.println("Key: " + header.getName() + " Value: " + header.getValue());
            }
        }
+
+
     public static void queryParameter() {
-        RestAssured.baseURI= "https://bookstore.toolsqa.com/BookStore/v1";
+        RestAssured.baseURI= baseUrl;
         RequestSpecification httpRequest = RestAssured.given();
-        Response res = httpRequest.queryParam("ISBN","9781449325862").get("/Book");
+        Response res = httpRequest.queryParam("ISBN","9781449325862").get("/BookStore/v1/Book");
         ResponseBody body = res.body();
         String rbdy = body.asString();
         JsonPath jpath = new JsonPath(rbdy);
