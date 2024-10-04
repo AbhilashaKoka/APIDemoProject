@@ -63,7 +63,7 @@ public class E2E_Tests{
             System.out.println("Authorized User:" + response.getStatusLine());
         }
 
-          public static void getUserData(String userId, String token) {
+          public  void getUserData(String userId, String token) {
          RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
@@ -73,7 +73,7 @@ public class E2E_Tests{
         System.out.println("Data from the GET API- "+rbdy);
     }
 
-            public static void BookofUser(String token, String userId) {
+            public  void BookofUser(String token, String userId) {
               RestAssured.baseURI=baseUrl;
              RequestSpecification request=RestAssured.given();
              Response response;
@@ -84,7 +84,7 @@ public class E2E_Tests{
              System.out.println("User  Details:" + response.getStatusLine());
          }
 
-            public static String GetBooksDetails() {
+            public  String GetBooksDetails() {
              RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -100,7 +100,7 @@ public class E2E_Tests{
         }
 
 
-            public static Book[] GetBookDetailsbyISBNNUmber(String bookId) {
+            public  Book[] GetBookDetailsbyISBNNUmber(String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -117,7 +117,7 @@ public class E2E_Tests{
             return booksdetails;
         }
 
-        public static void AddBookbyUserIDandISBN(String userId, String bookId, String token) {
+        public  void AddBookbyUserIDandISBN(String userId, String bookId, String token) {
         RestAssured.baseURI=baseUrl;
         RequestSpecification request=RestAssured.given();
         Response response;
@@ -131,7 +131,7 @@ public class E2E_Tests{
     }
 
 
-        public static void RemoveBookBybookIDandUserId(String token, String userId, String bookId) {
+        public  void RemoveBookBybookIDandUserId(String token, String userId, String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -145,7 +145,7 @@ public class E2E_Tests{
         }
 
 
-        public static void deleteBook(String token, String userId, String isbn) {
+        public  void deleteBook(String token, String userId, String isbn) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
@@ -156,7 +156,7 @@ public class E2E_Tests{
     }
 
 
-          public static void IteratingHeaders() {
+          public  void IteratingHeaders() {
            RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";
            RequestSpecification httpRequest = RestAssured.given();
            Response response = httpRequest.get("");
@@ -167,7 +167,7 @@ public class E2E_Tests{
        }
 
 
-    public static void queryParameter() {
+    public  void queryParameter() {
         RestAssured.baseURI= baseUrl;
         RequestSpecification httpRequest = RestAssured.given();
         Response res = httpRequest.queryParam("ISBN","9781449325862").get("/BookStore/v1/Book");
@@ -179,7 +179,7 @@ public class E2E_Tests{
     }
 
 
-    public static  void UserRegistrationSuccessAndFailure() {
+    public   void UserRegistrationSuccessAndFailure() {
         RestAssured.baseURI = "https://demoqa.com";
         RequestSpecification request = RestAssured.given();
         org.json.simple.JSONObject requestParams = new org.json.simple.JSONObject();
@@ -200,7 +200,7 @@ public class E2E_Tests{
         }
     }
 
-    public static void JsonPathUsage() throws MalformedURLException
+    public  void JsonPathUsage() throws MalformedURLException
     {
         RestAssured.baseURI = "https://restapi.demoqa.com/utilities/books/getallbooks";
         RequestSpecification httpRequest = RestAssured.given();
