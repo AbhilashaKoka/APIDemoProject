@@ -28,4 +28,34 @@
 <!--            <class name="Appium.Demo.TestClass"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
+<!--    <test name="Selenium Grid demo test on Chrome">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+<!--        <classes>-->
+<!--            <class name="seleniumGrid.demo.LocalGridDemoTests">-->
+<!--                <methods>-->
+<!--                    <include name="testSearchProduct"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Selenium Grid demo test on Firefox">-->
+<!--        <parameter name="browser" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="seleniumGrid.demo.LocalGridDemoTests">-->
+<!--                <methods>-->
+<!--                    <include name="testSearchProduct"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Selenium Grid demo test on Edge">-->
+<!--        <parameter name="browser" value="edge"/>-->
+<!--        <classes>-->
+<!--            <class name="seleniumGrid.demo.LocalGridDemoTests">-->
+<!--                <methods>-->
+<!--                    <include name="testSearchProduct"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
