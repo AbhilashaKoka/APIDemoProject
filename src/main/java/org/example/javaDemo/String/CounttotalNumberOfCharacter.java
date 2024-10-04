@@ -11,6 +11,7 @@ public class CounttotalNumberOfCharacter {
                 count++;
             }
         }
+
         System.out.println("Total Number of Characters in a string:"+count);
     }
 }

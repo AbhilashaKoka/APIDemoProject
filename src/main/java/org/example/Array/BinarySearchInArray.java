@@ -9,9 +9,11 @@ public class BinarySearchInArray {
         if(resultIndex!=-1){
             System.out.println("Element found at index:"+resultIndex);
              }
+
         else{
             System.out.println("Element not found");
-        }
+           }
+
     }
 
     public static int binarySearch(int[] array, int target){

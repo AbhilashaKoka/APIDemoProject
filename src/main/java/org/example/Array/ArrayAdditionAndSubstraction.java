@@ -18,10 +18,12 @@ public class ArrayAdditionAndSubstraction {
             System.out.print(num+"");
         }
 
+
         System.out.println("\nSubstraction Result");
         for(int num:substractionResult)
         {
             System.out.print(num+"");
         }
+
     }
 }

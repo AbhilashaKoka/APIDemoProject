@@ -1,6 +1,7 @@
 package org.example.Number;
 
 public class GCDOfTwoNumbers {
+
     public static void main(String args[]){
         int number1=48;
         int number2=18;

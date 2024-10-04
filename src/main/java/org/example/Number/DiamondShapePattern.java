@@ -36,7 +36,6 @@ public class DiamondShapePattern {
             }
             System.out.println(); // Move to the next line
         }
-
         // Close the scanner
         scanner.close();
     }

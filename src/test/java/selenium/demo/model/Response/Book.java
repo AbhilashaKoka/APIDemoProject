@@ -12,11 +12,12 @@ public class Book {
     public String subTitle;
 
     public String author;
-    public String publishDate;
+
+    public String published;
 
     public String publisher;
 
-    public Integer pages;
+    public int pages;
 
     public String description;
 
@@ -26,7 +27,7 @@ public class Book {
     public void setPublishDate(String publishDate) {
         Instant timeStamp=null;
         timeStamp=Instant.parse(publishDate);
-        this.publishDate = publishDate;
+        this.published = publishDate;
     }
 
 

@@ -11,7 +11,7 @@ public class checkLetterUsingIsLetter {
         for(int i=0;i<input.length();i++){
             if(!Character.isLetter(input.charAt(i)))
             {
-                return false;
+              return false;
             }
         }
         return true;

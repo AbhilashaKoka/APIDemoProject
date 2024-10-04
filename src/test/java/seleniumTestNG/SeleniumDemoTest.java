@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 public class SeleniumDemoTest extends BaseSetUp {
+
 
 
     public static Boolean HandlingAccordion(){
@@ -141,7 +140,7 @@ public class SeleniumDemoTest extends BaseSetUp {
         js.executeScript("window.scrollBy(0,350)");
 
         WebElement tabButton2=driver.findElement(By.xpath("//*[@id=\"tabButton\"]"));
-        tabButton2.click();;
+        tabButton2.click();
         Object[] windowsHandles=driver.getWindowHandles().toArray();
         driver.switchTo().window((String) windowsHandles[1]);
         driver.switchTo().window((String) windowsHandles[0]);

@@ -10,7 +10,8 @@ public class CheckDigitsUsingIsDigits {
         System.out.println(result);
     }
 
-    public static boolean containsOnlyDigits(String str){
+    public static boolean containsOnlyDigits(String str)
+    {
         for(int i=0; i<str.length();i++){
             if(!Character.isDigit(str.charAt(i))){
                 return false;
@@ -23,12 +24,9 @@ public class CheckDigitsUsingIsDigits {
         return str.matches("\\d+");
     }
 
-
     public static boolean containOnlyDigits2(String str){
         return str.chars().allMatch(Character::isDigit);
     }
-
-
 
     public static boolean containsOnlyDigits3(String str){
         return StringUtils.isNumeric(str);

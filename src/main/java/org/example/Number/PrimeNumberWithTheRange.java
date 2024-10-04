@@ -5,7 +5,6 @@ public class PrimeNumberWithTheRange {
         int start=10;
         int end=50;
 
-
         System.out.println("Prime number between"+start+"and"+end+":");
         for(int i=start;i<=end;i++){
             if(isPrime(i)){

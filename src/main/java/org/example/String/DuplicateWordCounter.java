@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class DuplicateWordCounter {
     public static void main(String args[]){
-        String Input="Java is great and java is fun.Programming in java is great";
+        String Input="Java is great and java is fun, Programming in java is great";
         String normalizedStr=Input.toLowerCase();
         String[] words=normalizedStr.split("\\W+");
 

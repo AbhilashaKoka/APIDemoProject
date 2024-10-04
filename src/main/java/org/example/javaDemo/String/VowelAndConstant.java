@@ -19,9 +19,10 @@ public class VowelAndConstant {
 
             }
             else if(str.charAt(i)>='a'&&str.charAt(i)<='z'){
-                  cCount++;
+                cCount++;
             }
         }
+
         System.out.println(vCount);
         System.out.println(cCount);
     }

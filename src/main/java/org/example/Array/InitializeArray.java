@@ -22,6 +22,7 @@ public class InitializeArray {
         doubles[2] = 3.3;
         doubles[3] = 4.4;
     }
+
     System.out.println("\n\n Initialized in a block");
 }
 }
