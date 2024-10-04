@@ -24,7 +24,7 @@ public class E2E_Tests{
 
 
 
-        public static String CreateUser(String UserName, String Password) {
+           public static String CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -39,17 +39,8 @@ public class E2E_Tests{
 
         }
 
-     public void getUserData(String userId, String token) {
-        RestAssured.baseURI = baseUrl;
-        RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
-                .header("Content-Type", "application/json");
-        Response res = httpRequest.get("/Account/v1/User/"+userId);
-        ResponseBody body = res.body();
-        String rbdy = body.asString();
-        System.out.println("Data from the GET API- "+rbdy);
-    }
 
-        public static String GenerateToken( String UserName, String Password) {
+           public static String GenerateToken( String UserName, String Password) {
             RestAssured.baseURI = baseUrl;
             RequestSpecification request = RestAssured.given();
             AuthorizationRequest authRequest = new AuthorizationRequest(UserName, Password);
@@ -62,7 +53,7 @@ public class E2E_Tests{
             return token;
         }
 
-        public static void AUthorizedUser(String UserName, String Password) {
+         public static void AUthorizedUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -72,7 +63,17 @@ public class E2E_Tests{
             System.out.println("Authorized User:" + response.getStatusLine());
         }
 
-         public static void BookofUser(String token, String userId) {
+    public static void getUserData(String userId, String token) {
+        RestAssured.baseURI = baseUrl;
+        RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
+                .header("Content-Type", "application/json");
+        Response res = httpRequest.get("/Account/v1/User/"+userId);
+        ResponseBody body = res.body();
+        String rbdy = body.asString();
+        System.out.println("Data from the GET API- "+rbdy);
+    }
+
+    public static void BookofUser(String token, String userId) {
              RestAssured.baseURI=baseUrl;
              RequestSpecification request=RestAssured.given();
              Response response;

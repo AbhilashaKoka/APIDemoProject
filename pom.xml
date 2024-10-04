@@ -32,6 +32,7 @@
         <maven.compiler.version>3.7.0</maven.compiler.version>
         <maven.failsafe.version>3.4.0</maven.failsafe.version>
         <json.object.version>1.1.1</json.object.version>
+        <aventstack.report.version>3.1.5</aventstack.report.version>
     </properties>
     <dependencies>
         <dependency>
@@ -180,6 +181,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${aventstack.report.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
