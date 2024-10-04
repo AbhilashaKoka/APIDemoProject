@@ -10,7 +10,7 @@
 <!--    </test>-->
 <!--    <test name="SerenityTest">-->
 <!--        <classes>-->
-<!--            <class name="demotests.serenity.demo.ElementTest"></class>-->
+<!--            <class name="serenity.demo.tests.ElementPageTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
     <test name="SeleniumTestNG">
@@ -18,4 +18,14 @@
             <class name="seleniumTestNG.TestNGTestClass"></class>
         </classes>
     </test>
+<!--    <test name="APITestNG">-->
+<!--        <classes>-->
+<!--            <class name="selenium.demo.endToendAPITest.APITestNGTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="APPIUMTestNG">-->
+<!--        <classes>-->
+<!--            <class name="Appium.Demo.TestClass"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
