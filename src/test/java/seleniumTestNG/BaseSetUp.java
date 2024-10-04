@@ -29,17 +29,21 @@ public class BaseSetUp {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         //  options.addArguments("headless");
-         driver=new ChromeDriver(options);
-//        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized");
-//        //  options.addArguments("headless");
-//        driver = new ChromeDriver(options);
+        driver=new ChromeDriver(options);
         action = new Actions(driver);
         driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
     }
+
+     private void LocalDriverSetUp()
+      {
+        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        options.addArguments("headless");
+        driver = new ChromeDriver(options);
+     }
 
 
     public void FailedScreenshot(String testMethodName) {
