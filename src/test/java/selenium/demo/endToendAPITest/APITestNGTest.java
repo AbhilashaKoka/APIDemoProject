@@ -1,7 +1,7 @@
 package selenium.demo.endToendAPITest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-public class API_TestNGTest {
+public class APITestNGTest {
 
     @Test
     public void Test1()
@@ -14,4 +14,5 @@ public class API_TestNGTest {
          Assert.assertEquals("Generate Token:HTTP/1.1 200 OK","Generate Token:HTTP/1.1 200 OK");
          Assert.assertEquals("Authorized User:HTTP/1.1 200 OK","Authorized User:HTTP/1.1 200 OK");
     }
+
 }
