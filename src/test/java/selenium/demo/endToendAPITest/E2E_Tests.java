@@ -17,18 +17,13 @@ import org.json.JSONObject;
 
 
 public class E2E_Tests{
-    static String userId;
-    static String bookId;
-     static String token;
-     static  String baseUrl="https://bookstore.toolsqa.com";
-     static String UserName="AbhilashaKoka112346";
-     static String Password="Abhi@12345334446";
 
+     static  String baseUrl="https://bookstore.toolsqa.com";
       static   JSONObject requestParam;
 
 
 
-        public static void CreateUser() {
+        public static void CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -37,12 +32,12 @@ public class E2E_Tests{
             requestParam.put("userName", UserName);
             requestParam.put("password", Password);
             response = request.body(requestParam.toString()).post("/Account/v1/User");
-            userId = response.getBody().jsonPath().getString("userID");
+            String userId = response.getBody().jsonPath().getString("userID");
             System.out.println(response.getStatusLine());
 
         }
 
-        public static void GenerateToken() {
+        public static void GenerateToken( String UserName, String Password) {
             RestAssured.baseURI = baseUrl;
             RequestSpecification request = RestAssured.given();
             Response response;
@@ -53,14 +48,14 @@ public class E2E_Tests{
 //                "  \"password\": \""+Password+"\"\n" +
 //                "}").post("/Account/v1/GenerateToken");
             response = request.body(authRequest).post("/Account/v1/GenerateToken");
-            token = JsonPath.from(response.asString()).get("token");
+          String  token = JsonPath.from(response.asString()).get("token");
             //deseralized response to Token class
             response.getBody().as(Token.class);
             System.out.println(token);
             System.out.println("Generate Token:" + response.getStatusLine());
         }
 
-        public static void AUthorizedUser() {
+        public static void AUthorizedUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -70,7 +65,7 @@ public class E2E_Tests{
             System.out.println("Authorized User:" + response.getStatusLine());
         }
 
-         public static void BookofUser() {
+         public static void BookofUser(String token, String userId) {
              RestAssured.baseURI=baseUrl;
              RequestSpecification request=RestAssured.given();
              Response response;
@@ -90,13 +85,13 @@ public class E2E_Tests{
             List<Map<String, String>> books = JsonPath.from(response.asString()).get("books");
             Books books1 = response.getBody().as(Books.class);
             Book book = books1.books.get(0);
-            bookId = books.get(0).get("isbn");
+          String   bookId = books.get(0).get("isbn");
             System.out.println(bookId);
             System.out.println("Books  Details:" + response.getStatusLine());
         }
 
 
-        public static void GetBookDetailsbyISBNNUmber() {
+        public static void GetBookDetailsbyISBNNUmber(String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
@@ -110,7 +105,7 @@ public class E2E_Tests{
             System.out.println("Books  Details:" + response.getStatusLine());
         }
 
-        public static void AddBookbyUserIDandISBN() {
+        public static void AddBookbyUserIDandISBN(String userId, String bookId, String token) {
         RestAssured.baseURI=baseUrl;
         RequestSpecification request=RestAssured.given();
         Response response;
@@ -124,7 +119,7 @@ public class E2E_Tests{
     }
 
 
-        public static void RemoveBookBybookIDandUserId() {
+        public static void RemoveBookBybookIDandUserId(String token, String userId, String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response response;
