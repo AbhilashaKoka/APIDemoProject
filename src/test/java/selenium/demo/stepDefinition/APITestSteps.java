@@ -20,12 +20,12 @@ public class APITestSteps {
     private static Response response;
     private static Token tokenResponse;
     private static Book book;
-    static String UserName="AbhilashaKoka112347";
-    static String Password="Abhi@12345334447";
+    static String UserName="Test12";
+    static String Password="Test@123";
 
     @Given("I am an authorized user")
     public void i_am_an_authorized_user() {
-        AuthorizationRequest authRequest=new AuthorizationRequest(""+UserName+"",""+Password+"");
+        AuthorizationRequest authRequest=new AuthorizationRequest(UserName,Password);
         response= EndPoints.authenticateUser(authRequest);
         tokenResponse=response.getBody().as(Token.class);
 
