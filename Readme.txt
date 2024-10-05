@@ -61,3 +61,7 @@ java -jar selenium-server-4.25.0.jar node --publish-events tcp://localhost:4442 
 java -jar selenium-server-44.25.0.jar node --publish-events tcp://localhost:4442 --subscribe-events tcp://localhost:4443
 Navigate to http://localhost:4444 and check the grid in fully functional mode.
 
+Appium Client and Server-
+Appium.jar
+Appium Server des
+
