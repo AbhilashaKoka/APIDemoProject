@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" verbose="10" configfailurepolicy="skip">
 <!--<listeners>-->
-<!--    <listener class-name="seleniumTestNG.TestStatusListener"></listener>-->
+<!--    <listener class-name="selenium.demo.TestStatusListener"></listener>-->
 <!--</listeners>-->
 <!--    <test name="SeleniumBDD">-->
 <!--        <classes>-->
@@ -15,12 +15,12 @@
 <!--    </test>-->
     <test name="SeleniumTestNG">
         <classes>
-            <class name="seleniumTestNG.TestNGTestClass"></class>
+            <class name="selenium.demo.TestNGTestClass"></class>
         </classes>
     </test>
 <!--    <test name="APITestNG">-->
 <!--        <classes>-->
-<!--            <class name="selenium.demo.endToendAPITest.APITestNGTest"></class>-->
+<!--            <class name="RestAssured.demo.endToendAPITest.APITestNGTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
 <!--    <test name="APPIUMTestNG">-->

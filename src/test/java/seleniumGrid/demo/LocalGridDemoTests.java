@@ -23,8 +23,5 @@ public class LocalGridDemoTests extends BaseTest {
             for (WebElement week : dataPickerWeeks) {
                 String day = week.findElement(By.xpath("//*[@class=\"react-datepicker__week\"]/div[@role=\"option\"]")).getAttribute("innerText");
             }
-
-
         }
-
     }
