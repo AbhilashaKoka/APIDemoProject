@@ -2,7 +2,7 @@ package org.example.Number;
 
 public  class FactorialRecursion{
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         int number=4;
         long factorial= factorial(number);
         System.out.println("Factorial of number"+factorial);

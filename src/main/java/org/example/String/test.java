@@ -18,7 +18,7 @@ class HelloWorld {
         }
 
         for(int i=0;i<equalStr.length;i++){
-            String  str1=equalStr[i].toString();
+            String  str1= equalStr[i];
             System.out.println(str1);
             for(int j=str1.length()-1;j>0;j--){
                  str1+=str1.charAt(j);

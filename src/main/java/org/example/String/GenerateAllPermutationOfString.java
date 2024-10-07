@@ -2,7 +2,7 @@ package org.example.String;
 import java.util.Scanner;
 
 public class GenerateAllPermutationOfString {
-    public static void main(String args[]){
+    public static void main(String[] args){
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter any string:");
         String input=scanner.nextLine();

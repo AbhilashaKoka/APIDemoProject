@@ -3,7 +3,7 @@ package org.example.javaDemo.Arrays;
 import java.sql.SQLOutput;
 
 public class LeftRotateElement {
-    public static void main(String args[]){
+    public static void main(String[] args){
         int[] arr=new int[]{1,2,3,4,5};
         int n=3;
         System.out.println("Original Array:");

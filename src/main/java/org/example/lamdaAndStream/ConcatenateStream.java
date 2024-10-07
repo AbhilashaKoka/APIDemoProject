@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ConcatenateStream {
-    public static void main(String args[]){
+    public static void main(String[] args){
         Stream<String> stream1= Stream.of("Java","Python","C++");
         Stream<String> stream2= Stream.of("Javascript","TypeScript","Kotlin");
 

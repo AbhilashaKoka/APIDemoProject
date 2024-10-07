@@ -1,5 +1,5 @@
-package RestAssured.demo.endToendAPITest;
-import RestAssured.demo.model.Response.*;
+package restassured.demo;
+import bddCucumber.demo.model.Response.*;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
@@ -7,10 +7,10 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
-import RestAssured.demo.model.Request.AddBookRequest;
-import RestAssured.demo.model.Request.AuthorizationRequest;
-import RestAssured.demo.model.Request.ISBN;
-import RestAssured.demo.model.Request.RemoveBookRequest;
+import bddCucumber.demo.model.Request.AddBookRequest;
+import bddCucumber.demo.model.Request.AuthorizationRequest;
+import bddCucumber.demo.model.Request.ISBN;
+import bddCucumber.demo.model.Request.RemoveBookRequest;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -98,7 +98,7 @@ public class E2E_Tests{
             public  Book[] GetBookDetailsbyISBNNUmber(String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
-            Response response = request.get("https://demoqa.com/BookStore/v1/Book?ISBN=" + bookId + "");
+            Response response = request.get("https://demoqa.com/BookStore/v1/Book?ISBN=" + bookId);
             System.out.println("Books Details:" + response.getStatusLine());
             List<Map<String, String>> book1 = JsonPath.from(response.asString()).get("books");
             Book[] booksdetails = response.jsonPath().getObject("book", Book[].class);

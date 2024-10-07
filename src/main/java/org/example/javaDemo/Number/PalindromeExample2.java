@@ -3,7 +3,7 @@ package org.example.javaDemo.Number;
 import java.util.Scanner;
 
 public class PalindromeExample2 {
-    public static void main(String args[]){
+    public static void main(String[] args){
         String original, reverse=" ";
 
         Scanner in=new Scanner(System.in);

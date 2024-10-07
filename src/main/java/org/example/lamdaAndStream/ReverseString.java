@@ -3,7 +3,7 @@ package org.example.lamdaAndStream;
 import java.sql.SQLOutput;
 
 public class ReverseString {
-    public static void main(String args[]){
+    public static void main(String[] args){
         String originalString="Hello";
         String reverseString=new StringBuilder(originalString).reverse().toString();
 

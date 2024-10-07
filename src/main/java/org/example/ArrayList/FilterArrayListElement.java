@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilterArrayListElement {
-    public static void main(String args[]){
+    public static void main(String[] args){
         ArrayList<Integer> numbers=new ArrayList<>();
         numbers.add(1);
         numbers.add(2);

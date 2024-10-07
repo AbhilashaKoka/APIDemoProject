@@ -1,4 +1,4 @@
-package RestAssured.demo.model.Response;
+package bddCucumber.demo.model.Response;
 
 public class JSONFailureResponse {
   public  String FaultId;

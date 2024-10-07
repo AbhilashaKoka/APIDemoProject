@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class DuplicateCharacterFinder {
-    public static void main(String args[]){
+    public static void main(String[] args){
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the String:");
         String str=scanner.nextLine();

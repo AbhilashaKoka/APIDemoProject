@@ -2,7 +2,7 @@ package org.example.Array;
 import java.util.Arrays;
 
 public class SortArrayInAscendingOrder {
-    public static void main(String args[]){
+    public static void main(String[] args){
         int[] numbers={5,1,4,2,3};
 
         System.out.println("Original array:");

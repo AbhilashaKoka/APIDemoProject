@@ -2,7 +2,7 @@ package org.example.javaDemo.Number;
 
 public class FactorialExample{
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         int i, fact= 1;
         int number= 4;

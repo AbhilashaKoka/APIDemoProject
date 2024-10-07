@@ -1,7 +1,7 @@
-package RestAssured.demo.endToendAPITest;
-import RestAssured.demo.model.Request.AddBookRequest;
-import RestAssured.demo.model.Request.AuthorizationRequest;
-import RestAssured.demo.model.Request.RemoveBookRequest;
+package bddCucumber.demo.endToendAPITest;
+import bddCucumber.demo.model.Request.AddBookRequest;
+import bddCucumber.demo.model.Request.AuthorizationRequest;
+import bddCucumber.demo.model.Request.RemoveBookRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;

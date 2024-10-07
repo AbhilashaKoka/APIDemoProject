@@ -1,6 +1,7 @@
-package RestAssured.demo.endToendAPITest;
+package restassured.demo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.util.List;
 import java.util.Map;
 

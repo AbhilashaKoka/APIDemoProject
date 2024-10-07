@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FindFirstRepeatedCharacter {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String input = "javastream";
         Character result = input.chars()
                 .mapToObj(c -> (char) c)

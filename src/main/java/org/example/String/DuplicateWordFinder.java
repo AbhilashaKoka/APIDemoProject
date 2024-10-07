@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DuplicateWordFinder{
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String sentence = "Java id a programming language and java is also a platform";
         System.out.println("Duplicate words in the string is:");
         findDuplicateWords(sentence);

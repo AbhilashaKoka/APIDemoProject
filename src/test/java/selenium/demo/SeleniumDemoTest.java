@@ -148,7 +148,7 @@ public class SeleniumDemoTest extends BaseSetUp {
 
 
         WebElement windowButton=driver.findElement(By.xpath("//*[@id=\"windowButton\"]"));
-        String parentWindow3= driver.getWindowHandle();;
+        String parentWindow3= driver.getWindowHandle();
         windowButton.click();
         driver.switchTo().newWindow(WindowType.WINDOW);
         System.out.println("Child Window");

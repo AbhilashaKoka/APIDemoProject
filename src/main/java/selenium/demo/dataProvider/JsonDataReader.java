@@ -31,8 +31,8 @@ private final String TextBoxFilePath;//configs//TextBoxData.json";
         }
     }
 
-    private List<TextBoxDetails>  textBoxDetails;
-private List<PracticeFormsDetails> practiceFormsDetails;
+    private final List<TextBoxDetails>  textBoxDetails;
+private final List<PracticeFormsDetails> practiceFormsDetails;
 
 
     public JsonDataReader() {

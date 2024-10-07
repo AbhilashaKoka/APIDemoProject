@@ -2,7 +2,7 @@ package org.example.javaDemo.Arrays;
 
 public class RemoveDuplicateElements{
     public static void main(String[] args) {
-        int arr[]={10,20,30,30, 30,40,40};
+        int[] arr ={10,20,30,30, 30,40,40};
         int length=arr.length;
 
         length=removeDuplicate(arr, length);
@@ -12,7 +12,7 @@ public class RemoveDuplicateElements{
         }
 
     }
-    static int removeDuplicate(int arr[], int n){
+    static int removeDuplicate(int[] arr, int n){
         if(n==0||n==1){
             return n ;
         }
@@ -28,9 +28,7 @@ public class RemoveDuplicateElements{
 
         temp[j++]=arr[n-1];
 
-        for(int i=0;i<j;i++){
-            arr[i]=temp[i];
-        }
+        if (j >= 0) System.arraycopy(temp, 0, arr, 0, j);
         return j;
     }
 }

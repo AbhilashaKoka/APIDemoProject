@@ -4,7 +4,7 @@ public class FibonnaciSeries{
 
     static int n1=0, n2=1, n3;
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         int count=10;
         System.out.println(n1+"  "+n2);

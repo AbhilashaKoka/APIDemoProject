@@ -13,7 +13,7 @@ public class MainMethodDemo
     }
 
 
-    public MainMethodDemo(String arg[]){
+    public MainMethodDemo(String[] arg){
 
     }
 

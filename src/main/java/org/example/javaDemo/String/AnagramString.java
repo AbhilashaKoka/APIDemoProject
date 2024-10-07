@@ -20,7 +20,7 @@ public class AnagramString{
             Arrays.sort(string1);
             Arrays.sort(string2);
 
-            if(Arrays.equals(string1, string2)==true){
+            if(Arrays.equals(string1, string2)){
                 System.out.println("Both the string are anagram");
             }
             else

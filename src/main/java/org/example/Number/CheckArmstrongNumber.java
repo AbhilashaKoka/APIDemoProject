@@ -1,7 +1,7 @@
 package org.example.Number;
 //sum of its own digits, each raised to the power of the number of digits.
 public class CheckArmstrongNumber {
-    public static void main(String args[]){
+    public static void main(String[] args){
         int number=370;
         int originalNumber=number;
         int sum=0;

@@ -1,8 +1,8 @@
 package org.example.javaDemo.Arrays;
 
 public class FindLargestAndSmallestNumberInGivenArray {
-    public static void main(String args[]){
-        int a[]={1,2,5,6,3,2};
+    public static void main(String[] args){
+        int[] a ={1,2,5,6,3,2};
 
         System.out.println("Third Largest:"+getThirdLargest(a,6));
         System.out.println("Second Largest:"+getSecondLargest(a,6));

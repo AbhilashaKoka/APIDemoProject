@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NonRepeatedCharacter {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String text = "Java Guides";
         char result = findNonRepeatedCharater(text);
         if (result != '\0'){

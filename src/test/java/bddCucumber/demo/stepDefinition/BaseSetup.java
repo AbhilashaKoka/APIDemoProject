@@ -1,4 +1,4 @@
-package CucumberBDD.demo.stepDefinition;
+package bddCucumber.demo.stepDefinition;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -24,7 +24,6 @@ public class BaseSetup {
         System.out.println(scenario.getName());
         driver = testContext.getDriverManager().getDriver();
          driver.get("https://demoqa.com");
-
     }
 
 

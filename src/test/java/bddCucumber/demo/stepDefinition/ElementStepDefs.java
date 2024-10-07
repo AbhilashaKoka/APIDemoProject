@@ -1,4 +1,4 @@
-package CucumberBDD.demo.stepDefinition;
+package bddCucumber.demo.stepDefinition;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

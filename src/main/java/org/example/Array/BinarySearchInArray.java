@@ -1,7 +1,7 @@
 package org.example.Array;
 
 public class BinarySearchInArray {
-    public  static void main(String args[]){
+    public  static void main(String[] args){
         int[] sortedArray={1,3,4,6,8,9,11,13,15,17};
         int target=11;
         int resultIndex=binarySearch(sortedArray, target);

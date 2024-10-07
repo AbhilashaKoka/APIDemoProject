@@ -10,10 +10,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import java.io.IOException;
 import java.util.Date;
-
 import java.io.File;
 
 public class BaseSetUp {
@@ -27,9 +25,7 @@ public class BaseSetUp {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        //  options.addArguments("headless");
-        driver=new ChromeDriver(options);
-        action = new Actions(driver);
+         driver=new ChromeDriver(options);
         driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");

@@ -2,7 +2,7 @@ package org.example.Number;
 
 public class GCDOfTwoNumbers {
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         int number1=48;
         int number2=18;
         System.out.println("The GCD of"+number1+"and"+number2+" is:"+gcd(number1, number2));

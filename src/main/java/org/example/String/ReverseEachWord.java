@@ -24,7 +24,7 @@ public class ReverseEachWord {
         StringBuilder result=new StringBuilder();
 
         for(String word:words){
-            result.append(new StringBuilder(word).reverse().toString()).append(" ");
+            result.append(new StringBuilder(word).reverse()).append(" ");
         }
 
         return result.toString().trim();

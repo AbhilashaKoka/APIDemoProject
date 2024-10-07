@@ -1,4 +1,4 @@
-package RestAssured.demo.model.Request;
+package bddCucumber.demo.model.Request;
 
 public class AuthorizationRequest {
     private String userName;

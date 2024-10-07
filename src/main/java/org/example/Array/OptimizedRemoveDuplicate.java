@@ -1,7 +1,7 @@
 package org.example.Array;
 
 public class OptimizedRemoveDuplicate {
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         int[] originalArray={1,2,2,3,4,4,5};
         int uniqueElements=originalArray.length;

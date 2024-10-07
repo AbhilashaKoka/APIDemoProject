@@ -1,4 +1,4 @@
-package RestAssured.demo.endToendAPITest;
+package bddCucumber.demo.endToendAPITest;
 
 public class Route {
     public static final String BOOKSTORE="/BookStore";

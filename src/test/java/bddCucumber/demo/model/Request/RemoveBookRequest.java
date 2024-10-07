@@ -1,4 +1,4 @@
-package RestAssured.demo.model.Request;
+package bddCucumber.demo.model.Request;
 
 public class RemoveBookRequest {
         private String isbn;

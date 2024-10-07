@@ -2,7 +2,7 @@ package org.example.javaDemo.Number;
 import java.util.Scanner;
 
 public class ArmstrongNumber {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int num;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the limit");
@@ -34,10 +34,7 @@ public class ArmstrongNumber {
             temp = temp / 10;
         }
 
-   if(n==sum)
-       return true;
-   else
-       return  false;
+     return n == sum;
     }
 }
 

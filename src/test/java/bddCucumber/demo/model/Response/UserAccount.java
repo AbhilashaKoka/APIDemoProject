@@ -1,4 +1,4 @@
-package RestAssured.demo.model.Response;
+package bddCucumber.demo.model.Response;
 
 import java.util.List;
 

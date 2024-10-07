@@ -2,7 +2,7 @@ package org.example.Array;
 
 public class PushAllZeroToLeft {
     public static void main(String[] args) {
-        int arr[]={1,9,0,3};
+        int[] arr ={1,9,0,3};
         int len=arr.length;
         int count=0;
 

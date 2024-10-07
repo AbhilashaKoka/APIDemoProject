@@ -1,11 +1,11 @@
-package CucumberBDD.demo.runner;
+package bddCucumber.demo.runner;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features ="src/test/resource/Features",
-        glue = {"CucumberBDD/demo"},
+        glue = {"bddCucumber/demo"},
         tags="not @skip_scenario",
         plugin={"pretty","json:target/cucumber.json",
                          "rerun:target/rerun.txt"},

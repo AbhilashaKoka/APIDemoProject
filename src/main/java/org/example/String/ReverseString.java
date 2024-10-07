@@ -1,7 +1,7 @@
 package org.example.String;
 
 public class ReverseString {
-    public static void main(String args[]){
+    public static void main(String[] args){
         String originalString ="Hello";
         String reverseString=new StringBuilder(originalString).reverse().toString();
         System.out.println("Original String:"+originalString);

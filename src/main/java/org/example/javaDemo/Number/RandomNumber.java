@@ -1,7 +1,7 @@
 package org.example.javaDemo.Number;
 
 public class RandomNumber {
-    public static void main(String args[]){
+    public static void main(String[] args){
         int min=200;
         int max=400;
         System.out.println("Random value of type double between"+min+"to"+max+":");

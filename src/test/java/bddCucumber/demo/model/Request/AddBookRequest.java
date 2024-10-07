@@ -1,4 +1,4 @@
-package RestAssured.demo.model.Request;
+package bddCucumber.demo.model.Request;
 
 import java.util.ArrayList;
 import java.util.List;

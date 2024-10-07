@@ -11,7 +11,7 @@ public class LocalGridDemoTests extends BaseTest {
     @Test
     public void test1() {
           getDriver().get("https://demoqa.com");
-          JavascriptExecutor   js = (JavascriptExecutor) getDriver();
+          JavascriptExecutor   js = getDriver();
            js.executeScript("window.scrollBy(0,300)");
             WebElement Widgets_Frames=getDriver().findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
             Widgets_Frames.click();

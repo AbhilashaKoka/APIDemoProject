@@ -2,7 +2,7 @@ package org.example.Number;
 
 public class SumOfNaturalNumber{
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         int n=100;
         int sumWithLoop=0;
 

@@ -14,9 +14,6 @@ public class AddCharacterToTheString {
 
         System.out.println("Using Concate method:"+concatString);
 
-        StringBuilder sb=new StringBuilder((baseString));
-        sb.append(",World!");
-
-        System.out.println("Using StringBuilder:"+sb.toString());
+        System.out.println("Using StringBuilder:" + (baseString) + ",World!");
     }
 }

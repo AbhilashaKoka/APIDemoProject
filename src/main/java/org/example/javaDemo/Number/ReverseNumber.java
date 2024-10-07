@@ -2,7 +2,7 @@ package org.example.javaDemo.Number;
 
 public class ReverseNumber {
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         int number=987654, reverse=0;
         while(number!=0){
             int reminder=number%10;

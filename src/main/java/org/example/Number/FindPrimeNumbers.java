@@ -1,7 +1,7 @@
 package org.example.Number;
 
 public class FindPrimeNumbers {
-    public static void main(String args[]){
+    public static void main(String[] args){
         int limit=50;
         System.out.println("Prime Numbers up to "+ limit +":");
 
