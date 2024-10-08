@@ -7,7 +7,7 @@ public class CopyArray {
         int[] arr1 = new int[]{1, 2, 3, 4, 5};
         int[] arr2 = new int[arr1.length];
 
-        System.arraycopy(arr1, 0, arr2, 0, arr1.length);
+          System.arraycopy(arr1, 0, arr2, 0, arr1.length);
 
             System.out.println("Element of the original array:");
                for (int j = 0; j < arr1.length; j++) {

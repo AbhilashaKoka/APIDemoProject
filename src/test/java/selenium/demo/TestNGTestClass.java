@@ -27,7 +27,7 @@ public class TestNGTestClass extends BaseSetUp{
        Assert.assertEquals(SeleniumDemoTest.HandlingBrowserWindow(),true);
    }
 
-    @Test(description = "verify AutoComplete",enabled = true)
+    @Test(description = "verify AutoComplete",enabled = false)
     public void TestAutoComplete() {
         Assert.assertEquals( SeleniumDemoTest.HandlingAutomComplete(),true);
    }

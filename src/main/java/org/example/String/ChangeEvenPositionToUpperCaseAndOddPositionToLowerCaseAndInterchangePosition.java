@@ -5,7 +5,6 @@ public class ChangeEvenPositionToUpperCaseAndOddPositionToLowerCaseAndInterchang
     //OP:IsAtUkAmIr
     public static void main(String[] args){
         String str="sitakumari";
-
         char[] charArr=str.toCharArray();
         char[] newcharArr=new char[charArr.length];
          for(int i=0;i<charArr.length;i=i+2)

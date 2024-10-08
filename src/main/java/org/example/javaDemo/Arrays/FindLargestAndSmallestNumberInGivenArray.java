@@ -4,17 +4,17 @@ public class FindLargestAndSmallestNumberInGivenArray {
     public static void main(String[] args){
         int[] a ={1,2,5,6,3,2};
 
-        System.out.println("Third Largest:"+getThirdLargest(a,6));
-        System.out.println("Second Largest:"+getSecondLargest(a,6));
-        System.out.println("First Largest:"+getFirstLargest(a,6));
-        System.out.println("First smallest:"+getFirstsmallest(a,6));
-        System.out.println("Second smallest:"+getSecondsmallest(a,6));
+        System.out.println("Third Largest:"+getThirdLargest(a));
+        System.out.println("Second Largest:"+getSecondLargest(a));
+        System.out.println("First Largest:"+getFirstLargest(a));
+        System.out.println("First smallest:"+getFirstsmallest(a));
+        System.out.println("Second smallest:"+getSecondsmallest(a));
     }
 
-    static int getThirdLargest(int[] a, int total){
+    static int getThirdLargest(int[] a){
       int temp;
-        for(int i=0;i<total;i++){
-            for(int j=i+1;j<total;j++){
+        for(int i=0;i<a.length;i++){
+            for(int j=i+1;j<a.length;j++){
                 if(a[i]>a[j])
                 {
                     temp=a[i];
@@ -23,13 +23,13 @@ public class FindLargestAndSmallestNumberInGivenArray {
                 }
             }
         }
-        return a[total-3];
+        return a[a.length-3];
     }
 
-    static int getSecondLargest(int[] a, int total){
+    static int getSecondLargest(int[] a){
         int temp;
-        for(int i=0;i<total;i++){
-            for(int j=i+1;j<total;j++){
+        for(int i=0;i<a.length;i++){
+            for(int j=i+1;j<a.length;j++){
                 if(a[i]>a[j])
                 {
                     temp=a[i];
@@ -38,14 +38,14 @@ public class FindLargestAndSmallestNumberInGivenArray {
                 }
             }
         }
-        return a[total-2];
+        return a[a.length-2];
     }
 
 
-    static int getFirstLargest(int[] a, int total){
+    static int getFirstLargest(int[] a){
         int temp;
-        for(int i=0;i<total;i++){
-            for(int j=i+1;j<total;j++){
+        for(int i=0;i<a.length;i++){
+            for(int j=i+1;j<a.length;j++){
                 if(a[i]>a[j])
                 {
                     temp=a[i];
@@ -54,13 +54,13 @@ public class FindLargestAndSmallestNumberInGivenArray {
                 }
             }
         }
-        return a[total-1];
+        return a[a.length-1];
     }
 
-    static int getFirstsmallest(int[] a, int total){
+    static int getFirstsmallest(int[] a){
         int temp;
-        for(int i=0;i<total;i++){
-            for(int j=i+1;j<total;j++){
+        for(int i=0;i<a.length;i++){
+            for(int j=i+1;j<a.length;j++){
                 if(a[i]>a[j])
                 {
                     temp=a[i];
@@ -73,10 +73,10 @@ public class FindLargestAndSmallestNumberInGivenArray {
     }
 
 
-    static int getSecondsmallest(int[] a, int total){
+    static int getSecondsmallest(int[] a){
         int temp;
-        for(int i=0;i<total;i++){
-            for(int j=i+1;j<total;j++){
+        for(int i=0;i<a.length;i++){
+            for(int j=i+1;j<a.length;j++){
                 if(a[i]>a[j])
                 {
                     temp=a[i];

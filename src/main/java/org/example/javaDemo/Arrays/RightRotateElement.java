@@ -19,7 +19,7 @@ public class RightRotateElement {
             for(j=arr.length-1;j>0;j--){
                 arr[j]=arr[j-1];
             }
-            arr[0]=last;
+            arr[j]=last;
         }
         System.out.println();
 
