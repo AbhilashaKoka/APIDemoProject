@@ -18,7 +18,8 @@ public class OperationInString {
     }
 
     public static void main(String args[]) {
-        OperationInString op=new OperationInString();
+
+        OperationInString op= new OperationInString();
         op=new OperationInString();
         op.ConcatTwoString();
         op. ContainString();
@@ -26,8 +27,7 @@ public class OperationInString {
         op.CheckStringsAreEqual();
     }
 
-     public  void ComparingTwoString()
-       {
+     public  void ComparingTwoString(){
         System.out.println(s5.compareTo(s6));//0 because both are equal
         System.out.println(s5.compareTo(s7));//-5 because "h" is 5 times lower than "m"
         System.out.println(s5.compareTo(s8));//-1 because "l" is 1 times lower than "m"
@@ -35,8 +35,7 @@ public class OperationInString {
       }
 
 
-        public  void ConcatTwoString()
-        {
+        public  void ConcatTwoString(){
         String str4 = str1.concat(" ").concat(str2).concat(" ").concat(str3);
         System.out.println(str4);
         String str5 = str1.concat("!!!");
@@ -47,16 +46,13 @@ public class OperationInString {
         System.out.println(s);
      }
 
-    public  void ContainString()
-       {
+    public void ContainString() {
             boolean isContains = str4.contains("Javatpoint");
             System.out.println(isContains);
             System.out.println(str4.contains("javatpoint")); // false
         }
 
-
-        public   void EndWithCharacter()
-        {
+        public void EndWithCharacter(){
         System.out.println(s10.endsWith("t"));
         System.out.println(s10.endsWith("point"));
             if(str.endsWith(".com")) {
@@ -65,8 +61,7 @@ public class OperationInString {
         }
 
 
-public  void CheckStringsAreEqual()
-{
+public  void CheckStringsAreEqual(){
     String s11="javatpoint";
     String s12="javatpoint";
     String s13="JAVATPOINT";
@@ -74,9 +69,8 @@ public  void CheckStringsAreEqual()
     System.out.println(s11.equals(s12));//true because content and case is same
     System.out.println(s11.equals(s13));//false because case is not same
     System.out.println(s11.equals(s14));//false because content is not same
-
-
-}}
+}
+}
 
 
 

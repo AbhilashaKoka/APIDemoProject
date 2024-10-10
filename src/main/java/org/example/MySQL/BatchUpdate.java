@@ -17,7 +17,7 @@ public class BatchUpdate {
                 PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_PRODUCT_SQL))
         {
             Object[][] productUpdates={
-                    {new BigDecimal("800000"),"Laptop" },
+                    { new BigDecimal("800000"),"Laptop" },
                     { new BigDecimal("35000"), "Smartphone"},
                     { new BigDecimal("55000"),"Tablet"},
                     { new BigDecimal("22000"),"Smartwatch"},

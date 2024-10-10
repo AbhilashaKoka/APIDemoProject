@@ -68,7 +68,6 @@ public class SeleniumDemoTest extends BaseSetUp {
         alertButton.click();
 
         driver.switchTo().alert().getText();
-
         driver.switchTo().alert().accept();
 
         WebElement timeralertbutton=driver.findElement(By.xpath("//button[@id=\"timerAlertButton\"]"));

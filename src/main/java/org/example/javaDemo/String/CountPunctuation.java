@@ -5,8 +5,7 @@ public class CountPunctuation {
         int count=0;
         String str="He Said, 'The mail man loves you,'I heard it with my own ears";
         for(int i=0;i<str.length();i++){
-            if(str.charAt(i)=='!'||
-            str.charAt(i)==','||str.charAt(i)==';')
+            if(str.charAt(i)=='!'||  str.charAt(i)==','||str.charAt(i)==';')
             {
                 count++;
             }

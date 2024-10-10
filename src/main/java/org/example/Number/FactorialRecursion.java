@@ -13,7 +13,8 @@ public  class FactorialRecursion{
         {
             return 1;
         }
-        else{
+        else
+           {
               return n*factorial(n-1);
             }
        }

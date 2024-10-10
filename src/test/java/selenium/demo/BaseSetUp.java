@@ -25,10 +25,10 @@ public class BaseSetUp {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-         driver=new ChromeDriver(options);
-        driver.get("https://demoqa.com");
-        js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,300)");
+          driver=new ChromeDriver(options);
+          driver.get("https://demoqa.com");
+         js = (JavascriptExecutor) driver;
+         js.executeScript("window.scrollBy(0,300)");
     }
 
      private void LocalDriverSetUp()
@@ -59,8 +59,6 @@ public class BaseSetUp {
     public static void shutDown() {
         driver.quit();
     }
-
-
     public void Scrollwindow() {
     js =(JavascriptExecutor)driver;
     js.executeScript("window.scrollBy(0,300)");

@@ -2,6 +2,7 @@ package restassured.demo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -44,8 +45,7 @@ public class APITestNGTest {
        }
 
        @Test
-    public void VerifyBooksOfUser()
-    {
+    public void VerifyBooksOfUser() throws IOException {
         E2E_Tests e2ETests=new E2E_Tests();
         List<Map<String, String>> books=e2ETests.BookofUser(token,userId);
         String bookID=e2ETests.GetBooksDetails();

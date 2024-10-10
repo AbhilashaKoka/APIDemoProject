@@ -52,13 +52,11 @@ public class HomePage {
 
 
     public boolean SubmitDetails(TextBoxDetails textBoxDetails) {
-
        Boolean bol=false;
         UserName.sendKeys(textBoxDetails.getUsername());
         Email.sendKeys(textBoxDetails.getEmail());
         CurrentAddr.sendKeys(textBoxDetails.getCurrentaddress());
         PermanentAddr.sendKeys(textBoxDetails.getPermanentaddress());
-
         SubmitButton.submit();
         bol=true;
         return bol;

@@ -20,7 +20,6 @@ public class DBReader
             if(connection !=null){
                 System.out.println("Connected to the database!!!!");
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

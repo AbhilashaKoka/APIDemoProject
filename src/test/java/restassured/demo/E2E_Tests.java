@@ -12,7 +12,11 @@ import bddCucumber.demo.model.Request.AuthorizationRequest;
 import bddCucumber.demo.model.Request.ISBN;
 import bddCucumber.demo.model.Request.RemoveBookRequest;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import io.restassured.path.json.JsonPath;
@@ -69,8 +73,9 @@ public class E2E_Tests{
 
     }
 
-            public  List<Map<String, String>> BookofUser(String token, String userId) {
-              RestAssured.baseURI=baseUrl;
+            public  List<Map<String, String>> BookofUser(String token, String userId) throws IOException {
+                String jsonPayload = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
+                RestAssured.baseURI=baseUrl;
              RequestSpecification request=RestAssured.given();
 
              request.header("Authorization", "Bearer " + token)
@@ -80,7 +85,9 @@ public class E2E_Tests{
 
          }
 
-            public  String GetBooksDetails() {
+            public  String GetBooksDetails() throws IOException {
+
+
              RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             Response  response = request.get("/BookStore/v1/Books");
@@ -111,11 +118,12 @@ public class E2E_Tests{
             return booksdetails;
         }
 
-        public  void AddBookbyUserIDandISBN(String userId, String bookId, String token) {
-        RestAssured.baseURI=baseUrl;
+        public  void AddBookbyUserIDandISBN(String userId, String bookId, String token) throws IOException {
+            String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
+                RestAssured.baseURI=baseUrl;
         RequestSpecification request=RestAssured.given();
         request.header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
-        AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
+     //   AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
             Response response = request.body(addBookRequest).post("/BookStore/v1/Books");
         System.out.println(" Add Books By User ID:" + response.getStatusLine());
         UserAccount userAccount = response.getBody().as(UserAccount.class);
@@ -170,7 +178,7 @@ public class E2E_Tests{
     }
 
 
-    public   void UserRegistrationSuccessAndFailure() {
+    public  void UserRegistrationSuccessAndFailure() {
         RestAssured.baseURI = "https://demoqa.com";
         RequestSpecification request = RestAssured.given();
         org.json.simple.JSONObject requestParams = new org.json.simple.JSONObject();
@@ -179,7 +187,18 @@ public class E2E_Tests{
         request.body(requestParams.toJSONString());
         Response  response = request.post("/Account/v1/User");
         ResponseBody body = response.getBody();
-        System.out.println(response.body().asString());
+        String jsonReponse=response.body().asString();
+        try{
+            FileWriter file=new FileWriter("src/test/resource/driver/outputfile.json");
+            {
+           file.write(jsonReponse);
+    file.flush();
+
+        }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         if (response.statusCode() == 200) {
             JSONFailureResponse responseBody = body.as(JSONFailureResponse.class);
             Assert.assertEquals("User already exists", responseBody.FaultId);

@@ -4,7 +4,6 @@ public class FindPrimeNumbers {
     public static void main(String[] args){
         int limit=50;
         System.out.println("Prime Numbers up to "+ limit +":");
-
         for(int number=2; number<=limit; number++)
         {
             boolean isPrime=true;
@@ -14,7 +13,6 @@ public class FindPrimeNumbers {
                      break;
                 }
             }
-
             if(isPrime)
             {
                 System.out.println(number+" ");
