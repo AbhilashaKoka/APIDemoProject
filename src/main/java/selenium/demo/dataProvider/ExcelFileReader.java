@@ -48,4 +48,17 @@ public class ExcelFileReader {
     }
 
 
+    public static void main(String[] args) {
+        // Read data from Excel
+        List<String[]> data = ExcelFileReader.readExcel("path/to/input.xlsx");
+       // Use data in your Selenium test
+        for (String[] rowData : data) {
+            // Example: Use rowData for login
+            System.out.println("Username: " + rowData[0] + ", Password: " + rowData[1]);
+        }
+        // Write data to Excel
+        List<String[]> outputData = new ArrayList<>();
+        outputData.add(new String[]{"Result", "Pass"});
+        ExcelFileReader.writeExcel("path/to/output.xlsx", outputData);
+    }
 }
