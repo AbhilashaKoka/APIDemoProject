@@ -7,11 +7,8 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
-import bddCucumber.demo.model.Request.AddBookRequest;
 import bddCucumber.demo.model.Request.AuthorizationRequest;
-import bddCucumber.demo.model.Request.ISBN;
 import bddCucumber.demo.model.Request.RemoveBookRequest;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -23,74 +20,60 @@ import io.restassured.path.json.JsonPath;
 import org.json.JSONObject;
 
 
-public class E2E_Tests{
+public class E2E_Tests {
          static  String baseUrl="https://bookstore.toolsqa.com";
          static  JSONObject requestParam;
 
 
 
-            public  String CreateUser(String UserName, String Password) {
+            public  Response CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             request.header("Content-Type", "application/json");
             requestParam = new JSONObject();
             requestParam.put("userName", UserName);
             requestParam.put("password", Password);
-            Response response = request.body(requestParam.toString()).post("/Account/v1/User");
-            String userId = response.getBody().jsonPath().getString("userID");
-            System.out.println(response.getStatusLine());
-            return userId;
+            return request.body(requestParam.toString()).post("/Account/v1/User");
           }
 
 
-            public  String GenerateToken( String UserName, String Password) {
+            public Response GenerateToken( String UserName, String Password) {
             RestAssured.baseURI = baseUrl;
             RequestSpecification request = RestAssured.given();
             AuthorizationRequest authRequest = new AuthorizationRequest(UserName, Password);
             request.header("Content-Type", "application/json");
-            Response response = request.body(authRequest).post("/Account/v1/GenerateToken");
-            String  token = JsonPath.from(response.asString()).get("token");
-            response.getBody().as(Token.class);
-            return token;
+            return request.body(authRequest).post("/Account/v1/GenerateToken");
          }
 
-           public  void AuthorizedUser(String UserName, String Password) {
+           public  Response AuthorizedUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
-              AuthorizationRequest UserAuth = new AuthorizationRequest(UserName, Password);
+            AuthorizationRequest UserAuth = new AuthorizationRequest(UserName, Password);
             request.header("Content-Type", "application/json");
-               Response  response = request.body(UserAuth).post("/Account/v1/Authorized");
-            System.out.println("Authorized User:" + response.getStatusLine());
+            return request.body(UserAuth).post("/Account/v1/Authorized");
          }
 
-          public  String  getUserData(String userId, String token) {
+          public  Response  getUserData(String userId, String token) {
          RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
-              Response  response = httpRequest.get("/Account/v1/User/"+userId);
-        ResponseBody body = response.body();
-        return body.asString();
+              return httpRequest.get("/Account/v1/User/"+userId);
+
 
     }
+    public  Response BookofUser(String token, String userId) throws IOException {
+     String jsonPayload = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
+     RestAssured.baseURI=baseUrl;
+     RequestSpecification request=RestAssured.given();
+     request.header("Authorization", "Bearer " + token)
+            .header("Content-Type", "application/json");
+      return request.get("/Account/v1/User/" + userId);
+      }
 
-            public  List<Map<String, String>> BookofUser(String token, String userId) throws IOException {
-                String jsonPayload = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
-                RestAssured.baseURI=baseUrl;
-             RequestSpecification request=RestAssured.given();
-
-             request.header("Authorization", "Bearer " + token)
-                     .header("Content-Type", "application/json");
-                Response  response = request.get("/Account/v1/User/" + userId);
-             return JsonPath.from(response.asString()).get("books");
-
-         }
-
-            public  String GetBooksDetails() throws IOException {
-
-
-             RestAssured.baseURI=baseUrl;
-            RequestSpecification request=RestAssured.given();
-            Response  response = request.get("/BookStore/v1/Books");
+    public  String GetBooksDetails() throws IOException {
+     RestAssured.baseURI=baseUrl;
+     RequestSpecification request=RestAssured.given();
+      Response  response = request.get("/BookStore/v1/Books");
             System.out.println("Books Details:" + response.getStatusLine());
             List<Map<String, String>> books = JsonPath.from(response.asString()).get("books");
             Books books1 = response.getBody().as(Books.class);

@@ -1,4 +1,8 @@
 package restassured.demo;
+import bddCucumber.demo.model.Response.Token;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -6,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class APITestNGTest {
+public class APITestNGTest{
     static String username="Test45";
     static String password="Test@125";
     static  String userId;
@@ -17,39 +21,49 @@ public class APITestNGTest {
     public void VerifyCreateUser()
     {
           E2E_Tests e2ETests=new E2E_Tests();
-          userId= e2ETests.CreateUser(username,password);
-          Assert.assertEquals("HTTP/1.1 201 Created","HTTP/1.1 201 Created");
+          Response response=  e2ETests.CreateUser(username,password);
+          //String userId = response.getBody().jsonPath().getString("userID");
+          String statusLine=response.getStatusLine();
+          Assert.assertEquals(statusLine,"HTTP/1.1 201 Created");
 
     }
 
     @Test
     public void VerifyUserAuthorized(){
         E2E_Tests e2ETests=new E2E_Tests();
-        e2ETests.AuthorizedUser(username,password);
-        Assert.assertEquals("Authorized User:HTTP/1.1 200 OK","Authorized User:HTTP/1.1 200 OK");
+       Response response= e2ETests.AuthorizedUser(username,password);
+       String statusLine=response.getStatusLine();
+        Assert.assertEquals(statusLine,"Authorized User:HTTP/1.1 200 OK");
     }
 
      @Test
        public void VerifyGenerateToken(){
-        E2E_Tests e2ETests=new E2E_Tests();
-        token=e2ETests.GenerateToken(username,password);
-        Assert.assertEquals("Generate Token:HTTP/1.1 200 OK","Generate Token:HTTP/1.1 200 OK");
+         E2E_Tests e2ETests=new E2E_Tests();
+         Response response=e2ETests.GenerateToken(username,password);
+        // String token = JsonPath.from(response.asString()).get("token");
+       //  response.getBody().as(Token.class);
+         String statusLine=response.getStatusLine();
+         Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
 
     }
 
         @Test
         public void VerifygetUserData(){
         E2E_Tests e2ETests=new E2E_Tests();
-        userData= e2ETests.getUserData(userId,token);
-        Assert.assertEquals("Books Details:HTTP/1.1 200 OK","Books Details:HTTP/1.1 200 OK");
+       Response response= e2ETests.getUserData(userId,token);
+       String body = response.body().asString();
+       String statusLine=response.getStatusLine();
+        Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
        }
 
        @Test
     public void VerifyBooksOfUser() throws IOException {
         E2E_Tests e2ETests=new E2E_Tests();
-        List<Map<String, String>> books=e2ETests.BookofUser(token,userId);
+        Response response=e2ETests.BookofUser(token, userId);
+        JsonPath.from(response.asString()).get("books");
         String bookID=e2ETests.GetBooksDetails();
-        System.out.println(bookID);
+           String statusLine=response.getStatusLine();
+           Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
     }
 
 
