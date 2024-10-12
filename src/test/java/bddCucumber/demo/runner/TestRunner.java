@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
         glue = {"bddCucumber/demo"},
         tags="not @skip_scenario",
         plugin={"pretty","json:target/cucumber.json",
-                         "rerun:target/rerun.txt"},
+                         "rerun:target/failedrerun.txt"},
         publish=true
 )
 public class

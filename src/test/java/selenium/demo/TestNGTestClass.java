@@ -7,17 +7,17 @@ import org.testng.annotations.Test;
 @Listeners(TestStatusListener.class)
 public class TestNGTestClass extends BaseSetUp{
 
-   @Test(description = "Verify textBox",enabled = false,priority = 1)
+   @Test(description = "Verify textBox",enabled = true,priority = 1)
        public void TestButton() {
               Assert.assertEquals( SeleniumDemoTest.HandlingButton(), true);
         }
 
-    @Test(description = "Verify CheckBox",enabled = false)
+    @Test(description = "Verify CheckBox",enabled = true)
     public void TestCheckBox() {
       Assert.assertEquals(SeleniumDemoTest.HandlingCheckBox(),true);
     }
 
-    @Test(description = "verify datapicker",enabled = false)
+    @Test(description = "verify datapicker",enabled = true)
     public void TestDatePicker() {
         Assert.assertEquals( SeleniumDemoTest.HandlingDataPicker(),true);
    }
