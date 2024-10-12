@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ArrayAndArrayLIstConversion {
     public static void main(String[] args){
-
         String[] array={"java","Python","C++"};
         List<String> arrayList=new ArrayList<>(Arrays.asList(array));
         System.out.println("Array to ArrayList:"+arrayList);

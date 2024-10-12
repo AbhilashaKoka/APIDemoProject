@@ -1,25 +1,27 @@
 package org.example.Array;
 
 public class OptimizedRemoveDuplicate {
-    public static void main(String[] args)
-    {
-        int[] originalArray={1,2,2,3,4,4,5};
-        int uniqueElements=originalArray.length;
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 2, 3, 4, 4, 5};
+         RemoveDuplicate(originalArray);
 
+    }
 
-        for(int i=0;i<uniqueElements;i++){
-            for(int j=i+1;j<uniqueElements;j++){
-                if(originalArray[i]==originalArray[j])
+    public static void RemoveDuplicate(int[] original){
+        int unique=original.length;
+        for(int i=0;i<unique;i++){
+            for(int j=i+1;j<unique;j++){
+                if(original[i]==original[j])
                 {
-                    originalArray[j]=originalArray[uniqueElements-1];
-                    uniqueElements--;
+                    original[j]=original[unique-1];
+                    unique--;
                     j--;
                 }
             }
         }
         System.out.println("Array after removing duplicates:");
-        for(int i=0;i<uniqueElements;i++){
-            System.out.println(originalArray[i]+"");
+        for(int i=0;i<unique;i++){
+            System.out.println(original[i]+"");
         }
     }
 }

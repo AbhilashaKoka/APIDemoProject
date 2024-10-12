@@ -8,7 +8,6 @@ public class SortingArrayInDescendingOrder {
         for( int number:numbers){
             System.out.println(number+"");
         }
-
         Arrays.sort(numbers, Collections.reverseOrder());
         for(int number:numbers){
             System.out.println(number+"");

@@ -1,4 +1,5 @@
 package selenium.demo.dataProvider;
+import com.google.common.reflect.TypeToken;
 import selenium.demo.manager.FileReaderManager;
 import selenium.demo.testData.PracticeFormsDetails;
 import selenium.demo.testData.TextBoxDetails;
@@ -58,7 +59,20 @@ private final List<PracticeFormsDetails> practiceFormsDetails;
             }
         }
     }
-
+//    public void ReadJson(){
+//    String json = "[{\n" +
+//            "\"username\":\"geeta\",\n" +
+//            "\"email\":\"geeta@gmail.com\",\n" +
+//            "\"currentaddress\":\"sdsfgsggg\" ,\n" +
+//            "\"permanentaddress\": \"afdfsff\"\n" +
+//            "}]";
+//    Gson gson = new Gson();
+//    List<TextBoxDetails> users = gson.fromJson(json, new TypeToken<List<TextBoxDetails>>(){}.getType());
+//    // Iterate and use parameters
+//        for (TextBoxDetails user : users) {
+//        System.out.println("ID: " + user.getUsername() + ", Name: " + user.getEmail());
+//    }
+//}
 
     private List<PracticeFormsDetails> getPracticeFormsDetails(){
         Gson gson = new Gson();
