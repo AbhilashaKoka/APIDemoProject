@@ -12,6 +12,15 @@ public class Triangle {
         this.b = b;
         this.c = c;
     }
+    public static void main(String [] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the sides of Triangle");
+        int a = in.nextInt();
+        int b = in.nextInt();
+        int c = in.nextInt();
+        Triangle t = new Triangle(a, b, c);
+        t.determineType();
+    }
 
     public void determineType() {
         if(a >= (b+c) || c >= (b+a) || b >= (a+c) )
@@ -35,13 +44,5 @@ public class Triangle {
         }
     }
 
-    public static void main(String [] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the sides of Triangle");
-        int a = in.nextInt();
-        int b = in.nextInt();
-        int c = in.nextInt();
-        Triangle t = new Triangle(a, b, c);
-        t.determineType();
-    }
+
 }

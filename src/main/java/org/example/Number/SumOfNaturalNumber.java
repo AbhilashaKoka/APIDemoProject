@@ -2,11 +2,14 @@ package org.example.Number;
 
 public class SumOfNaturalNumber{
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int n=100;
+        sumOfNaturalNumber(100);
+    }
+
+    public static void sumOfNaturalNumber(int n){
         int sumWithLoop=0;
-        for(int i=1;i<=n;i++)
-        {
+        for(int i=1;i<=n;i++){
             sumWithLoop+=i;
         }
         int sumWithFormula=n*(n+1)/2;

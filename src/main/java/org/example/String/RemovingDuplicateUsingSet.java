@@ -36,34 +36,5 @@ public class RemovingDuplicateUsingSet {
 
     }
 
-    public static class nonRepeatedCharacter {
-        public static void main(String[] args) {
-            String str = "Abhilasha Koka Koka";
 
-            String[] arr=str.split("\\s+");
-
-            Map<String,Integer> map=new Hashtable<>();
-            for(String str2:arr){
-                map.put(str2, map.getOrDefault(str2,0)+1);
-            }
-
-            for(Map.Entry<String , Integer> entry:map.entrySet()){
-                System.out.println(entry.getKey()+":"+entry.getValue());
-            }
-
-            int vowelCount=0;
-            int consonentsCount=0;
-
-            for(char ch:str.toLowerCase().toCharArray()){
-                if(ch>='a'&& ch<='z'){
-                    if("aeiou".indexOf(ch)!=-1){
-                     vowelCount++;
-                    }
-                    consonentsCount++;
-                }
-
-            }
-            System.out.println("Vowel count:"+vowelCount+":"+"Consonent Count:"+consonentsCount);
-        }
-    }
 }

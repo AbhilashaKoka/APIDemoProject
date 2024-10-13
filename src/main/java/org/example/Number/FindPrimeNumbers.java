@@ -1,8 +1,12 @@
 package org.example.Number;
 
 public class FindPrimeNumbers {
-    public static void main(String[] args){
-        int limit=50;
+    public static void main(String[] args) {
+        int limit = 50;
+        findPrimeSeries(limit);
+
+    }
+    public static  void findPrimeSeries(int limit){
         System.out.println("Prime Numbers up to "+ limit +":");
         for(int number=2; number<=limit; number++)
         {

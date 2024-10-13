@@ -5,10 +5,14 @@ import java.util.Scanner;
 public class DiamondShapePattern {
 
     public static void main(String[] args) {
-                Scanner scanner = new Scanner(System.in);
-               System.out.println("Diamond Shape Pattern Generator");
-                System.out.print("Enter the number of rows for half of the diamond: ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Diamond Shape Pattern Generator");
+        System.out.print("Enter the number of rows for half of the diamond: ");
         int numRows = scanner.nextInt();
+        diamondPattern(numRows);
+         scanner.close();
+    }
+    public static void diamondPattern(int numRows){
               for (int i = 1; i <= numRows; i++)
               {
                        for (int j = numRows - i; j >= 1; j--){
@@ -33,6 +37,6 @@ public class DiamondShapePattern {
             System.out.println();
         }
 
-        scanner.close();
+
     }
 }
