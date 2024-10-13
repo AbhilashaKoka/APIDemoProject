@@ -1,9 +1,10 @@
-package org.example.lamdaAndStream;
+package org.example.testDemo;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class EmployeeMainClass {
+public class EmployeeMethod {
 
   public static  List<Employee> employees = Arrays.asList(
             new Employee(1, "meena", 24, "Female", "HR", "TCS", 23344L, "Pune"),
@@ -20,7 +21,7 @@ public class EmployeeMainClass {
     );
 
 
-    public static void CountNumberOfEmployeeINEachDepartment() {
+    public  void CountNumberOfEmployeeINEachDepartment() {
             long maleInInfosys = employees.stream().filter(
                     e -> "Male".equals(e.getGender()) && "Infosys".equals(e.getOrganization())).count();
             System.out.println("Male Employee in Infosys " + maleInInfosys);
@@ -42,7 +43,7 @@ public class EmployeeMainClass {
         }
 
 
-        public static void EmployeeGroupByCity() {
+        public  void EmployeeGroupByCity() {
 
             Map<String, List<Employee>> groupedByCity = employees
                     .stream()
@@ -56,7 +57,7 @@ public class EmployeeMainClass {
             );
         }
 
-        public static void EmployeeGroupByAge() {
+        public  void EmployeeGroupByAge() {
             Map<Integer, List<Employee>> groupByAge = employees
                     .stream()
                     .collect(Collectors.groupingBy(Employee::getAge));
@@ -72,7 +73,7 @@ public class EmployeeMainClass {
                     .forEach(System.out::println);
         }
 
-        public static void maxAge(){
+        public  void maxAge(){
 
         Optional<Integer> maxAge = employees
                 .stream()
@@ -83,7 +84,7 @@ public class EmployeeMainClass {
     }
 
 
-    public static void EmployeesMaleAverageAge() {
+    public  void EmployeesMaleAverageAge() {
         Double maleAverage = employees.stream()
                 .filter(Emp -> "M".equals((Emp.getGender())))
                 .mapToInt(Employee::getAge)
@@ -92,7 +93,7 @@ public class EmployeeMainClass {
         System.out.println("Average age of the Male employee:"
                 + maleAverage);
     }
-    public static void EmployeesFeMaleAverageAge() {
+    public  void EmployeesFeMaleAverageAge() {
 
         Double femaleAverage = employees.stream()
                 .filter(Emp -> "F".equals(Emp.getGender()))
@@ -106,7 +107,7 @@ public class EmployeeMainClass {
 
     }
 
-   public static void  EmployeesDepartmentCout() {
+   public  void  EmployeesDepartmentCout() {
         Map<String, Long> departmentCount =
                 employees
                         .stream()
@@ -118,7 +119,7 @@ public class EmployeeMainClass {
                 System.out.println("Department:" + deptName + ",Number of Employee:" + count));
     }
 
-public static void OldestEmpoyee() {
+public  void OldestEmpoyee() {
     Employee oldest =
             employees.stream()
                     .max(Comparator.comparing(Employee::getAge))
@@ -131,7 +132,7 @@ public static void OldestEmpoyee() {
     }
 
 }
-public static void YoungestEmployee() {
+public  void YoungestEmployee() {
     Employee youngest =
             employees
                     .stream()
@@ -193,20 +194,7 @@ public static void Department() {
     System.out.println("The second Highest salary in the organization is:" + secondHighestSalary);
 
 }
-    public static void main(String[] args)
-    {
-        System.out.println("This is main class");
-        CountNumberOfEmployeeINEachDepartment();
-        EmployeeGroupByCity();
-        EmployeeGroupByAge();
-        maxAge();
-        EmployeesMaleAverageAge();
-        EmployeesFeMaleAverageAge();
-        EmployeesDepartmentCout();
-        OldestEmpoyee();
-        YoungestEmployee();
-        Department();
-    }
+
 
 
     }

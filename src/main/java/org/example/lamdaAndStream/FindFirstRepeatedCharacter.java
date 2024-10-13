@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 public class FindFirstRepeatedCharacter {
     public static void main(String[] args) {
         String input = "javastream";
+        findRepeatedCharacter(input);
+    }
+
+    public static void findRepeatedCharacter(String input){
         Character result = input.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.toMap(Function.identity(), v -> 1, Integer::sum, LinkedHashMap::new))

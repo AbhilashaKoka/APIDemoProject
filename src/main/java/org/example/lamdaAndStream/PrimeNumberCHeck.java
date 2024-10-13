@@ -4,9 +4,13 @@ import java.util.stream.IntStream;
 
 public class PrimeNumberCHeck {
 
-public static void main(String[] args)
-{
+public static void main(String[] args) {
     int number=29;
+    checkPrimeNumber(number);
+}
+
+public static void checkPrimeNumber(int number){
+
     boolean isPrime=isPrime(number);
 
     if(isPrime)
@@ -24,4 +28,5 @@ public static boolean isPrime(int number)
         return false;
     }
     return !IntStream.rangeClosed(2,(int)Math.sqrt(number)).anyMatch(i->number%i==0);
-}}
+}
+}

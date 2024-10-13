@@ -5,8 +5,12 @@ import java.util.List;
 import java.util.OptionalInt;
 
 public class MaxMinFInder {
-    public static void main(String[] args){
-        List<Integer> numbers= Arrays.asList(2,4,7,5,9,10,3,1);
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(2, 4, 7, 5, 9, 10, 3, 1);
+        maxAndminElementFinder(numbers);
+    }
+
+    public static void maxAndminElementFinder(List<Integer> numbers){
         OptionalInt max=numbers.stream().mapToInt(Integer::intValue).max();
         OptionalInt min=numbers.stream().mapToInt(Integer::intValue).min();
         max.ifPresent(value-> System.out.println("Maximun value:"+value));

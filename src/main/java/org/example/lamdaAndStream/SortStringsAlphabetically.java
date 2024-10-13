@@ -5,8 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SortStringsAlphabetically {
-    public static void main(String[] args){
-        List<String> strings= Arrays.asList("Banana","Apple","Orange","Mango","Grape");
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("Banana", "Apple", "Orange", "Mango", "Grape");
+        sortStringInAlphabeticOrder(strings);
+    }
+
+
+    public static void sortStringInAlphabeticOrder(List<String> strings){
 
         List<String> sortStrings=strings.stream().sorted().collect(Collectors.toList());
 

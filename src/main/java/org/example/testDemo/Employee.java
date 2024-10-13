@@ -1,4 +1,4 @@
-package org.example.lamdaAndStream;
+package org.example.testDemo;
 
 public class Employee {
     private int id;

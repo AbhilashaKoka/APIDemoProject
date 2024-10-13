@@ -3,10 +3,14 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class CharacterCount {
+public class CharacterCount{
 
-    public static void main(String[] args){
-        String input="hello world";
+    public static void main(String[] args) {
+        String input = "hello world";
+        characterCountInString(input);
+
+    }
+    public static void characterCountInString(String input){
 
         Map<Character, Long> characterCounts=
                             input.chars()

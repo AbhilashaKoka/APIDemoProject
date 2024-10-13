@@ -1,13 +1,14 @@
 package org.example.Array;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 class SecondLargestUsingMap {
     public static void main(String[] args) {
         int[] array = {10, 20, 4, 45, 99, 100, 33, 99};
         SecondLargestUsingMapMethod(array);
+
+        int[] arr={1,2,3,4,5,6,6,7,8};
+        secondLargestInarr(arr);
     }
 
     public static void SecondLargestUsingMapMethod(int[] array){
@@ -28,5 +29,17 @@ class SecondLargestUsingMap {
             }
         }
       System.out.println("Second largest element:"+secondLargest);
+    }
+
+    public static void secondLargestInarr(int[] arr){
+        //Creating a list of Integer
+        List<Integer> numbers= Arrays.asList(1,2,3,4,5,6,6,7,8);
+        Optional<Integer> secondLargest=numbers.stream()
+                .distinct()
+                .sorted()
+                .skip(numbers.size() - 2)
+                .findFirst();
+
+        secondLargest.ifPresent(s-> System.out.println("The second largest number is:"+s));
     }
 }
