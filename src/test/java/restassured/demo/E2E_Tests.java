@@ -1,23 +1,25 @@
 package restassured.demo;
-import bddCucumber.demo.model.Response.*;
+import bddCucumber.demo.model.Request.AuthorizationRequest;
+import bddCucumber.demo.model.Request.RemoveBookRequest;
+import bddCucumber.demo.model.Response.Book;
+import bddCucumber.demo.model.Response.JSONFailureResponse;
+import bddCucumber.demo.model.Response.JSONSuccessResponse;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
+import org.json.JSONObject;
 import org.testng.Assert;
-import bddCucumber.demo.model.Request.AuthorizationRequest;
-import bddCucumber.demo.model.Request.RemoveBookRequest;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
-import io.restassured.path.json.JsonPath;
-import org.json.JSONObject;
 
 
 public class E2E_Tests {
@@ -70,76 +72,54 @@ public class E2E_Tests {
       return request.get("/Account/v1/User/" + userId);
       }
 
-    public  String GetBooksDetails() throws IOException {
+    public  Response GetBooksDetails() throws IOException {
      RestAssured.baseURI=baseUrl;
      RequestSpecification request=RestAssured.given();
-      Response  response = request.get("/BookStore/v1/Books");
-            System.out.println("Books Details:" + response.getStatusLine());
-            List<Map<String, String>> books = JsonPath.from(response.asString()).get("books");
-            Books books1 = response.getBody().as(Books.class);
-            Book book = books1.books.get(0);
-            String   bookId = books.get(0).get("isbn");
-            System.out.println(bookId);
-            System.out.println("Books  Details:" + response.getStatusLine());
-            return bookId;
-        }
+     return request.get("/BookStore/v1/Books");
+      }
 
 
-            public  Book[] GetBookDetailsbyISBNNUmber(String bookId) {
+      public  Response GetBookDetailsbyISBNNUmber(String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
-            Response response = request.get("https://demoqa.com/BookStore/v1/Book?ISBN=" + bookId);
-            System.out.println("Books Details:" + response.getStatusLine());
-            List<Map<String, String>> book1 = JsonPath.from(response.asString()).get("books");
-            Book[] booksdetails = response.jsonPath().getObject("book", Book[].class);
-            for (Book book2 : booksdetails)
-            {
-                System.out.println("Book Title:" + book2.toString());
-            }
-            System.out.println("Books  Details:" + response.getStatusLine());
+           return request.get("/BookStore/v1/Book?ISBN=" + bookId);
 
-            return booksdetails;
         }
 
-        public  void AddBookbyUserIDandISBN(String userId, String bookId, String token) throws IOException {
+        public  Response AddBookbyUserIDandISBN(String userId, String bookId,  String token) throws IOException {
             String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
                 RestAssured.baseURI=baseUrl;
         RequestSpecification request=RestAssured.given();
         request.header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
      //   AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
-            Response response = request.body(addBookRequest).post("/BookStore/v1/Books");
-        System.out.println(" Add Books By User ID:" + response.getStatusLine());
-        UserAccount userAccount = response.getBody().as(UserAccount.class);
-        String bookIsAdded = userAccount.books.get(0).isbn;
+           return request.body(addBookRequest).post("/BookStore/v1/Books");
+
     }
 
 
-        public  void RemoveBookBybookIDandUserId(String token, String userId, String bookId) {
+        public  Response RemoveBookBybookIDandUserId(String token, String userId, String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request=RestAssured.given();
             request.header("Authorization", "Bearer " + token).
                     header("Content-Type", "application/json");
             RemoveBookRequest removeBookRequest = new RemoveBookRequest(userId, bookId);
-            Response response = request.body(removeBookRequest).delete("/BookStore/v1/Book");
-            System.out.println(" Remove Books is removed User ID:" + response.getStatusLine());
-            UserAccount userAccount1 = response.getBody().as(UserAccount.class);
-            int bookIsRemoved = userAccount1.books.size();
+            return request.body(removeBookRequest).delete("/BookStore/v1/Book");
+
         }
 
 
-        public  void deleteBook(String token, String userId, String isbn) {
+        public Response deleteBook(String token, String userId, String isbn) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
-            Response response = httpRequest.body("{ \"isbn\": \"" + isbn + "\", \"userId\": \"" + userId + "\"}").delete("/BookStore/v1/Book");
-        System.out.println("The response code is - " +response.getStatusCode());
-        Assert.assertEquals(response.getStatusCode(),204);
+          return httpRequest.body("{ \"isbn\": \"" + isbn + "\", \"userId\": \"" + userId + "\"}").delete("/BookStore/v1/Book");
+
 
     }
 
 
           public  void IteratingHeaders() {
-           RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";
+           RestAssured.baseURI = baseUrl;
            RequestSpecification httpRequest = RestAssured.given();
               Response response = httpRequest.get("");
            Headers allHeaders = response.headers();
@@ -162,7 +142,7 @@ public class E2E_Tests {
 
 
     public  void UserRegistrationSuccessAndFailure() {
-        RestAssured.baseURI = "https://demoqa.com";
+        RestAssured.baseURI = baseUrl;
         RequestSpecification request = RestAssured.given();
         org.json.simple.JSONObject requestParams = new org.json.simple.JSONObject();
         requestParams.put("UserName", "test_rest");
@@ -195,9 +175,9 @@ public class E2E_Tests {
 
     public  void JsonPathUsage() throws MalformedURLException
     {
-        RestAssured.baseURI = "https://restapi.demoqa.com/utilities/books/getallbooks";
+        RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = RestAssured.given();
-        Response response = httpRequest.get("");
+        Response response = httpRequest.get("/utilities/books/getallbooks");
         JsonPath jsonPathEvaluator = response.jsonPath();
         List<String> allBooks = jsonPathEvaluator.getList("books.title");
         for(String book : allBooks)
