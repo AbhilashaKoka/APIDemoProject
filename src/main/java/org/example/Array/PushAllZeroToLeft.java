@@ -3,6 +3,7 @@ package org.example.Array;
 public class PushAllZeroToLeft {
     public static void main(String[] args) {
         int[] arr = {1, 9, 0, 3};
+        pullZeroToLeft(arr);
     }
 
         public static void pullZeroToLeft( int[] arr) {

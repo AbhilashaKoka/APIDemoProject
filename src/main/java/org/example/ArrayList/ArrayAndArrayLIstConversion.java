@@ -5,8 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArrayAndArrayLIstConversion {
-    public static void main(String[] args){
-        String[] array={"java","Python","C++"};
+    public static void main(String[] args) {
+        String[] array = {"java", "Python", "C++"};
+        arrayToArrayList(array);
+    }
+
+    public static void arrayToArrayList(String[] array){
         List<String> arrayList=new ArrayList<>(Arrays.asList(array));
         System.out.println("Array to ArrayList:"+arrayList);
 

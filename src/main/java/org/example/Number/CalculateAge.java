@@ -4,12 +4,15 @@ import java.time.Period;
 import java.util.Scanner;
 
 public class CalculateAge {
-    public static void main(String[] args)
-    {
-        Scanner scanner=new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your birthdate(yyyy-mm-dd):");
-        String birthdateString=scanner.nextLine();
+        String birthdateString = scanner.nextLine();
         scanner.close();
+       calculateAge(birthdateString);
+    }
+
+        public static void calculateAge(String birthdateString){
         LocalDate birthdate=LocalDate.parse(birthdateString);
         LocalDate currentDate=LocalDate.now();
         Period age= Period.between(birthdate, currentDate);

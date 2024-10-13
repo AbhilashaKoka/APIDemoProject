@@ -1,15 +1,16 @@
 package org.example.Array;
 
 public class SplitArray {
-    public static void main(String[] args){
-        int[] originalArray={1,2,3,4,5,6};
-        int middleIndex=originalArray.length/2;
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 4, 5, 6};
+        splitArray(originalArray);
 
+    }
+    public static void splitArray(int[] originalArray){
+        int middleIndex=originalArray.length/2;
         int[] firstHalf=new int[middleIndex];
         int[] secondHalf=new int[originalArray.length-middleIndex];
-
         System.arraycopy(originalArray, 0, firstHalf, 0, middleIndex);
-
         System.arraycopy(originalArray, middleIndex, secondHalf, middleIndex - middleIndex, originalArray.length - middleIndex);
 
         System.out.println("Original Array:");

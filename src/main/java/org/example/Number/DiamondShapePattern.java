@@ -12,6 +12,7 @@ public class DiamondShapePattern {
         diamondPattern(numRows);
          scanner.close();
     }
+
     public static void diamondPattern(int numRows){
               for (int i = 1; i <= numRows; i++)
               {
