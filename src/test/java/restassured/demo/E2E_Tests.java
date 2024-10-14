@@ -7,6 +7,8 @@ import bddCucumber.demo.model.Response.JSONSuccessResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
+import io.restassured.http.Cookie;
+import io.restassured.http.Cookies;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
@@ -216,13 +218,8 @@ public void UploadingATextFile(){
 
 public void uploadingAHTMLFile()
 {
-    // Set the base URI for the API
-    RestAssured.baseURI = "https://api.example.com";
-
-    // Create a File object for the HTML file
+      RestAssured.baseURI = "https://api.example.com";
     File htmlFile = new File("path/to/your/file.html");
-
-    // Make a POST request with the HTML file
     Response response = given()
             .multiPart("file", htmlFile)
             .when()
@@ -231,8 +228,6 @@ public void uploadingAHTMLFile()
             .statusCode(200)
             .extract()
             .response();
-
-    // Print the response status and body
     System.out.println("Status Code: " + response.statusCode());
     System.out.println("Response Body: " + response.asString());
 
@@ -240,11 +235,7 @@ public void uploadingAHTMLFile()
 
 public void UploadImageFile(){
     RestAssured.baseURI = "https://api.example.com";
-
-    // Create a File object for the image file
     File imageFile = new File("path/to/your/image.jpg");
-
-    // Make a POST request with the image file
     Response response = given()
             .multiPart("file", imageFile)
             .when()
@@ -253,8 +244,6 @@ public void UploadImageFile(){
             .statusCode(200)
             .extract()
             .response();
-
-    // Print the response status and body
     System.out.println("Status Code: " + response.statusCode());
     System.out.println("Response Body: " + response.asString());
 
@@ -262,11 +251,7 @@ public void UploadImageFile(){
 
 public void UploadPDFFile(){
     RestAssured.baseURI = "https://api.example.com";
-
-    // Create a File object for the PDF file
     File pdfFile = new File("path/to/your/document.pdf");
-
-    // Make a POST request with the PDF file
     Response response = given()
             .multiPart("file", pdfFile)
             .when()
@@ -275,8 +260,6 @@ public void UploadPDFFile(){
             .statusCode(200)
             .extract()
             .response();
-
-    // Print the response status and body
     System.out.println("Status Code: " + response.statusCode());
     System.out.println("Response Body: " + response.asString());
 }
@@ -335,6 +318,81 @@ public void UploadPDFFile(){
         } catch (Exception e) {
             System.out.println("Response validation failed: " + e.getMessage());
         }
+    }
+    public void sessionManagement() {
+        Response loginResponse = given()
+                .formParam("username", "user")
+                .formParam("password", "password")
+                .when()
+                .post("https://api.example.com/login")
+                .then()
+                .extract()
+                .response();
+        // Extract cookies from the login response
+        Cookies cookies = loginResponse.getDetailedCookies();
+        // Use the session cookies in subsequent requests
+        Response response = given()
+                .cookies(cookies)
+                .when()
+                .get("https://api.example.com/user/profile")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+        System.out.println("Response Body: " + response.asString());
+
+    }
+
+    public void AuthenticationManagement() {
+        Response loginResponse = given()
+                .auth().preemptive().basic("user", "password")
+                .when()
+                .post("https://api.example.com/auth/login")
+                .then()
+                .extract()
+                .response();
+        Cookies cookies = loginResponse.getDetailedCookies();
+        Response response = given()
+                .cookies(cookies)
+                .when()
+                .get("https://api.example.com/secure-data")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+        System.out.println("Response Body: " + response.asString());
+    }
+
+    public void StateMaintainenceManamgement(){
+        Response initialResponse = given()
+                .when().get("https://api.example.com/start")
+                .then().extract().response();
+        Cookies cookies = initialResponse.getDetailedCookies();
+        Response response = given()
+                .cookies(cookies)
+                .when()
+                .get("https://api.example.com/continue")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+        System.out.println("Response Body: " + response.asString());
+    }
+
+    public void CustomDataStorageManagement() {
+        Cookie customCookie1 = new Cookie.Builder("customKey1", "customValue1").build();
+        Cookie customCookie2 = new Cookie.Builder("customKey2", "customValue2").build();
+        Cookies cookies = new Cookies(customCookie1, customCookie2);
+        Response response = given()
+                .cookies(cookies)
+                .when()
+                .get("https://api.example.com/use-custom-cookies")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+        System.out.println("Response Body: " + response.asString());
+
     }
     }
 
