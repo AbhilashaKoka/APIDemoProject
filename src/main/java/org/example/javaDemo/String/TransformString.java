@@ -1,5 +1,7 @@
 package org.example.javaDemo.String;
 
+import java.util.HashMap;
+
 public class TransformString {
 
     public static void main(String[] args) {
@@ -9,6 +11,20 @@ public class TransformString {
         String r= transformString1(input);
         String r2=transformString2(input);
         System.out.println("Transformed string:" + result);
+        String[] array = {"apple", "banana", "cherry"};
+        arrToMapConversion(array);
+    }
+
+
+    public static void arrToMapConversion(String[] array){
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String element : array){
+            map.put(element, element.length());
+        }
+
+        for(String key : map.keySet()){
+            System.out.println("Key:" + key + ",Value:" + map.get(key));
+        }
     }
 
     public static String transformString(String input, String target) {

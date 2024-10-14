@@ -1,6 +1,6 @@
-package org.example.Array;
+package org.example.String;
 
-public class FindSubsetOfGivenArray{
+public class FindSubsetOfGivenString{
 
     public static void main(String[] args) {
         String str = "aaaabbbbcccc";
