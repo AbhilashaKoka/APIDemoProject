@@ -94,6 +94,7 @@ public class ArrayOperation {
     public static void secondLargestInarr(int[] arr){
         //Creating a list of Integer
         List<Integer> numbers= Arrays.asList(1,2,3,4,5,6,6,7,8);
+
         Optional<Integer> secondLargest=numbers.stream()
                 .distinct()
                 .sorted()
@@ -134,7 +135,7 @@ public class ArrayOperation {
 
             if (arr[i] != 0)
                 arr[count++] = arr[i];
-        while (count < len)
+            while (count < len)
             arr[count++] = 0;
 
         for (int j = 0; j < len; j++)
@@ -145,6 +146,7 @@ public class ArrayOperation {
     public static void InLineINitializationOfArr() {
         int[] numbers = {1, 2, 3, 4, 5};
         System.out.println("Inline initialized array:");
+
         for (int number : numbers) {
             System.out.println(number + "");
         }
@@ -153,6 +155,7 @@ public class ArrayOperation {
 
         String[] names = new String[]{"java", "Python", "C++", "Javascript"};
         System.out.println("\n\n Initialized with anonymous array:");
+
         for (String name : names){
             System.out.print(name + " ");
         }
@@ -170,9 +173,11 @@ public class ArrayOperation {
         System.out.println("\n\n Initialized in a block");
     }
     public static void splitArray(int[] originalArray){
+
         int middleIndex=originalArray.length/2;
         int[] firstHalf=new int[middleIndex];
         int[] secondHalf=new int[originalArray.length-middleIndex];
+
         System.arraycopy(originalArray, 0, firstHalf, 0, middleIndex);
         System.arraycopy(originalArray, middleIndex, secondHalf, middleIndex - middleIndex, originalArray.length - middleIndex);
 
@@ -192,6 +197,7 @@ public class ArrayOperation {
         }
     }
 
+
     public static void sortingArrayInDescendingOrder(Integer[] numbers){
 
         for( int number:numbers){
@@ -204,9 +210,11 @@ public class ArrayOperation {
     }
     public static void sortInAscendingOrder(int[] numbers){
         System.out.println("Original array:");
+
         for(int number:numbers){
             System.out.println(number+"");
         }
+
         Arrays.sort(numbers);
         System.out.println("\n Sorted array in ascending order:");
         for(int number: numbers)
@@ -228,7 +236,6 @@ public class ArrayOperation {
                 }
             }
         }
-
         System.out.println("Array after removing duplicates:");
         for(int i=0;i<unique;i++){
             System.out.println(original[i]+"");
