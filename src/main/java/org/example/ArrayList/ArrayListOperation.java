@@ -63,8 +63,16 @@ public class ArrayListOperation {
         String[] languageArray=listOfLanguages.toArray(new String[0]);
         System.out.println("ArrayList to an array:"+Arrays.toString(languageArray));
 
+    }
+    public static <T> List<T> RemoverDuplicateMethod(List<T> list) {
+        List<T> newList = new ArrayList<>();
+        for (T element : list) {
+            if (!newList.contains(element)) {
+                newList.add(element);
+            }
 
+        }
 
-
+        return newList;
     }
 }
