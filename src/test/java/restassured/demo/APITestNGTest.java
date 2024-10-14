@@ -1,15 +1,19 @@
 package restassured.demo;
+
 import bddCucumber.demo.model.Response.Book;
 import bddCucumber.demo.model.Response.Books;
 import bddCucumber.demo.model.Response.UserAccount;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import static io.restassured.RestAssured.given;
 
 public class APITestNGTest{
     static String username="Test45";
@@ -123,4 +127,15 @@ public class APITestNGTest{
     Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
     }
 
+    @Test
+    public void testWithAuthToken(ITestContext context) {
+        // Retrieve auth token from context
+        String authToken = (String) context.getAttribute("authToken");
+        given()
+                .header("Authorization", "Bearer " + authToken)
+                .when()
+                .get("/secure-endpoint")
+                .then()
+                .statusCode(200);
+    }
 }

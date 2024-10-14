@@ -1,14 +1,16 @@
 package restassured.demo;
-
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.response.Response;
-
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
 import static io.restassured.RestAssured.given;
+
 
 public class AuthenticationMethod {
 
-    public void BasicAutheticationMethod(){
+
+    public void BasicAutheticationMethod(ITestContext context){
         RestAssured.baseURI = System.getProperty("baseurl");
         PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
         authScheme.setUserName("admin");
@@ -16,22 +18,24 @@ public class AuthenticationMethod {
         RestAssured.authentication = authScheme;
     }
 
-    public void BearerAuthenticationMethod(){
+    @BeforeClass
+    public void BearerAuthenticationMethod(ITestContext context){
         RestAssured.baseURI = "https://api.example.com";
           String bearerToken = "your_bearer_token_here";
-                 Response response = given()
+        String authToken  = given()
                 .header("Authorization", "Bearer " + bearerToken)
                 .when()
                 .get("/secure-endpoint")
                 .then()
                 .statusCode(200)
                 .extract()
-                .response();
-               System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response Body: " + response.asString());
+                .path("token");
+        context.setAttribute("authToken", authToken);
+
     }
 
-    public void OAuthAuthenticationMethod(){
+
+    public void OAuthAuthenticationMethod(ITestContext context){
         RestAssured.baseURI = "https://auth-server.com";
                 Response tokenResponse = given()
                 .auth()
@@ -60,7 +64,7 @@ public class AuthenticationMethod {
         System.out.println("API Response: " + apiResponse.asString());
     }
 
-    public void APIKeyQueryParamMethod(){
+    public void APIKeyQueryParamMethod(ITestContext context){
               RestAssured.baseURI = "https://api.example.com";
                 String apiKey = "your_api_key_here";
                 Response response = given()
