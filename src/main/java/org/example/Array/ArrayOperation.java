@@ -58,70 +58,22 @@ public class ArrayOperation {
         largestElement(numbers28);
     }
 
-    public static void largestElement(int[] numbers){
-        int max=numbers[0];
-        for(int i=1;i<numbers.length;i++){
-            if(numbers[i]>max)
-            {
-                max=numbers[i];
-            }
-        }
-        System.out.println("Maximum Element:"+max);
-    }
 
-    public static void SecondLargestUsingMapMethod(int[] array){
-        Map<Integer, Integer> map = new TreeMap<>(Collections.reverseOrder());
-        for (int num : array)
-        {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        int count = 0;
-        int secondLargest = Integer.MIN_VALUE;
-        for (int key : map.keySet())
-        {
-            count++;
-            if (count == 2)
-            {
-                secondLargest = key;
-                break;
-            }
-        }
-        System.out.println("Second largest element:"+secondLargest);
-    }
-
-
-
-    public static void secondLargestInarr(int[] arr){
-        //Creating a list of Integer
-        List<Integer> numbers= Arrays.asList(1,2,3,4,5,6,6,7,8);
-
-        Optional<Integer> secondLargest=numbers.stream()
-                .distinct()
-                .sorted()
-                .skip(numbers.size() - 2)
-                .findFirst();
-
-        secondLargest.ifPresent(s-> System.out.println("The second largest number is:"+s));
-    }
 
     public static int binarySearch(int[] array, int target){
         int left= 0;
         int right= array.length-1;
 
-        while(left<= right)
+        while(left<=right)
         {
             int mid=left+(right-left)/2;
-
-            if(array[mid]==target)
-            {
+            if(array[mid]==target){
                 return mid;
             }
-            if(array[mid]<target)
-            {
+            if(array[mid]<target){
                 left=mid+1;
             }
-            else
-            {
+            else{
                 right=mid-1;
             }
         }
@@ -172,17 +124,17 @@ public class ArrayOperation {
 
         System.out.println("\n\n Initialized in a block");
     }
-    public static void splitArray(int[] originalArray){
+    public static void splitArray(int[] arr){
 
-        int middleIndex=originalArray.length/2;
-        int[] firstHalf=new int[middleIndex];
-        int[] secondHalf=new int[originalArray.length-middleIndex];
+        int midIndex=arr.length/2;
+        int[] firstHalf=new int[midIndex];
+        int[] secondHalf=new int[arr.length-midIndex];
 
-        System.arraycopy(originalArray, 0, firstHalf, 0, middleIndex);
-        System.arraycopy(originalArray, middleIndex, secondHalf, middleIndex - middleIndex, originalArray.length - middleIndex);
+        System.arraycopy(arr, 0, firstHalf, 0, midIndex);
+        System.arraycopy(arr, midIndex, secondHalf, midIndex - midIndex, arr.length - midIndex);
 
         System.out.println("Original Array:");
-        for(int num:originalArray){
+        for(int num:arr){
             System.out.print(num+"");
         }
 
@@ -197,6 +149,101 @@ public class ArrayOperation {
         }
     }
 
+
+
+
+    public static void RemoveDuplicate(int[] str){
+        int newstr=str.length;
+
+        for(int i=0;i<newstr;i++){
+             for(int j=i+1;j<newstr;j++){
+                if(str[i]==str[j])
+                {
+                    str[j]=str[newstr-1];
+                    newstr--;
+                    j--;
+                }
+            }
+        }
+        System.out.println("Array after removing duplicates:");
+        for(int i=0;i<newstr;i++){
+            System.out.println(str[i]+"");
+        }
+    }
+
+    public static void mergeTwoArr(int[] array1, int[] array2){
+        int[] mergedArray=new int[array1.length+array2.length];
+        System.arraycopy(array1, 0, mergedArray, 0, array1.length);
+        System.arraycopy(array2, 0, mergedArray, array1.length + 0, array2.length);
+        System.out.println("Merged Array:");
+        for(int number:mergedArray){
+            System.out.print(number+"");
+        }
+    }
+
+    public static void reversingElementInArr(int[] numbers){
+        System.out.println("Original Array");
+
+        for(int number:numbers){
+            System.out.println(number+" ");
+        }
+
+        for(int i=0;i<numbers.length/2;i++){
+            int temp=numbers[i];
+            numbers[i]=numbers[numbers.length-1-i];
+            numbers[numbers.length-1-i]=temp;
+        }
+
+        System.out.println("\nReversed array:");
+        for(int number:numbers){
+            System.out.println(number+"");
+        }
+    }
+    public static void largestElement(int[] numbers){
+        int max=numbers[0];
+        for(int i=1;i<numbers.length;i++){
+            if(numbers[i]>max)
+            {
+                max=numbers[i];
+            }
+        }
+        System.out.println("Maximum Element:"+max);
+    }
+
+    public static void SecondLargestUsingMapMethod(int[] array){
+        Map<Integer, Integer> map = new TreeMap<>(Collections.reverseOrder());
+        for (int num : array)
+        {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        int count = 0;
+        int secondLargest = Integer.MIN_VALUE;
+        for (int key : map.keySet())
+        {
+            count++;
+            if (count == 2)
+            {
+                secondLargest = key;
+                break;
+            }
+        }
+        System.out.println("Second largest element:"+secondLargest);
+    }
+
+
+
+    public static void secondLargestInarr(int[] arr){
+        //Creating a list of Integer
+        List<Integer> numbers= Arrays.asList(1,2,3,4,5,6,6,7,8);
+
+        Optional<Integer> secondLargest=numbers.stream()
+                .distinct()
+                .sorted()
+                .skip(numbers.size() - 2)
+                .findFirst();
+        secondLargest.ifPresent(s-> System.out.println("The second largest number is:"+s));
+    }
 
     public static void sortingArrayInDescendingOrder(Integer[] numbers){
 
@@ -222,56 +269,6 @@ public class ArrayOperation {
             System.out.print(number+"");
         }
     }
-
-    public static void RemoveDuplicate(int[] original){
-        int unique=original.length;
-
-        for(int i=0;i<unique;i++){
-            for(int j=i+1;j<unique;j++){
-                if(original[i]==original[j])
-                {
-                    original[j]=original[unique-1];
-                    unique--;
-                    j--;
-                }
-            }
-        }
-        System.out.println("Array after removing duplicates:");
-        for(int i=0;i<unique;i++){
-            System.out.println(original[i]+"");
-        }
-    }
-
-    public static void mergeTwoArr(int[] array1, int[] array2){
-        int[] mergedArray=new int[array1.length+array2.length];
-        System.arraycopy(array1, 0, mergedArray, 0, array1.length);
-        System.arraycopy(array2, 0, mergedArray, array1.length + 0, array2.length);
-        System.out.println("Merged Array:");
-
-        for(int number:mergedArray){
-            System.out.print(number+"");
-        }
-    }
-
-    public static void reversingElementInArr(int[] numbers){
-        System.out.println("Original Array");
-
-        for(int number:numbers){
-            System.out.println(number+" ");
-        }
-
-        for(int i=0;i< numbers.length/2;i++){
-            int temp=numbers[i];
-            numbers[i]=numbers[numbers.length-1-i];
-            numbers[numbers.length-1-i]=temp;
-        }
-
-        System.out.println("\nReversed array:");
-        for(int number:numbers){
-            System.out.println(number+"");
-        }
-    }
-
 
     public static void arrAddition(int[] array1, int[] array2) {
         int[] additionalResult = new int[array1.length];

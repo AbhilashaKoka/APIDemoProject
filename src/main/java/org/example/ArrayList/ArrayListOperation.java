@@ -35,25 +35,25 @@ public class ArrayListOperation {
         }
     }
 
-    public static List<Integer> filterEvenNumberArrayList(ArrayList<Integer> numbers){
-        List<Integer> filteredNumbers= numbers.stream()
+    public static List<Integer> filterEvenNumberArrayList(ArrayList<Integer> num){
+        List<Integer> ls= num.stream()
                 .filter(number->number%2==0)
                 .collect(Collectors.toList());
 
-        return filteredNumbers;
+        return ls;
 
     }
-    public static void compareTwoArrayList(ArrayList<String> list1, ArrayList<String> list2){
-        boolean isEqual=list1.equals(list2);
+    public static void compareTwoArrayList(ArrayList<String> ls1, ArrayList<String> ls2){
+        boolean isEqual=ls1.equals(ls2);
         System.out.println("list1 equals list2:"+isEqual);
 
-        boolean isContained=list1.containsAll(list2);
+        boolean isContained=ls1.containsAll(ls2);
         System.out.println("list1 contained all elements list2:"+isContained);
     }
 
-    public static void arrayToArrayList(String[] array){
-        List<String> arrayList=new ArrayList<>(Arrays.asList(array));
-        System.out.println("Array to ArrayList:"+arrayList);
+    public static void arrayToArrayList(String[] arr){
+        List<String> ls=new ArrayList<>(Arrays.asList(arr));
+        System.out.println("Array to ArrayList:"+ls);
 
         ArrayList<String> listOfLanguages=new ArrayList<>();
         listOfLanguages.add("Javascript");

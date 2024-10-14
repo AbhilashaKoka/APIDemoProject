@@ -60,73 +60,68 @@ public class java8Operation {
     }
 
 
-    public static void sumOfAllDigits(String number){
-
-        int sum=number.chars()
+    public static void sumOfAllDigits(String num){
+        int sum=num.chars()
                 .map(Character::getNumericValue)
                 .sum();
-
         System.out.println("The sum of the digits is:"+sum);
     }
 
 
-    public static void sortStringInAlphabeticOrder(List<String> strings){
-
-        List<String> sortStrings=strings.stream().sorted().collect(Collectors.toList());
-
+    public static void sortStringInAlphabeticOrder(List<String> str){
+        List<String> sortstr=str.stream().sorted().collect(Collectors.toList());
         System.out.println("sorted list of string:");
-        sortStrings.forEach(System.out::println);
-    }
-    public static  void reverseString(String originalString){
-        String reverseString=new StringBuilder(originalString).reverse().toString();
-
-        System.out.println("Original String:"+originalString);
-        System.out.println("Reversed String:"+reverseString);
+        sortstr.forEach(System.out::println);
     }
 
-    public static  void reverseEachCharacterInWord(String input){
+    public static  void reverseString(String str){
+        String revstr=new StringBuilder(str).reverse().toString();
+        System.out.println("Original String:"+str);
+        System.out.println("Reversed String:"+revstr);
+    }
 
-        String result= Arrays.stream(input.split(" "))
-                .map(word->new StringBuilder(word).reverse().toString())
+    public static  void reverseEachCharacterInWord(String str){
+        String result= Arrays.stream(str.split(" "))
+                .map(word->new StringBuilder(str).reverse().toString())
                 .collect(Collectors.joining(""));
-
-        System.out.println("Original string:"+input);
+        System.out.println("Original string:"+str);
         System.out.println("Reversed string:"+result);
     }
-    public static void retrievelastElementfromList(List<String> strings){
-        Optional<String> lastElement=strings.stream().reduce((first,second)->second);
+
+    public static void retrievelastElementfromList(List<String> str){
+        Optional<String> lastElement=str.stream().reduce((first,second)->second);
         lastElement.ifPresent(element-> System.out.println("The last element is:"+element));
     }
 
-    public static void removeDuplicateElement(List<Integer> numberWithDuplicates){
-        List<Integer>  numbersWithoutDuplicates=numberWithDuplicates.stream().distinct().collect(Collectors.toList());
-        System.out.println("List without duplicates:"+numbersWithoutDuplicates);
+    public static void removeDuplicateElement(List<Integer> num){
+        List<Integer>  num2=num.stream().distinct().collect(Collectors.toList());
+        System.out.println("List without duplicates:"+num2);
 
     }
 
-    public static void printEvenNumber(List<Integer> numbers){
+    public static void printEvenNumber(List<Integer> num){
         System.out.println("Even numbers:");
-        numbers.stream().filter(n->n%2==0).forEach(System.out::println);
+        num.stream().filter(n->n%2==0).forEach(System.out::println);
     }
-    public static void checkPrimeNumber(int number){
 
-        boolean isPrime=isPrime(number);
-
+    public static void checkPrimeNumber(int num){
+        boolean isPrime=isPrime(num);
         if(isPrime)
         {
-            System.out.println(number+"is a prime number");
+            System.out.println(num+"is a prime number");
         }
-        else{
-            System.out.println(number+"is not a prime number");
+        else
+        {
+            System.out.println(num+"is not a prime number");
         }
     }
 
-    public static boolean isPrime(int number)
+    public static boolean isPrime(int num)
     {
-        if(number<=1){
+        if(num<=1){
             return false;
         }
-        return !IntStream.rangeClosed(2,(int)Math.sqrt(number)).anyMatch(i->number%i==0);
+        return !IntStream.rangeClosed(2,(int)Math.sqrt(num)).anyMatch(i->num%i==0);
     }
 
     public static void maxAndminElementFinder(List<Integer> numbers){
@@ -148,7 +143,7 @@ public class java8Operation {
         itemMap.forEach((key,value)-> System.out.println(key+":"+value));
     }
     public static void secondLargestInarr(int[] arr){
-        //Creating a list of Integer
+
         List<Integer> numbers= Arrays.asList(1,2,3,4,5,6,6,7,8);
         Optional<Integer> secondLargest=numbers.stream()
                 .distinct()
