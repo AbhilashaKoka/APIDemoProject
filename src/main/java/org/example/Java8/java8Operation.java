@@ -20,28 +20,38 @@ public class java8Operation {
 
         String input2 = "javastream";
         findRepeatedCharacter(input2);
+
         int[] arr={1,2,3,4,5,6,6,7,8};
         secondLargestInarr(arr);
+
         List<String> items = List.of("apple", "banana", "cherry");
         listToMapconversion(items);
 
         List<Integer> numbers = Arrays.asList(2, 4, 7, 5, 9, 10, 3, 1);
         maxAndminElementFinder(numbers);
+
         int number=29;
         checkPrimeNumber(number);
+
         List<Integer> numbers2 = Arrays.asList(1, 2, 3, 4, 5, 5, 7, 9, 10);
         printEvenNumber(numbers2);
+
         List<Integer> numberWithDuplicates = Arrays.asList(1, 2, 3, 4, 4, 5, 6, 7, 7, 8, 9, 10);
         System.out.println("Original list with duplicates:" + numberWithDuplicates);
         removeDuplicateElement(numberWithDuplicates);
+
         List<String> strings = Arrays.asList("Java", "Python", "C++", "Javascript", "Ruby");
         retrievelastElementfromList(strings);
+
         String input3 = "Java 8 is great";
         reverseEachCharacterInWord(input3);
+
         String originalString = "Hello";
         reverseString(originalString);
+
         List<String> strings1 = Arrays.asList("Banana", "Apple", "Orange", "Mango", "Grape");
         sortStringInAlphabeticOrder(strings1);
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a number:");
         String number4 = scanner.nextLine();
