@@ -120,7 +120,8 @@ public class E2E_Tests {
 
         public Response deleteBook(String token, String userId, String isbn) {
         RestAssured.baseURI = baseUrl;
-        RequestSpecification httpRequest = given().header("Authorization", "Bearer " + token)
+        RequestSpecification httpRequest = given()
+                .header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
           return httpRequest.body("{ \"isbn\": \"" + isbn + "\", \"userId\": \"" + userId + "\"}").delete("/BookStore/v1/Book");
 
@@ -131,7 +132,7 @@ public class E2E_Tests {
           public  void IteratingHeaders() {
            RestAssured.baseURI = baseUrl;
            RequestSpecification httpRequest = given();
-              Response response = httpRequest.get("");
+           Response response = httpRequest.get("");
            Headers allHeaders = response.headers();
            for (Header header : allHeaders) {
                System.out.println("Key: " + header.getName() + " Value: " + header.getValue());
@@ -423,7 +424,7 @@ public void UploadPDFFile(){
     }
 
 
-    public void OAuthAuthenticationMethod(ITestContext context){
+    public void OAuthAuthenticationGenerateToken(ITestContext context) {
         RestAssured.baseURI = "https://auth-server.com";
         Response tokenResponse = given()
                 .auth()
@@ -440,6 +441,9 @@ public void UploadPDFFile(){
                 .response();
         String accessToken = tokenResponse.jsonPath().getString("access_token");
         System.out.println("Access Token: " + accessToken);
+
+    }
+    public void UseOAuth2Token(String accessToken){
         RestAssured.baseURI = "https://api.example.com";
         Response apiResponse = given()
                 .header("Authorization", "Bearer " + accessToken)

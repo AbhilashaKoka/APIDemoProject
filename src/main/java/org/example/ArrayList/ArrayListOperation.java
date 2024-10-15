@@ -39,14 +39,12 @@ public class ArrayListOperation {
         List<Integer> ls= num.stream()
                 .filter(number->number%2==0)
                 .collect(Collectors.toList());
-
         return ls;
 
     }
     public static void compareTwoArrayList(ArrayList<String> ls1, ArrayList<String> ls2){
         boolean isEqual=ls1.equals(ls2);
         System.out.println("list1 equals list2:"+isEqual);
-
         boolean isContained=ls1.containsAll(ls2);
         System.out.println("list1 contained all elements list2:"+isContained);
     }
@@ -54,25 +52,22 @@ public class ArrayListOperation {
     public static void arrayToArrayList(String[] arr){
         List<String> ls=new ArrayList<>(Arrays.asList(arr));
         System.out.println("Array to ArrayList:"+ls);
-
         ArrayList<String> listOfLanguages=new ArrayList<>();
         listOfLanguages.add("Javascript");
         listOfLanguages.add("TypeScript");
         listOfLanguages.add("kotlin");
-
         String[] languageArray=listOfLanguages.toArray(new String[0]);
         System.out.println("ArrayList to an array:"+Arrays.toString(languageArray));
 
     }
+
     public static <T> List<T> RemoverDuplicateMethod(List<T> list) {
         List<T> newList = new ArrayList<>();
         for (T element : list) {
             if (!newList.contains(element)) {
                 newList.add(element);
             }
-
         }
-
         return newList;
     }
 }

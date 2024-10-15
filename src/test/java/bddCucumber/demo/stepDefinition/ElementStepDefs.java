@@ -36,7 +36,8 @@ HomePage homePage;
       try{
           TextBoxDetails textBoxDetails=fileReaderManager.getJsonDataReader().getTextBoxDetailsByUserName("sita");
           homePage.SubmitDetails(textBoxDetails);
-      }catch (IOException ex){
+      }
+      catch (IOException ex){
           ex.printStackTrace();
       }
 
@@ -83,7 +84,7 @@ HomePage homePage;
     @When("User enter textbox values List of Map")
     public void user_enter_textbox_values_list_of_map(DataTable dataTable) {
      List<Map<String, String>> table2=dataTable.asMaps();
-     table2.get(0).get("uname");
+        table2.get(0).get("uname");
         table2.get(0).get("email");
         table2.get(0).get("curraddr");
         table2.get(0).get("permaddr");

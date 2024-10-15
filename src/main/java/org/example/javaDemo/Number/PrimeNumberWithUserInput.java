@@ -4,13 +4,10 @@ import java.util.Scanner;
 public class PrimeNumberWithUserInput {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-
         System.out.println("Enter the first Number:");
         int start = s.nextInt();
-
         System.out.println("Enter the second Number:");
         int end = s.nextInt();
-
         System.out.println("List of prime numbers between" + start + "and" + end);
         for (int i = start; i <= end; i++) {
             if (isPrime(i)) {
@@ -20,7 +17,6 @@ public class PrimeNumberWithUserInput {
     }
 
     public static boolean isPrime(int n) {
-
         if (n <= 1) {
             return false;
         }

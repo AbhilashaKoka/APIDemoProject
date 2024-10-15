@@ -1,5 +1,4 @@
 package restassured.demo;
-
 import bddCucumber.demo.model.Response.Book;
 import bddCucumber.demo.model.Response.Books;
 import bddCucumber.demo.model.Response.UserAccount;
@@ -8,11 +7,9 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 
 public class APITestNGTest{
@@ -39,13 +36,13 @@ public class APITestNGTest{
     @Test
     public void VerifyUserAuthorized(){
         E2E_Tests e2ETests=new E2E_Tests();
-       Response response= e2ETests.AuthorizedUser(username,password);
-       String statusLine=response.getStatusLine();
+        Response response= e2ETests.AuthorizedUser(username,password);
+        String statusLine=response.getStatusLine();
         Assert.assertEquals(statusLine,"Authorized User:HTTP/1.1 200 OK");
     }
 
      @Test
-       public void VerifyGenerateToken(){
+         public void VerifyGenerateToken(){
          E2E_Tests e2ETests=new E2E_Tests();
          Response response=e2ETests.GenerateToken(username,password);
         // String token = JsonPath.from(response.asString()).get("token");
@@ -58,9 +55,9 @@ public class APITestNGTest{
         @Test
         public void VerifygetUserData(){
         E2E_Tests e2ETests=new E2E_Tests();
-       Response response= e2ETests.getUserData(userId,token);
-       String body = response.body().asString();
-       String statusLine=response.getStatusLine();
+        Response response= e2ETests.getUserData(userId,token);
+        String body = response.body().asString();
+        String statusLine=response.getStatusLine();
         Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
        }
 
@@ -69,8 +66,8 @@ public class APITestNGTest{
         E2E_Tests e2ETests=new E2E_Tests();
         Response response=e2ETests.BookofUser(token, userId);
         JsonPath.from(response.asString()).get("books");
-           String statusLine=response.getStatusLine();
-           Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
+        String statusLine=response.getStatusLine();
+        Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
     }
 
     @Test
@@ -104,8 +101,8 @@ public class APITestNGTest{
 @Test
     public void VerifyAddBookByUserIDandISBN() throws IOException {
     E2E_Tests e2ETests=new E2E_Tests();
-  Response response=  e2ETests.AddBookbyUserIDandISBN( userId,  bookId,  token);
-   UserAccount userAccount = response.getBody().as(UserAccount.class);
+    Response response=  e2ETests.AddBookbyUserIDandISBN( userId,  bookId,  token);
+    UserAccount userAccount = response.getBody().as(UserAccount.class);
     String bookIsAdded = userAccount.books.get(0).isbn;
     String statusLine=response.getStatusLine();
     Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
@@ -116,15 +113,15 @@ public class APITestNGTest{
     E2E_Tests e2ETests=new E2E_Tests();
     Response response=e2ETests.RemoveBookBybookIDandUserId( token,  userId,  bookId);
      UserAccount userAccount1 = response.getBody().as(UserAccount.class);
-    int bookIsRemoved = userAccount1.books.size();
-    String statusLine=response.getStatusLine();
-    Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
+     int bookIsRemoved = userAccount1.books.size();
+     String statusLine=response.getStatusLine();
+     Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
 }
 
 @Test
     public void VerifyDeleteBook(){
     E2E_Tests e2ETests=new E2E_Tests();
-   Response response= e2ETests.deleteBook( token,  userId, bookId);
+    Response response= e2ETests.deleteBook( token,  userId, bookId);
     String statusLine=response.getStatusLine();
     Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
     }

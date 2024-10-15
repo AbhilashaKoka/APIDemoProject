@@ -41,6 +41,7 @@ public class ArrayOperation {
         int[] sortedArray={1,3,4,6,8,9,11,13,15,17};
         int target=11;
         int resultIndex=binarySearch(sortedArray, target);
+
         if(resultIndex!=-1){
             System.out.println("Element found at index:"+resultIndex);
         }
@@ -84,8 +85,7 @@ public class ArrayOperation {
         int len = arr.length;
         int count = 0;
         for (int i = 0; i < len; i++)
-
-            if (arr[i] != 0)
+            if (arr[i]!= 0)
                 arr[count++] = arr[i];
             while (count < len)
             arr[count++] = 0;
@@ -99,9 +99,10 @@ public class ArrayOperation {
         int[] numbers = {1, 2, 3, 4, 5};
         System.out.println("Inline initialized array:");
 
-        for (int number : numbers) {
+        for (int number : numbers){
             System.out.println(number + "");
         }
+
     }
     public static void InitializationwithAnonymousArray() {
 
@@ -125,7 +126,6 @@ public class ArrayOperation {
         System.out.println("\n\n Initialized in a block");
     }
     public static void splitArray(int[] arr){
-
         int midIndex=arr.length/2;
         int[] firstHalf=new int[midIndex];
         int[] secondHalf=new int[arr.length-midIndex];
@@ -183,22 +183,20 @@ public class ArrayOperation {
 
     public static void reversingElementInArr(int[] numbers){
         System.out.println("Original Array");
-
         for(int number:numbers){
             System.out.println(number+" ");
         }
-
         for(int i=0;i<numbers.length/2;i++){
             int temp=numbers[i];
             numbers[i]=numbers[numbers.length-1-i];
             numbers[numbers.length-1-i]=temp;
         }
-
         System.out.println("\nReversed array:");
         for(int number:numbers){
             System.out.println(number+"");
         }
     }
+
     public static void largestElement(int[] numbers){
         int max=numbers[0];
         for(int i=1;i<numbers.length;i++){
@@ -236,7 +234,6 @@ public class ArrayOperation {
     public static void secondLargestInarr(int[] arr){
         //Creating a list of Integer
         List<Integer> numbers= Arrays.asList(1,2,3,4,5,6,6,7,8);
-
         Optional<Integer> secondLargest=numbers.stream()
                 .distinct()
                 .sorted()
