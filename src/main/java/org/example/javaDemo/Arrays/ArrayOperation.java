@@ -4,9 +4,9 @@ public class ArrayOperation {
 
     public static void main(String[] args) {
         int[] arr1 = new int[]{1, 2, 3, 4, 5};
-            CopyArrayToAnotherArray(arr1);
+        CopyArrayToAnotherArray(arr1);
            int[] arr = new int[]{1, 2, 3, 4, 5};
-            CountElementInArray(arr);
+           CountElementInArray(arr);
           int[] arr11 = new int[]{5, 2, 8, 7, 1};
             arrangeElementInDescendingOrder(arr11);
             int[] arr2 = new int[]{1, 2, 3, 4, 2, 7, 8, 8, 3};
