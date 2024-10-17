@@ -1,5 +1,5 @@
 
-Selenium Grid Configuration Step:
+Selenium Grid Local Configuration before running script Step:
 C:\Users\Abhilasha\IdeaProjects\Spring_Course-master\APIDemoProject\src\test\resource\driver>java -jar selenium-server-4.25.0.jar standalone
 Navigate to http://localhost:4444
 java -jar selenium-server-4.25.0.jar hub
@@ -60,6 +60,19 @@ java -jar selenium-server-4.25.0.jar node --publish-events tcp://localhost:4442 
 1
 java -jar selenium-server-44.25.0.jar node --publish-events tcp://localhost:4442 --subscribe-events tcp://localhost:4443
 Navigate to http://localhost:4444 and check the grid in fully functional mode.
+
+
+Appium Local Configuration -
+Install Andriod SDK locally by Andriod Studio or Android SDK Manager.
+Install Java JDK 11 or above.
+Download Appium Server and Appium Client from https://appium.io/downloads/
+Extract the downloaded zip file.
+Open the terminal and navigate to the extracted folder.
+Run the following command to start the server:
+java -jar appium.jar
+Run the following command to start the client:
+java -jar appium-uiautomator2-server.jar
+Navigate to http://localhost:4723/wd/hub and check the grid in fully functional mode.
 
 Appium Client and Server-
 Appium.jar

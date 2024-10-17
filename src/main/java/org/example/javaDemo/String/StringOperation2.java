@@ -1,11 +1,10 @@
 package org.example.javaDemo.String;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AmagrameCheck {
+public class StringOperation2 {
 
     public static void main(String[] args){
         String str1="listen";

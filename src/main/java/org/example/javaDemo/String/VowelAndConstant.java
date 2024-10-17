@@ -4,7 +4,6 @@ package org.example.javaDemo.String;
 public class VowelAndConstant {
     public static void main(String[] args) {
         int vCount=0, cCount=0;
-
         String str="This is a real simple sentence";
         str.toLowerCase();
 

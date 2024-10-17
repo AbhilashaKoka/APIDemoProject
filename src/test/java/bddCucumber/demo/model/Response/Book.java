@@ -1,8 +1,6 @@
 package bddCucumber.demo.model.Response;
 
 
-import java.time.Instant;
-
 public class Book {
 
     public String isbn;
@@ -24,11 +22,11 @@ public class Book {
     public String website;
 
 
-    public void setPublishDate(String publishDate) {
-        Instant timeStamp=null;
-        timeStamp=Instant.parse(publishDate);
-        this.published = publishDate;
-    }
+//    public void setPublishDate(String publishDate) {
+//        Instant timeStamp=null;
+//        timeStamp=Instant.parse(publishDate);
+//        this.published = publishDate;
+//    }
 
 
 

@@ -33,7 +33,6 @@
         <surefire.version>2.22.2</surefire.version>
         <aventstack.report.version>3.1.5</aventstack.report.version>
         <poi.version>5.2.2</poi.version>
-
     </properties>
     <dependencies>
             <dependency>
@@ -41,7 +40,6 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -152,6 +150,7 @@
             <artifactId>extentreports</artifactId>
             <version>${aventstack.report.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>

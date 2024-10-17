@@ -1,11 +1,15 @@
 package bddCucumber.demo.model.Request;
 
 public class ISBN {
-    public ISBN(String isbn) {
+
+    private String isbn;
+
+
+    public ISBN(String isbn)
+    {
+
         this.isbn = isbn;
     }
-
-    public String isbn;
 
     public String getIsbn() {
         return isbn;
