@@ -4,9 +4,12 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features ="src/test/resource/Features",
-        glue = {"src/test/java/bddCucumber/demo/APIStepDef","src/test/java/bddCucumber/demo/UIStepDef","src/test/java/bddCucumber/demo/Hooks"},
-        tags="not @skip_scenario,@browser or @restapi",
+        features ={"src/test/resource/UIFeatures",
+                "src/test/resource/APIFeatures"},
+        glue = {"src/test/java/bddCucumber/demo/APIStepDef",
+                "src/test/java/bddCucumber/demo/UIStepDef",
+                "src/test/java/bddCucumber/demo/Hooks"},
+        tags="not @skip_scenario, @browser or @restapi",
         plugin={"pretty","json:target/cucumber.json",
                          "rerun:target/failedrerun.txt"},
         publish=true

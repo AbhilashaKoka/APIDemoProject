@@ -30,14 +30,11 @@ public class BaseSetup {
     }
 
 
-@Before("@restapi")
-public void setUpApi() {
-    // Code to set up API environment
-    System.out.println("Setting up API environment");
-}
+   @Before("@restapi")
+    public void setUpApi(Scenario scenario) {
+       System.out.println(scenario.getName());
 
-
-
+    }
 
     @After
     public void TearDownTest(Scenario scenario) throws IOException {
