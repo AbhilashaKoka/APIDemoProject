@@ -1,6 +1,9 @@
 package bddCucumber.demo.model.Response;
 
+import lombok.Data;
+
+@Data
 public class JSONFailureResponse {
-  public  String FaultId;
-  public  String fault;
+  private  String FaultId;
+  private  String fault;
 }

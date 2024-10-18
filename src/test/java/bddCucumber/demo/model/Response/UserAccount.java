@@ -1,9 +1,12 @@
 package bddCucumber.demo.model.Response;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class UserAccount {
-    public String UserID;
-    public String userName;
-    public List<Book> books;
+    private String UserID;
+    private String userName;
+    private List<Book> books;
 }

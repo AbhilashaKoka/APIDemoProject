@@ -1,14 +1,17 @@
 package bddCucumber.demo.model.Response;
 
+import lombok.Data;
+
+@Data
 public class Token {
 
 
-    public String token;
+    private String token;
 
-    public String expires;
+    private String expires;
 
-    public String status;
+    private String status;
 
-    public String result;
+    private String result;
 
 }

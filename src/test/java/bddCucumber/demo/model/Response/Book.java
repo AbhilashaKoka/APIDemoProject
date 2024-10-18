@@ -1,25 +1,27 @@
 package bddCucumber.demo.model.Response;
 
+import lombok.Data;
 
+@Data
 public class Book {
 
-    public String isbn;
+    private String isbn;
 
-    public String title;
+    private String title;
 
-    public String subTitle;
+    private String subTitle;
 
-    public String author;
+    private String author;
 
-    public String published;
+    private String published;
 
-    public String publisher;
+    private String publisher;
 
-    public int pages;
+    private int pages;
 
-    public String description;
+    private String description;
 
-    public String website;
+    private String website;
 
 
 //    public void setPublishDate(String publishDate) {

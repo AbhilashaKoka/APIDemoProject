@@ -10,116 +10,6 @@ import java.util.stream.Collectors;
 
 public class StringOperation{
 
-    //OP:IsAtUkAmIr
-    public static void main(String[] args){
-
-        String str = "sitakumari";
-        Reversingsecondcharacterwithchangecase(str);
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the string:");
-        String input = scanner.nextLine();
-        Map<Character, Integer> charCount = countCharacters(input);
-        for (Map.Entry<Character, Integer> entry : charCount.entrySet()){
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-            String input1 = "hello world";
-            characterCountInString(input1);
-            String input2 = "programming";
-            countCharacterInString(input2);
-        }
-        String input1="123456";
-        boolean result=containsOnlyDigits(input1);
-        System.out.println(result);
-        String str1="HelloWorld";
-
-        boolean result1=containOnlyLetter(str1);
-        System.out.println(result1);
-        Scanner scanner2=new Scanner(System.in);
-        System.out.println("Enter the String:");
-        String str3=scanner2.nextLine();
-        duplicateCharacterCount(str3);
-
-        String sentence = "Java id a programming language and java is also a platform";
-        System.out.println("Duplicate words in the string is:");
-        findDuplicateCharacter2(sentence);
-        String input2 = "javastream";
-        findRepeatedCharacter(input2);
-
-        String Input = "Java is great and java is fun, Programming in java is great";
-        duplicateWordCount(Input);
-
-        String text = "this is a test this is only a test";
-        findOccurrenceOfWordInStr(text);
-
-        String str4 = "This is an example string, an example of a string.";
-        String word = "example";
-        findOccurOfWordInStr(str4,word);
-
-        String str5 = "aaaabbbbcccc";
-        DivideStringInSubSet(str5,3);
-
-        Scanner scanner6 = new Scanner(System.in);
-        System.out.println("Enter any string:");
-        String input3 = scanner6.nextLine();
-        generateallPermutationOfString(input3);
-
-        String str66="HelloWorld12344";
-
-        boolean result6=containOnlyLetter1(str66);
-        System.out.println(result6);
-        String str8 = "sample string";
-        maxOccurOfChar(str8);
-
-        String[] str11 = {"java", "is", "fun"};
-        String[] str21 = {"and", "powerful"};
-        mergeTwoStrs(str11, str21);
-
-        String text1 = "Java Guides";
-        char result11 = findNonRepeatedCharater(text1);
-        if (result11 != '\0'){
-            System.out.println("The Non repeated character is:" + result11);
-        } else {
-            System.out.println("All character  are repeated");
-        }
-
-        Scanner scanner4=new Scanner(System.in);
-        System.out.println("Enter any String :");
-        String str7=scanner4.nextLine();
-        Boolean palindrome = isPalindrome(str7);
-
-        System.out.println("String is Palindrome:"+palindrome);
-        String input9="Java is great and java is fun and java is powerful";
-        String result9 =removeTheDuplicateWords(input9);
-        System.out.println(result9);
-
-
-        String str99 = "java is great and fun";
-        String result99 = reverseWordIntradition(str99);
-
-        System.out.println("reverse String:"+result99);
-
-        Integer[] arr = {1, 2, 3, 4, 5};
-        reverseList(arr);
-
-        String input34 = "java is great. java is fun. java is POwerful";
-        String substring = "Java";
-        subStringCount(input34,substring);
-
-        String str14 = "Hello";
-        String str24 = "World";
-        swapToString(str14,str24);
-
-        Scanner scanner5 = new Scanner(System.in);
-        System.out.println("Enter your string:");
-        String input5 = scanner5.nextLine();
-        int[] counts = countVowelsAndConsonants(input5);
-
-        System.out.println("Number of vowels: " + counts[0]);
-        System.out.println("Number of consonants: " + counts[1]);
-        String str555 = "Abhilasha Koka Koka";
-        nonRepeatedCharacter(str555);
-    }
-
 
     public static void nonRepeatedCharacter(String str) {
         String[] arr = str.split("\\s+");
@@ -535,4 +425,27 @@ public static Map<Character, Integer> countCharacters(String input) {
          }
         System.out.println(newcharArr);
     }
-}
+
+
+
+
+        public static String capitalizeWords(String str) {
+            if (str == null || str.isEmpty()) {
+                return str;
+            }
+
+            String[] words = str.split("\\s+");
+            StringBuilder capitalizedStr = new StringBuilder();
+
+            for (String word : words) {
+                if (word.length() > 0) {
+                    capitalizedStr.append(Character.toUpperCase(word.charAt(0)))
+                            .append(word.substring(1))
+                            .append(" ");
+                }
+            }
+            return capitalizedStr.toString().trim();
+        }
+    }
+
+

@@ -1,4 +1,4 @@
-package bddCucumber.demo.stepDefinition;
+package bddCucumber.demo.Hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -22,12 +22,19 @@ public class BaseSetup {
 
     }
 
-    @Before
+    @Before("@browser")
     public void setup(Scenario scenario) {
         System.out.println(scenario.getName());
         driver = testContext.getDriverManager().getDriver();
          driver.get("https://demoqa.com");
     }
+
+
+@Before("@restapi")
+public void setUpApi() {
+    // Code to set up API environment
+    System.out.println("Setting up API environment");
+}
 
 
 

@@ -1,8 +1,11 @@
 package bddCucumber.demo.model.Response;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class Books {
-    public List<Book> books;
+    private List<Book> book;
 
 }

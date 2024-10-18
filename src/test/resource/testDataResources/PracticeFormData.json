@@ -1,33 +1,19 @@
-[
-  {
-  "FirstName":"Sita",
-  "LastName":"Kumari",
-  "Gender":"Female",
-  "Email":"sita.kumari@gmail.com",
-  "Mobile":"9142343241",
-  "DOB":"28 JUN 1983",
-  "Subject":"Computer Science",
-  "Hobbies":"Reading",
+ [ {
+    "FirstName": "Sita",
+    "LastName": "Kumari",
+    "Gender": "Female",
+    "Email": "sita.kumari@gmail.com",
+    "Mobile": "9142343241",
+    "DOB": "28 JUN 1983",
+    "Subject": "Computer Science",
+    "Hobbies": "Reading",
     "FilePath": "D:\\Users\\akoka\\Downloads\\sampleFile.jpeg",
-  "CurrentAddr": "adsffsfff",
-  "State":"Uttar Pradesh",
-  "City":"Agra"
-},
+    "CurrentAddr": "adsffsfff",
+    "State": "Uttar Pradesh",
+    "City": "Agra"
+  }
+   ]
 
-{
-"FirstName":"gita",
-"LastName":"Kumari",
-"Gender":"Female",
-"Email":"gita.kumari@gmail.com",
-"Mobile":"9142343221",
-"DOB":"28 JUN 1984",
-"Subject":"Computer Science",
-"Hobbies":"Reading",
-  "FilePath": "D:\\Users\\akoka\\Downloads\\sampleFile.jpeg",
-"CurrentAddr": "adsffsfff",
-"State":"Uttar Pradesh",
-"City":"Agra"
-}
-]
+
 
 

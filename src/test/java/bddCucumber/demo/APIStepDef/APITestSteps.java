@@ -1,4 +1,5 @@
-package bddCucumber.demo.stepDefinition;
+package bddCucumber.demo.APIStepDef;
+
 import bddCucumber.demo.endToendAPITest.EndPoints;
 import bddCucumber.demo.model.Request.AddBookRequest;
 import bddCucumber.demo.model.Request.AuthorizationRequest;
@@ -34,34 +35,34 @@ public class APITestSteps {
         response=EndPoints.getBook();
         System.out.println(response.toString());
         Books books=response.getBody().as(Books.class);
-        book=books.books.get(0);
+        book=books.getBook().get(0);
 
     }
     @When("I added a book to my reading list")
     public void i_added_a_book_to_my_reading_list() {
-        ISBN isbn=new ISBN(book.isbn);
-        AddBookRequest addBookRequest=new AddBookRequest(USER_ID,isbn);
-        response=EndPoints.addBook(addBookRequest,tokenResponse.token);
+        ISBN isbn=new ISBN(book.getIsbn());
+        AddBookRequest addBookRequest=new AddBookRequest(USER_ID,isbn );
+        response=EndPoints.addBook(addBookRequest,tokenResponse.getToken());
     }
     @Then("The book is added")
     public void the_book_is_added() {
         Assert.assertEquals(201,response.getStatusCode());
         UserAccount userAccount=response.getBody().as(UserAccount.class);
-        Assert.assertEquals(USER_ID,userAccount.UserID);
-        Assert.assertEquals(book.isbn,userAccount.books.get(0).isbn);
+        Assert.assertEquals(USER_ID,userAccount.getUserID());
+        Assert.assertEquals(book.getIsbn(),userAccount.getBooks().get(0).getIsbn());
     }
     @When("I remove a book from my reading list")
     public void i_remove_a_book_from_my_reading_list() {
-        RemoveBookRequest removeBookRequest=new RemoveBookRequest(USER_ID,book.isbn);
-        response=EndPoints.removeBook(removeBookRequest,tokenResponse.token);
+        RemoveBookRequest removeBookRequest=new RemoveBookRequest(USER_ID,book.getIsbn());
+        response=EndPoints.removeBook(removeBookRequest,tokenResponse.getToken());
     }
     @Then("The Book is removec")
     public void the_book_is_removec() {
         Assert.assertEquals(204,response.getStatusCode());
-        response=EndPoints.getUserAccount(USER_ID, tokenResponse.token);
+        response=EndPoints.getUserAccount(USER_ID, tokenResponse.getToken());
         Assert.assertEquals(200,response.getStatusCode());
         UserAccount userAccount=response.getBody().as(UserAccount.class);
-        Assert.assertEquals(0,userAccount.books.size());
+        Assert.assertEquals(0,userAccount.getBooks().size());
     }
 
 }

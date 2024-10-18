@@ -1,7 +1,10 @@
 package bddCucumber.demo.model.Response;
 
+import lombok.Data;
+
+@Data
 public class JSONSuccessResponse {
-    public String SuccessCode;
-    public String Message;
+    private String SuccessCode;
+    private String Message;
 }
 

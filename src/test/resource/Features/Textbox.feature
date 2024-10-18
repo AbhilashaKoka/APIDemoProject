@@ -1,3 +1,4 @@
+@browser
 Feature: Verify TestBox Login Page
 
   Background:
@@ -5,7 +6,8 @@ Feature: Verify TestBox Login Page
     And Click on Submit
     Then user should able to verify the detail on output area
 
-  @skip_scenario
+
+
 #Hard Coding Value
   Scenario: TextBox:Successful login with valid Credential
       When User enter details username, email, current address, permanent address

@@ -1,3 +1,4 @@
+@browser
 Feature: Verify Form Submission functionality
 
 Background:
@@ -5,6 +6,7 @@ Background:
   Then I am able to verify form details successfully
 
 
+#Hard Coding Value
   Scenario: PracticeForm:successfully login by valid credential
       When I enter details firstname, lastname,gender,email,mobile,dob,subject,hobbies,currentaddr,state,city
 

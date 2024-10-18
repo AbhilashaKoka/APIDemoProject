@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseSetUpAPI {
 
+
     @BeforeClass
     public static void setUp() {
         RestAssured.baseURI = "https://bookstore.toolsqa.com";
@@ -14,7 +15,11 @@ public class BaseSetUpAPI {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
         RestAssured.baseURI = System.getProperty("baseurl");
     }
-    }
+
+
+
+
+}
 
 
 

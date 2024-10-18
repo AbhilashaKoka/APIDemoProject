@@ -1,5 +1,8 @@
 package restassured.demo;
+
+import bddCucumber.demo.model.Request.AddBookRequest;
 import bddCucumber.demo.model.Request.AuthorizationRequest;
+import bddCucumber.demo.model.Request.ISBN;
 import bddCucumber.demo.model.Request.RemoveBookRequest;
 import bddCucumber.demo.model.Response.Book;
 import bddCucumber.demo.model.Response.JSONFailureResponse;
@@ -29,6 +32,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 
@@ -65,14 +69,15 @@ public class E2E_Tests {
             return request.body(UserAuth).post("/Account/v1/Authorized");
          }
 
+
+
           public  Response  getUserData(String userId, String token) {
           RestAssured.baseURI = baseUrl;
            RequestSpecification httpRequest = given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
               return httpRequest.get("/Account/v1/User/"+userId);
-
-
     }
+
     public  Response BookofUser(String token, String userId) throws IOException {
      String jsonPayload = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
      RestAssured.baseURI=baseUrl;
@@ -82,9 +87,11 @@ public class E2E_Tests {
       return request.get("/Account/v1/User/" + userId);
       }
 
-    public  Response GetBooksDetails() throws IOException {
+    public  Response GetBooksDetails(String token) throws IOException {
      RestAssured.baseURI=baseUrl;
      RequestSpecification request= given();
+        request.header("Authorization", "Bearer " + token)
+                .header("Content-Type", "application/json");
      return request.get("/BookStore/v1/Books");
       }
 
@@ -97,11 +104,11 @@ public class E2E_Tests {
         }
 
         public  Response AddBookbyUserIDandISBN(String userId, String bookId,  String token) throws IOException {
-            String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
+          //  String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/AddListOfBooks.json")));
                 RestAssured.baseURI=baseUrl;
-        RequestSpecification request= given();
-        request.header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
-     //   AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
+          RequestSpecification request= given();
+          request.header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
+           AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
            return request.body(addBookRequest).post("/BookStore/v1/Books");
 
     }
@@ -134,7 +141,8 @@ public class E2E_Tests {
            RequestSpecification httpRequest = given();
            Response response = httpRequest.get("");
            Headers allHeaders = response.headers();
-           for (Header header : allHeaders) {
+           for (Header header : allHeaders)
+           {
                System.out.println("Key: " + header.getName() + " Value: " + header.getValue());
            }
        }
@@ -143,7 +151,9 @@ public class E2E_Tests {
     public  void queryParameter() {
         RestAssured.baseURI= baseUrl;
         RequestSpecification httpRequest = given();
-        Response  response = httpRequest.queryParam("ISBN","9781449325862").get("/BookStore/v1/Book");
+        Response  response = httpRequest
+                .queryParam("ISBN","9781449325862")
+                .get("/BookStore/v1/Book");
         ResponseBody body = response.body();
         String rbdy = body.asString();
         JsonPath jpath = new JsonPath(rbdy);
@@ -159,7 +169,8 @@ public class E2E_Tests {
         requestParams.put("UserName", "test_rest");
         requestParams.put("Password", "rest@123");
         request.body(requestParams.toJSONString());
-        Response  response = request.post("/Account/v1/User");
+        Response  response = request
+                .post("/Account/v1/User");
         ResponseBody body = response.getBody();
         String jsonReponse=response.body().asString();
         try{
@@ -175,12 +186,12 @@ public class E2E_Tests {
 
         if (response.statusCode() == 200) {
             JSONFailureResponse responseBody = body.as(JSONFailureResponse.class);
-            Assert.assertEquals("User already exists", responseBody.FaultId);
-            Assert.assertEquals("FAULT_USER_ALREADY_EXISTS", responseBody.fault);
+            Assert.assertEquals("User already exists", responseBody);
+            Assert.assertEquals("FAULT_USER_ALREADY_EXISTS", responseBody);
         } else if (response.statusCode() == 201) {
             JSONSuccessResponse responseBody = body.as(JSONSuccessResponse.class);
-            Assert.assertEquals("OPERATION_SUCCESS", responseBody.SuccessCode);
-            Assert.assertEquals("Operation completed successfully", responseBody.Message);
+            Assert.assertEquals("OPERATION_SUCCESS", responseBody);
+            Assert.assertEquals("Operation completed successfully", responseBody);
         }
     }
 
@@ -188,7 +199,8 @@ public class E2E_Tests {
     {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = given();
-        Response response = httpRequest.get("/utilities/books/getallbooks");
+        Response response = httpRequest
+                .get("/utilities/books/getallbooks");
         JsonPath jsonPathEvaluator = response.jsonPath();
         List<String> allBooks = jsonPathEvaluator.getList("books.title");
         for(String book : allBooks)
@@ -198,12 +210,12 @@ public class E2E_Tests {
         List<Book> allBooks1 = jsonPathEvaluator.getList("books", Book.class);
         for(Book book : allBooks1)
         {
-            System.out.println("Book: " + book.title);
+            System.out.println("Book: " + book);
         }
         Book[] books = response.jsonPath().getObject("books",Book[].class );
         for(Book book : books)
         {
-            System.out.println("Book title " + book.title);
+            System.out.println("Book title " + book);
         }
     }
 public void UploadingATextFile(){
