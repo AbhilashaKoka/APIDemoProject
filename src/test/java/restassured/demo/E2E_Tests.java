@@ -23,20 +23,16 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
-
 import static io.restassured.RestAssured.given;
 
 
-public class E2E_Tests {
+public class E2E_Tests{
          static  String baseUrl="https://bookstore.toolsqa.com";
          static  JSONObject requestParam;
 
@@ -71,53 +67,49 @@ public class E2E_Tests {
 
 
 
-          public  Response  getUserData(String userId, String token) {
+          public  Response  getUser(String userId, String token) {
           RestAssured.baseURI = baseUrl;
            RequestSpecification httpRequest = given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
               return httpRequest.get("/Account/v1/User/"+userId);
     }
 
-    public  Response BookofUser(String token, String userId) throws IOException {
-     String jsonPayload = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
+    public  Response GetBookByUserID(String token, String userId) throws IOException {
+    // String jsonPayload = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/Books.json")));
      RestAssured.baseURI=baseUrl;
-     RequestSpecification request= given();
-     request.header("Authorization", "Bearer " + token)
+     RequestSpecification request= given().header("Authorization", "Bearer " + token)
             .header("Content-Type", "application/json");
       return request.get("/Account/v1/User/" + userId);
       }
 
-    public  Response GetBooksDetails(String token) throws IOException {
+    public  Response GetBooks(String token) throws IOException {
      RestAssured.baseURI=baseUrl;
-     RequestSpecification request= given();
-        request.header("Authorization", "Bearer " + token)
+     RequestSpecification request= given().header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
      return request.get("/BookStore/v1/Books");
       }
 
 
-      public  Response GetBookDetailsbyISBNNUmber(String bookId) {
+      public  Response GetBookByISBN(String bookId) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given();
            return request.get("/BookStore/v1/Book?ISBN=" + bookId);
 
         }
 
-        public  Response AddBookbyUserIDandISBN(String userId, String bookId,  String token) throws IOException {
+        public  Response AddBookByUserIDAndISBN(String userId, String bookId,  String token) throws IOException {
           //  String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/AddListOfBooks.json")));
                 RestAssured.baseURI=baseUrl;
-          RequestSpecification request= given();
-          request.header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
+          RequestSpecification request= given().header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
            AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
            return request.body(addBookRequest).post("/BookStore/v1/Books");
 
     }
 
 
-        public  Response RemoveBookBybookIDandUserId(String token, String userId, String bookId) {
+        public  Response UpdateBookByISBNAndUserId(String token, String userId, String bookId) {
             RestAssured.baseURI=baseUrl;
-            RequestSpecification request= given();
-            request.header("Authorization", "Bearer " + token).
+            RequestSpecification request= given().header("Authorization", "Bearer " + token).
                     header("Content-Type", "application/json");
             RemoveBookRequest removeBookRequest = new RemoveBookRequest(userId, bookId);
             return request.body(removeBookRequest).delete("/BookStore/v1/Book");
@@ -125,7 +117,7 @@ public class E2E_Tests {
         }
 
 
-        public Response deleteBook(String token, String userId, String isbn) {
+        public Response DeleteBookByUserIdAndISBN(String token, String userId, String isbn) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = given()
                 .header("Authorization", "Bearer " + token)

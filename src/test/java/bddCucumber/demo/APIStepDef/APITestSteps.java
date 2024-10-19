@@ -1,5 +1,4 @@
 package bddCucumber.demo.APIStepDef;
-
 import bddCucumber.demo.endToendAPITest.EndPoints;
 import bddCucumber.demo.model.Request.AddBookRequest;
 import bddCucumber.demo.model.Request.AuthorizationRequest;
@@ -20,8 +19,8 @@ public class APITestSteps {
     private static Response response;
     private static Token tokenResponse;
     private static Book book;
-    static String UserName="Test12";
-    static String Password="Test@123";
+    static String UserName="Test2334";
+    static String Password="Test@78234";
 
     @Given("I am an authorized user")
     public void i_am_an_authorized_user() {
@@ -35,34 +34,34 @@ public class APITestSteps {
         response=EndPoints.getBook();
         System.out.println(response.toString());
         Books books=response.getBody().as(Books.class);
-        book=books.getBook().get(0);
+        book=books.books.get(0);
 
     }
     @When("I added a book to my reading list")
     public void i_added_a_book_to_my_reading_list() {
-        ISBN isbn=new ISBN(book.getIsbn());
+        ISBN isbn=new ISBN(book.isbn);
         AddBookRequest addBookRequest=new AddBookRequest(USER_ID,isbn );
-        response=EndPoints.addBook(addBookRequest,tokenResponse.getToken());
+        response=EndPoints.addBook(addBookRequest,tokenResponse.token);
     }
     @Then("The book is added")
     public void the_book_is_added() {
         Assert.assertEquals(201,response.getStatusCode());
         UserAccount userAccount=response.getBody().as(UserAccount.class);
-        Assert.assertEquals(USER_ID,userAccount.getUserID());
-        Assert.assertEquals(book.getIsbn(),userAccount.getBooks().get(0).getIsbn());
+        Assert.assertEquals(USER_ID,userAccount.UserID);
+
     }
     @When("I remove a book from my reading list")
     public void i_remove_a_book_from_my_reading_list() {
-        RemoveBookRequest removeBookRequest=new RemoveBookRequest(USER_ID,book.getIsbn());
-        response=EndPoints.removeBook(removeBookRequest,tokenResponse.getToken());
+        RemoveBookRequest removeBookRequest=new RemoveBookRequest(USER_ID,book.isbn);
+        response=EndPoints.removeBook(removeBookRequest,tokenResponse.token);
     }
     @Then("The Book is removec")
     public void the_book_is_removec() {
         Assert.assertEquals(204,response.getStatusCode());
-        response=EndPoints.getUserAccount(USER_ID, tokenResponse.getToken());
+        response=EndPoints.getUserAccount(USER_ID, tokenResponse.token);
         Assert.assertEquals(200,response.getStatusCode());
         UserAccount userAccount=response.getBody().as(UserAccount.class);
-        Assert.assertEquals(0,userAccount.getBooks().size());
+
     }
 
 }

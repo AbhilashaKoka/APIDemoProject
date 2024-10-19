@@ -1,12 +1,10 @@
 package restassured.demo;
-
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.testng.annotations.BeforeClass;
 
 public class BaseSetUpAPI {
-
 
     @BeforeClass
     public static void setUp() {

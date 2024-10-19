@@ -8,9 +8,14 @@
 <!--            <class name="selenium.demo.TestNGTestClass"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="SeleniumBDD">
+<!--    <test name="SeleniumBDD">-->
+<!--        <classes>-->
+<!--            <class name="bddCucumber.demo.runner.TestRunner"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="RestAssuredTest">
         <classes>
-            <class name="bddCucumber.demo.runner.TestRunner"></class>
+            <class name="restassured.demo.APITestNGTest"></class>
         </classes>
     </test>
 </suite>

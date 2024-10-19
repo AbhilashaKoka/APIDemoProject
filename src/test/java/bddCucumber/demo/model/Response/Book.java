@@ -1,34 +1,26 @@
 package bddCucumber.demo.model.Response;
 
-import lombok.Data;
+import java.time.LocalDateTime;
 
-@Data
 public class Book {
 
-    private String isbn;
+    public String isbn;
 
-    private String title;
+    public String title;
 
-    private String subTitle;
+    public String subTitle;
 
-    private String author;
+    public String author;
 
-    private String published;
+    public LocalDateTime publishDate;
 
-    private String publisher;
+    public String publisher;
 
-    private int pages;
+    public Integer pages;
 
-    private String description;
+    public String description;
 
-    private String website;
-
-
-//    public void setPublishDate(String publishDate) {
-//        Instant timeStamp=null;
-//        timeStamp=Instant.parse(publishDate);
-//        this.published = publishDate;
-//    }
+    public String website;
 
 
 
