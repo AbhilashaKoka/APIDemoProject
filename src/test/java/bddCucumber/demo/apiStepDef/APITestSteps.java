@@ -1,4 +1,4 @@
-package bddCucumber.demo.APIStepDef;
+package bddCucumber.demo.apiStepDef;
 
 import bddCucumber.demo.endToendAPITest.BookStoreEndPoints;
 import bddCucumber.demo.model.bookstoreRequest.AddBookRequest;
