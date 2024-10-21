@@ -14,16 +14,14 @@ public class BookStoreEndPoints {
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
-        Response response=request.body(authRequest).post(BookStoreRoute.generateToken());
-        return response;
+        return request.body(authRequest).post(BookStoreRoute.generateToken());
     }
 
     public static Response getBook(){
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
-        Response response=request.get(BookStoreRoute.books());
-        return response;
+        return request.get(BookStoreRoute.books());
     }
 
     public static Response addBook(AddBookRequest addBookRequest, String token){
@@ -31,8 +29,7 @@ public class BookStoreEndPoints {
         RequestSpecification request=RestAssured.given();
         request.header("Authorization","Bearer "+token)
                 .header("Content-Type","application/json");
-        Response response=request.body(addBookRequest).post(BookStoreRoute.books());
-        return response;
+        return request.body(addBookRequest).post(BookStoreRoute.books());
     }
 
     public static Response removeBook(RemoveBookRequest removeBookRequest, String token){
@@ -40,8 +37,7 @@ public class BookStoreEndPoints {
         RequestSpecification request=RestAssured.given();
         request.header("Authorization","Bearer "+token)
                 .header("Content-Type","application/json");
-        Response response=request.delete(BookStoreRoute.book());
-        return response;
+        return request.delete(BookStoreRoute.book());
     }
 
     public static Response getUserAccount(String userId , String token){
@@ -49,7 +45,6 @@ public class BookStoreEndPoints {
         RequestSpecification request=RestAssured.given();
         request.header("Authorization","Bearer "+token)
                 .header("Content-Type","application/json");
-        Response response=request.get(BookStoreRoute.userAccount(userId));
-        return response;
+        return request.get(BookStoreRoute.userAccount(userId));
     }
 }

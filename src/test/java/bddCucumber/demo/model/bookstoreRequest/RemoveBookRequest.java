@@ -1,5 +1,7 @@
 package bddCucumber.demo.model.bookstoreRequest;
 
+import bddCucumber.demo.endToendAPITest.BookStoreEndPoints;
+
 public class RemoveBookRequest {
     public String isbn;
     public String userId;
@@ -9,6 +11,8 @@ public class RemoveBookRequest {
         this.isbn=isbn;
         this.userId=userId;
     }
+
+
 
 
 }
