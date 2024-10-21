@@ -1,4 +1,4 @@
-package bddCucumber.demo.model.Request;
+package bddCucumber.demo.model.bookstoreRequest;
 
 
 public class AuthorizationRequest {

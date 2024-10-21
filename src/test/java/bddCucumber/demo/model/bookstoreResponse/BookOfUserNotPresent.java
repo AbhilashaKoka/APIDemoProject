@@ -1,4 +1,4 @@
-package bddCucumber.demo.model.Response;
+package bddCucumber.demo.model.bookstoreResponse;
 
 public class BookOfUserNotPresent {
     public String code;

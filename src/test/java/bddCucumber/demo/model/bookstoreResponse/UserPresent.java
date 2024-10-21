@@ -1,4 +1,4 @@
-package bddCucumber.demo.model.Response;
+package bddCucumber.demo.model.bookstoreResponse;
 
 public class UserPresent{
     public String code;

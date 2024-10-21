@@ -1,11 +1,11 @@
 package restassured.demo;
 
-import bddCucumber.demo.model.Request.AddListOfBooks;
-import bddCucumber.demo.model.Request.AuthorizationRequest;
-import bddCucumber.demo.model.Request.RemoveBookRequest;
-import bddCucumber.demo.model.Response.Book;
-import bddCucumber.demo.model.Response.JSONFailureResponse;
-import bddCucumber.demo.model.Response.JSONSuccessResponse;
+import bddCucumber.demo.model.bookstoreRequest.AddListOfBooks;
+import bddCucumber.demo.model.bookstoreRequest.AuthorizationRequest;
+import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
+import bddCucumber.demo.model.bookstoreResponse.Book;
+import bddCucumber.demo.model.bookstoreResponse.JSONFailureResponse;
+import bddCucumber.demo.model.bookstoreResponse.JSONSuccessResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
@@ -225,7 +225,7 @@ public void UploadingATextFile(){
             .extract()
             .response();
     System.out.println("Status Code: " + response.statusCode());
-    System.out.println("Response Body: " + response.asString());
+    System.out.println("bookstoreResponse Body: " + response.asString());
 }
 
 public void uploadingAHTMLFile()
@@ -241,7 +241,7 @@ public void uploadingAHTMLFile()
             .extract()
             .response();
     System.out.println("Status Code: " + response.statusCode());
-    System.out.println("Response Body: " + response.asString());
+    System.out.println("bookstoreResponse Body: " + response.asString());
 
 }
 
@@ -257,7 +257,7 @@ public void UploadImageFile(){
             .extract()
             .response();
     System.out.println("Status Code: " + response.statusCode());
-    System.out.println("Response Body: " + response.asString());
+    System.out.println("bookstoreResponse Body: " + response.asString());
 
 }
 
@@ -273,7 +273,7 @@ public void UploadPDFFile(){
             .extract()
             .response();
     System.out.println("Status Code: " + response.statusCode());
-    System.out.println("Response Body: " + response.asString());
+    System.out.println("bookstoreResponse Body: " + response.asString());
 }
 
     public void CreatePayloadUsingLinkedHashMap(){
@@ -293,7 +293,7 @@ public void UploadPDFFile(){
                 .extract()
                 .response();
         System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
 
     }
 
@@ -317,7 +317,7 @@ public void UploadPDFFile(){
                 .extract()
                 .response();
         System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
         JsonNode expectedResponse = null;
         try {
             expectedResponse = mapper.readTree(new File("path/to/expectedResponse.json"));
@@ -326,9 +326,9 @@ public void UploadPDFFile(){
         }
           try {
             assert response.asString().equals(mapper.writeValueAsString(expectedResponse));
-            System.out.println("Response validation successful!");
+            System.out.println("bookstoreResponse validation successful!");
         } catch (Exception e) {
-            System.out.println("Response validation failed: " + e.getMessage());
+            System.out.println("bookstoreResponse validation failed: " + e.getMessage());
         }
     }
     public void sessionManagement() {
@@ -351,7 +351,7 @@ public void UploadPDFFile(){
                 .statusCode(200)
                 .extract()
                 .response();
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
 
     }
 
@@ -372,7 +372,7 @@ public void UploadPDFFile(){
                 .statusCode(200)
                 .extract()
                 .response();
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
     }
 
     public void StateMaintainenceManamgement(){
@@ -388,7 +388,7 @@ public void UploadPDFFile(){
                 .statusCode(200)
                 .extract()
                 .response();
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
     }
 
     public void CustomDataStorageManagement() {
@@ -403,7 +403,7 @@ public void UploadPDFFile(){
                 .statusCode(200)
                 .extract()
                 .response();
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
 
     }
     public void BasicAutheticationMethod(ITestContext context){
@@ -460,7 +460,7 @@ public void UploadPDFFile(){
                 .statusCode(200)
                 .extract()
                 .response();
-        System.out.println("API Response: " + apiResponse.asString());
+        System.out.println("API bookstoreResponse: " + apiResponse.asString());
     }
 
     public void APIKeyQueryParamMethod(ITestContext context){
@@ -475,7 +475,7 @@ public void UploadPDFFile(){
                 .extract()
                 .response();
         System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response Body: " + response.asString());
+        System.out.println("bookstoreResponse Body: " + response.asString());
     }
     }
 

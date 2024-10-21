@@ -1,4 +1,4 @@
-package bddCucumber.demo.model.Response;
+package bddCucumber.demo.model.bookstoreResponse;
 
 import java.time.LocalDateTime;
 

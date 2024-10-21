@@ -1,5 +1,5 @@
 package bddCucumber.demo.endToendAPITest;
 
-public interface IRestReponse<T>{
+public interface BookStoreIRestReponse<T>{
 
 }

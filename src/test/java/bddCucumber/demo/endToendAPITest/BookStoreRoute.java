@@ -1,6 +1,6 @@
 package bddCucumber.demo.endToendAPITest;
 
-public class Route {
+public class BookStoreRoute {
     public static final String BOOKSTORE="/BookStore";
     public static final String ACCOUNT="/Account";
     public static final String VERSION="/v1";

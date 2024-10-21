@@ -1,5 +1,5 @@
 package restassured.demo;
-import bddCucumber.demo.model.Response.*;
+import bddCucumber.demo.model.bookstoreResponse.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class APITestNGTest{
+public class BookStoreEndToEndAPITestNGTest {
     static String ISBN;
     static String username="Test980";
     static String password="Test@1236";
@@ -164,7 +164,7 @@ public class APITestNGTest{
                 System.out.println("Book Title:" + book2.toString());
             }
         }
-        if (statusLine.equalsIgnoreCase("HTTP/1.1 400 Bad Request")){
+        if (statusLine.equalsIgnoreCase("HTTP/1.1 400 Bad bookstoreRequest")){
 
             BookOfUserNotPresent bookOfUserNotPresent=response.getBody().as(BookOfUserNotPresent.class);
             System.out.println(bookOfUserNotPresent.toString());

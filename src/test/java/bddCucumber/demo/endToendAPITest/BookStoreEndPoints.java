@@ -1,12 +1,12 @@
 package bddCucumber.demo.endToendAPITest;
-import bddCucumber.demo.model.Request.AddBookRequest;
-import bddCucumber.demo.model.Request.AuthorizationRequest;
-import bddCucumber.demo.model.Request.RemoveBookRequest;
+import bddCucumber.demo.model.bookstoreRequest.AddBookRequest;
+import bddCucumber.demo.model.bookstoreRequest.AuthorizationRequest;
+import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class EndPoints {
+public class BookStoreEndPoints {
 
     private static final String BASE_URL="https://bookstore.toolsqa.com";
 
@@ -14,7 +14,7 @@ public class EndPoints {
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
-        Response response=request.body(authRequest).post(Route.generateToken());
+        Response response=request.body(authRequest).post(BookStoreRoute.generateToken());
         return response;
     }
 
@@ -22,7 +22,7 @@ public class EndPoints {
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
-        Response response=request.get(Route.books());
+        Response response=request.get(BookStoreRoute.books());
         return response;
     }
 
@@ -31,7 +31,7 @@ public class EndPoints {
         RequestSpecification request=RestAssured.given();
         request.header("Authorization","Bearer "+token)
                 .header("Content-Type","application/json");
-        Response response=request.body(addBookRequest).post(Route.books());
+        Response response=request.body(addBookRequest).post(BookStoreRoute.books());
         return response;
     }
 
@@ -40,7 +40,7 @@ public class EndPoints {
         RequestSpecification request=RestAssured.given();
         request.header("Authorization","Bearer "+token)
                 .header("Content-Type","application/json");
-        Response response=request.delete(Route.book());
+        Response response=request.delete(BookStoreRoute.book());
         return response;
     }
 
@@ -49,7 +49,7 @@ public class EndPoints {
         RequestSpecification request=RestAssured.given();
         request.header("Authorization","Bearer "+token)
                 .header("Content-Type","application/json");
-        Response response=request.get(Route.userAccount(userId));
+        Response response=request.get(BookStoreRoute.userAccount(userId));
         return response;
     }
 }
