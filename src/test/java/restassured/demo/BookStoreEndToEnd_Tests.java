@@ -160,31 +160,26 @@ public class BookStoreEndToEnd_Tests {
     public  void UserRegistrationSuccessAndFailure() {
         RestAssured.baseURI = baseUrl;
         RequestSpecification request = given();
-        org.json.simple.JSONObject requestParams = new org.json.simple.JSONObject();
-        requestParams.put("UserName", "test_rest");
-        requestParams.put("Password", "rest@123");
-        request.body(requestParams.toJSONString());
-        Response  response = request
-                .post("/Account/v1/User");
-        ResponseBody body = response.getBody();
-        String jsonReponse=response.body().asString();
+        requestParam.put("UserName", "test_rest");
+        requestParam.put("Password", "rest@123");
+        request.body(requestParam.toString());
+        Response  response = request.post("/Account/v1/User");
+        String body = response.getBody().asString();
         try{
             FileWriter file=new FileWriter("src/test/resource/driver/outputfile.json");
             {
-           file.write(jsonReponse);
-    file.flush();
-
-        }
+           file.write(String.valueOf(response));
+         file.flush();        }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         if (response.statusCode() == 200) {
-            JSONFailureResponse responseBody = body.as(JSONFailureResponse.class);
+            JSONFailureResponse responseBody = response.getBody().as(JSONFailureResponse.class);
             Assert.assertEquals("User already exists", responseBody);
             Assert.assertEquals("FAULT_USER_ALREADY_EXISTS", responseBody);
         } else if (response.statusCode() == 201) {
-            JSONSuccessResponse responseBody = body.as(JSONSuccessResponse.class);
+            JSONSuccessResponse responseBody = response.getBody().as(JSONSuccessResponse.class);
             Assert.assertEquals("OPERATION_SUCCESS", responseBody);
             Assert.assertEquals("Operation completed successfully", responseBody);
         }
