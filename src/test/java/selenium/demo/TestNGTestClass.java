@@ -46,11 +46,11 @@ public class TestNGTestClass extends BaseSetUp{
     public void TestPracticeForm() throws InterruptedException {
         Assert.assertEquals(SeleniumDemoTest.HandlingForm(),true);
     }
-
     @Test(description = "verify Frames",enabled = false)
     public void TestFrame() {
         Assert.assertEquals( SeleniumDemoTest.HandlingFrame(),true);
     }
+
     @Test(description = "verify Links",enabled = false)
     public void TestLink() {
         Assert.assertEquals(SeleniumDemoTest.HandlingLInk(),true);

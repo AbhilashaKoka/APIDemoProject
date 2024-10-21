@@ -196,7 +196,18 @@ public class TestClass {
     String input2 = "programming";
     countCharacterInString(input2);
 
+}
+
+@Test
+    public void Test26()
+{
+
+    String str = " Hello World";
+    String str2 = swapFirstLast(str);
+    System.out.println("Original String: " + str);
+    System.out.println("Modified String: " + str2);
+}
 
 }
-    }
+
 

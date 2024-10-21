@@ -446,6 +446,29 @@ public static Map<Character, Integer> countCharacters(String input) {
             }
             return capitalizedStr.toString().trim();
         }
+
+
+
+
+public static String swapFirstLast(String input) {
+    String[] words = input.trim().split("\\s+");
+    StringBuilder result = new StringBuilder();
+
+    for (String word : words) {
+           if (word.length() > 1) {
+            String modifiedWord = word.charAt(word.length() - 1) +
+                    word.substring(1, word.length() - 1) +
+                    word.charAt(0);
+            result.append(modifiedWord).append(" ");
+        }
+           else {
+            result.append(word).append(" ");
+        }
+    }
+
+    return result.toString().trim();
+}
+
     }
 
 
