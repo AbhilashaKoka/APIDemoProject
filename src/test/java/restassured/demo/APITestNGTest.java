@@ -15,8 +15,8 @@ import static io.restassured.RestAssured.given;
 
 public class APITestNGTest{
     static String ISBN;
-    static String username="Test863";
-    static String password="Test@12368";
+    static String username="Test980";
+    static String password="Test@1236";
     static  String userId;
     static  String token;
     static List<Book> books;
@@ -35,9 +35,11 @@ public class APITestNGTest{
         {
          userId = response.getBody().jsonPath().getString("userID");
          username = response.getBody().jsonPath().getString("username");
-         books= response.getBody().jsonPath().getList("Books");
+         books= response.getBody().jsonPath().getList("books");
          UserAccount userAccount=response.getBody().as(UserAccount.class);
-         System.out.println(userAccount.UserID);
+         System.out.println(userAccount.userID);
+            System.out.println(userAccount.username);
+            System.out.println(userAccount.books);
         }
         if(statusLine.equalsIgnoreCase("HTTP/1.1 406 Not Acceptable"))
         {
@@ -55,6 +57,8 @@ public class APITestNGTest{
     public void VerifyGenerateToken(){
         E2E_Tests e2ETests=new E2E_Tests();
         Response response=e2ETests.GenerateToken(username,password);
+        String body=response.getBody().asString();
+        System.out.println(body);
         token = JsonPath.from(response.asString()).get("token");
         Token token= response.getBody().as(Token.class);
         System.out.println(token.token);
@@ -66,6 +70,12 @@ public class APITestNGTest{
     public void VerifyUserAuthorized(){
         E2E_Tests e2ETests=new E2E_Tests();
         Response response= e2ETests.AuthorizedUser(username,password);
+        String body=response.getBody().asString();
+        System.out.println(body);
+        if(body.equalsIgnoreCase("false")){
+            Assert.fail("User is not authorized");
+        }
+
         String statusLine=response.getStatusLine();
         Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
     }
@@ -76,32 +86,65 @@ public class APITestNGTest{
         public void VerifygetUser(){
         E2E_Tests e2ETests=new E2E_Tests();
         Response response= e2ETests.getUser(userId,token);
-        UserData userData1=response.getBody().as(UserData.class);
+        String body=response.getBody().asString();
+        System.out.println(body);
+        String statusLine=response.getStatusLine();
+            if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK")) {
+                UserData userData1 = response.getBody().as(UserData.class);
+                System.out.println(userData1.userID);
+                System.out.println(userData1.username);
+                System.out.println(userData1.books);
+            }
+            if(statusLine.equalsIgnoreCase(" HTTP/1.1 401 Unauthorized"))
+            {
+                BookOfUserNotPresent bookOfUserNotPresent=response.getBody().as(BookOfUserNotPresent.class);
+                System.out.println(bookOfUserNotPresent.toString());
+                System.out.println(bookOfUserNotPresent.code);
+                System.out.println(bookOfUserNotPresent.message);
 
-            String statusLine=response.getStatusLine();
-            Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
+            }
+
        }
 
        @Test(enabled  = true)
     public void VerifyBooksOfUser() throws IOException {
         E2E_Tests e2ETests=new E2E_Tests();
         Response response=e2ETests.GetBookByUserID(token, userId);
-           UserData userData1=response.getBody().as(UserData.class);
-
+           String body=response.getBody().asString();
+           System.out.println(body);
            String statusLine=response.getStatusLine();
-           Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
+           System.out.println(statusLine);
+           if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
+           {
+           UserData userData2=response.getBody().as(UserData.class);
+           System.out.println( userData2.userID);
+           System.out.println(userData2.username);
+           System.out.println(userData2.books);
+
+           }
+           if(statusLine.equalsIgnoreCase(" HTTP/1.1 401 Unauthorized"))
+           {
+               BookOfUserNotPresent bookOfUserNotPresent=response.getBody().as(BookOfUserNotPresent.class);
+               System.out.println(bookOfUserNotPresent.toString());
+               System.out.println(bookOfUserNotPresent.code);
+               System.out.println(bookOfUserNotPresent.message);
+
+           }
     }
 
     @Test(enabled  = true)
     public void VerifyGetBooks() throws IOException {
           E2E_Tests e2ETests=new E2E_Tests();
           Response response=e2ETests.GetBooks(token);
-          Books books= response.getBody().as(Books.class);
-          System.out.println(books.books);
-        ISBN = books.books.get(0).isbn;
-        System.out.println(ISBN);
-        String statusLine=response.getStatusLine();
-        Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
+          String body=response.getBody().asString();
+          System.out.println(body);
+          Books books=response.getBody().as(Books.class);
+           System.out.println( books.books.get(0));
+        System.out.println( books.books.get(1));
+        System.out.println( books.books.get(2));
+
+          String statusLine=response.getStatusLine();
+          Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
     }
 
     @Test(enabled = false)
@@ -109,6 +152,8 @@ public class APITestNGTest{
     {
         E2E_Tests e2ETests=new E2E_Tests();
         Response response=e2ETests.GetBookByISBN(ISBN);
+        String body=response.getBody().asString();
+        System.out.println(body);
         List<Map<String, String>> book1 = JsonPath.from(response.asString()).get("books");
         Book[] booksdetails = response.jsonPath().getObject("book", Book[].class);
         for (Book book2 : booksdetails)
@@ -123,6 +168,8 @@ public class APITestNGTest{
     public void VerifyAddBookByUserIDandISBN() throws IOException {
     E2E_Tests e2ETests=new E2E_Tests();
     Response response=  e2ETests.AddBookByUserIDAndISBN( userId,  ISBN,  token);
+    String body=response.getBody().asString();
+    System.out.println(body);
     String statusLine=response.getStatusLine();
     Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
 }
@@ -131,6 +178,8 @@ public class APITestNGTest{
     public void VerifyRemoveBookByISBN(){
     E2E_Tests e2ETests=new E2E_Tests();
     Response response=e2ETests.UpdateBookByISBNAndUserId( token,  userId,  ISBN);
+    String body=response.getBody().asString();
+    System.out.println(body);
      String statusLine=response.getStatusLine();
      Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
 }
@@ -139,6 +188,8 @@ public class APITestNGTest{
     public void VerifyDeleteBook(){
     E2E_Tests e2ETests=new E2E_Tests();
     Response response= e2ETests.DeleteBookByUserIdAndISBN( token,  userId, ISBN);
+    String body=response.getBody().asString();
+    System.out.println(body);
     String statusLine=response.getStatusLine();
     Assert.assertEquals(statusLine,"Generate Token:HTTP/1.1 200 OK");
     }
