@@ -1,4 +1,5 @@
 package bddCucumber.demo.APIStepDef;
+
 import bddCucumber.demo.endToendAPITest.EndPoints;
 import bddCucumber.demo.model.Request.AddBookRequest;
 import bddCucumber.demo.model.Request.AuthorizationRequest;
@@ -21,6 +22,7 @@ public class APITestSteps {
     static String UserName="Test2334";
     static String Password="Test@78234";
 
+
     @Given("I am an authorized user")
     public void i_am_an_authorized_user() {
         AuthorizationRequest authRequest=new AuthorizationRequest(UserName,Password);
@@ -38,8 +40,8 @@ public class APITestSteps {
     }
     @When("I added a book to my reading list")
     public void i_added_a_book_to_my_reading_list() {
-       ISBN isbn=new ISBN("9781449325862");
-        AddBookRequest addBookRequest=new AddBookRequest(USER_ID,isbn );
+         ISBN isbn=new ISBN("9781449325862");
+        AddBookRequest addBookRequest=new AddBookRequest(USER_ID, isbn);
         response=EndPoints.addBook(addBookRequest,tokenResponse.token);
     }
     @Then("The book is added")

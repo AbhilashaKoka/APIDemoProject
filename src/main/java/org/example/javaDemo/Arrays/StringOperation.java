@@ -455,13 +455,11 @@ public static String swapFirstLast(String input) {
     StringBuilder result = new StringBuilder();
 
     for (String word : words) {
-           if (word.length() > 1) {
-            String modifiedWord = word.charAt(word.length() - 1) +
-                    word.substring(1, word.length() - 1) +
-                    word.charAt(0);
+        if (word.length() > 1) {
+            String modifiedWord =
+                    word.charAt(word.length() - 1) + word.substring(1, word.length() - 1) + word.charAt(0);
             result.append(modifiedWord).append(" ");
-        }
-           else {
+        } else {
             result.append(word).append(" ");
         }
     }

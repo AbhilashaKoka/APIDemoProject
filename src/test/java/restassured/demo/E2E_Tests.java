@@ -1,8 +1,7 @@
 package restassured.demo;
 
-import bddCucumber.demo.model.Request.AddBookRequest;
+import bddCucumber.demo.model.Request.AddListOfBooks;
 import bddCucumber.demo.model.Request.AuthorizationRequest;
-import bddCucumber.demo.model.Request.ISBN;
 import bddCucumber.demo.model.Request.RemoveBookRequest;
 import bddCucumber.demo.model.Response.Book;
 import bddCucumber.demo.model.Response.JSONFailureResponse;
@@ -23,12 +22,14 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.LinkedHashMap;
 import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 
@@ -97,17 +98,22 @@ public class E2E_Tests{
 
         }
 
-        public  Response AddBookByUserIDAndISBN(String userId, String bookId,  String token) throws IOException {
-          //  String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/AddListOfBooks.json")));
-                RestAssured.baseURI=baseUrl;
-            RequestSpecification request= given().header("Authorization", "Bearer " + token).header("Content-Type", "application/json");
-           AddBookRequest addBookRequest = new AddBookRequest(userId, new ISBN(bookId));
-           return request.body(addBookRequest).post("/BookStore/v1/Books");
 
-    }
+        public Response CreateBooksListByAddingISBN( String userId, List<Object> collectionOfISBN,String token){
+          // String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/AddListOfBooks.json")));
+             RestAssured.baseURI=baseUrl;
+            RequestSpecification request= given().header("Authorization", "Bearer " + token).
+                    header("Content-Type", "application/json");
+            AddListOfBooks addListOfBooks=new AddListOfBooks(userId,collectionOfISBN);
+            return request.body(addListOfBooks).post("/BookStore/v1/Books");
+        }
+
+
+
 
 
         public  Response UpdateBookByISBNAndUserId(String token, String userId, String bookId) {
+
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given().header("Authorization", "Bearer " + token).
                     header("Content-Type", "application/json");
