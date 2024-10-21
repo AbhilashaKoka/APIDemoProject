@@ -1,6 +1,5 @@
 package bddCucumber.demo.model.bookstoreRequest;
 
-import bddCucumber.demo.endToendAPITest.BookStoreEndPoints;
 
 public class RemoveBookRequest {
     public String isbn;
