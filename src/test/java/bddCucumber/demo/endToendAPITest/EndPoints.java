@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class EndPoints {
+
     private static final String BASE_URL="https://bookstore.toolsqa.com";
 
     public static Response authenticateUser(AuthorizationRequest authRequest){

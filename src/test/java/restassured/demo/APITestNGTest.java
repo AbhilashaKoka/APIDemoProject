@@ -1,11 +1,9 @@
 package restassured.demo;
-
 import bddCucumber.demo.model.Response.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,7 @@ public class APITestNGTest{
     @Test(enabled = true)
     public void VerifyCreateUser()
     {
-         E2E_Tests e2ETests=new E2E_Tests();
+         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
          Response response= e2ETests.CreateUser(username,password);
          String body=response.getBody().asString();
           System.out.println(body);
@@ -56,7 +54,7 @@ public class APITestNGTest{
     }
     @Test(enabled  = true)
     public void VerifyGenerateToken(){
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response=e2ETests.GenerateToken(username,password);
         String body=response.getBody().asString();
         System.out.println(body);
@@ -69,7 +67,7 @@ public class APITestNGTest{
     }
     @Test(enabled  = true)
     public void VerifyUserAuthorized(){
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response= e2ETests.AuthorizedUser(username,password);
         String body=response.getBody().asString();
         System.out.println(body);
@@ -85,7 +83,7 @@ public class APITestNGTest{
 
         @Test(enabled  = true)
         public void VerifygetUser(){
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response= e2ETests.getUser(userId,token);
         String body=response.getBody().asString();
         System.out.println(body);
@@ -109,7 +107,7 @@ public class APITestNGTest{
 
        @Test(enabled  = true)
     public void VerifyBooksOfUser() throws IOException {
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response=e2ETests.GetBookByUserID(token, userId);
            String body=response.getBody().asString();
            System.out.println(body);
@@ -135,7 +133,7 @@ public class APITestNGTest{
 
     @Test(enabled  = true)
     public void VerifyGetBooks() throws IOException {
-        E2E_Tests e2ETests = new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();
         Response response = e2ETests.GetBooks(token);
         String body = response.getBody().asString();
         System.out.println(body);
@@ -154,7 +152,7 @@ public class APITestNGTest{
     @Test(enabled = true)
     public void VerifyGetBookByISBN()
     {
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response=e2ETests.GetBookByISBN(ISBN);
         String body=response.getBody().asString();
         System.out.println(body);
@@ -178,7 +176,7 @@ public class APITestNGTest{
 
     @Test(enabled = true)
     public void VerifyCreateListOfBooksByISBN() throws IOException {
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         List<Object> collectionOfISBN=new ArrayList<>();
         collectionOfISBN.add(ISBN);
         Response response=e2ETests.CreateBooksListByAddingISBN( userId,  collectionOfISBN,  token);
@@ -206,7 +204,7 @@ public class APITestNGTest{
 
     @Test(enabled = true)
     public void VerifyUpdateBookByUserIDandISBN() throws IOException {
-        E2E_Tests e2ETests=new E2E_Tests();
+        BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response=  e2ETests.UpdateBookByISBNAndUserId( userId,  ISBN,  token);
         String body=response.getBody().asString();
         System.out.println(body);
@@ -232,7 +230,7 @@ public class APITestNGTest{
 
 @Test(enabled = true)
     public void VerifyDeleteBook() {
-    E2E_Tests e2ETests = new E2E_Tests();
+    BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();
     Response response = e2ETests.DeleteBookByUserIdAndISBN(token, userId, ISBN);
     String body = response.getBody().asString();
     System.out.println(body);

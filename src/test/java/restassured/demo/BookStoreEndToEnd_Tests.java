@@ -22,7 +22,6 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,11 +32,9 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 
 
-public class E2E_Tests{
+public class BookStoreEndToEnd_Tests {
          static  String baseUrl="https://bookstore.toolsqa.com";
          static  JSONObject requestParam;
-
-
 
             public  Response CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
@@ -91,10 +88,10 @@ public class E2E_Tests{
       }
 
 
-      public  Response GetBookByISBN(String bookId) {
+      public  Response GetBookByISBN(String isbn) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given();
-           return request.get("/BookStore/v1/Book?ISBN=" + bookId);
+           return request.get("/BookStore/v1/Book?ISBN=" + isbn);
 
         }
 
@@ -112,12 +109,12 @@ public class E2E_Tests{
 
 
 
-        public  Response UpdateBookByISBNAndUserId(String token, String userId, String bookId) {
+        public  Response UpdateBookByISBNAndUserId(String token, String userId, String isbn) {
 
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given().header("Authorization", "Bearer " + token).
                     header("Content-Type", "application/json");
-            RemoveBookRequest removeBookRequest = new RemoveBookRequest(userId, bookId);
+            RemoveBookRequest removeBookRequest = new RemoveBookRequest(userId, isbn);
             return request.body(removeBookRequest).delete("/BookStore/v1/Book");
 
         }

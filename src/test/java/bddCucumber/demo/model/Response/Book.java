@@ -22,6 +22,4 @@ public class Book {
 
     public String website;
 
-
-
 }
