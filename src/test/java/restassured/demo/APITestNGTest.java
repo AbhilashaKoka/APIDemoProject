@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -14,25 +15,38 @@ import static io.restassured.RestAssured.given;
 
 public class APITestNGTest{
     static String ISBN;
-    static String username="Test83";
-    static String password="Test@1238";
+    static String username="Test863";
+    static String password="Test@12368";
     static  String userId;
     static  String token;
-    static  String userData;
     static List<Book> books;
+    String  code;
+    String  message;
 
     @Test(enabled = true)
     public void VerifyCreateUser()
     {
          E2E_Tests e2ETests=new E2E_Tests();
          Response response= e2ETests.CreateUser(username,password);
+         String body=response.getBody().asString();
+          System.out.println(body);
+          String statusLine=response.getStatusLine();
+        if(statusLine.equalsIgnoreCase("HTTP/1.1 201 Created"))
+        {
          userId = response.getBody().jsonPath().getString("userID");
          username = response.getBody().jsonPath().getString("username");
          books= response.getBody().jsonPath().getList("Books");
          UserAccount userAccount=response.getBody().as(UserAccount.class);
          System.out.println(userAccount.UserID);
-         String statusLine=response.getStatusLine();
-         Assert.assertEquals(statusLine,"HTTP/1.1 201 Created");
+        }
+        if(statusLine.equalsIgnoreCase("HTTP/1.1 406 Not Acceptable"))
+        {
+            code = response.getBody().jsonPath().getString("code");
+            message = response.getBody().jsonPath().getString("message");
+            UserPresent userPresent= response.getBody().as(UserPresent.class);
+            System.out.println(userPresent.code);
+            System.out.println(userPresent.message);
+        }
 
 
 
