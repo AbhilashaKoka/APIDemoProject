@@ -7,7 +7,7 @@ import bddCucumber.demo.model.bookstoreRequest.ISBN;
 import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
 import bddCucumber.demo.model.bookstoreResponse.Books;
 import bddCucumber.demo.model.bookstoreResponse.Token;
-import bddCucumber.demo.model.bookstoreResponse.UserAccount;
+import bddCucumber.demo.model.bookstoreResponse.UserCreated;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -48,8 +48,8 @@ public class APITestSteps {
     public void the_book_is_added() {
         String statusLine=response.getStatusLine();
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK")) {
-            UserAccount userAccount = response.getBody().as(UserAccount.class);
-            Assert.assertEquals(USER_ID, userAccount.userID);
+            UserCreated userCreated = response.getBody().as(UserCreated.class);
+            Assert.assertEquals(USER_ID, userCreated.userID);
         }
         if(statusLine.equalsIgnoreCase("HTTP/1.1 504 Gateway Time-out") ){
             System.out.println(statusLine);
@@ -69,7 +69,7 @@ public class APITestSteps {
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
         {
              response = BookStoreEndPoints.getUserAccount(USER_ID, tokenResponse.token);
-             UserAccount userAccount=response.getBody().as(UserAccount.class);
+             UserCreated userCreated =response.getBody().as(UserCreated.class);
         }
 
         if(statusLine.equalsIgnoreCase("HTTP/1.1 504 Gateway Time-out") )

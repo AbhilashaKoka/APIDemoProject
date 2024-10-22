@@ -2,7 +2,7 @@ package bddCucumber.demo.model.bookstoreResponse;
 
 import java.util.List;
 
-public class UserAccount{
+public class UserCreated {
 
 
     public  String userID;

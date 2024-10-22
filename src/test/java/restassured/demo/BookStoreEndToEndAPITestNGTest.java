@@ -14,8 +14,8 @@ import static restassured.demo.BookStoreEndToEnd_Tests.generateRandomName;
 
 public class BookStoreEndToEndAPITestNGTest {
     static String ISBN;
-    static String username;
-    static String password;
+    static final String username = generateRandomName(10);
+    static final String password=generatePassword();
     static  String userId;
     static  String token;
     static List<Book> books;
@@ -26,9 +26,7 @@ public class BookStoreEndToEndAPITestNGTest {
     @Test(enabled = true)
     public void VerifyCreateUser()
     {
-         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
-          username = generateRandomName(10);
-          password = generatePassword();
+          BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
           Response response= e2ETests.CreateUser(username,password);
           String body=response.getBody().asString();
           System.out.println(body);
@@ -36,12 +34,12 @@ public class BookStoreEndToEndAPITestNGTest {
         if(statusLine.equalsIgnoreCase("HTTP/1.1 201 Created"))
         {
          userId = response.getBody().jsonPath().getString("userID");
-         username = response.getBody().jsonPath().getString("username");
+      //   username = response.getBody().jsonPath().getString("username");
          books= response.getBody().jsonPath().getList("books");
-         UserAccount userAccount=response.getBody().as(UserAccount.class);
-         System.out.println(userAccount.userID);
-            System.out.println(userAccount.username);
-            System.out.println(userAccount.books);
+         UserCreated userCreated =response.getBody().as(UserCreated.class);
+             System.out.println(userCreated.userID);
+             System.out.println(userCreated.username);
+            System.out.println(userCreated.books);
         }
         if(statusLine.equalsIgnoreCase("HTTP/1.1 406 Not Acceptable"))
         {
@@ -55,7 +53,7 @@ public class BookStoreEndToEndAPITestNGTest {
 
 
     }
-    @Test(enabled  = true)
+    @Test(enabled  = true, dependsOnMethods ="VerifyCreateUser")
     public void VerifyGenerateToken(){
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response=e2ETests.GenerateToken(username,password);
@@ -65,10 +63,11 @@ public class BookStoreEndToEndAPITestNGTest {
         Token token= response.getBody().as(Token.class);
         System.out.println(token.token);
         String statusLine=response.getStatusLine();
+        System.out.println(statusLine);
         Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
 
     }
-    @Test(enabled  = true)
+    @Test(enabled  = true, dependsOnMethods = {"VerifyCreateUser","VerifyGenerateToken"})
     public void VerifyUserAuthorized(){
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response= e2ETests.AuthorizedUser(username,password);
