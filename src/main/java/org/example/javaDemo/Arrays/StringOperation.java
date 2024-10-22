@@ -2,6 +2,7 @@ package org.example.javaDemo.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.security.SecureRandom;
 import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -10,6 +11,13 @@ import java.util.stream.Collectors;
 
 public class StringOperation{
 
+    private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final SecureRandom RANDOM = new SecureRandom();
+    private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+    private static final String NUMERIC = "0123456789";
+    private static final String SPECIAL_CHARACTERS = "!@#$%^&*";
+    private static final SecureRandom RANDOM1 = new SecureRandom();
 
     public static void nonRepeatedCharacter(String str) {
         String[] arr = str.split("\\s+");
@@ -467,6 +475,62 @@ public static String swapFirstLast(String input) {
     return result.toString().trim();
 }
 
+
+
+
+
+
+        public static String generateRandomName(int length) {
+            if (length <= 0) {
+                throw new IllegalArgumentException("Length must be positive");
+            }
+
+            StringBuilder sb = new StringBuilder(length);
+            for (int i = 0; i < length; i++) {
+                sb.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
+            }
+            return sb.toString();
+        }
+
+
+    public static String generatePassword() {
+        StringBuilder password = new StringBuilder();
+
+        // Add one uppercase letter
+        password.append(UPPERCASE.charAt(RANDOM.nextInt(UPPERCASE.length())));
+
+        // Add one lowercase letter
+        password.append(LOWERCASE.charAt(RANDOM.nextInt(LOWERCASE.length())));
+
+        // Add one numeric value
+        password.append(NUMERIC.charAt(RANDOM.nextInt(NUMERIC.length())));
+
+        // Add one special character
+        password.append(SPECIAL_CHARACTERS.charAt(RANDOM.nextInt(SPECIAL_CHARACTERS.length())));
+
+        // Add remaining characters to fulfill the length requirement (at least 8 characters in total)
+        while (password.length() < 8) {
+            password.append(LOWERCASE.charAt(RANDOM.nextInt(LOWERCASE.length())));
+        }
+
+        // Shuffle the characters to ensure randomness
+        List<Character> passwordChars = new ArrayList<>();
+        for (char c : password.toString().toCharArray()) {
+            passwordChars.add(c);
+        }
+        Collections.shuffle(passwordChars);
+
+        StringBuilder shuffledPassword = new StringBuilder();
+        for (char c : passwordChars) {
+            shuffledPassword.append(c);
+        }
+
+        return shuffledPassword.toString();
     }
+
+
+
+
+}
 
 

@@ -208,6 +208,22 @@ public class TestClass {
     System.out.println("Modified String: " + str2);
 }
 
+@Test
+    public void Test27()
+{
+    int nameLength = 10;
+    String randomName = generateRandomName(nameLength);
+    System.out.println("Generated Random Name: " + randomName);
+}
+
+
+
+@Test
+    public void Test28()
+{
+    String password = generatePassword();
+    System.out.println("Generated Password: " + password);
+}
 }
 
 

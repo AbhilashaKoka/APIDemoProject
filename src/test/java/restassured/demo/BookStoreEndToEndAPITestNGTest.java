@@ -9,10 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.example.javaDemo.Arrays.StringOperation.generatePassword;
+import static restassured.demo.BookStoreEndToEnd_Tests.generateRandomName;
+
 public class BookStoreEndToEndAPITestNGTest {
     static String ISBN;
-    static String username="Test980";
-    static String password="Test@1236";
+    static String username;
+    static String password;
     static  String userId;
     static  String token;
     static List<Book> books;
@@ -20,14 +23,14 @@ public class BookStoreEndToEndAPITestNGTest {
     String  message;
 
 
-
-
     @Test(enabled = true)
     public void VerifyCreateUser()
     {
          BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
-         Response response= e2ETests.CreateUser(username,password);
-         String body=response.getBody().asString();
+          username = generateRandomName(10);
+          password = generatePassword();
+          Response response= e2ETests.CreateUser(username,password);
+          String body=response.getBody().asString();
           System.out.println(body);
           String statusLine=response.getStatusLine();
         if(statusLine.equalsIgnoreCase("HTTP/1.1 201 Created"))
@@ -90,7 +93,7 @@ public class BookStoreEndToEndAPITestNGTest {
         String statusLine=response.getStatusLine();
             if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK")) {
                 UserData userData1 = response.getBody().as(UserData.class);
-                System.out.println(userData1.userID);
+                System.out.println(userData1.userId);
                 System.out.println(userData1.username);
                 System.out.println(userData1.books);
             }
@@ -116,7 +119,7 @@ public class BookStoreEndToEndAPITestNGTest {
            if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
            {
            UserData userData2=response.getBody().as(UserData.class);
-           System.out.println( userData2.userID);
+           System.out.println( userData2.userId);
            System.out.println(userData2.username);
            System.out.println(userData2.books);
 
@@ -187,7 +190,7 @@ public class BookStoreEndToEndAPITestNGTest {
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
         {
             UserData userData3 = response.getBody().as(UserData.class);
-            System.out.println(userData3.userID);
+            System.out.println(userData3.userId);
             System.out.println(userData3.username);
             System.out.println(userData3.books);
 
@@ -213,7 +216,7 @@ public class BookStoreEndToEndAPITestNGTest {
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
         {
             UserData userData3 = response.getBody().as(UserData.class);
-            System.out.println(userData3.userID);
+            System.out.println(userData3.userId);
             System.out.println(userData3.username);
             System.out.println(userData3.books);
 
@@ -237,7 +240,7 @@ public class BookStoreEndToEndAPITestNGTest {
     String statusLine = response.getStatusLine();
     if (statusLine.equalsIgnoreCase("HTTP/1.1 200 OK")) {
         UserData userData3 = response.getBody().as(UserData.class);
-        System.out.println(userData3.userID);
+        System.out.println(userData3.userId);
         System.out.println(userData3.username);
         System.out.println(userData3.books);
 

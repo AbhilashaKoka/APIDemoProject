@@ -22,10 +22,14 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -35,6 +39,13 @@ import static io.restassured.RestAssured.given;
 public class BookStoreEndToEnd_Tests {
          static  String baseUrl="https://bookstore.toolsqa.com";
          static  JSONObject requestParam;
+         private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+         private static final SecureRandom RANDOM = new SecureRandom();
+    private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+    private static final String NUMERIC = "0123456789";
+    private static final String SPECIAL_CHARACTERS = "!@#$%^&*";
+    private static final SecureRandom RANDOM1 = new SecureRandom();
 
             public  Response CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
@@ -472,7 +483,59 @@ public void UploadPDFFile(){
         System.out.println("Status Code: " + response.statusCode());
         System.out.println("bookstoreResponse Body: " + response.asString());
     }
+
+
+
+
+    public static String generateRandomName(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be positive");
+        }
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
+        }
+        return sb.toString();
     }
+
+    public static String generatePassword() {
+        StringBuilder password = new StringBuilder();
+
+        // Add one uppercase letter
+        password.append(UPPERCASE.charAt(RANDOM1.nextInt(UPPERCASE.length())));
+
+        // Add one lowercase letter
+        password.append(LOWERCASE.charAt(RANDOM1.nextInt(LOWERCASE.length())));
+
+        // Add one numeric value
+        password.append(NUMERIC.charAt(RANDOM1.nextInt(NUMERIC.length())));
+
+        // Add one special character
+        password.append(SPECIAL_CHARACTERS.charAt(RANDOM1.nextInt(SPECIAL_CHARACTERS.length())));
+
+        // Add remaining characters to fulfill the length requirement (at least 8 characters in total)
+        while (password.length() < 8) {
+            password.append(LOWERCASE.charAt(RANDOM1.nextInt(LOWERCASE.length())));
+        }
+
+        // Shuffle the characters to ensure randomness
+        List<Character> passwordChars = new ArrayList<>();
+        for (char c : password.toString().toCharArray()) {
+            passwordChars.add(c);
+        }
+        Collections.shuffle(passwordChars);
+
+        StringBuilder shuffledPassword = new StringBuilder();
+        for (char c : passwordChars) {
+            shuffledPassword.append(c);
+        }
+
+        return shuffledPassword.toString();
+    }
+
+
+    }
+
 
 
 
