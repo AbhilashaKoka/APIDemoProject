@@ -224,6 +224,14 @@ public class TestClass {
     String password = generatePassword();
     System.out.println("Generated Password: " + password);
 }
+
+@Test
+    public void Test29()
+{
+    String  UUID=UUIDGenerator();
+    System.out.println(UUID);
+
+}
 }
 
 

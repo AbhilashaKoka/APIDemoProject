@@ -226,7 +226,6 @@
                 <version>${maven.failsafe.version}</version>
                 <configuration>
                     <includes>
-<!--                        <include>serenity/demo/tests/UploadPageTest.java</include>-->
                     </includes>
                 </configuration>
                 <executions>

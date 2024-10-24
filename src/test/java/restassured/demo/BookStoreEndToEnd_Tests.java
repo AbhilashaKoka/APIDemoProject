@@ -2,6 +2,7 @@ package restassured.demo;
 
 import bddCucumber.demo.model.bookstoreRequest.AddListOfBooks;
 import bddCucumber.demo.model.bookstoreRequest.AuthorizationRequest;
+import bddCucumber.demo.model.bookstoreRequest.ISBN;
 import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
 import bddCucumber.demo.model.bookstoreResponse.Book;
 import bddCucumber.demo.model.bookstoreResponse.JSONFailureResponse;
@@ -46,6 +47,9 @@ public class BookStoreEndToEnd_Tests {
     private static final String NUMERIC = "0123456789";
     private static final String SPECIAL_CHARACTERS = "!@#$%^&*";
     private static final SecureRandom RANDOM1 = new SecureRandom();
+
+    private static final String ISBN_CHARACTERS = "0123456789";
+    private static final SecureRandom RANDOM2 = new SecureRandom();
 
             public  Response CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
@@ -107,7 +111,7 @@ public class BookStoreEndToEnd_Tests {
         }
 
 
-        public Response CreateBooksListByAddingISBN( String userId, List<Object> collectionOfISBN,String token){
+        public Response CreateBooksListByAddingISBN(String userId, List<ISBN> collectionOfISBN, String token){
           // String addBookRequest = new String(Files.readAllBytes(Paths.get("src/test/resource/driver/AddListOfBooks.json")));
              RestAssured.baseURI=baseUrl;
             RequestSpecification request= given().header("Authorization", "Bearer " + token).
@@ -534,7 +538,55 @@ public void UploadPDFFile(){
     }
 
 
+
+    public  static List<Object> generateISBNList(int count) {
+        List<Object> isbnList = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            isbnList.add(generateISBN());
+        }
+        return Collections.unmodifiableList(isbnList);
     }
+
+    private static String generateISBN() {
+        StringBuilder isbn = new StringBuilder();
+
+        // Generate the first 12 digits of the ISBN
+        for (int i = 0; i < 12; i++) {
+            isbn.append(ISBN_CHARACTERS.charAt(RANDOM2.nextInt(ISBN_CHARACTERS.length())));
+        }
+
+        // Calculate and append the check digit
+        isbn.append(calculateCheckDigit(isbn.toString()));
+
+        return isbn.toString();
+    }
+
+    private static char calculateCheckDigit(String isbn) {
+        int sum = 0;
+        for (int i = 0; i < isbn.length(); i++) {
+            int digit = Character.getNumericValue(isbn.charAt(i));
+            sum += (i % 2 == 0) ? digit : digit * 3;
+        }
+        int checkDigit = 10 - (sum % 10);
+        return (checkDigit == 10) ? '0' : Character.forDigit(checkDigit, 10);
+    }
+
+
+
+    public static List<ISBN> generateISBNList() {
+        List<ISBN> isbnList = new ArrayList<>();
+        isbnList.add(new ISBN("9783161484100"));
+        isbnList.add(new ISBN("9780393040029"));
+        isbnList.add(new ISBN("9781566199094"));
+        return isbnList;
+    }
+
+
+
+
+
+
+}
 
 
 

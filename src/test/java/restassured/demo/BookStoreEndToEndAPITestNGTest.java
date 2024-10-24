@@ -1,22 +1,25 @@
 package restassured.demo;
+
+import bddCucumber.demo.model.bookstoreRequest.ISBN;
 import bddCucumber.demo.model.bookstoreResponse.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.example.javaDemo.Arrays.StringOperation.generatePassword;
+import static restassured.demo.BookStoreEndToEnd_Tests.generateISBNList;
 import static restassured.demo.BookStoreEndToEnd_Tests.generateRandomName;
 
 public class BookStoreEndToEndAPITestNGTest {
     static String ISBN;
     static final String username = generateRandomName(10);
     static final String password=generatePassword();
-    static  String userId;
+        static  String userId;
     static  String token;
     static List<Book> books;
     String  code;
@@ -27,6 +30,8 @@ public class BookStoreEndToEndAPITestNGTest {
     public void VerifyCreateUser()
     {
           BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
+        System.out.println(username);
+        System.out.println(password);
           Response response= e2ETests.CreateUser(username,password);
           String body=response.getBody().asString();
           System.out.println(body);
@@ -83,7 +88,7 @@ public class BookStoreEndToEndAPITestNGTest {
 
 
 
-        @Test(enabled  = true)
+        @Test(enabled  = true,dependsOnMethods = {"VerifyCreateUser","VerifyGenerateToken","VerifyUserAuthorized"})
         public void VerifygetUser(){
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response= e2ETests.getUser(userId,token);
@@ -107,7 +112,7 @@ public class BookStoreEndToEndAPITestNGTest {
 
        }
 
-       @Test(enabled  = true)
+       @Test(enabled  = true,dependsOnMethods = {"VerifyCreateUser","VerifyGenerateToken","VerifyUserAuthorized"})
     public void VerifyBooksOfUser() throws IOException {
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         Response response=e2ETests.GetBookByUserID(token, userId);
@@ -133,7 +138,7 @@ public class BookStoreEndToEndAPITestNGTest {
            }
     }
 
-    @Test(enabled  = true)
+    @Test(enabled  = true,dependsOnMethods = {"VerifyCreateUser","VerifyGenerateToken","VerifyUserAuthorized"})
     public void VerifyGetBooks() throws IOException {
         BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();
         Response response = e2ETests.GetBooks(token);
@@ -176,22 +181,27 @@ public class BookStoreEndToEndAPITestNGTest {
 
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true,dependsOnMethods = {"VerifyCreateUser","VerifyGenerateToken","VerifyUserAuthorized"})
     public void VerifyCreateListOfBooksByISBN() throws IOException {
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
-        List<Object> collectionOfISBN=new ArrayList<>();
-        collectionOfISBN.add(ISBN);
-        Response response=e2ETests.CreateBooksListByAddingISBN( userId,  collectionOfISBN,  token);
+//        List<Object> isbnList = generateISBNList(10);
+//        for(Object i:isbnList){
+//            System.out.println(i.toString());
+//        }
+        String[] arr= {"9781593277574", "9781593275846", "9781491950296"};
+        List<ISBN> isbnList = generateISBNList();
+        System.out.println(isbnList);
+        Response response=e2ETests.CreateBooksListByAddingISBN( userId, isbnList,  token);
         String body=response.getBody().asString();
         System.out.println(body);
         String statusLine=response.getStatusLine();
         System.out.println(statusLine);
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
         {
-            UserData userData3 = response.getBody().as(UserData.class);
-            System.out.println(userData3.userId);
-            System.out.println(userData3.username);
-            System.out.println(userData3.books);
+//            UserData userData3 = response.getBody().as(UserData.class);
+//            System.out.println(userData3.userId);
+//            System.out.println(userData3.username);
+//            System.out.println(userData3.books);
 
         }
         if(statusLine.equalsIgnoreCase(" HTTP/1.1 401 Unauthorized"))

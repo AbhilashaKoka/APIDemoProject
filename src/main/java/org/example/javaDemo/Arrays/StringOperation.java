@@ -528,7 +528,12 @@ public static String swapFirstLast(String input) {
         return shuffledPassword.toString();
     }
 
-
+    public  static String  UUIDGenerator() {
+            // Generate a random UUID
+            UUID uuid = UUID.randomUUID();
+            // Print the UUID
+            return  uuid.toString();
+        }
 
 
 }
