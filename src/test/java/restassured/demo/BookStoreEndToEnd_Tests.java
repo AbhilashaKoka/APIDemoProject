@@ -575,9 +575,9 @@ public void UploadPDFFile(){
 
     public static List<ISBN> generateISBNList() {
         List<ISBN> isbnList = new ArrayList<>();
-        isbnList.add(new ISBN("9783161484100"));
-        isbnList.add(new ISBN("9780393040029"));
-        isbnList.add(new ISBN("9781566199094"));
+        isbnList.add(new ISBN("9781449337711"));
+        isbnList.add(new ISBN("9781449331818"));
+        isbnList.add(new ISBN("9781449325862"));
         return isbnList;
     }
 
