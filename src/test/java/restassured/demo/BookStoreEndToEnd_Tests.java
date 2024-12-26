@@ -1,7 +1,7 @@
 package restassured.demo;
 
 import bddCucumber.demo.model.bookstoreRequest.AddListOfBooks;
-import bddCucumber.demo.model.bookstoreRequest.AuthorizationRequest;
+import bddCucumber.demo.model.bookstoreRequest.NewUser;
 import bddCucumber.demo.model.bookstoreRequest.ISBN;
 import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
 import bddCucumber.demo.model.bookstoreResponse.Book;
@@ -38,16 +38,15 @@ import static io.restassured.RestAssured.given;
 
 
 public class BookStoreEndToEnd_Tests {
-         static  String baseUrl="https://bookstore.toolsqa.com";
-         static  JSONObject requestParam;
-         private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-         private static final SecureRandom RANDOM = new SecureRandom();
+    static  String baseUrl="https://bookstore.toolsqa.com";
+    static  JSONObject requestParam;
+    private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final SecureRandom RANDOM = new SecureRandom();
     private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
     private static final String NUMERIC = "0123456789";
     private static final String SPECIAL_CHARACTERS = "!@#$%^&*";
     private static final SecureRandom RANDOM1 = new SecureRandom();
-
     private static final String ISBN_CHARACTERS = "0123456789";
     private static final SecureRandom RANDOM2 = new SecureRandom();
 
@@ -65,7 +64,7 @@ public class BookStoreEndToEnd_Tests {
             public Response GenerateToken( String UserName, String Password) {
             RestAssured.baseURI = baseUrl;
             RequestSpecification request = given();
-            AuthorizationRequest authRequest = new AuthorizationRequest(UserName, Password);
+            NewUser authRequest = new NewUser(UserName, Password);
             request.header("Content-Type", "application/json");
             return request.body(authRequest).post("/Account/v1/GenerateToken");
          }
@@ -73,7 +72,7 @@ public class BookStoreEndToEnd_Tests {
            public  Response AuthorizedUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given();
-            AuthorizationRequest UserAuth = new AuthorizationRequest(UserName, Password);
+            NewUser UserAuth = new NewUser(UserName, Password);
             request.header("Content-Type", "application/json");
             return request.body(UserAuth).post("/Account/v1/Authorized");
          }
@@ -120,12 +119,7 @@ public class BookStoreEndToEnd_Tests {
             return request.body(addListOfBooks).post("/BookStore/v1/Books");
         }
 
-
-
-
-
         public  Response UpdateBookByISBNAndUserId(String token, String userId, String isbn) {
-
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given().header("Authorization", "Bearer " + token).
                     header("Content-Type", "application/json");
@@ -134,15 +128,12 @@ public class BookStoreEndToEnd_Tests {
 
         }
 
-
         public Response DeleteBookByUserIdAndISBN(String token, String userId, String isbn) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = given()
                 .header("Authorization", "Bearer " + token)
                 .header("Content-Type", "application/json");
           return httpRequest.body("{ \"isbn\": \"" + isbn + "\", \"userId\": \"" + userId + "\"}").delete("/BookStore/v1/Book");
-
-
     }
 
 

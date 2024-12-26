@@ -10,7 +10,7 @@
 <!--    </test>-->
 <!--    <test name="SeleniumBDD">-->
 <!--        <classes>-->
-<!--            <class name="bddCucumber.demo.runner.TestRunner"></class>-->
+<!--            <class name="bddCucumber.demo.runner.UITestRunner"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
     <test name="RestAssuredTest">

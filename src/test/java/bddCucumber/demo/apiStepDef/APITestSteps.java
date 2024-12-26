@@ -2,8 +2,8 @@ package bddCucumber.demo.apiStepDef;
 
 import bddCucumber.demo.endToendAPITest.BookStoreEndPoints;
 import bddCucumber.demo.model.bookstoreRequest.AddBookRequest;
-import bddCucumber.demo.model.bookstoreRequest.AuthorizationRequest;
 import bddCucumber.demo.model.bookstoreRequest.ISBN;
+import bddCucumber.demo.model.bookstoreRequest.NewUser;
 import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
 import bddCucumber.demo.model.bookstoreResponse.Books;
 import bddCucumber.demo.model.bookstoreResponse.Token;
@@ -16,25 +16,27 @@ import org.junit.Assert;
 
 public class APITestSteps {
     private static final String USER_ID="";
-    private static Response response;
+    private static Response response1;
     private static Token tokenResponse;
     private static Object book;
     static String UserName="Test2334";
     static String Password="Test@78234";
 
 
+
+
     @Given("I am an authorized user")
     public void i_am_an_authorized_user() {
-        AuthorizationRequest authRequest=new AuthorizationRequest(UserName,Password);
-        response= BookStoreEndPoints.authenticateUser(authRequest);
-        tokenResponse=response.getBody().as(Token.class);
+        NewUser authRequest=new NewUser(UserName,Password);
+        response1 = BookStoreEndPoints.authenticateUser(authRequest);
+        tokenResponse= response1.getBody().as(Token.class);
 
     }
     @Given("A list of books are avaliable")
     public void a_list_of_books_are_avaliable() {
-        response= BookStoreEndPoints.getBook();
-        System.out.println(response.toString());
-        Books books=response.getBody().as(Books.class);
+        response1 = BookStoreEndPoints.getBook();
+        System.out.println(response1.toString());
+        Books books= response1.getBody().as(Books.class);
         System.out.println(books.books.get(0));
 
     }
@@ -42,13 +44,13 @@ public class APITestSteps {
     public void i_added_a_book_to_my_reading_list() {
          ISBN isbn=new ISBN("9781449325862");
         AddBookRequest addBookRequest=new AddBookRequest(USER_ID, isbn);
-        response= BookStoreEndPoints.addBook(addBookRequest,tokenResponse.token);
+        response1 = BookStoreEndPoints.addBook(addBookRequest,tokenResponse.token);
     }
     @Then("The book is added")
     public void the_book_is_added() {
-        String statusLine=response.getStatusLine();
+        String statusLine= response1.getStatusLine();
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK")) {
-            UserCreated userCreated = response.getBody().as(UserCreated.class);
+            UserCreated userCreated = response1.getBody().as(UserCreated.class);
             Assert.assertEquals(USER_ID, userCreated.userID);
         }
         if(statusLine.equalsIgnoreCase("HTTP/1.1 504 Gateway Time-out") ){
@@ -59,17 +61,17 @@ public class APITestSteps {
     @When("I remove a book from my reading list")
     public void i_remove_a_book_from_my_reading_list() {
         RemoveBookRequest removeBookRequest=new RemoveBookRequest(USER_ID,"9781449325862s");
-        response= BookStoreEndPoints.removeBook(removeBookRequest,tokenResponse.token);
+        response1 = BookStoreEndPoints.removeBook(removeBookRequest,tokenResponse.token);
     }
     @Then("The Book is removec")
     public void the_book_is_removec() {
-        String statusLine=response.getStatusLine();
+        String statusLine= response1.getStatusLine();
         System.out.println(statusLine);
 
         if(statusLine.equalsIgnoreCase("HTTP/1.1 200 OK"))
         {
-             response = BookStoreEndPoints.getUserAccount(USER_ID, tokenResponse.token);
-             UserCreated userCreated =response.getBody().as(UserCreated.class);
+             response1 = BookStoreEndPoints.getUserAccount(USER_ID, tokenResponse.token);
+             UserCreated userCreated = response1.getBody().as(UserCreated.class);
         }
 
         if(statusLine.equalsIgnoreCase("HTTP/1.1 504 Gateway Time-out") )
@@ -78,5 +80,8 @@ public class APITestSteps {
         }
 
     }
+
+
+
 
 }

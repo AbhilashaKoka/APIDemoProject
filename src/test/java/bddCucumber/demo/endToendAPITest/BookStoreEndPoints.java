@@ -1,6 +1,6 @@
 package bddCucumber.demo.endToendAPITest;
 import bddCucumber.demo.model.bookstoreRequest.AddBookRequest;
-import bddCucumber.demo.model.bookstoreRequest.AuthorizationRequest;
+import bddCucumber.demo.model.bookstoreRequest.NewUser;
 import bddCucumber.demo.model.bookstoreRequest.RemoveBookRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -10,7 +10,8 @@ public class BookStoreEndPoints {
 
     private static final String BASE_URL="https://bookstore.toolsqa.com";
 
-    public static Response authenticateUser(AuthorizationRequest authRequest){
+
+    public static Response authenticateUser(NewUser authRequest){
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
