@@ -1,0 +1,4 @@
+input1,input2,expected
+Hello,World,HelloWorld
+foo,bar,foobar
+123,456,123456

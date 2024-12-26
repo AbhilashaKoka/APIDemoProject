@@ -50,7 +50,7 @@ public class ExcelFileReader {
 
     public static void main(String[] args) {
         // Read data from Excel
-        List<String[]> data = ExcelFileReader.readExcel("path/to/input.xlsx");
+        List<String[]> data = ExcelFileReader.readExcel("src/main/java/selenium/demo/testData/testdata.xlsx");
        // Use data in your Selenium test
         for (String[] rowData : data) {
             // Example: Use rowData for login
