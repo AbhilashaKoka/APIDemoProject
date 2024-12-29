@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class CSVFileReader {
-    private static final String CSV_FILE_PATH = "src/main/java/javaProgram/demo/testDemo/testdata.csv";
-
+    private static final String CSV_FILE_PATH = "src/main/java/javaProgram/demo/testDemo/Demo.csv";
     public static List<String[]> readCSV(String filePath) throws IOException {
         List<String[]> data = new ArrayList<>();
         String line;
@@ -28,10 +27,5 @@ public class CSVFileReader {
         List<String[]> data = CSVFileReader.readCSV(CSV_FILE_PATH);
         return data.stream();
     }
-
-
-
-
-
 }
 
