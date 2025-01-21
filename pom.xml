@@ -32,7 +32,7 @@
         <maven.cucumber.reporting>3.0.0</maven.cucumber.reporting>
         <surefire.version>2.22.2</surefire.version>
         <aventstack.report.version>3.1.5</aventstack.report.version>
-        <poi.version>5.2.2</poi.version>
+        <poi.version>5.4.0</poi.version>
         <jsonwebtoken.version>0.12.6</jsonwebtoken.version>
     </properties>
     <dependencies>
@@ -151,17 +151,6 @@
             <artifactId>extentreports</artifactId>
             <version>${aventstack.report.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -183,7 +172,34 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
 
+
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.lightbody.bmp</groupId>
+            <artifactId>browsermob-core</artifactId>
+            <version>2.1.5</version> </dependency>
     </dependencies>
     <build>
         <plugins>
