@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ReadExcelWithDecryption {
     public static void main(String[] args) {
-        String filePath = "path/to/excel/file.xlsx"; // Replace with your actual file path
+        String filePath = "src/main/resources/testdata/readAndWrite.xlsx"; // Replace with your actual file path
 
         try (FileInputStream fis = new FileInputStream(filePath);
              Workbook workbook = new XSSFWorkbook(fis)) {

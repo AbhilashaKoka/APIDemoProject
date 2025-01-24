@@ -1,4 +1,5 @@
 package bddCucumber.demo.uiStepDef;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -42,7 +43,7 @@ public class PracticeFormSteps {
     }
 
     @Then("I am able to verify form details successfully")
-    public void i_am_able_to_verify_form_details_successfully() {
+    public void i_am_able_to_verify_form_details_successfully(DataTable table) {
         practiceFormPage.HandlingModalBox();
 
     }
