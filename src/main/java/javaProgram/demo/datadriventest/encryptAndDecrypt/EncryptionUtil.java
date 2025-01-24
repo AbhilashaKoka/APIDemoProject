@@ -1,4 +1,4 @@
-package javaProgram.demo.APP.encryptAndDecrypt;
+package javaProgram.demo.datadriventest.encryptAndDecrypt;
 
 import java.util.Base64;
 

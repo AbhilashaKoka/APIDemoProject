@@ -1,4 +1,4 @@
-package javaProgram.demo.RandomIDComparator;
+package javaProgram.demo.randomIdTest;
 
 public class Main {
     public static void main(String[] args) {

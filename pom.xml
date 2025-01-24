@@ -10,30 +10,30 @@
         <java.version>22</java.version>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.version>3.7.0</maven.compiler.version>
+        <maven.failsafe.version>3.4.0</maven.failsafe.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.0</junit.version>
         <testNG.version>7.10.1</testNG.version>
         <selenium.version>4.25.0</selenium.version>
-        <cucumber.version>7.18.1</cucumber.version>
-        <restassured.version>5.5.0</restassured.version>
+        <appium.version>4.1.2</appium.version>
         <WebDriverManager.version>5.9.2</WebDriverManager.version>
-        <maven.compiler.version>3.7.0</maven.compiler.version>
-        <maven.failsafe.version>3.4.0</maven.failsafe.version>
-        <apache.common>3.12.0</apache.common>
-        <json.object.version>1.1.1</json.object.version>
-         <json.version>20240303</json.version>
-        <jackson.version>2.17.2</jackson.version>
-        <common-io.version>2.4</common-io.version>
-        <hamcrest-all.version>1.3</hamcrest-all.version>
-        <poi.version>5.2.5</poi.version>
-        <gson.version>2.11.0</gson.version>
-        <mysql.version>8.0.33</mysql.version>
-        <appium.version>9.1.0</appium.version>
-        <maven.cucumber.reporting>3.0.0</maven.cucumber.reporting>
-        <surefire.version>2.22.2</surefire.version>
-        <aventstack.report.version>3.1.5</aventstack.report.version>
         <poi.version>5.4.0</poi.version>
+        <cucumber.version>7.18.1</cucumber.version>
+        <maven.cucumber.reporting>3.0.0</maven.cucumber.reporting>
+        <restassured.version>5.5.0</restassured.version>
+        <json.object.version>1.1.1</json.object.version>
+        <json.version>20240303</json.version>
+        <jackson.version>2.17.2</jackson.version>
+        <gson.version>2.11.0</gson.version>
         <jsonwebtoken.version>0.12.6</jsonwebtoken.version>
+        <mysql.version>8.0.33</mysql.version>
+        <apache.common>3.12.0</apache.common>
+        <common-io.version>2.14.0</common-io.version>
+        <hamcrest-all.version>1.3</hamcrest-all.version>
+        <surefire.version>2.22.2</surefire.version>
+
+
     </properties>
     <dependencies>
             <dependency>
@@ -145,12 +145,7 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>${appium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>${aventstack.report.version}</version>
-        </dependency>
+          </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -182,15 +177,11 @@
             <artifactId>poi</artifactId>
             <version>${poi.version}</version>
         </dependency>
-
-
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>4.1.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-scratchpad</artifactId>

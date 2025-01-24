@@ -1,4 +1,4 @@
-package javaProgram.demo.mysqlTest;
+package javaProgram.demo.dbTest;
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
