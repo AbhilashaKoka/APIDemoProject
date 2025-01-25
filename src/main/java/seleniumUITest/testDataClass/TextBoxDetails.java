@@ -1,4 +1,4 @@
-package seleniumUITest.testData;
+package seleniumUITest.testDataClass;
 
 public class TextBoxDetails {
   String  username;

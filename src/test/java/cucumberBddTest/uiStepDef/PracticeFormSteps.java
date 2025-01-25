@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import seleniumUITest.cucumberContext.TestContext;
 import seleniumUITest.manager.FileReaderManager;
 import seleniumUITest.pages.PracticeFormPage;
-import seleniumUITest.testData.PracticeFormsDetails;
+import seleniumUITest.testDataClass.PracticeFormsDetails;
 
 import java.io.IOException;
 

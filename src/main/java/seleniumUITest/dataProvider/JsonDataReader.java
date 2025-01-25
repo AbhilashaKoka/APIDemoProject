@@ -1,7 +1,7 @@
 package seleniumUITest.dataProvider;
 import seleniumUITest.manager.FileReaderManager;
-import seleniumUITest.testData.PracticeFormsDetails;
-import seleniumUITest.testData.TextBoxDetails;
+import seleniumUITest.testDataClass.PracticeFormsDetails;
+import seleniumUITest.testDataClass.TextBoxDetails;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import seleniumUITest.cucumberContext.TestContext;
 import seleniumUITest.manager.FileReaderManager;
 import seleniumUITest.pages.HomePage;
-import seleniumUITest.testData.TextBoxDetails;
+import seleniumUITest.testDataClass.TextBoxDetails;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;

@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import seleniumUITest.manager.DriverManager;
-import seleniumUITest.testData.TextBoxDetails;
+import seleniumUITest.testDataClass.TextBoxDetails;
 
 
 public class HomePage {
