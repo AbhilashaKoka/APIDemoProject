@@ -5,17 +5,17 @@
 <!--</listeners>-->
 <!--    <test name="SeleniumTestNG">-->
 <!--        <classes>-->
-<!--            <class name="selenium.demo.TestNGTestClass"></class>-->
+<!--            <class name="seleniumUITest.TestNGTestClass"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
 <!--    <test name="SeleniumBDD">-->
 <!--        <classes>-->
-<!--            <class name="bddCucumber.demo.runner.UITestRunner"></class>-->
+<!--            <class name="cucumberBddTest.runner.UITestRunner"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
     <test name="RestAssuredTest">
         <classes>
-            <class name="restassured.demo.BookStoreEndToEndAPITestNGTest"></class>
+            <class name="restassured.BookStoreEndToEndAPITestNGTest"></class>
         </classes>
     </test>
 </suite>
