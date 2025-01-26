@@ -4,7 +4,6 @@ import java.util.List;
 
 public class AddListOfBooks {
     public  String userId;
-
     public List<ISBN> collectionOfIsbns;
 
     public AddListOfBooks(String userId, List<ISBN> collectionOfIsbns) {

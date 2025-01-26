@@ -1,4 +1,6 @@
 package cucumberBddTest.apiStepDef;
+
+import cucumberBddTest.model.bookstoreRequest.ISBN;
 import cucumberBddTest.model.bookstoreRequest.NewUser;
 import cucumberBddTest.model.bookstoreResponse.*;
 import io.cucumber.java.en.Then;
@@ -7,6 +9,7 @@ import io.restassured.response.Response;
 import org.junit.Assert;
 import org.testng.asserts.SoftAssert;
 import restassured.BookStoreEndToEnd_Tests;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +17,7 @@ import java.util.Map;
 import static restassured.BookStoreEndToEnd_Tests.*;
 
 public class BookStoreEndToEndSteps {
-    static String ISBN;
+    static ISBN isbn;
     String userId;
     static  String token;
     static List<Book> books;
@@ -242,7 +245,7 @@ public class BookStoreEndToEndSteps {
     public void verify_successfully_get_book_by_isbn() {
 
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
-        response=e2ETests.GetBookByISBN(ISBN);
+        response=e2ETests.GetBookByISBN(isbn);
         String body=response.getBody().asString();
         System.out.println(body);
         String statusLine = response.getStatusLine();
@@ -269,7 +272,7 @@ public class BookStoreEndToEndSteps {
 
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         System.out.println(userId);
-        response=  e2ETests.UpdateBookByISBNAndUserId( userId,  ISBN,  token);
+        response=  e2ETests.UpdateBookByISBNAndUserId(  token, userId,  isbn);
         String body=response.getBody().asString();
         System.out.println(body);
         String statusLine=response.getStatusLine();
@@ -295,7 +298,7 @@ public class BookStoreEndToEndSteps {
     public void verify_successfully_delete_book() {
 
         BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();
-        response = e2ETests.DeleteBookByUserIdAndISBN(token, userId, ISBN);
+        response = e2ETests.DeleteBookByUserIdAndISBN(token, userId, isbn);
         String body = response.getBody().asString();
         System.out.println(body);
         String statusLine = response.getStatusLine();

@@ -15,7 +15,7 @@ import static restassured.BookStoreEndToEnd_Tests.generateISBNList;
 import static restassured.BookStoreEndToEnd_Tests.generateRandomName;
 
 public class BookStoreEndToEndAPITestNGTest {
-    static String ISBN;
+    static ISBN ISBN;
     String userId;
     static  String token;
     static List<Book> books;
@@ -35,11 +35,9 @@ public class BookStoreEndToEndAPITestNGTest {
           authorizationRequest=new NewUser(username, password);
           authorizationRequest.setUserName(username);
           authorizationRequest.setPassword(password);
-
           response= e2ETests.CreateUser(username,password);
           String body=response.getBody().asString();
           System.out.println(body);
-
           String statusLine=response.getStatusLine();
 
           if(statusLine.equalsIgnoreCase("HTTP/1.1 201 Created"))
@@ -271,7 +269,7 @@ public class BookStoreEndToEndAPITestNGTest {
     public void VerifyUpdateBookByUserIDandISBN() throws IOException {
         BookStoreEndToEnd_Tests e2ETests=new BookStoreEndToEnd_Tests();
         System.out.println(userId);
-         response=  e2ETests.UpdateBookByISBNAndUserId( userId,  ISBN,  token);
+         response=  e2ETests.UpdateBookByISBNAndUserId(token, userId,  ISBN);
         String body=response.getBody().asString();
         System.out.println(body);
         String statusLine=response.getStatusLine();

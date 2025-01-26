@@ -4,17 +4,28 @@ public class BookStoreRoute {
     public static final String BOOKSTORE="/BookStore";
     public static final String ACCOUNT="/Account";
     public static final String VERSION="/v1";
+
+
+    public static String createNewUser(){
+        return ACCOUNT+VERSION+"/User";
+    }
+
     public static String  generateToken(){
         return ACCOUNT+VERSION+"/GenerateToken";
     }
-    public static String books()
- {
+
+
+    public static String authorizedUser(){
+        return ACCOUNT+VERSION+"Authorized";
+     }
+
+
+    public static String books(){
      return BOOKSTORE+VERSION+"/Books";
  }
 
 
- public static String book()
- {
+ public static String book(){
      return BOOKSTORE+VERSION+"/Book";
  }
 

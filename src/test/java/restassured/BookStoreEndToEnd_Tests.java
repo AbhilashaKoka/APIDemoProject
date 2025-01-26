@@ -50,7 +50,8 @@ public class BookStoreEndToEnd_Tests {
     private static final String ISBN_CHARACTERS = "0123456789";
     private static final SecureRandom RANDOM2 = new SecureRandom();
 
-            public  Response CreateUser(String UserName, String Password) {
+
+            public Response CreateUser(String UserName, String Password) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given();
             request.header("Content-Type", "application/json");
@@ -102,7 +103,7 @@ public class BookStoreEndToEnd_Tests {
       }
 
 
-      public  Response GetBookByISBN(String isbn) {
+      public  Response GetBookByISBN(ISBN isbn) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given();
            return request.get("/BookStore/v1/Book?ISBN=" + isbn);
@@ -119,7 +120,7 @@ public class BookStoreEndToEnd_Tests {
             return request.body(addListOfBooks).post("/BookStore/v1/Books");
         }
 
-        public  Response UpdateBookByISBNAndUserId(String token, String userId, String isbn) {
+        public  Response UpdateBookByISBNAndUserId(String token, String userId, ISBN isbn) {
             RestAssured.baseURI=baseUrl;
             RequestSpecification request= given().header("Authorization", "Bearer " + token).
                     header("Content-Type", "application/json");
@@ -128,7 +129,7 @@ public class BookStoreEndToEnd_Tests {
 
         }
 
-        public Response DeleteBookByUserIdAndISBN(String token, String userId, String isbn) {
+        public Response DeleteBookByUserIdAndISBN(String token, String userId, ISBN isbn) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification httpRequest = given()
                 .header("Authorization", "Bearer " + token)

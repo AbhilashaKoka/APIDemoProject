@@ -11,5 +11,23 @@ public class AddBookRequest {
         this.isbn = isbn;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public ISBN getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(ISBN isbn) {
+        this.isbn = isbn;
+    }
+
+
+
 
 }
