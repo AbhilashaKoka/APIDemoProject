@@ -49,19 +49,17 @@ public class APITestSteps {
     }
 
 
-    @When("I remove a book to my reading list")
-    public void i_remove_a_book_to_my_reading_list(DataTable dataTable) {
+    @When("I remove a book from my reading list")
+    public void i_remove_a_book_from_my_reading_list(DataTable dataTable) {
         List<Map<String, String>> table6 = dataTable.asMaps();
         BookStoreEndPoints.removeBook(table6.get(0).get("isbn"));
     }
 
-    @Then("The book is remove successfully in book List")
-    public void the_book_is_remove_successfully_in_book_list() {
+
+    @Then("The book is remove successfully from book List")
+    public void the_book_is_remove_successfully_from_book_list() {
         System.out.println("Book is successfully removed");
-
     }
-
-
 
 
 

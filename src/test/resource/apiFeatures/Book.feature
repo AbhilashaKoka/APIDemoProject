@@ -25,10 +25,10 @@ Feature: Verify add/remove book from ReadingList
     And I Authorized new User
       | username | password     |
       | ritadevi | ritadevi@123 |
-    And I remove a book to my reading list
+    And I remove a book from my reading list
       | ISBN          |
       | 9781449325862 |
-    Then The book is remove successfully in book List
+    Then The book is remove successfully from book List
 
     @restapi
     Scenario: Book Store End To End API Test

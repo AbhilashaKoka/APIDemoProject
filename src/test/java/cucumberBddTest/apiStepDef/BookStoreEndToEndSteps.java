@@ -9,7 +9,6 @@ import io.restassured.response.Response;
 import org.junit.Assert;
 import org.testng.asserts.SoftAssert;
 import restassured.BookStoreEndToEnd_Tests;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +81,7 @@ public class BookStoreEndToEndSteps {
             System.out.println(token.token);
             String statusLine = response.getStatusLine();
             System.out.println(statusLine);
-            Assert.assertEquals(statusLine, "HTTP/1.1 200 OK", "User is Authorized");
+            Assert.assertEquals("User is Authorized", statusLine,"User is Authorized");
             bool = true;
         }
         catch(Exception ex){
@@ -103,7 +102,7 @@ public class BookStoreEndToEndSteps {
                 Assert.fail("User is not authorized");
             }
             String statusLine=response.getStatusLine();
-            Assert.assertEquals(statusLine,"HTTP/1.1 200 OK","User is Authorized Checked Successfully");
+            Assert.assertEquals("User is Authorized Checked Successfully",statusLine,"User is Authorized Checked Successfully");
             bool = true;
         }
         catch(Exception ex){
