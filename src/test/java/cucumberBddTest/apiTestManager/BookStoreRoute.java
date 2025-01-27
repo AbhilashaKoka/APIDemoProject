@@ -1,4 +1,4 @@
-package cucumberBddTest.endToendAPITest;
+package cucumberBddTest.apiTestManager;
 
 public class BookStoreRoute {
     public static final String BOOKSTORE="/BookStore";

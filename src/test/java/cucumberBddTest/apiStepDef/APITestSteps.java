@@ -1,12 +1,11 @@
 package cucumberBddTest.apiStepDef;
 
-import cucumberBddTest.endToendAPITest.BookStoreEndPoints;
+import cucumberBddTest.apiTestManager.BookStoreEndPoints;
 import cucumberBddTest.model.bookstoreResponse.Books;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import java.util.List;
 import java.util.Map;
 

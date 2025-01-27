@@ -1,4 +1,4 @@
-package cucumberBddTest.endToendAPITest;
+package cucumberBddTest.apiTestManager;
 
 import cucumberBddTest.model.bookstoreRequest.AddBookRequest;
 import cucumberBddTest.model.bookstoreRequest.ISBN;
