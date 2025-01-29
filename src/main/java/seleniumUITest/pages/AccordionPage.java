@@ -26,7 +26,6 @@ public class AccordionPage {
     @FindBy(how = How.XPATH, using = "//*[@id=\"accordianContainer\"]")
     private WebElement accordianContainer;
 
-
     @FindBy(how = How.XPATH, using = "//div[@id=\"accordianContainer\"]//following::div[@class=\"accordion\"]")
     private  List<WebElement> accordiansLIst;
 
@@ -52,19 +51,12 @@ public class AccordionPage {
 
     public Boolean HandlingAccordion(){
         Boolean bol=false;
-
         Widgets_Frames.click();
-
         Accordian_span.click();
-
         System.out.println(accordianContainer.getAttribute("innerText"));
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)");
-
-
         int size=accordiansLIst.size();
-
         for(WebElement ele:accordiansLIst){
             action.moveToElement(ele).perform();
             action.moveToElement(ele.findElement(By.xpath("//*[@class=\"card-header\"]"))).clickAndHold().perform();
