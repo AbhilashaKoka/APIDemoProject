@@ -27,8 +27,7 @@ public class BrowserStackReadExcelTest {
         Row row3 = sheet.getRow(1);
         Cell cell3 = row3.getCell(1);
         System.out.println(sheet.getRow(1).getCell(1));
-//String cellval = cell.getStringCellValue();
-//System.out.println(cellval);
+
     }
 
 }

@@ -1,6 +1,8 @@
 package seleniumUITest.pages;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +13,9 @@ import java.nio.file.Paths;
 
 
 public class UploadAndDownloadPage  {
-WebDriver driver;
+     WebDriver driver;
+    static Actions action;
+    static JavascriptExecutor js;
 
 
     @FindBy(how= How.XPATH,using="//*[@id=\"app\"]/div/div/div/div[2]/div[2]")
