@@ -24,12 +24,12 @@ public class AutomCompletePage {
    @FindBy(how = How.XPATH, using = "//*[@class=\"css-1g6gooi\"]/div[@class=\"auto-complete__input\"]/input[@id=\"autoCompleteMultipleInput\" and @type =\"text\"]")
     private WebElement  secondPlaceHolder;
 
-    public AutomCompletePage(WebDriver driver) {
+    public void AutoCompletePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public boolean PracticeFormLandingPage()
+    public boolean AutoCompleteLandingPage()
     {
         boolean bol=false;
         DriverManager.scrollWindowUp(Widgets_Frames);

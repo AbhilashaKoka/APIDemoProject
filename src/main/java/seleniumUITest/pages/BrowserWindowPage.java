@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import seleniumUITest.manager.DriverManager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,6 +40,23 @@ public class BrowserWindowPage {
 
     @FindBy(how = How.XPATH, using ="//*[@id=\"messageWindowButton\"]")
     private WebElement parentWindow1;
+
+
+    public void BrowserWindowPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public boolean booleanBrowserWindowLandingPage()
+    {
+        boolean bol=false;
+        DriverManager.scrollWindowUp(Window_Frames);
+        Window_Frames.click();
+        BrowserWindows_span.click();
+        bol=true;
+        return bol;
+    }
+
 
     public  Boolean HandlingBrowserWindow() throws InterruptedException {
         Boolean bol=false;
