@@ -4,7 +4,7 @@ Feature: Verify RadioButton Click functionality
 
 
   Background:
-    Given I am in from landing page
+    Given I am in RadioBox landing page
 
 
 

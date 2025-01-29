@@ -26,11 +26,6 @@ public class PracticeFormSteps {
     }
 
 
-    @Given("I am in from landing page")
-    public void i_am_in_from_landing_page() {
-        System.out.println("User is in Landing Page!!!");
-       practiceFormPage.PracticeFormLandingPage();
-    }
 
 
     @When("I enter details firstname, lastname,gender,email,mobile,dob,subject,hobbies,currentaddr,state,city")
@@ -61,5 +56,11 @@ public class PracticeFormSteps {
     public void i_am_able_to_verify_form_details_successfully(DataTable table) {
         practiceFormPage.HandlingModalBox();
 
+    }
+
+    @Given("I am in form landing page")
+    public void iAmInFormLandingPage() {
+        System.out.println("User is in Landing Page!!!");
+        practiceFormPage.PracticeFormLandingPage();
     }
 }

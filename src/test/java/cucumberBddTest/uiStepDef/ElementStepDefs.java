@@ -25,11 +25,7 @@ HomePage homePage;
     }
 
 
-    @Given("User is on Landing Page")
-    public void user_is_on_landing_page() {
-        System.out.println("User is Landing Page!!");
-        homePage.HomeLandingPage();
-    }
+
 
     @Then("user should able to verify the detail on output area")
     public void user_should_able_to_verify_the_detail_on_output_area(DataTable table) {
@@ -87,4 +83,9 @@ HomePage homePage;
     }
 
 
+    @Given("User is on TextBox Landing Page")
+    public void userIsOnTextBoxLandingPage() {
+        System.out.println("User is Landing Page!!");
+        homePage.HomeLandingPage();
+    }
 }

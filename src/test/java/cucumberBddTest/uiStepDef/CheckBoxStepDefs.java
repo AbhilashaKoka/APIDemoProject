@@ -1,6 +1,7 @@
 package cucumberBddTest.uiStepDef;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -22,5 +23,9 @@ public class CheckBoxStepDefs {
 
     @When("I select radio button {string}")
     public void iSelectRadioButton(String arg0) {
+    }
+
+    @Given("I am in CheckBox landing page")
+    public void iAmInCheckBoxLandingPage() {
     }
 }

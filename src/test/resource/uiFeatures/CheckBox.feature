@@ -4,7 +4,7 @@ Feature: Verify CheckBox Click functionality
 
 
   Background:
-    Given I am in from landing page
+    Given I am in CheckBox landing page
 
 
 

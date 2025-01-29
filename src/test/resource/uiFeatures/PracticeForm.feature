@@ -2,7 +2,7 @@
 Feature: Verify Form Submission functionality
 
 Background:
-  Given I am in from landing page
+  Given I am in form landing page
 
   Scenario: PracticeForm1
       When I enter details firstname, lastname,gender,email,mobile,dob,subject,hobbies,currentaddr,state,city

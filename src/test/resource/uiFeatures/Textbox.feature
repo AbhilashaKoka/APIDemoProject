@@ -2,7 +2,7 @@
 Feature: Verify TestBox Login Page
 
   Background:
-    Given User is on Landing Page
+    Given User is on TextBox Landing Page
 
   Scenario:verify textbox1
     When User enter details username, email, current address, permanent address and Click on submit
