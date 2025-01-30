@@ -81,7 +81,7 @@ public class BookStoreEndToEndSteps {
             System.out.println(token.token);
             String statusLine = response.getStatusLine();
             System.out.println(statusLine);
-            Assert.assertEquals("User is Authorized", "User is Authorized", statusLine);
+            Assert.assertEquals("User is Authorized", "HTTP/1.1 200 OK", statusLine);
             bool = true;
         }
         catch(Exception ex){
@@ -102,7 +102,7 @@ public class BookStoreEndToEndSteps {
                 Assert.fail("User is not authorized");
             }
             String statusLine=response.getStatusLine();
-            Assert.assertEquals("User is Authorized Checked Successfully", "User is Authorized Checked Successfully", statusLine);
+            Assert.assertEquals("User is Authorized Checked Successfully", "HTTP/1.1 200 OK", statusLine);
             bool = true;
         }
         catch(Exception ex){
@@ -255,7 +255,7 @@ public class BookStoreEndToEndSteps {
                 System.out.println("Book Title:" + book2.toString());
             }
         }
-        else if (statusLine.equalsIgnoreCase("HTTP/1.1 400 Bad bookstoreRequest")){
+        else if (statusLine.equalsIgnoreCase("HTTP/1.1 400 Bad Request")){
 
             BookOfUserNotPresent bookOfUserNotPresent=response.getBody().as(BookOfUserNotPresent.class);
             System.out.println(bookOfUserNotPresent.toString());
@@ -291,6 +291,13 @@ public class BookStoreEndToEndSteps {
             System.out.println(bookOfUserNotPresent.code);
             System.out.println(bookOfUserNotPresent.message);
         }
+        else if (statusLine.equalsIgnoreCase("HTTP/1.1 400 Bad Request")){
+
+            BookOfUserNotPresent bookOfUserNotPresent=response.getBody().as(BookOfUserNotPresent.class);
+            System.out.println(bookOfUserNotPresent.toString());
+            System.out.println(bookOfUserNotPresent.code);
+            System.out.println(bookOfUserNotPresent.message);
+        }
     }
 
     @Then("Verify Successfully Delete Book")
@@ -306,9 +313,13 @@ public class BookStoreEndToEndSteps {
             System.out.println(userData3.userId);
             System.out.println(userData3.username);
             System.out.println(userData3.books);
-        }
+        } else if (statusLine.equalsIgnoreCase(" HTTP/1.1 401 Unauthorized")) {
+            BookOfUserNotPresent bookOfUserNotPresent = response.getBody().as(BookOfUserNotPresent.class);
+            System.out.println(bookOfUserNotPresent.toString());
+            System.out.println(bookOfUserNotPresent.code);
+            System.out.println(bookOfUserNotPresent.message);
+        } else if (statusLine.equalsIgnoreCase("HTTP/1.1 400 Bad Request")) {
 
-        else if (statusLine.equalsIgnoreCase(" HTTP/1.1 401 Unauthorized")) {
             BookOfUserNotPresent bookOfUserNotPresent = response.getBody().as(BookOfUserNotPresent.class);
             System.out.println(bookOfUserNotPresent.toString());
             System.out.println(bookOfUserNotPresent.code);
