@@ -1,17 +1,12 @@
 @browser
 Feature: Verify CheckBox Click functionality
 
-
-
   Background:
     Given I am in CheckBox landing page
-
-
 
   Scenario : CheckBox1
     When I select radio button "Home"
    Then I am able to select all options
-
 
 
   Scenario Outline: CheckBox2

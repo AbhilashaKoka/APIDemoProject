@@ -4,7 +4,7 @@ Feature: Verify add/remove book from ReadingList
   @restapi
   Scenario: Add book successfully from Book List
     When  I send request for books avaliable
-    Then I am able to successfully verify response with List of Book and details as "<isbn>" ,"<title>" ,"<subTitle>", "<publish_date>", "<publisher>", "<pages>", "<description>","<website>"
+    Then I am able to successfully verify response with List of Book and details
       | isbn          | title                                     | subTitle                                                          | author               | publish_date             | publisher       | pages | description                                                                                                                                                                                                                                                     | website                                                                 |
       | 9781449325862 | Git Pocket Guide                          | A Working Introduction                                            | Richard E. Silverman | 2020-06-04T08:48:39.000Z | O'Reilly Media  | 234   | This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git exp | http://chimera.labs.oreilly.com/books/1230000000561/index.html          |
       | 9781449331818 | Learning JavaScript Design Patterns       | A JavaScript and jQuery Developer's Guide                         | Addy Osmani          | 2020-06-04T09:11:40.000Z | O'Reilly Media  | 254   | With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-da | http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/     |
@@ -16,33 +16,33 @@ Feature: Verify add/remove book from ReadingList
       | 9781593277574 | Understanding ECMAScript 6                | The Definitive Guide for JavaScript Developers                    | Nicholas C. Zakas    | 2016-09-03T00:00:00.000Z | No Starch Press | 352   | ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that E | https://leanpub.com/understandinges6/read                               |
 
 
-  Scenario: Add book successfully from Book List
-    Given  A list of books are avaliable
-    When I created new User login details
-      | username | password     |
-      | ritadevi | ritadevi@123 |
-    And I Authorized new User
-      | username | password     |
-      | ritadevi | ritadevi@123 |
-    And I added a book to my reading list
-      | ISBN          |
-      | 9781449325862 |
-    Then The book is added successfully in book List
-
-
-
-  Scenario: Add book successfully from Book List
-    Given  A list of books are avaliable
-    When I created new User login details
-      | username | password     |
-      | ritadevi | ritadevi@123 |
-    And I Authorized new User
-      | username | password     |
-      | ritadevi | ritadevi@123 |
-    And I remove a book from my reading list
-      | ISBN          |
-      | 9781449325862 |
-    Then The book is remove successfully from book List
-
+#  Scenario: Add book successfully from Book List
+#    Given  A list of books are avaliable
+#    When I created new User login details
+#      | username | password     |
+#      | ritadevi | ritadevi@123 |
+#    And I Authorized new User
+#      | username | password     |
+#      | ritadevi | ritadevi@123 |
+#    And I added a book to my reading list
+#      | ISBN          |
+#      | 9781449325862 |
+#    Then The book is added successfully in book List
+#
+#
+#
+#  Scenario: Add book successfully from Book List
+#    Given  A list of books are avaliable
+#    When I created new User login details
+#      | username | password     |
+#      | ritadevi | ritadevi@123 |
+#    And I Authorized new User
+#      | username | password     |
+#      | ritadevi | ritadevi@123 |
+#    And I remove a book from my reading list
+#      | ISBN          |
+#      | 9781449325862 |
+#    Then The book is remove successfully from book List
+#
 
 

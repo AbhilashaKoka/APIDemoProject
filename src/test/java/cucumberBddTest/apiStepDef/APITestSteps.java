@@ -1,21 +1,29 @@
 package cucumberBddTest.apiStepDef;
+
 import cucumberBddTest.apiTestManager.BookStoreEndPoints;
-import cucumberBddTest.model.bookstoreResponse.Books;
+import cucumberBddTest.model.bookstoreResponse.Book;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 
 public class APITestSteps {
 
+    List<Book> books;
+
     @Given("A list of books are avaliable")
     public void a_list_of_books_are_avaliable() {
-        Books books= BookStoreEndPoints.getBook();
+        List<Book> books= BookStoreEndPoints.getBook();
         System.out.println(books);
   }
+
+
     @When("I created new User login details")
     public void iCreatedNewUserLoginDetails(DataTable dataTable) {
         List<Map<String, String>> table2=dataTable.asMaps();
@@ -62,12 +70,24 @@ public class APITestSteps {
 
     @When("I send request for books avaliable")
     public void iSendRequestForBooksAvaliable() {
-
+     books= BookStoreEndPoints.getBook();
+        System.out.println(books);
     }
 
 
 
-    @Then("I am able to successfully verify response with List of Book and details as {string} ,{string} ,{string}, {string}, {string}, {string}, {string},{string}")
-    public void iAmAbleToSuccessfullyVerifyResponseWithListOfBookAndDetailsAs(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9, String arg10, String arg11, String arg12, String arg13, String arg14, String arg15) {
+
+    @Then("I am able to successfully verify response with List of Book and details")
+    public void iAmAbleToSuccessfullyVerifyResponseWithListOfBookAndDetails(DataTable table) {
+        List<Book> actual=books;
+        List<Book> expected=new ArrayList<>();
+      for(Map<String,String> match:table.asMaps())
+      {
+          Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
+                  match.get("author"),match.get("publish_date"),match.get("publisher"),
+                  match.get("pages"),match.get("description"),match.get("website"));
+          expected.add(book);
+      }
+        Assert.assertEquals(actual,expected);
     }
 }

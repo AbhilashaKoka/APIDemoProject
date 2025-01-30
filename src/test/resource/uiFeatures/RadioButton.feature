@@ -1,12 +1,8 @@
 @browser
 Feature: Verify RadioButton Click functionality
 
-
-
   Background:
     Given I am in RadioBox landing page
-
-
 
   Scenario Outline: CheckBox1
     When I select radiobutton "<Options>"

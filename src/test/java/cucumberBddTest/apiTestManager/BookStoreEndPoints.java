@@ -4,12 +4,14 @@ import cucumberBddTest.model.bookstoreRequest.AddBookRequest;
 import cucumberBddTest.model.bookstoreRequest.ISBN;
 import cucumberBddTest.model.bookstoreRequest.NewUser;
 import cucumberBddTest.model.bookstoreRequest.RemoveBookRequest;
-import cucumberBddTest.model.bookstoreResponse.Books;
+import cucumberBddTest.model.bookstoreResponse.Book;
 import cucumberBddTest.model.bookstoreResponse.Token;
 import cucumberBddTest.model.bookstoreResponse.UserCreated;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.List;
 
 public class BookStoreEndPoints {
 
@@ -46,12 +48,12 @@ public class BookStoreEndPoints {
         return response.getBody().asString();
     }
 
-    public static Books getBook(){
+    public static List<Book> getBook(){
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
         Response response= request.get(BookStoreRoute.books());
-        return response.getBody().as(Books.class);
+        return response.jsonPath().getList(".", Book.class);
     }
 
     public static Response addBook( String isbn){
