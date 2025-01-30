@@ -29,7 +29,7 @@ public class BaseSetup {
     }
 
 
-    @After
+    @After("not @restapi")
     public void TearDownTest(Scenario scenario){
         if (scenario.isFailed()) {
             final byte[] src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -37,7 +37,7 @@ public class BaseSetup {
         }
     }
 
-    @After
+    @After("not @restapi")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             TakesScreenshot screenshot = (TakesScreenshot) driver;

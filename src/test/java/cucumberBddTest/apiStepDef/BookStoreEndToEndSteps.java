@@ -81,7 +81,7 @@ public class BookStoreEndToEndSteps {
             System.out.println(token.token);
             String statusLine = response.getStatusLine();
             System.out.println(statusLine);
-            Assert.assertEquals("User is Authorized", statusLine,"User is Authorized");
+            Assert.assertEquals("User is Authorized", "User is Authorized", statusLine);
             bool = true;
         }
         catch(Exception ex){
@@ -102,7 +102,7 @@ public class BookStoreEndToEndSteps {
                 Assert.fail("User is not authorized");
             }
             String statusLine=response.getStatusLine();
-            Assert.assertEquals("User is Authorized Checked Successfully",statusLine,"User is Authorized Checked Successfully");
+            Assert.assertEquals("User is Authorized Checked Successfully", "User is Authorized Checked Successfully", statusLine);
             bool = true;
         }
         catch(Exception ex){

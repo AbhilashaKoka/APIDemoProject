@@ -16,14 +16,13 @@ public class APITestSteps {
         Books books= BookStoreEndPoints.getBook();
         System.out.println(books);
   }
-
-
-    @When("I enter valid credential to login")
-    public void i_enter_valid_credential_to_login(DataTable dataTable) {
+    @When("I created new User login details")
+    public void iCreatedNewUserLoginDetails(DataTable dataTable) {
         List<Map<String, String>> table2=dataTable.asMaps();
         BookStoreEndPoints.createNewUser(table2.get(0).get("username"),table2.get(0).get("password"));
 
     }
+
 
 
     @When("I Authorized new User")
@@ -58,8 +57,6 @@ public class APITestSteps {
     public void the_book_is_remove_successfully_from_book_list() {
         System.out.println("Book is successfully removed");
     }
-
-
 
 
 

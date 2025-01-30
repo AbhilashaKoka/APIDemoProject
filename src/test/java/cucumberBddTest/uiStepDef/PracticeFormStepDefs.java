@@ -13,13 +13,13 @@ import seleniumUITest.testDataClass.PracticeFormsDetails;
 import java.io.IOException;
 
 
-public class PracticeFormSteps {
+public class PracticeFormStepDefs {
     WebDriver driver;
     PracticeFormPage practiceFormPage;
     FileReaderManager fileReaderManager;
 
 
-    public PracticeFormSteps(TestContext testContext) {
+    public PracticeFormStepDefs(TestContext testContext) {
         driver=testContext.getDriverManager().getDriver();
         practiceFormPage=testContext.getPageObjectManager().getPracticePage();
         fileReaderManager=testContext.getFileReaderManager();

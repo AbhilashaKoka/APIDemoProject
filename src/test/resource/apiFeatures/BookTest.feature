@@ -3,7 +3,7 @@ Feature: test
 
 
   @restapi
-Scenario: test
+Scenario: test Api
 Then Verify Successfully Create User
 Then Verify Successfully get User
 Then Verify Successfully get Books
