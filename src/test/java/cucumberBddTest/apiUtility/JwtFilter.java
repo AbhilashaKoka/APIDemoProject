@@ -16,7 +16,7 @@ public class JwtFilter implements Filter
         HttpServletResponse response = (HttpServletResponse) res;
 
         String authHeader = request.getHeader("Authorization");
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        if (authHeader != null && authHeader.startsWith("Bearer")) {
             String token = authHeader.substring(7);
             Claims claims = JwtUtils.validateToken(token);
             if ("admin".equals(claims.get("role"))) {

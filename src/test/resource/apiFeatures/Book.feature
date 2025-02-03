@@ -28,9 +28,9 @@ Feature: Verify add/remove book from ReadingList
 #      | ISBN          |
 #      | 9781449325862 |
 #    Then The book is added successfully in book List
-#
-#
-#
+
+
+
 #  Scenario: Add book successfully from Book List
 #    Given  A list of books are avaliable
 #    When I created new User login details
@@ -43,6 +43,6 @@ Feature: Verify add/remove book from ReadingList
 #      | ISBN          |
 #      | 9781449325862 |
 #    Then The book is remove successfully from book List
-#
+
 
 

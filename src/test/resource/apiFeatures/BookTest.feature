@@ -1,7 +1,6 @@
 #@restapi
 #Feature: test
-#
-#
+
 #  @restapi
 #Scenario: test Api
 #Then Verify Successfully Create User

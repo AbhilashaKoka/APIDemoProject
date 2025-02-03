@@ -11,8 +11,6 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import java.util.List;
-
 public class BookStoreEndPoints {
 
     private static final String BASE_URL="https://bookstore.toolsqa.com";
@@ -48,12 +46,20 @@ public class BookStoreEndPoints {
         return response.getBody().asString();
     }
 
-    public static List<Book> getBook(){
+    public static Book[] getBook(){
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
+
         Response response= request.get(BookStoreRoute.books());
-        return response.jsonPath().getList(".", Book.class);
+        System.out.println("Response Body -> " + response.body().asString());
+
+
+        Book[] books = response.jsonPath().getObject("books", Book[].class);
+        for(Book book : books){
+            System.out.println("Book title " + book.title);
+        }
+        return books;
     }
 
     public static Response addBook( String isbn){

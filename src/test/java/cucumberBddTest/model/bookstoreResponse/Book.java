@@ -14,24 +14,23 @@ public class Book {
 
     public String publisher;
 
-
     public String pages;
 
     public String description;
 
     public String website;
 
-    public Book(String isbn, String title, String subTitle, String author, String publishDate, String publisher, String pages, String description, String website) {
-        this.isbn = isbn;
-        this.title = title;
-        this.subTitle = subTitle;
-        this.author = author;
-        this.publishDate = publishDate;
-        this.publisher = publisher;
-        this.pages = pages;
-        this.description = description;
-        this.website = website;
-    }
+//    public Book(String isbn, String title, String subTitle, String author, String publishDate, String publisher, String pages, String description, String website) {
+//        this.isbn = isbn;
+//        this.title = title;
+//        this.subTitle = subTitle;
+//        this.author = author;
+//        this.publishDate = publishDate;
+//        this.publisher = publisher;
+//        this.pages = pages;
+//        this.description = description;
+//        this.website = website;
+//    }
 
     public String getIsbn() {
         return isbn;
