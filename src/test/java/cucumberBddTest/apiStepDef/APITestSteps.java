@@ -71,7 +71,7 @@ public class APITestSteps {
     public void iSendRequestForBooksAvaliable() {
          books= BookStoreEndPoints.getBook();
           int s=  books.size();
-        System.out.println(s);
+          System.out.println(s);
      }
 
     @Then("I am able to successfully verify response with List of Book and details")
@@ -79,20 +79,23 @@ public class APITestSteps {
 
         List<Book> expectedResult=new ArrayList<>();
         List<Book> actualResult=new ArrayList<>(books);
-        System.out.println(actualResult);
+
       for(Map<String,String> match:table.asMaps())
       {
                   Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
                   match.get("author"),match.get("publish_date"),match.get("publisher"),
                   match.get("pages"),match.get("description"),match.get("website"));
+                  expectedResult.add(book);
 
-          expectedResult.add(book);
       }
+    //   Books books=new Books(expectedResult);
         System.out.println("Actual :");
         System.out.println(actualResult);
         System.out.println("Expected :");
         System.out.println(expectedResult);
-    Assert.assertEquals(actualResult,expectedResult);
+
+       Assert.assertEquals(actualResult,expectedResult);
+
 //      boolean areEqual=actualResult.containsAll(expectedResult)&&expectedResult.containsAll(actualResult);
 //      Assert.assertTrue(areEqual);
    }

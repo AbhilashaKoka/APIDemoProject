@@ -1,5 +1,7 @@
 package cucumberBddTest.model.bookstoreResponse;
 
+import java.util.Objects;
+
 public class Book {
 
     public String isbn;
@@ -35,20 +37,6 @@ public class Book {
         this.website = website;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", subTitle='" + subTitle + '\'' +
-                ", author='" + author + '\'' +
-                ", publish_date='" + publish_date + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", pages='" + pages + '\'' +
-                ", description='" + description + '\'' +
-                ", website='" + website + '\'' +
-                '}';
-    }
 
     public String getIsbn() {
         return isbn;
@@ -123,7 +111,32 @@ public class Book {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(isbn, book.isbn) && Objects.equals(title, book.title) && Objects.equals(subTitle, book.subTitle) && Objects.equals(author, book.author) && Objects.equals(publish_date, book.publish_date) && Objects.equals(publisher, book.publisher) && Objects.equals(pages, book.pages) && Objects.equals(description, book.description) && Objects.equals(website, book.website);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn, title, subTitle, author, publish_date, publisher, pages, description, website);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", publish_date='" + publish_date + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", pages='" + pages + '\'' +
+                ", description='" + description + '\'' +
+                ", website='" + website + '\'' +
+                '}';
+    }
 
 
 }

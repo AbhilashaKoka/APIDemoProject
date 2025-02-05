@@ -1,4 +1,4 @@
-@restapi
+
 Feature: Verify add/remove book from ReadingList
 
   @restapi
