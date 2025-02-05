@@ -10,7 +10,7 @@ public class Book {
 
     public String author;
 
-    public String publishDate;
+    public String publish_date;
 
     public String publisher;
 
@@ -20,13 +20,15 @@ public class Book {
 
     public String website;
 
+    public Book() {
+    }
 
-    public Book(String isbn, String title, String subTitle, String author, String publishDate, String publisher, String pages, String description, String website) {
+    public Book(String isbn, String title, String subTitle, String author, String publish_date, String publisher, String pages, String description, String website) {
         this.isbn = isbn;
         this.title = title;
         this.subTitle = subTitle;
         this.author = author;
-        this.publishDate = publishDate;
+        this.publish_date = publish_date;
         this.publisher = publisher;
         this.pages = pages;
         this.description = description;
@@ -65,12 +67,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getPublishDate() {
-        return publishDate;
+    public String getPublish_date() {
+        return publish_date;
     }
 
-    public void setPublishDate(String publishDate) {
-        this.publishDate = publishDate;
+    public void setPublish_date(String publish_date) {
+        this.publish_date = publish_date;
     }
 
     public String getPublisher() {

@@ -79,6 +79,7 @@ public class APITestSteps {
 
         List<Book> expectedResult=new ArrayList<>();
         List<Book> actualResult=new ArrayList<>(books);
+
       for(Map<String,String> match:table.asMaps())
       {
           Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
@@ -87,6 +88,7 @@ public class APITestSteps {
 
           expectedResult.add(book);
       }
+
        Assert.assertEquals(actualResult,expectedResult);
    }
 }

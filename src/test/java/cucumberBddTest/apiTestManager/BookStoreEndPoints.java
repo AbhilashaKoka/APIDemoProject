@@ -5,10 +5,10 @@ import cucumberBddTest.model.bookstoreRequest.ISBN;
 import cucumberBddTest.model.bookstoreRequest.NewUser;
 import cucumberBddTest.model.bookstoreRequest.RemoveBookRequest;
 import cucumberBddTest.model.bookstoreResponse.Book;
+import cucumberBddTest.model.bookstoreResponse.Books;
 import cucumberBddTest.model.bookstoreResponse.Token;
 import cucumberBddTest.model.bookstoreResponse.UserCreated;
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -57,10 +57,18 @@ public class BookStoreEndPoints {
          System.out.println("Response Body -> " + response.body().asString());
 
 
-//         Books books= response.body().as(Books.class);
-//         List<Book> listOfbook= books.getBooks();
-//         System.out.println("Book title " + listOfbook);
-//         return listOfbook;
+
+         Books books= response.body().as(Books.class);
+         List<Book> listOfbook= books.getBooks();
+        if (listOfbook == null) {
+            System.out.println("The list of books is null!");
+        } else {
+            // Iterate over the list
+            for (Book book : listOfbook) {
+                System.out.println("Book title: " + book.getTitle());
+            }
+        }
+        //         return listOfbook;
 
 
 
@@ -69,12 +77,12 @@ public class BookStoreEndPoints {
 //         return books;
 
 
-         JsonPath jsonPathEvaluator= response.jsonPath();
-         List<Book> listOfbook = jsonPathEvaluator.getList("$.books", Book.class);
-        for(Book book : listOfbook)
-        {
-            System.out.println("Book: " + book.title);
-        }
+//         JsonPath jsonPathEvaluator= response.jsonPath();
+//         List<Book> listOfbook = jsonPathEvaluator.getList("$.books", Book.class);
+//        for(Book book : listOfbook)
+//        {
+//            System.out.println("Book: " + book.title);
+//        }
         return listOfbook;
 
     }
