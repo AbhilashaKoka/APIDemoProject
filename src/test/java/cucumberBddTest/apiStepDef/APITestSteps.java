@@ -82,13 +82,15 @@ public class APITestSteps {
 
       for(Map<String,String> match:table.asMaps())
       {
-          Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
+                  Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
                   match.get("author"),match.get("publish_date"),match.get("publisher"),
                   match.get("pages"),match.get("description"),match.get("website"));
 
           expectedResult.add(book);
       }
 
-       Assert.assertEquals(actualResult,expectedResult);
+    Assert.assertEquals(actualResult,expectedResult);
+//      boolean areEqual=actualResult.containsAll(expectedResult)&&expectedResult.containsAll(actualResult);
+//      Assert.assertTrue(areEqual);
    }
 }
