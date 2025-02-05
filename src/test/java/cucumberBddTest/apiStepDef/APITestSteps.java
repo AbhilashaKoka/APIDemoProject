@@ -6,16 +6,16 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 
 public class APITestSteps {
 
-    Book[] books;
+    List<Book> books;
 
 
     @Given("A list of books are avaliable")
@@ -64,26 +64,29 @@ public class APITestSteps {
 
     @Then("The book is remove successfully from book List")
     public void the_book_is_remove_successfully_from_book_list() {
-        System.out.println("Book is successfully removed");
+            System.out.println("Book is successfully removed");
     }
 
     @When("I send request for books avaliable")
     public void iSendRequestForBooksAvaliable() {
-        books= BookStoreEndPoints.getBook();
-        System.out.println(books);
+         books= BookStoreEndPoints.getBook();
+          int s=  books.size();
+        System.out.println(s);
      }
 
     @Then("I am able to successfully verify response with List of Book and details")
     public void iAmAbleToSuccessfullyVerifyResponseWithListOfBookAndDetails(DataTable table) {
+
         List<Book> expectedResult=new ArrayList<>();
-        List<Book> actualResult=new ArrayList<>(Arrays.asList(books));
-//      for(Map<String,String> match:table.asMaps())
-//      {
-//          Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
-//                  match.get("author"),match.get("publish_date"),match.get("publisher"),
-//                  match.get("pages"),match.get("description"),match.get("website"));
-//          expectedResult.add(book);
-//      }
-//        Assert.assertEquals(actualResult,expectedResult);
+        List<Book> actualResult=new ArrayList<>(books);
+      for(Map<String,String> match:table.asMaps())
+      {
+          Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
+                  match.get("author"),match.get("publish_date"),match.get("publisher"),
+                  match.get("pages"),match.get("description"),match.get("website"));
+
+          expectedResult.add(book);
+      }
+       Assert.assertEquals(actualResult,expectedResult);
    }
 }

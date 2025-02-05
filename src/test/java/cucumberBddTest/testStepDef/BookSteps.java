@@ -18,7 +18,7 @@ public class BookSteps {
 
     @When("I read the books data from the Excel file")
     public void i_read_the_books_data_from_the_excel_file() throws IOException {
-        excelData = ExcelUtils.readExcelData("C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\IdeaProjects\\Spring_Course-master\\APIDemoProject\\src\\test\\resource\\testdata\\file.xlsx.xlsx");  // Update path as needed
+        excelData = ExcelUtils.readExcelData("C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\IdeaProjects\\Spring_Course-master\\APIDemoProject\\src\\test\\resource\\testdata\\file.xlsx");  // Update path as needed
     }
 
     @Then("the books data should be processed correctly")

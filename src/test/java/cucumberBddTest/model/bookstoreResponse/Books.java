@@ -3,6 +3,8 @@ import java.util.List;
 
 
 public class Books {
+    public Books() {
+    }
 
     public List<Book> books;
 

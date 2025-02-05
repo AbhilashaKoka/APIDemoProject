@@ -8,8 +8,11 @@ import cucumberBddTest.model.bookstoreResponse.Book;
 import cucumberBddTest.model.bookstoreResponse.Token;
 import cucumberBddTest.model.bookstoreResponse.UserCreated;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.List;
 
 public class BookStoreEndPoints {
 
@@ -46,20 +49,34 @@ public class BookStoreEndPoints {
         return response.getBody().asString();
     }
 
-    public static Book[] getBook(){
+    public static List<Book> getBook(){
         RestAssured.baseURI=BASE_URL;
         RequestSpecification request=RestAssured.given();
         request.header("Content-Type","application/json");
+         Response response= request.get(BookStoreRoute.books());
+         System.out.println("Response Body -> " + response.body().asString());
 
-        Response response= request.get(BookStoreRoute.books());
-        System.out.println("Response Body -> " + response.body().asString());
+
+//         Books books= response.body().as(Books.class);
+//         List<Book> listOfbook= books.getBooks();
+//         System.out.println("Book title " + listOfbook);
+//         return listOfbook;
 
 
-        Book[] books = response.jsonPath().getObject("books", Book[].class);
-        for(Book book : books){
-            System.out.println("Book title " + book.title);
+
+//         JsonPath jsonPathEvaluator= response.jsonPath();
+//         Books books= jsonPathEvaluator.getObject("$.books", Books.class);
+//         return books;
+
+
+         JsonPath jsonPathEvaluator= response.jsonPath();
+         List<Book> listOfbook = jsonPathEvaluator.getList("$.books", Book.class);
+        for(Book book : listOfbook)
+        {
+            System.out.println("Book: " + book.title);
         }
-        return books;
+        return listOfbook;
+
     }
 
     public static Response addBook( String isbn){
