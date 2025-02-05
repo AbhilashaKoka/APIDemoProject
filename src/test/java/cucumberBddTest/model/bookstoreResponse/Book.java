@@ -35,6 +35,21 @@ public class Book {
         this.website = website;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", publish_date='" + publish_date + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", pages='" + pages + '\'' +
+                ", description='" + description + '\'' +
+                ", website='" + website + '\'' +
+                '}';
+    }
+
     public String getIsbn() {
         return isbn;
     }

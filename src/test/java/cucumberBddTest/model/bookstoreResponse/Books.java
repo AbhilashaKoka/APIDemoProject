@@ -3,6 +3,13 @@ import java.util.List;
 
 
 public class Books {
+    @Override
+    public String toString() {
+        return "Books{" +
+                "books=" + books +
+                '}';
+    }
+
     public Books() {
     }
 

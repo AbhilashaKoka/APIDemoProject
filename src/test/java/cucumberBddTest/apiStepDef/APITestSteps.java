@@ -79,7 +79,7 @@ public class APITestSteps {
 
         List<Book> expectedResult=new ArrayList<>();
         List<Book> actualResult=new ArrayList<>(books);
-
+        System.out.println(actualResult);
       for(Map<String,String> match:table.asMaps())
       {
                   Book book=new Book(match.get("isbn"),match.get("title"),match.get("subTitle"),
@@ -88,7 +88,10 @@ public class APITestSteps {
 
           expectedResult.add(book);
       }
-
+        System.out.println("Actual :");
+        System.out.println(actualResult);
+        System.out.println("Expected :");
+        System.out.println(expectedResult);
     Assert.assertEquals(actualResult,expectedResult);
 //      boolean areEqual=actualResult.containsAll(expectedResult)&&expectedResult.containsAll(actualResult);
 //      Assert.assertTrue(areEqual);
