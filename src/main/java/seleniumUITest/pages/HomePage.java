@@ -1,4 +1,6 @@
 package seleniumUITest.pages;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -6,6 +8,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import seleniumUITest.manager.DriverManager;
 import seleniumUITest.testDataClass.TextBoxDetails;
+
+import java.util.List;
 
 
 public class HomePage {
@@ -32,6 +36,9 @@ public class HomePage {
     @FindBy(how = How.XPATH, using = "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]")
     private WebElement TextBox_Span;
 
+    @FindBy(how = How.CSS, using = "div#output.mt-4>div>p")
+    private WebElement Output_Div;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -48,13 +55,22 @@ public class HomePage {
     }
 
 
-    public boolean SubmitDetails(TextBoxDetails textBoxDetails) {
-       Boolean bol=false;
+    public void SubmitDetails(TextBoxDetails textBoxDetails) {
         UserName.sendKeys(textBoxDetails.getUsername());
         Email.sendKeys(textBoxDetails.getEmail());
         CurrentAddr.sendKeys(textBoxDetails.getCurrentaddress());
         PermanentAddr.sendKeys(textBoxDetails.getPermanentaddress());
         SubmitButton.submit();
+
+    }
+
+
+    public boolean VerifyOutput(){
+        boolean bol=false;
+        List<WebElement> ls=Output_Div.findElements(By.cssSelector(">p"));
+        for(WebElement ele:ls){
+            System.out.println(ele.getAttribute("innerText"));
+        }
         bol=true;
         return bol;
     }

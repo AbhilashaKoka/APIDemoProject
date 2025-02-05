@@ -6,7 +6,8 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features ={"src/test/resource/UIFeatures"},
         glue = {"cucumberBddTest/uiStepDef", "cucumberBddTest/Hooks"},
-        tags = "not @skip_scenario and @browser and @test",
+//        tags = "not @skip_scenario and @browser",
+        tags = "@browser",
         plugin={"pretty","json:target/cucumber.json","rerun:target/failedrerun.txt"},
         publish=true
 )

@@ -29,13 +29,13 @@ public class BaseSetup {
     }
 
 
-    @After("not @restapi")
-    public void TearDownTest(Scenario scenario){
-        if (scenario.isFailed()) {
-            final byte[] src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(src, "image/png", scenario.getName());
-        }
-    }
+//    @After("not @restapi")
+//    public void TearDownTest(Scenario scenario){
+//        if (scenario.isFailed()) {
+//            final byte[] src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//            scenario.attach(src, "image/png", scenario.getName());
+//        }
+//    }
 
     @After("not @restapi")
     public void tearDown(Scenario scenario) {
