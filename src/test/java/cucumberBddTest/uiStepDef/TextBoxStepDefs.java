@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ElementStepDefs {
+public class TextBoxStepDefs {
        WebDriver driver;
        FileReaderManager fileReaderManager;
 
 HomePage homePage;
-    public ElementStepDefs(TestContext testContext) {
+    public TextBoxStepDefs(TestContext testContext) {
         driver=testContext.getDriverManager().getDriver();
         homePage=testContext.getPageObjectManager().getHomePage();
         fileReaderManager=testContext.getFileReaderManager();
