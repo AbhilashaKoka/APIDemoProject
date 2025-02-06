@@ -14,7 +14,7 @@ import java.io.IOException;
 public class BaseSetup {
     TestContext testContext;
     WebDriver driver;
-
+    private static int stepCount = 1;
 
     public BaseSetup(TestContext testContext) {
         this.testContext = testContext;
@@ -39,10 +39,12 @@ public class BaseSetup {
 
     @After("not @restapi")
     public void tearDown(Scenario scenario) {
+
         if (scenario.isFailed()) {
             TakesScreenshot screenshot = (TakesScreenshot) driver;
             File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-            File destFile = new File("target/screenshots/" + scenario.getName() + ".png");
+            File destFile = new File("target/screenshots/" + scenario.getName() + "_step" + stepCount + ".png");
+            stepCount++;
             try {
                 FileUtils.copyFile(srcFile, destFile);
                 System.out.println("Screenshot taken for failed step: " + scenario.getName());
@@ -54,6 +56,11 @@ public class BaseSetup {
          //   driver.quit();
             driver = null;
         }
+    }
+
+
+    public static void resetStepCount() {
+        stepCount = 1;
     }
 
     }
