@@ -1,4 +1,6 @@
 package seleniumUITest.dataProvider;
+
+import com.google.gson.Gson;
 import seleniumUITest.manager.FileReaderManager;
 import seleniumUITest.testDataClass.PracticeFormsDetails;
 import seleniumUITest.testDataClass.TextBoxDetails;
@@ -8,7 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import com.google.gson.Gson;
 
 public class JsonDataReader {
 private final String TextBoxFilePath;//configs//TextBoxData.json";
@@ -77,7 +78,7 @@ private final List<PracticeFormsDetails> practiceFormsDetails;
         Gson gson = new Gson();
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader(TextBoxFilePath));
+            bufferedReader = new BufferedReader(new FileReader(PracticalFormsDetailsFilePath));
             PracticeFormsDetails[] Details = gson.fromJson(bufferedReader, PracticeFormsDetails[].class);
             return Arrays.asList(Details);
         } catch (FileNotFoundException e) {
