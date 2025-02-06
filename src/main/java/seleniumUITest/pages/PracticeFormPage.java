@@ -36,17 +36,14 @@ WebDriver driver;
     @FindBy(how = How.XPATH, using = "//*[@id=\"userEmail\"]")
     private WebElement InputBox_Email;
 
-    @FindBy(how = How.XPATH, using = " //*[@id=\"genterWrapper\"]/div[2]/div")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"genterWrapper\"]/div[2]/div")
     private List<WebElement> Radio_div;
-
-
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"genterWrapper\"]/div[2]/div/label")
     private List<WebElement> Radio_label;
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"genterWrapper\"]/div[2]/div/input")
     private List<WebElement> Radio_input;
-
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"genterWrapper\"]//following::label[contains(text(),\"Male\")]//preceding-sibling::input[@name=\"gender\"]")
     private WebElement RadioButton_Male;
@@ -74,7 +71,6 @@ WebDriver driver;
 
     @FindBy(how = How.XPATH, using ="//*[@id=\"react-select-4-input\"]")
     private WebElement DropDown_City;
-
 
     @FindBy(how = How.XPATH, using ="//*[@id=\"submit\"]")
     private WebElement submitButton;
@@ -118,10 +114,22 @@ WebDriver driver;
         InputBox_Email.sendKeys(practiceFormsDetails.getEmail(), Keys.TAB);
 
       //  DriverManager.scrollWindowUp(Radio_div);
+
         for(WebElement ele:Radio_div){
-           if( ele.findElement(By.tagName("label")).getAttribute("innerText").equalsIgnoreCase("Female"))
+            //System.out.println(ele.findElement(By.xpath("/label")).getText());
+           String gender= practiceFormsDetails.getGender();
+
+
+           if( ele.findElement(By.xpath("child::label")).getText().equalsIgnoreCase(gender))
            {
-               ele.findElement(By.tagName("input")).click();
+               if(ele.findElement(By.xpath("child::input[@value='"+practiceFormsDetails.getGender()+"']")).isSelected())
+               {
+                   System.out.println("not able to click the label Radio Button");
+               }
+               else
+               {
+                   ele.findElement(By.xpath("//child::label[contains(text(), '"+practiceFormsDetails.getGender()+"')]")).click();
+               }
            }
         }
 

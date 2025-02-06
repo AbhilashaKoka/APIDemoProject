@@ -9,6 +9,7 @@ import org.testng.ITestResult;
 import java.io.File;
 
 public class TestStatusListener extends BaseSetUp implements ITestListener {
+    private static int stepCount = 1;
 
     public void onTestFailure(ITestResult result){
         System.out.println("****TEST CASE FAILED****");
@@ -23,7 +24,8 @@ public class TestStatusListener extends BaseSetUp implements ITestListener {
         Object testClass = result.getInstance();
         WebDriver driver = ((BaseSetUp) testClass).getDriver();
         File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File destFile=new File("path/to/screenshots/" + result.getName() + ".png");
+        File destFile=new File("path/to/screenshots/" + result.getName() + "_step" + stepCount + ".png");
+        stepCount++;
         try{
             FileUtils.copyFile(srcFile,destFile);
             System.out.println("Screenshot take for failed test case: " + result.getName());
@@ -31,6 +33,11 @@ public class TestStatusListener extends BaseSetUp implements ITestListener {
             e.printStackTrace();
         }
     }
+
+    public static void resetStepCount() {
+        stepCount = 1;
+    }
+
 
     @Override
     public void onTestStart(ITestResult result) {
