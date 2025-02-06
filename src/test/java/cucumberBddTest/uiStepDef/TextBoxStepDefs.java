@@ -80,7 +80,7 @@ HomePage homePage;
 
 
     @Then("user should able to verify the detail on output area")
-    public void user_should_able_to_verify_the_detail_on_output_area() {
+    public void user_should_able_to_verify_the_detail_on_output_area() throws InterruptedException {
         homePage.VerifyOutput();
         System.out.println("Verified!");
     }

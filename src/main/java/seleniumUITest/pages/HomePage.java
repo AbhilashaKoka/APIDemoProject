@@ -1,6 +1,5 @@
 package seleniumUITest.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,8 +35,8 @@ public class HomePage {
     @FindBy(how = How.XPATH, using = "//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]")
     private WebElement TextBox_Span;
 
-    @FindBy(how = How.CSS, using = "div#output.mt-4>div>p")
-    private WebElement Output_Div;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"output\"]/div/p[@id][contains(text(),\"\")]")
+    private List<WebElement> Output_Div;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -60,17 +59,21 @@ public class HomePage {
         Email.sendKeys(textBoxDetails.getEmail());
         CurrentAddr.sendKeys(textBoxDetails.getCurrentaddress());
         PermanentAddr.sendKeys(textBoxDetails.getPermanentaddress());
-        SubmitButton.submit();
+        SubmitButton.click();
 
     }
 
 
-    public boolean VerifyOutput(){
+    public boolean VerifyOutput() throws InterruptedException {
         boolean bol=false;
-        List<WebElement> ls=Output_Div.findElements(By.cssSelector(">p"));
-        for(WebElement ele:ls){
-            System.out.println(ele.getAttribute("innerText"));
+        Thread.sleep(1000);
+        for(WebElement ele:Output_Div)
+        {
+            System.out.println( ele.getText());
         }
+
+
+
         bol=true;
         return bol;
     }
