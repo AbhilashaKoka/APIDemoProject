@@ -23,7 +23,8 @@ public class StandaloneRemoteDriverTest {
     public static void setup(String browser) throws MalformedURLException {
             if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions chromeOptions = new ChromeOptions();
-                driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
+            //    driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
+                driver = (new RemoteWebDriver(new URL("http://192.168.1.4:4444"), chromeOptions));
 
             } else if (browser.equalsIgnoreCase("firefox")) {
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
