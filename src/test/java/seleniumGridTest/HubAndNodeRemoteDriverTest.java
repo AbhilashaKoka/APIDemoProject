@@ -15,33 +15,33 @@ import java.util.List;
 
 
 //Run Standalone mode -java -jar selenium-server-4.25.0.jar standalone
-public class StandaloneRemoteDriverTest {
+public class HubAndNodeRemoteDriverTest {
 
     public static WebDriver driver;
 
 
     public static void setup(String browser) throws MalformedURLException {
-            if (browser.equalsIgnoreCase("chrome")) {
-                ChromeOptions chromeOptions = new ChromeOptions();
+        if (browser.equalsIgnoreCase("chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
             //    driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
-                driver = (new RemoteWebDriver(new URL("http://IPStandalone:4444"), chromeOptions));
+            driver = (new RemoteWebDriver(new URL("http://IPHUB:4442"), chromeOptions));
 
-            } else if (browser.equalsIgnoreCase("firefox")) {
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                driver = (new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions));
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            driver = (new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions));
 
-            } else if (browser.equalsIgnoreCase("edge")) {
-                EdgeOptions edgeOptions = new EdgeOptions();
-                driver = (new RemoteWebDriver(new URL("http://localhost:4444"), edgeOptions));
-            } else {
-                throw new Error("Browser configuration is not defined!!");
-            }
+        } else if (browser.equalsIgnoreCase("edge")) {
+            EdgeOptions edgeOptions = new EdgeOptions();
+            driver = (new RemoteWebDriver(new URL("http://localhost:4444"), edgeOptions));
+        } else {
+            throw new Error("Browser configuration is not defined!!");
         }
+    }
 
 
     public static void main(String[] args) throws MalformedURLException {
 
-    setup("chrome");
+        setup("chrome");
         driver.get("https://demoqa.com");
         JavascriptExecutor js=(JavascriptExecutor)driver;
 
