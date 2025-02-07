@@ -113,14 +113,9 @@ WebDriver driver;
         InputBox_LastName.sendKeys(practiceFormsDetails.getLastName(), Keys.TAB);
         InputBox_Email.sendKeys(practiceFormsDetails.getEmail(), Keys.TAB);
 
-      //  DriverManager.scrollWindowUp(Radio_div);
-
         for(WebElement ele:Radio_div){
-            //System.out.println(ele.findElement(By.xpath("/label")).getText());
-           String gender= practiceFormsDetails.getGender();
-
-
-           if( ele.findElement(By.xpath("child::label")).getText().equalsIgnoreCase(gender))
+          String gender= practiceFormsDetails.getGender();
+            if( ele.findElement(By.xpath("child::label")).getText().equalsIgnoreCase(gender))
            {
                if(ele.findElement(By.xpath("child::input[@value='"+practiceFormsDetails.getGender()+"']")).isSelected())
                {
@@ -134,16 +129,15 @@ WebDriver driver;
         }
 
         DriverManager.scrollWindowUp(Inputbox_Mobile);
-
         Inputbox_Mobile.sendKeys(practiceFormsDetails.getMobile(), Keys.TAB);
+
         DriverManager.scrollWindowUp(Inputbox_DateOfBirth);
-
         Inputbox_DateOfBirth.sendKeys(practiceFormsDetails.getDOB(), Keys.TAB, Keys.ENTER, Keys.TAB);
+
         DriverManager.scrollWindowUp(Inputbox_Subject);
-
         Inputbox_Subject.sendKeys(practiceFormsDetails.getSubject(),Keys.TAB, Keys.TAB);
-        DriverManager.scrollWindowUp(CheckBox_Hobbies);
 
+        DriverManager.scrollWindowUp(CheckBox_Hobbies);
         if(!CheckBox_Hobbies.isSelected()) {
             DriverManager.MoveToElement(CheckBox_Hobbies);
             CheckBox_Hobbies.sendKeys(Keys.TAB, Keys.TAB);
