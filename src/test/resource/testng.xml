@@ -8,14 +8,30 @@
 <!--            <class name="seleniumUITest.TestNGTestClass"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-<!--    <test name="SeleniumBDD">-->
+    <!--    <test name="SeleniumGridStandaloneTest">-->
+    <!--        <classes>-->
+    <!--            <class name="seleniumGridTest.StandaloneRemoteDriverTest"></class>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="UITestRunner">-->
 <!--        <classes>-->
 <!--            <class name="cucumberBddTest.runner.UITestRunner"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
+
+<!--    <test name="APITestRunner">-->
+<!--        <classes>-->
+<!--            <class name="cucumberBddTest.runner.APITestRunner"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+
     <test name="RestAssuredTest">
         <classes>
             <class name="restassuredTest.BookStoreEndToEndAPITestNGTest"></class>
         </classes>
     </test>
+
+
 </suite>
