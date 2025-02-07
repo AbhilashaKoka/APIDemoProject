@@ -12,7 +12,8 @@ launch grid console: http://localhost:4444
 ----------------------------------------------------------------------------------------------------------
 Selenium Grid Node and Hub mode :both set up in different machine
 java -jar selenium-server-4.25.0.jar hub
-java -jar selenium-server-4.25.0.jar -role node -hub https://localhost:4444/grid/register
+java -jar selenium-server-4.25.0.jar node
+launch grid console:http://localhost:4444/ui/#
 ***********************************************************************************************************
 C:\Users\Abhilasha\IdeaProjects\Spring_Course-master\APIDemoProject\src\test\resource\driver>
 java -jar selenium-server-4.25.0.jar node --detect-drivers false --driver-configuration display-name="Chrome" max-sessions=1 stereotype="{\"browser
