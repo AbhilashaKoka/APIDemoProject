@@ -1,12 +1,16 @@
-we can able to setup selenium grid in any of the three mode-Standalone mode, Hub and node Mode, Distributed mode.
-
-*****************************************************************************************************
-Selenium Grid Local Configuration before running script Step:
+****************************************************************************************************
+ selenium Grid Download page :https://github.com/SeleniumHQ/selenium/releases
+ selenium grid runs in three mode-
+ 1)Standalone mode
+  2)Hub and node Mode
+  3)Distributed mode.
+-------------------------------------------------------------------------------------------------------
+Selenium Grid Standalone mode :same machine act as Hub and node
 C:\Users\Abhilasha\IdeaProjects\Spring_Course-master\APIDemoProject\src\test\resource\driver>
-java -jar selenium-server-4.25.0.jar standalone
-
-Navigate to http://localhost:4444
-
+ java -jar selenium-server-4.25.0.jar standalone
+launch grid console: http://localhost:4444
+----------------------------------------------------------------------------------------------------------
+Selenium Grid Node and Hub mode :both set up in different machine
 java -jar selenium-server-4.25.0.jar hub
 java -jar selenium-server-4.25.0.jar -role node -hub https://localhost:4444/grid/register
 ***********************************************************************************************************
