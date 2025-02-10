@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
 public class RemoteDriverBaseClass {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static WebDriver driver;
-    static String servername="standalone";
+    static String servername="node";
 
 
     public static void startSeleniumGridServer(String jarPath,String serverType) throws IOException, InterruptedException {
@@ -143,15 +143,14 @@ public class RemoteDriverBaseClass {
                 ChromeOptions chromeOptions = new ChromeOptions();
                   // driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
               driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), chromeOptions));
-             //   driver = (new RemoteWebDriver(new URL("http://IPStandalone:4444"), chromeOptions));
-              }
+               }
             else if (browser.equalsIgnoreCase("firefox")) {
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                driver = (new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions));
+                driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), firefoxOptions));
 
             } else if (browser.equalsIgnoreCase("edge")) {
                 EdgeOptions edgeOptions = new EdgeOptions();
-                driver = (new RemoteWebDriver(new URL("http://localhost:4444"), edgeOptions));
+                driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), edgeOptions));
             }
             else {
                 throw new Error("Browser configuration is not defined!!");
