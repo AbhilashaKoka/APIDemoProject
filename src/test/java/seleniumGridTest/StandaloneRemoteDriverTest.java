@@ -47,6 +47,7 @@ public class StandaloneRemoteDriverTest {
     }
 
     public static void StartSeleniumServer() throws IOException {
+
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "standalone");
         processBuilder.redirectErrorStream(true);
         try {
@@ -73,7 +74,10 @@ public class StandaloneRemoteDriverTest {
 
 
     public static void setup(String browser) throws IOException {
-            if (browser.equalsIgnoreCase("chrome")) {
+
+        killProcess("java.exe");
+        StartSeleniumServer();
+        if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions chromeOptions = new ChromeOptions();
                    driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
              //   driver = (new RemoteWebDriver(new URL("http://IPStandalone:4444"), chromeOptions));
@@ -94,10 +98,8 @@ public class StandaloneRemoteDriverTest {
 
 @Test
 public static void main(String[] args) throws IOException, InterruptedException {
-   String processName = "java.exe";
-   killProcess(processName);
-    StartSeleniumServer();
-    setup("chrome");
+
+      setup("chrome");
         driver.get("https://demoqa.com");
         JavascriptExecutor js=(JavascriptExecutor)driver;
         js = (JavascriptExecutor) driver;
