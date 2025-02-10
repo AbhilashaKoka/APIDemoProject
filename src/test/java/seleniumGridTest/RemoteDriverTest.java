@@ -24,20 +24,20 @@ public class RemoteDriverTest {
         killExistingJavaProcesses();
         switch(serverType) {
                 case "standalone":
-                Process process = startSeleniumServer(jarPath);
-                logServerOutput(process);
-                int exitCode = process.waitFor();
+                Process standaloneprocess = startSeleniumServer(jarPath);
+                logServerOutput(standaloneprocess);
+                int exitCode = standaloneprocess.waitFor();
                 System.out.println("Process exited with code: " + exitCode);
                 break;
 
             case "node":
-                Process process1 = startSeleniumHubServer(jarPath);
-                logServerOutput(process1);
-                int exitCode1 = process1.waitFor();
+                Process hubprocess = startSeleniumHubServer(jarPath);
+                logServerOutput(hubprocess);
+                int exitCode1 = hubprocess.waitFor();
                 System.out.println("Process exited with code: " + exitCode1);
-                Process process2 = startSeleniumNodeServer(jarPath);
-                logServerOutput(process2);
-                int exitCode2 = process2.waitFor();
+                Process nodeprocess = startSeleniumNodeServer(jarPath);
+                logServerOutput(nodeprocess);
+                int exitCode2 = nodeprocess.waitFor();
                 System.out.println("Process exited with code: " + exitCode2);
                 break;
 
