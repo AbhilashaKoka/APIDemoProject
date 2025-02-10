@@ -19,10 +19,21 @@ public class RemoteDriverTest {
 
     public static void startStandaloneSeleniumServer(String jarPath) throws IOException, InterruptedException {
         killExistingJavaProcesses();
-        Process process = startSeleniumServer(jarPath);
-        logServerOutput(process);
-        int exitCode = process.waitFor();
-        System.out.println("Process exited with code: " + exitCode);
+//        Process process = startSeleniumServer(jarPath);
+//        logServerOutput(process);
+//        int exitCode = process.waitFor();
+//        System.out.println("Process exited with code: " + exitCode);
+
+        Process process1 = startSeleniumHubServer(jarPath);
+        logServerOutput(process1);
+        int exitCode1 = process1.waitFor();
+        System.out.println("Process exited with code: " + exitCode1);
+
+
+        Process process2 = startSeleniumNodeServer(jarPath);
+        logServerOutput(process2);
+        int exitCode2 = process2.waitFor();
+        System.out.println("Process exited with code: " + exitCode2);
     }
 
     private static void killExistingJavaProcesses() throws IOException {
@@ -47,6 +58,23 @@ public class RemoteDriverTest {
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
         System.out.println("Selenium Standalone Server started.");
+        return process;
+    }
+
+
+    private static Process startSeleniumHubServer(String jarPath) throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "hub");
+        processBuilder.redirectErrorStream(true);
+        Process process = processBuilder.start();
+        System.out.println("Selenium Hub Server started.");
+        return process;
+    }
+
+    private static Process startSeleniumNodeServer(String jarPath) throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--log", "node.log");
+        processBuilder.redirectErrorStream(true);
+        Process process = processBuilder.start();
+        System.out.println("Selenium Node Server started.");
         return process;
     }
 
