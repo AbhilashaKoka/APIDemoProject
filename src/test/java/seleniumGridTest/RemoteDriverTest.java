@@ -18,7 +18,7 @@ public class RemoteDriverTest {
 
 
     public static void startStandaloneSeleniumServer(String jarPath) throws IOException, InterruptedException {
-        killExistingJavaProcesses();
+      //  killExistingJavaProcesses();
         Process process = startSeleniumServer(jarPath);
         logServerOutput(process);
         int exitCode = process.waitFor();
@@ -26,9 +26,21 @@ public class RemoteDriverTest {
     }
 
     private static void killExistingJavaProcesses() throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("pkill", "-f", "java.exe");
+       //ProcessBuilder processBuilder = new ProcessBuilder("pkill", "-f", "java.exe");
+        ProcessBuilder processBuilder = new ProcessBuilder("tasklist");
         processBuilder.redirectErrorStream(true);
-        processBuilder.start();
+        Process process = processBuilder.start();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("java.exe")) {
+                    String[] parts = line.split("\\s+");
+                    String pid = parts[1];
+                    new ProcessBuilder("taskkill", "/F", "/PID", pid).start();
+                    System.out.println("Killed process with PID: " + pid);
+                }
+            }
+        }
     }
 
     private static Process startSeleniumServer(String jarPath) throws IOException {
