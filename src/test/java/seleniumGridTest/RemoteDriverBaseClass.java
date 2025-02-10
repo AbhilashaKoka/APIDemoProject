@@ -1,5 +1,4 @@
 package seleniumGridTest;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -7,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,10 +15,10 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 
-public class RemoteDriverTest {
+public class RemoteDriverBaseClass {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static WebDriver driver;
-    static String servername="node";
+    static String servername="standalone";
 
 
     public static void startSeleniumGridServer(String jarPath,String serverType) throws IOException, InterruptedException {
@@ -137,16 +135,14 @@ public class RemoteDriverTest {
 
  @BeforeSuite
     public static void setup(String browser) throws IOException, InterruptedException {
-
         try{ startSeleniumGridServer(jarPath,servername);
  } catch (IOException | InterruptedException e) {
         e.printStackTrace();
     }
-
-
         if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions chromeOptions = new ChromeOptions();
-                   driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
+                  // driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
+              driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), chromeOptions));
              //   driver = (new RemoteWebDriver(new URL("http://IPStandalone:4444"), chromeOptions));
               }
             else if (browser.equalsIgnoreCase("firefox")) {

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.List;
 
-public class StandaloneTestClass extends RemoteDriverTest {
+public class StandaloneTest extends RemoteDriverBaseClass {
 
 
     @Test
