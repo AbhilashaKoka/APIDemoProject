@@ -16,40 +16,51 @@ public class RemoteDriverTest {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static WebDriver driver;
 
-    public static void StartStandaloneSeleniumServer() throws IOException {
+
+    public static void startStandaloneSeleniumServer(String jarPath) throws IOException, InterruptedException {
+        killExistingJavaProcesses();
+        Process process = startSeleniumServer(jarPath);
+        logServerOutput(process);
+        int exitCode = process.waitFor();
+        System.out.println("Process exited with code: " + exitCode);
+    }
+
+    private static void killExistingJavaProcesses() throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("pkill", "-f", "java.exe");
         processBuilder.redirectErrorStream(true);
-        ProcessBuilder processBuilder2 = new ProcessBuilder("java", "-jar", jarPath, "standalone");
+        processBuilder.start();
+    }
+
+    private static Process startSeleniumServer(String jarPath) throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "standalone");
         processBuilder.redirectErrorStream(true);
-        try {
-          Process  process = processBuilder.start();
-            System.out.println("Selenium Server started.");
-            // Optionally, you can read the output of the process
-            new Thread(() -> {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        System.out.println(line);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+        Process process = processBuilder.start();
+        System.out.println("Selenium Standalone Server started.");
+        return process;
+    }
 
+    private static void logServerOutput(Process process) {
+        new Thread(() -> {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
                 }
-            }).start();
-            // Wait for the process to complete (if needed)
-            int exitCode = process.waitFor();
-            System.out.println("Process exited with code: " + exitCode);
-        } catch (IOException | InterruptedException e) {
-           e.printStackTrace();
-
-       }
-
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
 
  @BeforeSuite
     public static void setup(String browser) throws IOException {
-        StartStandaloneSeleniumServer();
+     try {
+         startStandaloneSeleniumServer(jarPath);
+     } catch (IOException | InterruptedException e) {
+         e.printStackTrace();
+     }
+    // StartHubAndNodeServer();
         if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions chromeOptions = new ChromeOptions();
                    driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
