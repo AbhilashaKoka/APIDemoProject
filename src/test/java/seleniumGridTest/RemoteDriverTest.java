@@ -1,4 +1,5 @@
 package seleniumGridTest;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -6,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,25 +17,34 @@ import java.net.URL;
 public class RemoteDriverTest {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static WebDriver driver;
+    static String servername="node";
 
 
-    public static void startStandaloneSeleniumServer(String jarPath) throws IOException, InterruptedException {
+    public static void startSeleniumGridServer(String jarPath,String serverType) throws IOException, InterruptedException {
         killExistingJavaProcesses();
-//        Process process = startSeleniumServer(jarPath);
-//        logServerOutput(process);
-//        int exitCode = process.waitFor();
-//        System.out.println("Process exited with code: " + exitCode);
+        switch(serverType) {
+                case "standalone":
+                Process process = startSeleniumServer(jarPath);
+                logServerOutput(process);
+                int exitCode = process.waitFor();
+                System.out.println("Process exited with code: " + exitCode);
+                break;
 
-        Process process1 = startSeleniumHubServer(jarPath);
-        logServerOutput(process1);
-        int exitCode1 = process1.waitFor();
-        System.out.println("Process exited with code: " + exitCode1);
+            case "node":
+                Process process1 = startSeleniumHubServer(jarPath);
+                logServerOutput(process1);
+                int exitCode1 = process1.waitFor();
+                System.out.println("Process exited with code: " + exitCode1);
+                Process process2 = startSeleniumNodeServer(jarPath);
+                logServerOutput(process2);
+                int exitCode2 = process2.waitFor();
+                System.out.println("Process exited with code: " + exitCode2);
+                break;
 
-
-        Process process2 = startSeleniumNodeServer(jarPath);
-        logServerOutput(process2);
-        int exitCode2 = process2.waitFor();
-        System.out.println("Process exited with code: " + exitCode2);
+            default:
+                System.out.println("Invalid server type: " + serverType);
+                break;
+        }
     }
 
     private static void killExistingJavaProcesses() throws IOException {
@@ -95,7 +106,7 @@ public class RemoteDriverTest {
  @BeforeSuite
     public static void setup(String browser) throws IOException, InterruptedException {
 
-        try{ startStandaloneSeleniumServer(jarPath);
+        try{ startSeleniumGridServer(jarPath,servername);
  } catch (IOException | InterruptedException e) {
         e.printStackTrace();
     }
