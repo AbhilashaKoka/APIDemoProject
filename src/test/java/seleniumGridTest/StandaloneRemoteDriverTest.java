@@ -24,33 +24,36 @@ public class StandaloneRemoteDriverTest {
     public static WebDriver driver;
 
 
-    private static void killProcess(String processName) {
-        ProcessBuilder processBuilder = new ProcessBuilder("pkill", "-f", processName);
+//    private static void killProcess(String processName) {
+//        ProcessBuilder processBuilder = new ProcessBuilder("pkill", "-f", processName);
+//        processBuilder.redirectErrorStream(true);
+//        try {
+//           Process  process = processBuilder.start();
+//            try (
+//                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream())))
+//            {
+//                String line;
+//                while ((line = reader.readLine()) != null)
+//                {
+//                    System.out.println(line);
+//                }
+//            }
+//            int exitCode = process.waitFor();
+//            System.out.println("Pkill exited with code: "+ exitCode);
+//        }
+//        catch (IOException | InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public static boolean StartSeleniumServer() throws IOException {
+        boolean bol=false;
+        ProcessBuilder processBuilder = new ProcessBuilder("pkill", "-f", "java.exe");
+        processBuilder.redirectErrorStream(true);
+        ProcessBuilder processBuilder2 = new ProcessBuilder("java", "-jar", jarPath, "standalone");
         processBuilder.redirectErrorStream(true);
         try {
-           Process  process = processBuilder.start();
-            try (
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream())))
-            {
-                String line;
-                while ((line = reader.readLine()) != null)
-                {
-                    System.out.println(line);
-                }
-            }
-            int exitCode = process.waitFor();
-            System.out.println("Pkill exited with code: "+ exitCode);
-        }
-        catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public static void StartSeleniumServer() throws IOException {
-
-        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "standalone");
-        processBuilder.redirectErrorStream(true);
-        try {
           Process  process = processBuilder.start();
             System.out.println("Selenium Server started.");
             // Optionally, you can read the output of the process
@@ -62,20 +65,22 @@ public class StandaloneRemoteDriverTest {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+
                 }
             }).start();
             // Wait for the process to complete (if needed)
             int exitCode = process.waitFor();
             System.out.println("Process exited with code: " + exitCode);
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
+
        }
+        bol=true;
+        return bol;
  }
 
 
     public static void setup(String browser) throws IOException {
-
-        killProcess("java.exe");
         StartSeleniumServer();
         if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -98,9 +103,8 @@ public class StandaloneRemoteDriverTest {
 
 @Test
 public static void main(String[] args) throws IOException, InterruptedException {
-
-      setup("chrome");
-        driver.get("https://demoqa.com");
+       setup("chrome");
+       driver.get("https://demoqa.com");
         JavascriptExecutor js=(JavascriptExecutor)driver;
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
