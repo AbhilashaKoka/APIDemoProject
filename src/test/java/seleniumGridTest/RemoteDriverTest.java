@@ -11,7 +11,10 @@ import org.testng.annotations.BeforeSuite;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 
 public class RemoteDriverTest {
@@ -81,8 +84,37 @@ public class RemoteDriverTest {
         return process;
     }
 
+    public static String  getLocalHostAddress(){
+        String str=null;
+        try {
+            InetAddress localAddress = InetAddress.getLocalHost();
+            System.out.println("Local IP Address: " + localAddress.getHostAddress());
+           str= localAddress.getHostAddress();
+
+        } catch (UnknownHostException e) {
+            System.err.println("Could not get IP address: " + e.getMessage());
+        }
+        return str;
+    }
+
+
+    public static int getPort(){
+        int port = 0;
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
+          // Get the port number
+           port = serverSocket.getLocalPort();
+         // Print the  port number
+          System.out.println("Local Port: " + port);
+        } catch (IOException e) {
+            System.err.println("Could not get port: " + e.getMessage());
+        }
+        return port;
+    }
+
+
     private static Process startSeleniumNodeServer(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--log", "node.log");
+      //  ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--hub" , "http://"+getLocalHostAddress()+":"+getPort());
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
         System.out.println("Selenium Node Server started.");
@@ -110,6 +142,7 @@ public class RemoteDriverTest {
  } catch (IOException | InterruptedException e) {
         e.printStackTrace();
     }
+
 
         if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions chromeOptions = new ChromeOptions();

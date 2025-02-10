@@ -40,14 +40,11 @@ public class HubAndNodeRemoteDriverTest {
 
 
     public static void main(String[] args) throws MalformedURLException {
-
         setup("chrome");
         driver.get("https://demoqa.com");
         JavascriptExecutor js=(JavascriptExecutor)driver;
-
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
-
         WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Element_Frames.click();
         WebElement TextBox_Span=driver.findElement(By.xpath("//*[@class=\"accordion\"]//div[@class=\"element-group\"]//following::span[@class=\"text\" and contains(text(),\"Text Box\")]"));
