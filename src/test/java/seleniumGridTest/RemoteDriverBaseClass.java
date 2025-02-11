@@ -18,15 +18,17 @@ import java.net.UnknownHostException;
 public class RemoteDriverBaseClass {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static WebDriver driver;
+
     //configuration file
-    static String servername="node";
+    static String servername="distributed";
 
 
 
 
     @BeforeSuite
     public static void setup(String browser) throws IOException, InterruptedException {
-        try{ startSeleniumGridServer(jarPath,servername);
+        try{
+            startSeleniumGridServer(jarPath,servername);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -64,16 +66,13 @@ public class RemoteDriverBaseClass {
                 case "standalone":
                     startStandaloneServer(jarPath);
                 break;
-
                 case "node":
                     startNodeServer(jarPath);
                 break;
-
-            case "distributed":
+                case "distributed":
                 startDistributedServer(jarPath);
                 break;
-
-            default:
+               default:
                 System.out.println("Invalid server type: " + serverType);
                 break;
         }
@@ -111,10 +110,10 @@ public class RemoteDriverBaseClass {
 
     //Step1: Start the Event Bus, Event Bus helps in internal communication between different grid components.
     private static Process launchEventBusProcess(String jarPath) throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "event-bus","--publish-events", "tcp://"+getLocalHostAddress()+":4442","--subscribe-events","tcp://"+getLocalHostAddress()+":4443 --port 5557");
+        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "event-bus", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443 --port 5557");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
-        System.out.println("Selenium Node Server started.");
+        System.out.println("Selenium Event Bus started.");
         return process;
     }
 
@@ -125,27 +124,27 @@ public class RemoteDriverBaseClass {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "sessionqueue", "--port 5559");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
-        System.out.println("Selenium Node Server started.");
+        System.out.println("Selenium SessionQueue started.");
         return process;
     }
 
     //Step3: Start the Session Map,Start the Session Map next, which will interact with the Event Bus and
     //map session IDs to the Node where the session is running.
     private static Process launchSessionMappingProcess(String jarPath) throws IOException {
-     ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "sessions","--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443","--port 5556");
+     ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "sessions", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443","--port 5556");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
-        System.out.println("Selenium Node Server started.");
+        System.out.println("Selenium Session Mapping started.");
         return process;
     }
 
     //Step 4: start the Distributor,which queries the New Session Queue for checking new session requests.
     //When finding the matching capabilities, it assigns a Node to the New Session request.
 private static Process launchDistributorService(String jarPath) throws IOException {
-   ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "distributor", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443", "--sessions", "http://"+getLocalHostAddress()+":5556", "--sessionqueue", "http://"+getLocalHostAddress()+":5559", "--port 5553", "--bind-bus false");
+   ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "distributor", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443",  "--sessions", "http://"+getLocalHostAddress()+":5556", "--sessionqueue", "http://"+getLocalHostAddress()+":5559", "--port 5553", "--bind-bus false");
     processBuilder.redirectErrorStream(true);
     Process process = processBuilder.start();
-    System.out.println("Selenium Node Server started.");
+    System.out.println("Selenium DistributorService started.");
     return process;
 }
 
@@ -154,7 +153,7 @@ private static Process launchRouterService(String jarPath) throws IOException {
     ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "router --sessions", "http://"+getLocalHostAddress()+":5556", "--distributor", "http://"+getLocalHostAddress()+":5553", "--sessionqueue", "http://"+getLocalHostAddress()+":5559", "--port 4444");
     processBuilder.redirectErrorStream(true);
     Process process = processBuilder.start();
-    System.out.println("Selenium Node Server started.");
+    System.out.println("Selenium RouterService started.");
     return process;
 }
 
