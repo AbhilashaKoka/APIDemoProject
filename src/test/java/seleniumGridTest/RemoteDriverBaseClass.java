@@ -21,6 +21,42 @@ public class RemoteDriverBaseClass {
     static String servername="node";
 
 
+
+
+    @BeforeSuite
+    public static void setup(String browser) throws IOException, InterruptedException {
+        try{ startSeleniumGridServer(jarPath,servername);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (browser.equalsIgnoreCase("chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            // driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
+            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), chromeOptions));
+        }
+        else if (browser.equalsIgnoreCase("firefox")) {
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), firefoxOptions));
+
+        } else if (browser.equalsIgnoreCase("edge")) {
+            EdgeOptions edgeOptions = new EdgeOptions();
+            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), edgeOptions));
+        }
+        else {
+            throw new Error("Browser configuration is not defined!!");
+        }
+    }
+
+
+
+
+    @AfterSuite
+    public static void tearDown() throws InterruptedException {
+        driver.quit();
+    }
+
+
+
     public static void startSeleniumGridServer(String jarPath,String serverType) throws IOException, InterruptedException {
         killExistingJavaProcesses();
         switch(serverType) {
@@ -42,22 +78,6 @@ public class RemoteDriverBaseClass {
         }
     }
 
-    private static void killExistingJavaProcesses() throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("tasklist");
-        processBuilder.redirectErrorStream(true);
-        Process process = processBuilder.start();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.contains("java.exe")) {
-                    String[] parts = line.split("\\s+");
-                    String pid = parts[1];
-                    new ProcessBuilder("taskkill","/PID", pid).start();
-                    System.out.println("Killed process with PID: " + pid);
-                }
-            }
-        }
-    }
 
     private static Process launchSeleniumStandalone(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "standalone");
@@ -76,32 +96,7 @@ public class RemoteDriverBaseClass {
         return process;
     }
 
-    public static String  getLocalHostAddress(){
-        String str=null;
-        try {
-            InetAddress localAddress = InetAddress.getLocalHost();
-            System.out.println("Local IP Address: " + localAddress.getHostAddress());
-           str= localAddress.getHostAddress();
 
-        } catch (UnknownHostException e) {
-            System.err.println("Could not get IP address: " + e.getMessage());
-        }
-        return str;
-    }
-
-
-    public static int getPort(){
-        int port = 0;
-        try (ServerSocket serverSocket = new ServerSocket(0)) {
-          // Get the port number
-           port = serverSocket.getLocalPort();
-         // Print the  port number
-          System.out.println("Local Port: " + port);
-        } catch (IOException e) {
-            System.err.println("Could not get port: " + e.getMessage());
-        }
-        return port;
-    }
 
 
     private static Process launchSeleniumNodeProcess(String jarPath) throws IOException {
@@ -220,6 +215,25 @@ public static void startStandaloneServer(String jarPath) throws IOException, Int
     System.out.println("Process exited with code: " + exitCode);
 }
 
+
+
+    private static void killExistingJavaProcesses() throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder("tasklist");
+        processBuilder.redirectErrorStream(true);
+        Process process = processBuilder.start();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("java.exe")) {
+                    String[] parts = line.split("\\s+");
+                    String pid = parts[1];
+                    new ProcessBuilder("taskkill","/PID", pid).start();
+                    System.out.println("Killed process with PID: " + pid);
+                }
+            }
+        }
+    }
+
     private static void logServerOutput(Process process) {
         new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
@@ -233,40 +247,34 @@ public static void startStandaloneServer(String jarPath) throws IOException, Int
         }).start();
     }
 
+    public static String  getLocalHostAddress(){
+        String str=null;
+        try {
+            InetAddress localAddress = InetAddress.getLocalHost();
+            System.out.println("Local IP Address: " + localAddress.getHostAddress());
+            str= localAddress.getHostAddress();
 
- @BeforeSuite
-    public static void setup(String browser) throws IOException, InterruptedException {
-        try{ startSeleniumGridServer(jarPath,servername);
- } catch (IOException | InterruptedException e) {
-        e.printStackTrace();
-    }
-        if (browser.equalsIgnoreCase("chrome")) {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                  // driver = (new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions));
-              driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), chromeOptions));
-               }
-            else if (browser.equalsIgnoreCase("firefox")) {
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), firefoxOptions));
-
-            } else if (browser.equalsIgnoreCase("edge")) {
-                EdgeOptions edgeOptions = new EdgeOptions();
-                driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), edgeOptions));
-            }
-            else {
-                throw new Error("Browser configuration is not defined!!");
-            }
+        } catch (UnknownHostException e) {
+            System.err.println("Could not get IP address: " + e.getMessage());
         }
-
-
-
-
-@AfterSuite
-    public static void tearDown() throws InterruptedException {
-        driver.quit();
-
-
+        return str;
     }
+
+
+    public static int getPort(){
+        int port = 0;
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
+            // Get the port number
+            port = serverSocket.getLocalPort();
+            // Print the  port number
+            System.out.println("Local Port: " + port);
+        } catch (IOException e) {
+            System.err.println("Could not get port: " + e.getMessage());
+        }
+        return port;
+    }
+
+
     }
 
 
