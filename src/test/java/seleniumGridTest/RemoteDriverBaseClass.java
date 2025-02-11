@@ -25,48 +25,15 @@ public class RemoteDriverBaseClass {
         killExistingJavaProcesses();
         switch(serverType) {
                 case "standalone":
-                Process standaloneprocess = startSeleniumServer(jarPath);
-                logServerOutput(standaloneprocess);
-                int exitCode = standaloneprocess.waitFor();
-                System.out.println("Process exited with code: " + exitCode);
+                    startStandaloneServer(jarPath);
                 break;
 
                 case "node":
-                Process hubprocess = startSeleniumHubServer(jarPath);
-                logServerOutput(hubprocess);
-                int exitCode1 = hubprocess.waitFor();
-                System.out.println("Process exited with code: " + exitCode1);
-                Process nodeprocess = startSeleniumNodeServer(jarPath);
-                logServerOutput(nodeprocess);
-                int exitCode2 = nodeprocess.waitFor();
-                System.out.println("Process exited with code: " + exitCode2);
+                    startNodeServer(jarPath);
                 break;
 
             case "distributed":
-                Process eventBus=startEventBusServer(jarPath);
-                logServerOutput(eventBus);
-                int exitCode3 = eventBus.waitFor();
-                System.out.println("Process exited with code: " + exitCode3);
-                Process sessionQueue= startSessionqueueServer(jarPath);
-                logServerOutput(sessionQueue);
-                int exitCode4 = sessionQueue.waitFor();
-                System.out.println("Process exited with code: " + exitCode4);
-                 Process SessionMap= startSessionMapServer(jarPath);
-                logServerOutput(SessionMap);
-                int exitCode5 = SessionMap.waitFor();
-                System.out.println("Process exited with code: " + exitCode5);
-                Process distributorServer=startDistributorServer(jarPath);
-                logServerOutput(distributorServer);
-                int exitCode6 = distributorServer.waitFor();
-                System.out.println("Process exited with code: " + exitCode6);
-                Process routerServer= startRouterServer(jarPath);
-                logServerOutput(routerServer);
-                int exitCode7 = routerServer.waitFor();
-                System.out.println("Process exited with code: " + exitCode7);
-                Process Node12= startNode12Server(jarPath);
-                logServerOutput(Node12);
-                int exitCode8 = Node12.waitFor();
-                System.out.println("Process exited with code: " + exitCode8);
+                startDistributedServer(jarPath);
                 break;
 
             default:
@@ -205,7 +172,53 @@ private static Process startNode12Server(String jarPath) throws IOException {
     return process;
 }
 
+public static void startDistributedServer(String jarPath) throws IOException, InterruptedException {
+    Process eventBus=startEventBusServer(jarPath);
+    logServerOutput(eventBus);
+    int exitCode3 = eventBus.waitFor();
+    System.out.println("Process exited with code: " + exitCode3);
+    Process sessionQueue= startSessionqueueServer(jarPath);
+    logServerOutput(sessionQueue);
+    int exitCode4 = sessionQueue.waitFor();
+    System.out.println("Process exited with code: " + exitCode4);
+    Process SessionMap= startSessionMapServer(jarPath);
+    logServerOutput(SessionMap);
+    int exitCode5 = SessionMap.waitFor();
+    System.out.println("Process exited with code: " + exitCode5);
+    Process distributorServer=startDistributorServer(jarPath);
+    logServerOutput(distributorServer);
+    int exitCode6 = distributorServer.waitFor();
+    System.out.println("Process exited with code: " + exitCode6);
+    Process routerServer= startRouterServer(jarPath);
+    logServerOutput(routerServer);
+    int exitCode7 = routerServer.waitFor();
+    System.out.println("Process exited with code: " + exitCode7);
+    Process Node12= startNode12Server(jarPath);
+    logServerOutput(Node12);
+    int exitCode8 = Node12.waitFor();
+    System.out.println("Process exited with code: " + exitCode8);
+}
 
+
+
+public static void startNodeServer(String jarPath) throws IOException, InterruptedException {
+    Process hubprocess = startSeleniumHubServer(jarPath);
+    logServerOutput(hubprocess);
+    int exitCode1 = hubprocess.waitFor();
+    System.out.println("Process exited with code: " + exitCode1);
+    Process nodeprocess = startSeleniumNodeServer(jarPath);
+    logServerOutput(nodeprocess);
+    int exitCode2 = nodeprocess.waitFor();
+    System.out.println("Process exited with code: " + exitCode2);
+}
+
+
+public static void startStandaloneServer(String jarPath) throws IOException, InterruptedException {
+    Process standaloneprocess = startSeleniumServer(jarPath);
+    logServerOutput(standaloneprocess);
+    int exitCode = standaloneprocess.waitFor();
+    System.out.println("Process exited with code: " + exitCode);
+}
 
     private static void logServerOutput(Process process) {
         new Thread(() -> {
