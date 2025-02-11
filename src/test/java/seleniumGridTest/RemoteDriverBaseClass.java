@@ -18,6 +18,7 @@ import java.net.UnknownHostException;
 public class RemoteDriverBaseClass {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static WebDriver driver;
+    //configuration file
     static String servername="node";
 
 
