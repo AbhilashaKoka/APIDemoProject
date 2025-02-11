@@ -59,7 +59,7 @@ public class RemoteDriverBaseClass {
         }
     }
 
-    private static Process startSeleniumServer(String jarPath) throws IOException {
+    private static Process launchSeleniumStandalone(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "standalone");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
@@ -68,7 +68,7 @@ public class RemoteDriverBaseClass {
     }
 
 
-    private static Process startSeleniumHubServer(String jarPath) throws IOException {
+    private static Process launchSeleniumHubServer(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "hub");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
@@ -104,7 +104,7 @@ public class RemoteDriverBaseClass {
     }
 
 
-    private static Process startSeleniumNodeServer(String jarPath) throws IOException {
+    private static Process launchSeleniumNodeProcess(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--log", "node.log");
       //  ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--hub" , "http://"+getLocalHostAddress()+":"+getPort());
         processBuilder.redirectErrorStream(true);
@@ -114,7 +114,7 @@ public class RemoteDriverBaseClass {
     }
 
     //Step1: Start the Event Bus, Event Bus helps in internal communication between different grid components.
-    private static Process startEventBusServer(String jarPath) throws IOException {
+    private static Process launchEventBusProcess(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "event-bus","--publish-events", "tcp://"+getLocalHostAddress()+":4442","--subscribe-events","tcp://"+getLocalHostAddress()+":4443 --port 5557");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
@@ -124,7 +124,7 @@ public class RemoteDriverBaseClass {
 
     //Step 2: Start the New Session Queue,Start the New Session Queue by adding the new session requests to a queue.
     //The Distributor queries it.
-    private static Process startSessionqueueServer(String jarPath) throws IOException {
+    private static Process launchSessionQueueProcess(String jarPath) throws IOException {
 
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "sessionqueue", "--port 5559");
         processBuilder.redirectErrorStream(true);
@@ -135,7 +135,7 @@ public class RemoteDriverBaseClass {
 
     //Step3: Start the Session Map,Start the Session Map next, which will interact with the Event Bus and
     //map session IDs to the Node where the session is running.
-    private static Process startSessionMapServer(String jarPath) throws IOException {
+    private static Process launchSessionMappingProcess(String jarPath) throws IOException {
      ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "sessions","--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443","--port 5556");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
@@ -145,7 +145,7 @@ public class RemoteDriverBaseClass {
 
     //Step 4: start the Distributor,which queries the New Session Queue for checking new session requests.
     //When finding the matching capabilities, it assigns a Node to the New Session request.
-private static Process startDistributorServer(String jarPath) throws IOException {
+private static Process launchDistributorService(String jarPath) throws IOException {
    ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "distributor", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443", "--sessions", "http://"+getLocalHostAddress()+":5556", "--sessionqueue", "http://"+getLocalHostAddress()+":5559", "--port 5553", "--bind-bus false");
     processBuilder.redirectErrorStream(true);
     Process process = processBuilder.start();
@@ -154,7 +154,7 @@ private static Process startDistributorServer(String jarPath) throws IOException
 }
 
 //Step 5: Start the Router,The next step is to start the Router, which will direct new session requests to the queue and route requests for active sessions to the Node handling that session.
-private static Process startRouterServer(String jarPath) throws IOException {
+private static Process launchRouterService(String jarPath) throws IOException {
     ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "router --sessions", "http://"+getLocalHostAddress()+":5556", "--distributor", "http://"+getLocalHostAddress()+":5553", "--sessionqueue", "http://"+getLocalHostAddress()+":5559", "--port 4444");
     processBuilder.redirectErrorStream(true);
     Process process = processBuilder.start();
@@ -164,7 +164,7 @@ private static Process startRouterServer(String jarPath) throws IOException {
 
 //Step 6:  Start the Nodes,Start the Node to launch the browser sessions, which will eventually help run our automated tests.
 //The following command will add one Node with four Chrome, Firefox, and Edge browser sessions. It will also spin one session of IE browser by default.
-private static Process startNode12Server(String jarPath) throws IOException {
+private static Process launchBrowserNode(String jarPath) throws IOException {
     ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443");
     processBuilder.redirectErrorStream(true);
     Process process = processBuilder.start();
@@ -173,27 +173,27 @@ private static Process startNode12Server(String jarPath) throws IOException {
 }
 
 public static void startDistributedServer(String jarPath) throws IOException, InterruptedException {
-    Process eventBus=startEventBusServer(jarPath);
+    Process eventBus= launchEventBusProcess(jarPath);
     logServerOutput(eventBus);
     int exitCode3 = eventBus.waitFor();
     System.out.println("Process exited with code: " + exitCode3);
-    Process sessionQueue= startSessionqueueServer(jarPath);
+    Process sessionQueue= launchSessionQueueProcess(jarPath);
     logServerOutput(sessionQueue);
     int exitCode4 = sessionQueue.waitFor();
     System.out.println("Process exited with code: " + exitCode4);
-    Process SessionMap= startSessionMapServer(jarPath);
+    Process SessionMap= launchSessionMappingProcess(jarPath);
     logServerOutput(SessionMap);
     int exitCode5 = SessionMap.waitFor();
     System.out.println("Process exited with code: " + exitCode5);
-    Process distributorServer=startDistributorServer(jarPath);
+    Process distributorServer= launchDistributorService(jarPath);
     logServerOutput(distributorServer);
     int exitCode6 = distributorServer.waitFor();
     System.out.println("Process exited with code: " + exitCode6);
-    Process routerServer= startRouterServer(jarPath);
+    Process routerServer= launchRouterService(jarPath);
     logServerOutput(routerServer);
     int exitCode7 = routerServer.waitFor();
     System.out.println("Process exited with code: " + exitCode7);
-    Process Node12= startNode12Server(jarPath);
+    Process Node12= launchBrowserNode(jarPath);
     logServerOutput(Node12);
     int exitCode8 = Node12.waitFor();
     System.out.println("Process exited with code: " + exitCode8);
@@ -202,11 +202,11 @@ public static void startDistributedServer(String jarPath) throws IOException, In
 
 
 public static void startNodeServer(String jarPath) throws IOException, InterruptedException {
-    Process hubprocess = startSeleniumHubServer(jarPath);
+    Process hubprocess = launchSeleniumHubServer(jarPath);
     logServerOutput(hubprocess);
     int exitCode1 = hubprocess.waitFor();
     System.out.println("Process exited with code: " + exitCode1);
-    Process nodeprocess = startSeleniumNodeServer(jarPath);
+    Process nodeprocess = launchSeleniumNodeProcess(jarPath);
     logServerOutput(nodeprocess);
     int exitCode2 = nodeprocess.waitFor();
     System.out.println("Process exited with code: " + exitCode2);
@@ -214,7 +214,7 @@ public static void startNodeServer(String jarPath) throws IOException, Interrupt
 
 
 public static void startStandaloneServer(String jarPath) throws IOException, InterruptedException {
-    Process standaloneprocess = startSeleniumServer(jarPath);
+    Process standaloneprocess = launchSeleniumStandalone(jarPath);
     logServerOutput(standaloneprocess);
     int exitCode = standaloneprocess.waitFor();
     System.out.println("Process exited with code: " + exitCode);
