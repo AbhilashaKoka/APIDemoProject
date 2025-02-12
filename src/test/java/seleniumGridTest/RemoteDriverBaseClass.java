@@ -20,7 +20,7 @@ public class RemoteDriverBaseClass {
     public static WebDriver driver;
 
     //configuration file
-    static String servername="distributed";
+    static String servername="standalone";
 
 
 
@@ -164,7 +164,8 @@ private static Process launchRouterService(String jarPath) throws IOException {
 
 //Step 6:  Start the Nodes,Start the Node to launch the browser sessions,
 //which will eventually help run our automated tests.
-//The following command will add one Node with four Chrome, Firefox, and Edge browser sessions.
+//The following command will add one Node with four Chrome, Firefox, and
+//Edge browser sessions.
 // It will also spin one session of IE browser by default.
 private static Process launchBrowserNode(String jarPath) throws IOException {
     ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--publish-events", "tcp://"+getLocalHostAddress()+":4442", "--subscribe-events", "tcp://"+getLocalHostAddress()+":4443");
@@ -175,37 +176,35 @@ private static Process launchBrowserNode(String jarPath) throws IOException {
 }
 
 public static void startDistributedServer(String jarPath) throws IOException, InterruptedException {
-
     Process eventBus= launchEventBusProcess(jarPath);
     logServerOutput(eventBus);
     int exitCode3 = eventBus.waitFor();
-    System.out.println("Process exited with code: " + exitCode3);
+    System.out.println("Process exited with code:" + exitCode3);
 
     Process routerServer= launchRouterService(jarPath);
     logServerOutput(routerServer);
     int exitCode7 = routerServer.waitFor();
-    System.out.println("Process exited with code: " + exitCode7);
+    System.out.println("Process exited with code:" + exitCode7);
 
     Process sessionQueue= launchSessionQueueProcess(jarPath);
     logServerOutput(sessionQueue);
     int exitCode4 = sessionQueue.waitFor();
-    System.out.println("Process exited with code: " + exitCode4);
+    System.out.println("Process exited with code:" + exitCode4);
 
     Process distributorServer= launchDistributorService(jarPath);
     logServerOutput(distributorServer);
     int exitCode6 = distributorServer.waitFor();
-    System.out.println("Process exited with code: " + exitCode6);
+    System.out.println("Process exited with code:" + exitCode6);
 
     Process Node12= launchBrowserNode(jarPath);
     logServerOutput(Node12);
     int exitCode8 = Node12.waitFor();
-    System.out.println("Process exited with code: " + exitCode8);
+    System.out.println("Process exited with code:" + exitCode8);
 
     Process SessionMap= launchSessionMappingProcess(jarPath);
     logServerOutput(SessionMap);
     int exitCode5 = SessionMap.waitFor();
-    System.out.println("Process exited with code: " + exitCode5);
-
+    System.out.println("Process exited with code:" + exitCode5);
 }
 
 
