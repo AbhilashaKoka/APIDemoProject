@@ -114,7 +114,6 @@ public class BookStoreEndToEndAPITestNGTest {
         boolean bool=false;
         try {
             BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();
-
             isbnList = generateISBNList();
             System.out.println(isbnList);
             response = e2ETests.CreateBooksListByAddingISBN(userId, isbnList, token);
