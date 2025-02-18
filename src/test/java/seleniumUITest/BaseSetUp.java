@@ -21,7 +21,7 @@ public class BaseSetUp {
 
 
     @BeforeMethod
-    public static void setup() {
+    public static void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -35,7 +35,7 @@ public class BaseSetUp {
         return driver;
     }
 
-    private void LocalDriverSetUp() {
+    private void localDriverSetUp() {
         System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -44,7 +44,7 @@ public class BaseSetUp {
     }
 
 
-    public void FailedScreenshot(String testMethodName) {
+    public void failedScreenshot(String testMethodName) {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Date d = new Date();
         String Timestamp = d.toString().replace(":", "_").replace(" ", "_");
@@ -65,7 +65,7 @@ public class BaseSetUp {
         }
     }
 
-        public void Scrollwindow(){
+        public void executeScrollAction(){
             js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0,300)");
         }

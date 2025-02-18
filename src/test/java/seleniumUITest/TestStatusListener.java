@@ -15,7 +15,7 @@ public class TestStatusListener extends BaseSetUp implements ITestListener {
         System.out.println("****TEST CASE FAILED****");
         try
         {
-         FailedScreenshot(result.getName());
+         failedScreenshot(result.getName());
         }catch(Exception e){
             e.printStackTrace();
         }

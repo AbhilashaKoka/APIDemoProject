@@ -12,24 +12,24 @@ public class TestNGTestClass extends BaseSetUp{
               Assert.assertEquals( SeleniumDemoTest.HandlingButton(), true);
         }
 
-    @Test(description = "Verify CheckBox",enabled = true)
+    @Test(description = "Verify CheckBox",enabled = false)
     public void TestCheckBox() {
       Assert.assertEquals(SeleniumDemoTest.HandlingCheckBox(),true);
     }
 
-    @Test(description = "verify datapicker",enabled = true)
+    @Test(description = "verify datapicker",enabled = false)
     public void TestDatePicker() {
         Assert.assertEquals( SeleniumDemoTest.HandlingDataPicker(),true);
    }
 
-    @Test(description = "verify BrowserWindow",enabled = true)
+    @Test(description = "verify BrowserWindow",enabled = false)
      public void TestBrowserWindow() throws InterruptedException {
        Assert.assertEquals(SeleniumDemoTest.HandlingBrowserWindow(),true);
    }
 
     @Test(description = "verify AutoComplete",enabled = false)
     public void TestAutoComplete() {
-        Assert.assertEquals( SeleniumDemoTest.HandlingAutomComplete(),true);
+        Assert.assertEquals( SeleniumDemoTest.HandlingAutoComplete(),true);
    }
 
     @Test(description = "verify Alert",enabled = false)
@@ -42,7 +42,7 @@ public class TestNGTestClass extends BaseSetUp{
          Assert.assertEquals(SeleniumDemoTest.HandlingAccordion(),true);
    }
 
-    @Test(description = "verify PracticeForm",enabled = false)
+    @Test(description = "verify PracticeForm",enabled = true)
     public void TestPracticeForm() throws InterruptedException {
         Assert.assertEquals(SeleniumDemoTest.HandlingForm(),true);
     }
@@ -53,7 +53,7 @@ public class TestNGTestClass extends BaseSetUp{
 
     @Test(description = "verify Links",enabled = false)
     public void TestLink() {
-        Assert.assertEquals(SeleniumDemoTest.HandlingLInk(),true);
+        Assert.assertEquals(SeleniumDemoTest.HandlingLink(),true);
     }
 
     @Test(description = "verify Menu",enabled = false)
@@ -80,7 +80,7 @@ public class TestNGTestClass extends BaseSetUp{
 
     @Test(description = "verify RadioButton",enabled = false)
     public void TestRadioButton() {
-        Assert.assertEquals(SeleniumDemoTest.HandlingRadioBUtton(),true);
+        Assert.assertEquals(SeleniumDemoTest.HandlingRadioButton(),true);
     }
 
     @Test(description = "verify Resizable",enabled = false)

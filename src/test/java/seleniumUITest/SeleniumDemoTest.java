@@ -91,7 +91,7 @@ public class SeleniumDemoTest extends BaseSetUp {
     }
 
 
-    public static Boolean HandlingAutomComplete(){
+    public static Boolean HandlingAutoComplete(){
         Boolean bol=false;
         WebElement Widgets_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
         Widgets_Frames.click();
@@ -406,7 +406,7 @@ public class SeleniumDemoTest extends BaseSetUp {
 
     }
 
-    public  static Boolean HandlingLInk(){
+    public  static Boolean HandlingLink(){
         Boolean bol=false;
         WebElement Elements_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Elements_Frames.click();
@@ -529,7 +529,7 @@ public class SeleniumDemoTest extends BaseSetUp {
     }
 
 
-    public static Boolean HandlingRadioBUtton(){
+    public static Boolean HandlingRadioButton(){
         Boolean bol=false;
         WebElement Elements_Frames=driver.findElement(By.xpath( "//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Widgets\")]"));
         Elements_Frames.click();
