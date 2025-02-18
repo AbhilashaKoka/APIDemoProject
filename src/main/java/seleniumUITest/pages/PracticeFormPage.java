@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import seleniumUITest.manager.DriverManager;
 import seleniumUITest.testDataClass.PracticeFormsDetails;
 
+import java.awt.*;
 import java.util.List;
 
 
@@ -106,7 +107,7 @@ WebDriver driver;
     }
 
 
-    public boolean SubmitPracticeForm(PracticeFormsDetails practiceFormsDetails) {
+    public boolean SubmitPracticeForm(PracticeFormsDetails practiceFormsDetails) throws AWTException {
         boolean bol=false;
         DriverManager.scrollWindowUp(InputBox_FirstName);
         InputBox_FirstName.sendKeys(practiceFormsDetails.getFirstName(), Keys.TAB);
@@ -124,17 +125,23 @@ WebDriver driver;
                else
                {
                    ele.findElement(By.xpath("//child::label[contains(text(), '"+practiceFormsDetails.getGender()+"')]")).click();
+                   break;
                }
            }
         }
 
         DriverManager.scrollWindowUp(Inputbox_Mobile);
+
+
+
         Inputbox_Mobile.sendKeys(practiceFormsDetails.getMobile(), Keys.TAB);
 
         DriverManager.scrollWindowUp(Inputbox_DateOfBirth);
         Inputbox_DateOfBirth.sendKeys(practiceFormsDetails.getDOB(), Keys.TAB, Keys.ENTER, Keys.TAB);
 
         DriverManager.scrollWindowUp(Inputbox_Subject);
+
+        Inputbox_Subject.sendKeys(Keys.SHIFT + "C", practiceFormsDetails.getSubject(), Keys.TAB, Keys.TAB);
         Inputbox_Subject.sendKeys(practiceFormsDetails.getSubject(),Keys.TAB, Keys.TAB);
 
         DriverManager.scrollWindowUp(CheckBox_Hobbies);

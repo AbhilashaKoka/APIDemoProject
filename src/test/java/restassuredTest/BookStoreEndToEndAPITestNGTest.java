@@ -105,12 +105,11 @@ public class BookStoreEndToEndAPITestNGTest {
         catch(Exception ex){
             ex.printStackTrace();
         }
-
         return bool;
     }
 
 
-    public boolean VerifyCreateListOfBooksByISBN() throws IOException {
+    public boolean VerifyCreateListOfBooksByISBN() throws IOException{
         boolean bool=false;
         try {
             BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();

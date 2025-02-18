@@ -10,6 +10,7 @@ import seleniumUITest.manager.FileReaderManager;
 import seleniumUITest.pages.PracticeFormPage;
 import seleniumUITest.testDataClass.PracticeFormsDetails;
 
+import java.awt.*;
 import java.io.IOException;
 
 
@@ -53,7 +54,7 @@ public class PracticeFormStepDefs {
     }
 
     @When("I enter details and click on Submit")
-    public void iEnterDetailsAndClickOnSubmit() {
+    public void iEnterDetailsAndClickOnSubmit() throws AWTException {
         try {
             PracticeFormsDetails practiceFormsDetails = fileReaderManager.getJsonDataReader().getPracticeFormDetailsByFirstName("Sita");
             practiceFormPage.SubmitPracticeForm(practiceFormsDetails);
