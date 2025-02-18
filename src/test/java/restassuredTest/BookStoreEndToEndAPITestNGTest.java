@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import static DemoTest.programInJavaTest.StringOperation.generatePassword;
+import static utilityDemoTest.programInJavaTest.StringOperation.generatePassword;
 import static restassuredTest.BookStoreEndToEnd_Tests.generateISBNList;
 import static restassuredTest.BookStoreEndToEnd_Tests.generateRandomName;
 
