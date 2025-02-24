@@ -166,7 +166,7 @@ WebDriver driver;
         DriverManager.scrollWindowUp(Upload_Picture);
         if(Upload_Picture.isEnabled()) {
 
-            Upload_Picture.sendKeys("C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\IdeaProjects\\Spring_Course-master\\APIDemoProject\\src\\test\\resource\\testDataResources\\",practiceFormsDetails.getFileName());
+            Upload_Picture.sendKeys(System.getProperty("user.dir")+"\\src\\test\\resource\\testDataResources\\",practiceFormsDetails.getFileName());
         }
 
         DriverManager.scrollWindowUp(TextArea_CurrentAdress);
