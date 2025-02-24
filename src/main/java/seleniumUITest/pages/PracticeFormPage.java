@@ -1,9 +1,9 @@
 package seleniumUITest.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -12,6 +12,8 @@ import seleniumUITest.testDataClass.PracticeFormsDetails;
 
 import java.awt.*;
 import java.util.List;
+
+import static org.openqa.selenium.Keys.*;
 
 
 public class PracticeFormPage {
@@ -110,9 +112,9 @@ WebDriver driver;
     public boolean SubmitPracticeForm(PracticeFormsDetails practiceFormsDetails) throws AWTException {
         boolean bol=false;
         DriverManager.scrollWindowUp(InputBox_FirstName);
-        InputBox_FirstName.sendKeys(practiceFormsDetails.getFirstName(), Keys.TAB);
-        InputBox_LastName.sendKeys(practiceFormsDetails.getLastName(), Keys.TAB);
-        InputBox_Email.sendKeys(practiceFormsDetails.getEmail(), Keys.TAB);
+        InputBox_FirstName.sendKeys(practiceFormsDetails.getFirstName(), TAB);
+        InputBox_LastName.sendKeys(practiceFormsDetails.getLastName(), TAB);
+        InputBox_Email.sendKeys(practiceFormsDetails.getEmail(), TAB);
 
         for(WebElement ele:Radio_div){
           String gender= practiceFormsDetails.getGender();
@@ -131,36 +133,31 @@ WebDriver driver;
         }
 
         DriverManager.scrollWindowUp(Inputbox_Mobile);
-
-
-
-        Inputbox_Mobile.sendKeys(practiceFormsDetails.getMobile(), Keys.TAB);
+        Inputbox_Mobile.sendKeys(practiceFormsDetails.getMobile(), TAB);
 
         DriverManager.scrollWindowUp(Inputbox_DateOfBirth);
-        Inputbox_DateOfBirth.sendKeys(practiceFormsDetails.getDOB(), Keys.TAB, Keys.ENTER, Keys.TAB);
+        Inputbox_DateOfBirth.sendKeys(practiceFormsDetails.getDOB(), TAB, ENTER, TAB);
 
         DriverManager.scrollWindowUp(Inputbox_Subject);
-
-        Inputbox_Subject.sendKeys(Keys.SHIFT + "C", practiceFormsDetails.getSubject(), Keys.TAB, Keys.TAB);
-        Inputbox_Subject.sendKeys(practiceFormsDetails.getSubject(),Keys.TAB, Keys.TAB);
+        Actions actions = new Actions(driver);
+        actions.sendKeys(SHIFT).perform();
+        actions.sendKeys(practiceFormsDetails.getSubject()).perform();
+        actions.sendKeys(ENTER, TAB).perform();
+        actions.build();
 
         DriverManager.scrollWindowUp(CheckBox_Hobbies);
         if(!CheckBox_Hobbies.isSelected()) {
             DriverManager.MoveToElement(CheckBox_Hobbies);
-            CheckBox_Hobbies.sendKeys(Keys.TAB, Keys.TAB);
+            CheckBox_Hobbies.sendKeys(TAB, TAB);
         }
 
         Upload_Picture.sendKeys(practiceFormsDetails.getFilePath());
         DriverManager.scrollWindowUp(TextArea_CurrentAdress);
 
-        TextArea_CurrentAdress.sendKeys(practiceFormsDetails.getCurrentAddr(),Keys.TAB);
-
-        DropDown_States.sendKeys(practiceFormsDetails.getState(), Keys.TAB,Keys.TAB);
-
-        DropDown_City.sendKeys(practiceFormsDetails.getCity(),Keys.TAB,Keys.TAB);
-
+        TextArea_CurrentAdress.sendKeys(practiceFormsDetails.getCurrentAddr(), TAB);
+        DropDown_States.sendKeys(practiceFormsDetails.getState(), TAB, TAB);
+        DropDown_City.sendKeys(practiceFormsDetails.getCity(), TAB, TAB);
         submitButton.submit();
-
         bol=true;
         return bol;
     }
@@ -175,7 +172,7 @@ WebDriver driver;
             String str2 = rows.findElement(By.xpath("td[2]")).getAttribute("innerText");
             System.out.println(str1 + ":" + str2);
         }
-        Button_ModalBoxClose.sendKeys(Keys.ESCAPE);
+        Button_ModalBoxClose.sendKeys(ESCAPE);
         bol=true;
         return bol;
     }
