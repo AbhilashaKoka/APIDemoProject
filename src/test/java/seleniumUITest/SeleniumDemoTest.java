@@ -677,7 +677,7 @@ public class SeleniumDemoTest extends BaseSetUp {
         WebElement DownloadButton=driver.findElement(By.xpath("//*[@id=\"downloadButton\"]"));
         DownloadButton.click();
         Thread.sleep(5000);
-        File currentFile=new File("C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\IdeaProjects\\Spring_Course-master\\APIDemoProject\\src\\test\\resource\\testDataResources\\sampleFile.jpeg");
+        File currentFile=new File(System.getProperty("user.dir")+"\\src\\test\\resource\\testDataResources\\","sampleFile.jpeg");
         if(currentFile.exists()){
             System.out.println("File Exist!!");
         }
@@ -686,7 +686,7 @@ public class SeleniumDemoTest extends BaseSetUp {
         }
 
         WebElement uploadButton=driver.findElement(By.xpath("//*[@id=\"uploadFile\"]"));
-        uploadButton.sendKeys("C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\IdeaProjects\\Spring_Course-master\\APIDemoProject\\src\\test\\resource\\testDataResources\\sampleFile.jpeg");
+        uploadButton.sendKeys(System.getProperty("user.dir")+"\\src\\test\\resource\\testDataResources\\","sampleFile.jpeg");
         WebElement FilePath=driver.findElement(By.xpath(" //*[@id=\"uploadedFilePath\"]"));
         Assertions.assertEquals("C:\\fakepath\\sampleFile.jpeg",FilePath.getAttribute("innerText"));
         bol=true;
