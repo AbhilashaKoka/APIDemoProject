@@ -129,7 +129,7 @@ public class TestNGTestClass extends BaseSetUp{
         Assert.assertEquals(SeleniumDemoTest.HandlingToolTip(),true);
     }
 
-    @Test(description = "verify Upload",enabled = false)
+    @Test(description = "verify Upload",enabled = true)
     public void TestUpload() throws InterruptedException {
         Assert.assertEquals(SeleniumDemoTest.HandlingUploadAndDownload(),true);
     }

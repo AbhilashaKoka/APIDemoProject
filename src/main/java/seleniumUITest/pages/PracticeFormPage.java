@@ -113,7 +113,7 @@ WebDriver driver;
     }
 
 
-    public boolean SubmitPracticeForm(PracticeFormsDetails practiceFormsDetails) throws AWTException {
+    public boolean SubmitPracticeForm(PracticeFormsDetails practiceFormsDetails) throws AWTException, InterruptedException {
         boolean bol=false;
         DriverManager.scrollWindowUp(InputBox_FirstName);
         InputBox_FirstName.sendKeys(practiceFormsDetails.getFirstName(), TAB);
@@ -142,6 +142,8 @@ WebDriver driver;
         DriverManager.scrollWindowUp(Inputbox_DateOfBirth);
         Inputbox_DateOfBirth.sendKeys(practiceFormsDetails.getDOB(), TAB, ENTER, TAB);
 
+
+
         DriverManager.scrollWindowUp(Inputbox_Subject);
         Actions actions = new Actions(driver);
         actions.sendKeys(SHIFT).perform();
@@ -158,13 +160,16 @@ WebDriver driver;
                    ele.findElement(By.xpath("//child::label[contains(text(), '"+practiceFormsDetails.getHobbies()+"')]")).click();
                     break;
             }
+
         }
 
+        DriverManager.scrollWindowUp(Upload_Picture);
+        if(Upload_Picture.isEnabled()) {
 
+            Upload_Picture.sendKeys("C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\IdeaProjects\\Spring_Course-master\\APIDemoProject\\src\\test\\resource\\testDataResources\\",practiceFormsDetails.getFileName());
+        }
 
-        Upload_Picture.sendKeys(practiceFormsDetails.getFilePath());
         DriverManager.scrollWindowUp(TextArea_CurrentAdress);
-
         TextArea_CurrentAdress.sendKeys(practiceFormsDetails.getCurrentAddr(), TAB);
         DropDown_States.sendKeys(practiceFormsDetails.getState(), TAB, TAB);
         DropDown_City.sendKeys(practiceFormsDetails.getCity(), TAB, TAB);

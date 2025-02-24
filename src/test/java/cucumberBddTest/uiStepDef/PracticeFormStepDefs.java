@@ -54,7 +54,7 @@ public class PracticeFormStepDefs {
     }
 
     @When("I enter details and click on Submit")
-    public void iEnterDetailsAndClickOnSubmit() throws AWTException {
+    public void iEnterDetailsAndClickOnSubmit() throws AWTException, InterruptedException {
         try {
             PracticeFormsDetails practiceFormsDetails = fileReaderManager.getJsonDataReader().getPracticeFormDetailsByFirstName("Sita");
             practiceFormPage.SubmitPracticeForm(practiceFormsDetails);

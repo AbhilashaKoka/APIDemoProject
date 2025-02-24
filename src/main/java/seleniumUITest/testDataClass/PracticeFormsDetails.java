@@ -104,7 +104,7 @@ public class PracticeFormsDetails {
     }
 
 
-    public String getFilePath() {
+    public String getFileName() {
         return FilePath;
     }
 
