@@ -60,6 +60,10 @@ WebDriver driver;
     @FindBy(how = How.XPATH, using = "//div[@class=\"subjects-auto-complete__input\"]/input[@type=\"text\"]")
     private WebElement Inputbox_Subject;
 
+    @FindBy(how = How.XPATH, using ="//*[@id=\"hobbiesWrapper\"]/div[2]/div")
+    private List<WebElement> CheckBox_div;
+
+
     @FindBy(how = How.XPATH, using ="//div[@id=\"hobbiesWrapper\"]//label[contains(text(),\"Reading\")]//preceding-sibling::input")
     private WebElement CheckBox_Hobbies;
 
@@ -145,11 +149,18 @@ WebDriver driver;
         actions.sendKeys(ENTER, TAB).perform();
         actions.build();
 
-        DriverManager.scrollWindowUp(CheckBox_Hobbies);
-        if(!CheckBox_Hobbies.isSelected()) {
-            DriverManager.MoveToElement(CheckBox_Hobbies);
-            CheckBox_Hobbies.sendKeys(TAB, TAB);
+
+
+        for(WebElement ele: CheckBox_div) {
+            String hobbies = practiceFormsDetails.getHobbies();
+            if( ele.findElement(By.xpath("child::label")).getText().equalsIgnoreCase(hobbies))
+            {
+                   ele.findElement(By.xpath("//child::label[contains(text(), '"+practiceFormsDetails.getHobbies()+"')]")).click();
+                    break;
+            }
         }
+
+
 
         Upload_Picture.sendKeys(practiceFormsDetails.getFilePath());
         DriverManager.scrollWindowUp(TextArea_CurrentAdress);
