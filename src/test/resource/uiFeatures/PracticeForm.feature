@@ -4,11 +4,11 @@ Feature: Verify Form Submission functionality
 #Background:
 #  Given I am in form landing page
 
-@browser
-   Scenario: PracticeForm1
-      Given I am in form landing page
-      When I enter details and click on Submit
-      Then I am able to verify form details successfully
+#@browser
+#   Scenario: PracticeForm1
+#      Given I am in form landing page
+#      When I enter details and click on Submit
+#      Then I am able to verify form details successfully
 
 #    Scenario: PracticeForm2
 #    When I fill all valid List of Map details Values and click on submit

@@ -47,7 +47,7 @@ public class BrowserWindowPage {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean booleanBrowserWindowLandingPage()
+    public boolean BrowserWindowLandingPage()
     {
         boolean bol=false;
         DriverManager.scrollWindowUp(Window_Frames);
