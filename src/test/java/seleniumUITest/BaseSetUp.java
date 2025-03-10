@@ -1,24 +1,26 @@
 package seleniumUITest;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.io.File;
 
 public class BaseSetUp {
     static WebDriver driver;
     static Actions action;
     static JavascriptExecutor js;
-
+    static  BrowserMobProxy proxy;
 
     @BeforeMethod
     public static void setUp() {
@@ -29,15 +31,24 @@ public class BaseSetUp {
         driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
+
     }
 
     public WebDriver getDriver() {
         return driver;
     }
 
+
     private void localDriverSetUp() {
-        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+        proxy = new BrowserMobProxyServer();
+        proxy.start(0);
+        proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+        proxy.newHar("exampleTest");
+        Proxy seleniumProxy = new Proxy();
+        seleniumProxy.setHttpProxy("localhost:" + proxy.getPort());
+       System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
+        options.setCapability("proxy", seleniumProxy);
         options.addArguments("start-maximized");
         options.addArguments("headless");
         driver = new ChromeDriver(options);
@@ -59,9 +70,13 @@ public class BaseSetUp {
 
 
     @AfterMethod
-    public static void tearDown() {
+    public static void tearDown() throws IOException {
         if (driver != null) {
             driver.quit();
+            File harFile = new File("network_capture.har");
+            proxy.getHar().writeTo(harFile);
+            proxy.stop();
+
         }
     }
 
