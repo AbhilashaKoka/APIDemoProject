@@ -28,6 +28,7 @@ public class BaseSetUp {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
+      //   localDriverSetUp();
         driver.get("https://demoqa.com");
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
@@ -39,14 +40,14 @@ public class BaseSetUp {
     }
 
 
-    private void localDriverSetUp() {
+    private static void localDriverSetUp() {
         proxy = new BrowserMobProxyServer();
         proxy.start(0);
         proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
         proxy.newHar("exampleTest");
         Proxy seleniumProxy = new Proxy();
         seleniumProxy.setHttpProxy("localhost:" + proxy.getPort());
-       System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("Webdriver.driver.chrome", "\\src\\test\\resource\\driver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setCapability("proxy", seleniumProxy);
         options.addArguments("start-maximized");
