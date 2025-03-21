@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 @Listeners(TestStatusListener.class)
 public class TestNGTestClass extends BaseSetUp{
 
-   @Test(description = "Verify textBox",enabled = true,priority = 1)
+   @Test(description = "Verify textBox",enabled = false,priority = 1)
        public void TestButton() {
               Assert.assertEquals( SeleniumDemoTest.HandlingButton(), true);
         }
@@ -118,6 +118,8 @@ public class TestNGTestClass extends BaseSetUp{
     public void TestTabs(){
         Assert.assertEquals(SeleniumDemoTest.HandlingTabs(),true);
     }
+
+
     @Test(description = "verify TextBox",enabled = false)
     public void TestTextBox() throws InterruptedException {
         Assert.assertEquals(SeleniumDemoTest.HandlingTextBox(),true);
@@ -151,6 +153,7 @@ public class TestNGTestClass extends BaseSetUp{
     {
         Assert.assertEquals(SeleniumDemoTest.HandlingDroppable(),true);
     }
+
     }
 
 

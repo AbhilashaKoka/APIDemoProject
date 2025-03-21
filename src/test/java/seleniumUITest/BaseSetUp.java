@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -62,7 +61,6 @@ public class BaseSetUp {
         String Timestamp = d.toString().replace(":", "_").replace(" ", "_");
         try {
             FileUtils.copyFile(src, new File("C:/Users/Abhilasha/IdeaProjects/Spring_Course-master/APIDemoProject/Screenshots/" + testMethodName + "_" + Timestamp + ".png"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
