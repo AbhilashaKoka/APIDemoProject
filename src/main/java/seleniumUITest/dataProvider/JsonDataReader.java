@@ -1,5 +1,4 @@
 package seleniumUITest.dataProvider;
-
 import com.google.gson.Gson;
 import seleniumUITest.manager.FileReaderManager;
 import seleniumUITest.testDataClass.PracticeFormsDetails;
