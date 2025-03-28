@@ -12,7 +12,7 @@ public class EncryptionUtil {
     }
 
 
-//    public static void main(String[] args) {
+//        public static void main(String[] args) {
 //        String pwd=encrypt("Abhilasha");
 //        System.out.println(pwd);
 //        String pwd2=decrypt(pwd);

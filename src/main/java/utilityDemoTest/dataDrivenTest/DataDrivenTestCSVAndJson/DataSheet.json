@@ -1,0 +1,6 @@
+{
+  "TestCaseID": "${TestCaseID}",
+  "Name": "${Name}",
+  "Email": "${Email}",
+  "Age": "${Age}"
+}
