@@ -1,4 +1,5 @@
 package utilityDemoTest.dataDrivenTest.DataDrivenTestCSVAndJson;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,6 +22,11 @@ public class JsonVariableReplacement {
             String populatedJson = replacePlaceholders(jsonTemplate, row);
             System.out.println("Generated JSON:\n" + populatedJson);
             // You can write the populatedJson to a file or use it in your tests
+
+             jsonreaderFile jsonreaderFile = new jsonreaderFile();
+            DataSheet dataSheet= jsonreaderFile.getTextBoxDetailsByTestCaseID("TC01");
+            System.out.println(dataSheet.toString());
+
         }
     }
 

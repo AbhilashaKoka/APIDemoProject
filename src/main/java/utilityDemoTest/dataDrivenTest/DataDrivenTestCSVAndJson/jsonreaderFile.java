@@ -1,7 +1,5 @@
 package utilityDemoTest.dataDrivenTest.DataDrivenTestCSVAndJson;
-
 import com.google.gson.Gson;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,9 +24,6 @@ public class jsonreaderFile {
 
     }
 
-    public jsonreaderFile(List<DataSheet> dataSheetDetails) {
-        this.dataSheetDetails = dataSheetDetails;
-    }
 
 
     private List<DataSheet> getDataSheetDetails() {
@@ -49,7 +44,7 @@ public class jsonreaderFile {
         }
     }
 
-    public final DataSheet getTextBoxDetailsByUserName(String TestCaseID){
+    public final DataSheet getTextBoxDetailsByTestCaseID(String TestCaseID){
         return dataSheetDetails.stream().filter(x->x.getTestCaseID().equalsIgnoreCase(TestCaseID)).findAny().get();
     }
 
