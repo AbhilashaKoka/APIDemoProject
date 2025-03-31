@@ -1,5 +1,4 @@
 package utilityDemoTest.dataDrivenTest.DataDrivenTestCSVAndJson;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,8 +9,8 @@ import java.util.Map;
 
 public class JsonVariableReplacement {
     public static void main(String[] args) throws IOException {
-        String csvFile = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/DataSheet.csv";
-        String jsonTemplateFile = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/DataSheet.json";
+        String csvFile = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/TestData.csv";
+        String jsonTemplateFile = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/TestData.json";
 
         // Read CSV and JSON template
         List<Map<String, String>> csvData = readCsv(csvFile);
@@ -24,7 +23,7 @@ public class JsonVariableReplacement {
             // You can write the populatedJson to a file or use it in your tests
 
              jsonreaderFile jsonreaderFile = new jsonreaderFile();
-            DataSheet dataSheet= jsonreaderFile.getTextBoxDetailsByTestCaseID("TC01");
+            TestData dataSheet= jsonreaderFile.getTestDataByTestCaseID("TC01");
             System.out.println(dataSheet.toString());
 
         }

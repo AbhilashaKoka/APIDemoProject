@@ -8,33 +8,33 @@ import java.util.Arrays;
 import java.util.List;
 
 public class jsonreaderFile {
-    private final String TextBoxFilePath;
+    private final String TestDataFilePath;
     //configs//TextBoxData.json";
     {
-        TextBoxFilePath = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/DataSheet.json";
+        TestDataFilePath = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/TestData.json";
     }
 
 
-    private List<DataSheet> dataSheetDetails;
+    private List<TestData> testDataList;
 
 
 
     public void JsonDataReader() {
-        dataSheetDetails=getDataSheetDetails();
+        testDataList = getTestDataList();
 
     }
 
 
 
-    private List<DataSheet> getDataSheetDetails() {
+    private List<TestData> getTestDataList() {
         Gson gson = new Gson();
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader(TextBoxFilePath));
-            DataSheet[] Details = gson.fromJson(bufferedReader, DataSheet[].class);
+            bufferedReader = new BufferedReader(new FileReader(TestDataFilePath));
+            TestData[] Details = gson.fromJson(bufferedReader, TestData[].class);
             return Arrays.asList(Details);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Json File Not Found at Path:" + TextBoxFilePath);
+            throw new RuntimeException("Json File Not Found at Path:" + TestDataFilePath);
         } finally {
             try {
                 if (bufferedReader != null)
@@ -44,8 +44,8 @@ public class jsonreaderFile {
         }
     }
 
-    public final DataSheet getTextBoxDetailsByTestCaseID(String TestCaseID){
-        return dataSheetDetails.stream().filter(x->x.getTestCaseID().equalsIgnoreCase(TestCaseID)).findAny().get();
+    public final TestData getTestDataByTestCaseID(String TestCaseID){
+        return testDataList.stream().filter(x->x.getTestCaseID().equalsIgnoreCase(TestCaseID)).findAny().get();
     }
 
 }

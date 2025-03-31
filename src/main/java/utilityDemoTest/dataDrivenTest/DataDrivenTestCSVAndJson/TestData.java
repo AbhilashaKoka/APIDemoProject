@@ -1,6 +1,6 @@
 package utilityDemoTest.dataDrivenTest.DataDrivenTestCSVAndJson;
 
-public class DataSheet {
+public class TestData {
 
     String TestCaseID;
     String Name;
