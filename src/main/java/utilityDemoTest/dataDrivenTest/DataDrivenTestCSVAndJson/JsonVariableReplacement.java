@@ -20,13 +20,14 @@ public class JsonVariableReplacement {
         for (Map<String, String> row : csvData) {
             String populatedJson = replacePlaceholders(jsonTemplate, row);
             System.out.println("Generated JSON:\n" + populatedJson);
-            // You can write the populatedJson to a file or use it in your tests
-
-             jsonreaderFile jsonreaderFile = new jsonreaderFile();
-            TestData dataSheet= jsonreaderFile.getTestDataByTestCaseID("TC01");
-            System.out.println(dataSheet.toString());
-
+       // You can write the populatedJson to a file or use it in your tests
         }
+
+
+
+        ReaderFile jsonreaderFile = new ReaderFile();
+        TestData dataSheet= jsonreaderFile.getTestDataByTestCaseID("TC01");
+        System.out.println(dataSheet.toString());
     }
 
     // Method to read CSV data into a List of Maps

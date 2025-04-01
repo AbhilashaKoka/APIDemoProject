@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class jsonreaderFile {
+public class ReaderFile {
     private final String TestDataFilePath;
-    //configs//TextBoxData.json";
+
     {
         TestDataFilePath = "src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/TestData.json";
     }
@@ -45,7 +45,7 @@ public class jsonreaderFile {
     }
 
     public final TestData getTestDataByTestCaseID(String TestCaseID){
-        return testDataList.stream().filter(x->x.getTestCaseID().equalsIgnoreCase(TestCaseID)).findAny().get();
+        return testDataList.stream().filter(x->x.ID.equalsIgnoreCase(TestCaseID)).findAny().get();
     }
 
 }
