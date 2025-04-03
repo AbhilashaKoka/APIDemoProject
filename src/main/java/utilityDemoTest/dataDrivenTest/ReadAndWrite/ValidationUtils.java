@@ -3,16 +3,15 @@ package utilityDemoTest.dataDrivenTest.ReadAndWrite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class ValidationUtils {
 
     /**
      * Utility method to validate the validation message on clicking an element.
-     *
      * @param driver        WebDriver instance
      * @param clickableBy   Locator for the clickable element
      * @param validationBy  Locator for the validation message element
@@ -45,7 +44,7 @@ public class ValidationUtils {
     public static void main(String[] args) {
         // Example setup (update the WebDriver path and locators accordingly)
         System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-        WebDriver driver = new org.openqa.selenium.chrome.ChromeDriver();
+        WebDriver driver = new ChromeDriver();
 
         try {
             driver.get("http://example.com"); // Replace with your application URL
