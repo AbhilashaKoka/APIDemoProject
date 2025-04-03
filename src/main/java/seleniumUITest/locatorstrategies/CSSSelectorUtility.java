@@ -1,4 +1,4 @@
-package utilityDemoTest.locatorstrategies;
+package seleniumUITest.locatorstrategies;
 
 import org.openqa.selenium.By;
 
