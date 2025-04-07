@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 @Listeners(TestStatusListener.class)
 public class TestNGTestClass extends BaseSetUp{
 
-   @Test(description = "Verify textBox",enabled = false,priority = 1)
+   @Test(description = "Verify textBox",enabled = true,priority = 1)
        public void TestButton() {
               Assert.assertEquals( SeleniumDemoTest.HandlingButton(), true);
         }
@@ -42,7 +42,7 @@ public class TestNGTestClass extends BaseSetUp{
          Assert.assertEquals(SeleniumDemoTest.HandlingAccordion(),true);
    }
 
-    @Test(description = "verify PracticeForm",enabled = true)
+    @Test(description = "verify PracticeForm",enabled = false)
     public void TestPracticeForm() throws InterruptedException {
         Assert.assertEquals(SeleniumDemoTest.HandlingForm(),true);
     }
@@ -131,7 +131,7 @@ public class TestNGTestClass extends BaseSetUp{
         Assert.assertEquals(SeleniumDemoTest.HandlingToolTip(),true);
     }
 
-    @Test(description = "verify Upload",enabled = true)
+    @Test(description = "verify Upload",enabled = false)
     public void TestUpload() throws InterruptedException {
         Assert.assertEquals(SeleniumDemoTest.HandlingUploadAndDownload(),true);
     }
