@@ -90,4 +90,13 @@ public class ReaderFile {
         }
         return result;
     }
+
+    // Method to replace placeholders in JSON template with CSV data
+    static String replacePlaceholders2(String template, Map<String, String> data) {
+        String result = template;
+        for (Map.Entry<String, String> entry : data.entrySet()) {
+            result = result.replace("${" + entry.getKey() + "}", entry.getValue());
+        }
+        return result;
+    }
 }

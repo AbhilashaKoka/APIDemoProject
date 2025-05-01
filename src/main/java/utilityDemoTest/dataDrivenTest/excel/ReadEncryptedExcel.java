@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
 
-public class ReadEncryptedExcel {
+public class
+ReadEncryptedExcel {
     public static void main(String[] args) {
         String filePath = "path/to/encrypted.xlsx"; // Replace with your actual file path
 

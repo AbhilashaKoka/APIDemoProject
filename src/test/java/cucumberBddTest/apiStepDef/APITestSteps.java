@@ -7,7 +7,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -94,7 +93,6 @@ public class APITestSteps {
         System.out.println(actualResult);
         System.out.println("Expected :");
         System.out.println(expectedResult);
-
         Assert.assertEquals(actualResult,expectedResult);
 
 //      boolean areEqual=actualResult.containsAll(expectedResult)&&expectedResult.containsAll(actualResult);

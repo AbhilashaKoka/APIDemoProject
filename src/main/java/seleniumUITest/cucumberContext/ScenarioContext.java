@@ -1,7 +1,6 @@
 package seleniumUITest.cucumberContext;
 
 import seleniumUITest.enums.Context;
-
 import java.util.Map;
 
 public class ScenarioContext
