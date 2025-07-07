@@ -9,7 +9,6 @@ import java.util.*;
 public class ReaderFile {
 
     private final String TestDataFilePath;
-
     {
      TestDataFilePath ="src/main/java/utilityDemoTest/dataDrivenTest/DataDrivenTestCSVAndJson/TestData.json";
     }
@@ -43,13 +42,17 @@ public class ReaderFile {
         }
     }
 
+
     public final TestData getTestDataByTestCaseID(String TestCaseID){
-        return testDataList.stream().filter(x->x.ID.equalsIgnoreCase(TestCaseID)).findAny().get();
+        return testDataList.stream().filter(x->x.TestCaseID.equalsIgnoreCase(TestCaseID)).findAny().get();
     }
 
+    public final TestData getTestDataByName(String Name){
+        return testDataList.stream().filter(x->x.Name.equalsIgnoreCase(Name)).findAny().get();
+    }
 
     // Method to read CSV data into a List of Maps
-    static List<Map<String, String>> readCsv(String csvFile) throws IOException {
+    public static List<Map<String, String>> readCsv(String csvFile) throws IOException {
         List<Map<String, String>> data = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
@@ -69,7 +72,7 @@ public class ReaderFile {
 
 
     // Method to read JSON template as a String
-    static String readJsonTemplate(String jsonTemplateFile) throws IOException {
+    public static String readJsonTemplate(String jsonTemplateFile) throws IOException {
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(jsonTemplateFile))) {
             String line;
@@ -83,7 +86,7 @@ public class ReaderFile {
 
 
     // Method to replace placeholders in JSON template with CSV data
-    static String replacePlaceholders(String template, Map<String, String> data) {
+    public static String replacePlaceholders(String template, Map<String, String> data) {
         String result = template;
         for (Map.Entry<String, String> entry : data.entrySet()) {
             result = result.replace("${" + entry.getKey() + "}", entry.getValue());
