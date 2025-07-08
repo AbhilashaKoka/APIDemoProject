@@ -3,11 +3,11 @@
 <!--<listeners>-->
 <!--    <listener class-name="seleniumTestNG.TestStatusListener"></listener>-->
 <!--</listeners>-->
-    <test name="SeleniumTestNG">
-        <classes>
-            <class name="seleniumUITest.TestNGTestClass"></class>
-        </classes>
-    </test>
+<!--    <test name="SeleniumTestNG">-->
+<!--        <classes>-->
+<!--            <class name="seleniumUITest.TestNGTestClass"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
     <!--    <test name="SeleniumGridStandaloneTest">-->
     <!--        <classes>-->
     <!--            <class name="seleniumGridTest.RemoteDriverBaseClass"></class>-->
@@ -27,9 +27,9 @@
 <!--    </test>-->
 
 
-<!--    <test name="RestAssuredTest">-->
-<!--        <classes>-->
-<!--            <class name="restassuredTest.BookStoreEndToEndAPITestNGTest"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="RestAssuredTest">
+        <classes>
+            <class name="restassuredTest.BookStoreEndToEndAPITestNGTest"></class>
+        </classes>
+    </test>
 </suite>

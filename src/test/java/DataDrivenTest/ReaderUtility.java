@@ -1,4 +1,4 @@
-package DataReader;
+package DataDrivenTest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static utilityDemoTest.dataDrivenTest.DataDrivenTestCSVAndJson.ReaderFile.*;
 
-public class ReaderFunction {
+public class ReaderUtility {
 
     public static String[] getTestData(String csvFile, String jsonTemplateFile){
         //Read CSV and JSON Template

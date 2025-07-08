@@ -1,4 +1,4 @@
-package DataReader;
+package DataDrivenTest;
 
 import org.json.JSONObject;
 import org.testng.annotations.DataProvider;
@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import static DataReader.ReaderFunction.SearchMethod;
-import static DataReader.ReaderFunction.getTestData;
+import static DataDrivenTest.ReaderUtility.SearchMethod;
+import static DataDrivenTest.ReaderUtility.getTestData;
 
 public class TestMethod{
 
