@@ -3,6 +3,8 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import java.io.File;
+import java.io.IOException;
+
 import static io.appium.java_client.service.local.flags.GeneralServerFlag.BASEPATH;
 
 public class AppiumServerManager {
@@ -17,7 +19,10 @@ public class AppiumServerManager {
         builder.withArgument(BASEPATH, "/wd/hub");
         builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
         service = AppiumDriverLocalService.buildService(builder);
-        service.start();
+        if(service.isRunning()) {
+            execKill();
+            service.start();
+        }
         System.out.println("Appium server started at: " + service.getUrl());
     }
 
@@ -25,6 +30,16 @@ public class AppiumServerManager {
         if (service != null && service.isRunning()) {
             service.stop();
             System.out.println("Appium server stopped.");
+        }
+    }
+
+    public static void execKill() {
+        try{
+                   Runtime.getRuntime().exec(" cmd /c TASKKILL /F /IM node.exe");
+        }
+        catch(IOException io)
+        {
+            io.printStackTrace();
         }
     }
 }
