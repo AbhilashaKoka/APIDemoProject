@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class SeleniumDemoTest extends BaseSetUp {
+public class SeleniumDemoTest extends BaseSetUp{
 
     public static Boolean HandlingAccordion(){
         Boolean bol=false;

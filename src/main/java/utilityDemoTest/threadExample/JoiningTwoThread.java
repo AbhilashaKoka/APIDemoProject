@@ -12,7 +12,6 @@ class ThreadJoining extends Thread{
                 Thread.sleep(500);
                 System.out.println("Current Thread: "  + Thread.currentThread().getName());
             }
-
             catch(Exception ex){
                 System.out.println("Exception has" + " been caught" + ex);
             }
@@ -53,8 +52,7 @@ class GFG
             t2.join();
         }  catch(Exception ex)
         {
-            System.out.println("Exception has been" +
-                    " caught" + ex);
+            System.out.println("Exception has been"+" caught" + ex);
         }
 
         // t3 starts
@@ -62,7 +60,7 @@ class GFG
         // After t2 has dead, t3 starts
         try
         {
-            System.out.println("Current Thread: "
+            System.out.println("Current Thread:"
                     + Thread.currentThread().getName());
             t3.join();
         }  catch(Exception ex)

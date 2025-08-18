@@ -23,7 +23,7 @@ public class BookStoreEndToEndSteps {
     String username ;
     String password;
     NewUser authorizationRequest;
-    List<cucumberBddTest.model.bookstoreRequest.ISBN> isbnList;
+    List<ISBN> isbnList;
     Response response;
 
     @Then("Verify Successfully Create User")
@@ -115,7 +115,6 @@ public class BookStoreEndToEndSteps {
         boolean bool=false;
         try {
             BookStoreEndToEnd_Tests e2ETests = new BookStoreEndToEnd_Tests();
-
             isbnList = generateISBNList();
             System.out.println(isbnList);
             response = e2ETests.CreateBooksListByAddingISBN(userId, isbnList, token);

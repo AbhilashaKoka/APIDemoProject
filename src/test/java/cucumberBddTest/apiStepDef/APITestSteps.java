@@ -34,7 +34,7 @@ public class APITestSteps {
 
 
     @When("I Authorized new User")
-    public void i_authorized_new_user(DataTable dataTable) {
+    public void i_authorized_new_user(DataTable dataTable){
         List<Map<String, String>> table5 = dataTable.asMaps();
         BookStoreEndPoints.generateToken(table5.get(0).get("username"),table5.get(0).get("password"));
         BookStoreEndPoints.authorizedNewUser(table5.get(0).get("username"),table5.get(0).get("password"));
@@ -42,7 +42,7 @@ public class APITestSteps {
 
 
     @When("I added a book to my reading list")
-    public void i_added_a_book_to_my_reading_list(DataTable dataTable) {
+    public void i_added_a_book_to_my_reading_list(DataTable dataTable){
         List<Map<String, String>> table6 = dataTable.asMaps();
         BookStoreEndPoints.addBook(table6.get(0).get("isbn"));
     }

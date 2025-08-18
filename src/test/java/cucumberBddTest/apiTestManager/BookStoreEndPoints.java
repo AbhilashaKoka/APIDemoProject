@@ -26,8 +26,7 @@ public class BookStoreEndPoints {
         NewUser authRequest=new NewUser(username,password);
         Response response1=request.body(authRequest).post(BookStoreRoute.createNewUser());
         return response1.getBody().as(UserCreated.class);
-
-    }
+   }
 
 
     public static Token generateToken(String username, String password){
