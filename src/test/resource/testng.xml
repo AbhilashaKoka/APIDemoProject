@@ -32,9 +32,14 @@
 <!--            <class name="restassuredTest.BookStoreEndToEndAPITestNGTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="AppiumTest">
+<!--    <test name="AppiumTest">-->
+<!--        <classes>-->
+<!--            <class name="appiumTest.MobileTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="seleniumperfTest">
         <classes>
-            <class name="appiumTest.MobileTest"></class>
+            <class name="seleniumperfTest.BaseproxySetUp"></class>
         </classes>
     </test>
 
