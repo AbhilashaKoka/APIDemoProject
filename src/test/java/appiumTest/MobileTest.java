@@ -16,9 +16,10 @@ public class MobileTest  extends AppiumServerManager {
         // Initialize the AndroidDriver
         private static final long serialVersionUID = 1L;
         AndroidDriver driver;
+        String AppType="Hybrid";
 
         public MobileTest() throws MalformedURLException {
-            driver = createAndroidDriver("Hybrid");
+            driver = createAndroidDriver(AppType);
         }
 
         @Test

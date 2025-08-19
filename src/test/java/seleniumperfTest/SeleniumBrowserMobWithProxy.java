@@ -1,41 +1,35 @@
 package seleniumperfTest;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.proxy.CaptureType;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class SeleniumBrowserMobWithProxy extends BaseproxySetUp{
+public class SeleniumBrowserMobWithProxy {
 
     static WebDriver driver;
-     static JavascriptExecutor js ;
+    static JavascriptExecutor js ;
+static  Proxy seleniumProxy;
+static     BrowserMobProxy proxy;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        // Step 1: Start BrowserMob Proxy
-        BrowserMobProxy proxy = new BrowserMobProxyServer();
-        // Start proxy on a random available port
-        proxy.start(0);
-        // Enable HAR capture (headers, content, cookies, etc.)
-        proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-        // Step 2: Start recording HAR
-        proxy.newHar("exampleTest");
-        // Step 3: Configure Selenium to use the proxy
-        Proxy seleniumProxy = new Proxy();
-        seleniumProxy.setHttpProxy("localhost:" + proxy.getPort());
-        ChromeOptions options = new ChromeOptions();
-        options.setCapability("proxy", seleniumProxy);
-        options.addArguments("start-maximized");
-        // Set WebDriver path and initialize it
-        System.setProperty("webdriver.chrome.driver", "src/test/resource/driver/chromedriver.exe");
-         driver = new ChromeDriver(options);
+
+
+
+    public static void runScript() throws InterruptedException {
         // Step 4: Navigate to a website
         driver.get("https://demoqa.com");
-         js= (JavascriptExecutor) driver;
+        js= (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
         try
         {
@@ -44,14 +38,56 @@ public class SeleniumBrowserMobWithProxy extends BaseproxySetUp{
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-        // Step 5: Stop recording and save HAR file
-        File harFile = new File("network_capture.har");
-        proxy.getHar().writeTo(harFile);
-        // Clean up resources
-        driver.quit();
-        proxy.stop();
     }
 
+
+public static WebDriver createDriver() {
+    WebDriverManager.chromedriver().setup();
+    ChromeOptions options = new ChromeOptions();
+    options.setCapability("proxy", seleniumProxy);
+    options.addArguments("start-maximized");
+    driver = new ChromeDriver(options);
+        System.out.println("WebDriver initialized with BrowserMob Proxy.");
+        return driver;
+    }
+
+
+    @AfterMethod(dependsOnMethods = "writeHarFile", alwaysRun = true)
+    public static void cleanUp() {
+        // Step 6: Stop the proxy and close the browser
+        if (proxy != null) {
+            proxy.stop();
+            System.out.println("BrowserMob Proxy stopped.");
+        }
+        if (driver != null) {
+            driver.quit();
+            System.out.println("WebDriver closed.");
+        }
+    }
+
+@AfterMethod
+public static void writeHarFile() throws IOException {
+    // Step 5: Write HAR data to a file
+    Har har = proxy.getHar();
+    File harFile = new File("src/test/resource/har/example.har");
+    har.writeTo(harFile);
+    System.out.println("HAR file written to: " + harFile.getAbsolutePath());
+}
+
+@BeforeMethod
+public static void startBrowserMobProxy() {
+    // Step 1: Start BrowserMob Proxy
+    proxy = new BrowserMobProxyServer();
+    // Start proxy on a random available port
+    proxy.start(0);
+    // Enable HAR capture (headers, content, cookies, etc.)
+    proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+    // Step 2: Start recording HAR
+    proxy.newHar("exampleTest");
+    // Step 3: Configure Selenium to use the proxy
+     seleniumProxy = new Proxy();
+     seleniumProxy.setHttpProxy("localhost:" + proxy.getPort());
+}
 
 
         public static Boolean HandlingForm() throws InterruptedException {

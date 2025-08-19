@@ -4,7 +4,8 @@ https://github.com/appium/java-client
 
 The location of the appium.js file, or more commonly, main.js (which is the entry point for newer Appium versions), depends on how Appium was installed.
 For Appium Desktop (Windows):
-The file is typically found within the Appium Desktop application's installation directory. A common path structure is:
+The file is typically found within the Appium Desktop application's installation directory.
+ A common path structure is:
 C:\Users\<YourUsername>\AppData\Local\Programs\appium-desktop\resources\app\node_modules\appium\build\lib\main.js
 
 For Appium installed via npm (globally):
