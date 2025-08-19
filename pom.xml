@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.0</junit.version>
         <testNG.version>7.10.1</testNG.version>
-        <selenium.version>4.25.0</selenium.version>
+        <selenium.version>4.11.0</selenium.version>
         <WebDriverManager.version>5.9.2</WebDriverManager.version>
         <poi.version>5.4.0</poi.version>
         <cucumber.version>7.18.1</cucumber.version>
@@ -219,6 +219,7 @@
             <artifactId>browsermob-core</artifactId>
             <version>${proxy.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>

@@ -8,13 +8,15 @@ import java.net.URL;
 
 public class MobileTest {
 
-
+    private static AndroidDriver driver;
 
     public static void main(String[] args) throws Exception {
-        AppiumServerManager.startAppiumServer();
-        DesiredCapabilities caps = getDesiredCapabilitiesForBrowserApp();
-        URL url = new URL("http://127.0.0.1:4723/wd/hub");
-        AndroidDriver driver = new AndroidDriver(url, caps);
+
+       AppiumServerManager.startAppiumServer();
+        Thread.sleep(3000); // Wait for Appium server to be ready
+
+        DesiredCapabilities caps = getDesiredCapabilities();
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
         driver.get("https://www.google.com");
         driver.findElement(By.name("q")).sendKeys("Automation");
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
@@ -23,24 +25,14 @@ public class MobileTest {
         AppiumServerManager.stopAppiumServer();
     }
 
-    private static DesiredCapabilities getDesiredCapabilitiesForBrowserApp() {
+    private static DesiredCapabilities getDesiredCapabilities() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", "Android");
         caps.setCapability("deviceName", "emulator-5554");
         caps.setCapability("automationName", "UIAutomator2");
         caps.setCapability("browserName", "Chrome");
+        caps.setCapability("chromedriverExecutable", "C:\\ApplicationPath\\drivers\\chromedriver_74\\chromedriver.exe");
         caps.setCapability("noReset", true);
-        caps.setCapability("chromedriverAutodownload", true);
         return caps;
-    }
-
-    private static DesiredCapabilities getDesiredCapabilitiesForNativeApp() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "emulator-5554");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10");
-        capabilities.setCapability("appPackage", "com.google.android.calculator");
-        capabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
-        return capabilities;
     }
 }
