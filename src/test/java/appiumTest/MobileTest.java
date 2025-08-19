@@ -13,7 +13,7 @@ public class MobileTest {
     public static void main(String[] args) throws Exception {
 
        AppiumServerManager.startAppiumServer();
-        Thread.sleep(3000); // Wait for Appium server to be ready
+        Thread.sleep(3000);
 
         DesiredCapabilities caps = getDesiredCapabilities();
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
