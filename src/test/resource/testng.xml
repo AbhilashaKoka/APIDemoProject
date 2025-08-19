@@ -27,9 +27,16 @@
 <!--    </test>-->
 
 
-    <test name="RestAssuredTest">
+<!--    <test name="RestAssuredTest">-->
+<!--        <classes>-->
+<!--            <class name="restassuredTest.BookStoreEndToEndAPITestNGTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="AppiumTest">
         <classes>
-            <class name="restassuredTest.BookStoreEndToEndAPITestNGTest"></class>
+            <class name="appiumTest.MobileTest"></class>
         </classes>
     </test>
+
+
 </suite>
