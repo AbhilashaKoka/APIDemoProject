@@ -1,39 +1,97 @@
 package appiumTest;
 
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import java.io.File;
-
+import java.net.MalformedURLException;
+import java.net.URL;
 import static io.appium.java_client.service.local.flags.GeneralServerFlag.BASEPATH;
-
 
 public class AppiumServerManager {
 
-    private static AppiumDriverLocalService service;
+    static AppiumDriverLocalService service = null;
+    AndroidDriver driver;
 
-    public static void startAppiumServer() {
+
+    @BeforeMethod
+    public void startServer() throws  MalformedURLException {
         AppiumServiceBuilder builder = new AppiumServiceBuilder();
-        builder.withIPAddress("127.0.0.1");
-        builder.usingPort(4723);
+        builder.withIPAddress("127.0.0.1"); // Or use .usingAnyFreePort()
+        builder.usingPort(4723); // Or use .usingAnyFreePort()
         builder.withAppiumJS(new File("C:\\Users\\Abhilasha\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js")); // Replace with your Appium path
-        builder.withArgument(BASEPATH, "/wd/hub");
-
+        builder.withArgument(BASEPATH, "/wd/hub"); // Standard base path
+        // Add other server arguments as needed, e.g., builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
         service = AppiumDriverLocalService.buildService(builder);
         if(!service.isRunning()) {
             service.start();
             System.out.println("Appium server started at: " + service.getUrl());
         }
-        else {
-            stopAppiumServer();
-            service.start();
-        }
+
     }
 
+    public  AndroidDriver createAndroidDriver( String appType) throws MalformedURLException {
+        startServer();
+        switch (appType) {
+            case "Hybrid":
+                try {
+                    DesiredCapabilities capabilities = setCapabilitiesForAndroid();
+                    driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                return driver;
+            case "Native":
+                try {
+                    DesiredCapabilities capabilities = getDesiredCapabilities();
+                    driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                }
+                catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                return driver;
+            default:
+                throw new IllegalArgumentException("Unsupported app type: " + appType);
+        }
+
+    }
+
+    @AfterMethod
     public static void stopAppiumServer() {
         if (service != null && service.isRunning()) {
             service.stop();
             System.out.println("Appium server stopped.");
         }
     }
+
+
+    private DesiredCapabilities setCapabilitiesForAndroid() {
+        try {
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setCapability("platformName", "Android");
+            caps.setCapability("deviceName", "emulator-5554");
+            caps.setCapability("automationName", "UIAutomator2");
+            caps.setCapability("browserName", "Chrome");
+            caps.setCapability("chromedriverExecutable", "C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\APPIUMSetUp\\drivers\\chromedriver_74\\chromedriver.exe");
+            caps.setCapability("noReset", true);
+            return caps;
+        } catch (Exception ex) {
+            throw new IllegalArgumentException("Browser isn't supported.");
+        }
+    }
+
+    private static DesiredCapabilities getDesiredCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("platformVersion", "10");
+        capabilities.setCapability("automationName", "UIAutomator2");
+        capabilities.setCapability("appPackage", "com.google.android.calculator");
+        capabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
+        return capabilities;
+    }
+
 }
