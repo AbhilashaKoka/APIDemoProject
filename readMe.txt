@@ -100,3 +100,22 @@ C:\Users\Abhilasha>appium driver list --installed
 appium --allow-insecure chromedriver_autodownload
 caps.setCapability("chromedriverExecutable", "C:\\Drivers\\chromedriver_74\\chromedriver.exe");
 ------------------------------------------------------------------------------------------------------
+ Core-Supported Plugins--------------
+appium plugin install execute-driver
+appium plugin install images
+appium plugin install relaxed-caps
+appium plugin install storage
+appium plugin install universal-xml
+appium --use-plugins execute-driver
+appium --use-plugins images
+appium --use-plugins relaxed-caps
+appium --use-plugins storage
+appium --use-plugins universal-xml
+ Supporting Plugins---------------------
+appium plugin install appium-wait-plugin
+appium plugin install appium-dashboard
+appium plugin install appium-device-farm
+appium --use-plugins appium-wait-plugin
+appium --use-plugins appium-dashboard
+appium --use-plugins appium-device-farm
+-----------------------------------------------------------------------------------------------------------

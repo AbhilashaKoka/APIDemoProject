@@ -2,7 +2,6 @@ package seleniumperfTest;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 
 public class BaseproxySetUp extends SeleniumBrowserMobWithProxy{
