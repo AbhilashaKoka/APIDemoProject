@@ -10,7 +10,7 @@
 <!--    </test>-->
     <!--    <test name="SeleniumGridStandaloneTest">-->
     <!--        <classes>-->
-    <!--            <class name="seleniumGridTest.RemoteDriverBaseClass"></class>-->
+    <!--            <class name="seleniumGridTest.RemoteDriverSetUp"></class>-->
     <!--        </classes>-->
     <!--    </test>-->
 

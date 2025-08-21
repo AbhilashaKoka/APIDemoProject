@@ -1,17 +1,32 @@
 package seleniumGridTest;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.util.List;
 
-public class StandaloneTest extends RemoteDriverBaseClass {
+public class StandaloneTest extends RemoteDriverSetUp {
+
+    String browserName="Chrome";
+    //configuration file
+     String servername="standalone";
+
+
+
 
 
     @Test
-    public static void main(String[] args) throws IOException, InterruptedException {
-        setup("chrome");
+    public  void SampleTest(){} {
+        try {
+            setup(browserName,servername);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         driver.get("https://demoqa.com");
         JavascriptExecutor js=(JavascriptExecutor)driver;
         js = (JavascriptExecutor) driver;
@@ -43,7 +58,11 @@ public class StandaloneTest extends RemoteDriverBaseClass {
                 System.out.println(inputele.getText());
             }
         }
-        tearDown();
+        try {
+            tearDown();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

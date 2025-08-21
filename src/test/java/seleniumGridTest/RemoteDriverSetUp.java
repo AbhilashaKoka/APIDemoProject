@@ -1,11 +1,10 @@
 package seleniumGridTest;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,24 +14,16 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 
-public class RemoteDriverBaseClass {
+public class RemoteDriverSetUp {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
-    public static WebDriver driver;
-
-    //configuration file
-    static String servername="standalone";
+    public static RemoteWebDriver driver;
 
 
 
 
-    @BeforeSuite
-    public static void setup(String browser) throws IOException, InterruptedException {
-        try{
-            startSeleniumGridServer(jarPath,servername);
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (browser.equalsIgnoreCase("chrome")) {
+    public static RemoteWebDriver setup(String browser, String  servername) throws IOException, InterruptedException {
+        startSeleniumGridServer(jarPath,servername);
+      if (browser.equalsIgnoreCase("Chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
              driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), chromeOptions));
         }
@@ -47,6 +38,8 @@ public class RemoteDriverBaseClass {
         else {
             throw new Error("Browser configuration is not defined!!");
         }
+
+       return driver;
     }
 
 
@@ -77,6 +70,58 @@ public class RemoteDriverBaseClass {
         }
     }
 
+    public static void startDistributedServer(String jarPath) throws IOException, InterruptedException {
+        Process eventBus= launchEventBusProcess(jarPath);
+        logServerOutput(eventBus);
+        int exitCode3 = eventBus.waitFor();
+        System.out.println("Process exited with code:" + exitCode3);
+
+        Process routerServer= launchRouterService(jarPath);
+        logServerOutput(routerServer);
+        int exitCode7 = routerServer.waitFor();
+        System.out.println("Process exited with code:" + exitCode7);
+
+        Process sessionQueue= launchSessionQueueProcess(jarPath);
+        logServerOutput(sessionQueue);
+        int exitCode4 = sessionQueue.waitFor();
+        System.out.println("Process exited with code:" + exitCode4);
+
+        Process distributorServer= launchDistributorService(jarPath);
+        logServerOutput(distributorServer);
+        int exitCode6 = distributorServer.waitFor();
+        System.out.println("Process exited with code:" + exitCode6);
+
+        Process Node12= launchBrowserNode(jarPath);
+        logServerOutput(Node12);
+        int exitCode8 = Node12.waitFor();
+        System.out.println("Process exited with code:" + exitCode8);
+
+        Process SessionMap= launchSessionMappingProcess(jarPath);
+        logServerOutput(SessionMap);
+        int exitCode5 = SessionMap.waitFor();
+        System.out.println("Process exited with code:" + exitCode5);
+    }
+
+
+
+    public static void startNodeServer(String jarPath) throws IOException, InterruptedException {
+        Process hubprocess = launchSeleniumHubServer(jarPath);
+        logServerOutput(hubprocess);
+        int exitCode1 = hubprocess.waitFor();
+        System.out.println("Process exited with code: " + exitCode1);
+        Process nodeprocess = launchSeleniumNodeProcess(jarPath);
+        logServerOutput(nodeprocess);
+        int exitCode2 = nodeprocess.waitFor();
+        System.out.println("Process exited with code: " + exitCode2);
+    }
+
+
+    public static void startStandaloneServer(String jarPath) throws IOException, InterruptedException {
+        Process standaloneprocess = launchSeleniumStandalone(jarPath);
+        logServerOutput(standaloneprocess);
+        int exitCode = standaloneprocess.waitFor();
+        System.out.println("Process exited with code: " + exitCode);
+    }
 
     private static Process launchSeleniumStandalone(String jarPath) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "standalone");
@@ -175,58 +220,7 @@ private static Process launchBrowserNode(String jarPath) throws IOException {
     return process;
 }
 
-public static void startDistributedServer(String jarPath) throws IOException, InterruptedException {
-    Process eventBus= launchEventBusProcess(jarPath);
-    logServerOutput(eventBus);
-    int exitCode3 = eventBus.waitFor();
-    System.out.println("Process exited with code:" + exitCode3);
 
-    Process routerServer= launchRouterService(jarPath);
-    logServerOutput(routerServer);
-    int exitCode7 = routerServer.waitFor();
-    System.out.println("Process exited with code:" + exitCode7);
-
-    Process sessionQueue= launchSessionQueueProcess(jarPath);
-    logServerOutput(sessionQueue);
-    int exitCode4 = sessionQueue.waitFor();
-    System.out.println("Process exited with code:" + exitCode4);
-
-    Process distributorServer= launchDistributorService(jarPath);
-    logServerOutput(distributorServer);
-    int exitCode6 = distributorServer.waitFor();
-    System.out.println("Process exited with code:" + exitCode6);
-
-    Process Node12= launchBrowserNode(jarPath);
-    logServerOutput(Node12);
-    int exitCode8 = Node12.waitFor();
-    System.out.println("Process exited with code:" + exitCode8);
-
-    Process SessionMap= launchSessionMappingProcess(jarPath);
-    logServerOutput(SessionMap);
-    int exitCode5 = SessionMap.waitFor();
-    System.out.println("Process exited with code:" + exitCode5);
-}
-
-
-
-public static void startNodeServer(String jarPath) throws IOException, InterruptedException {
-    Process hubprocess = launchSeleniumHubServer(jarPath);
-    logServerOutput(hubprocess);
-    int exitCode1 = hubprocess.waitFor();
-    System.out.println("Process exited with code: " + exitCode1);
-    Process nodeprocess = launchSeleniumNodeProcess(jarPath);
-    logServerOutput(nodeprocess);
-    int exitCode2 = nodeprocess.waitFor();
-    System.out.println("Process exited with code: " + exitCode2);
-}
-
-
-public static void startStandaloneServer(String jarPath) throws IOException, InterruptedException {
-    Process standaloneprocess = launchSeleniumStandalone(jarPath);
-    logServerOutput(standaloneprocess);
-    int exitCode = standaloneprocess.waitFor();
-    System.out.println("Process exited with code: " + exitCode);
-}
 
 
 
