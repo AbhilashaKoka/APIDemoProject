@@ -5,26 +5,19 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.List;
 
 public class StandaloneTest extends RemoteDriverSetUp {
 
     String browserName="Chrome";
-    //configuration file
-     String servername="standalone";
-
-
-
+    String servername="standalone";
 
 
     @Test
     public  void SampleTest(){} {
         try {
             setup(browserName,servername);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         driver.get("https://demoqa.com");
