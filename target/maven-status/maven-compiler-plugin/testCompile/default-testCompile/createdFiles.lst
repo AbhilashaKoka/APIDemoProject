@@ -48,7 +48,9 @@ seleniumUITest\locatorstrategies\XPATHSelectorUtility.class
 cucumberBddTest\uiStepDef\BrowserStepDefs.class
 restassuredTest\RestApiTest.class
 cucumberBddTest\model\bookstoreResponse\Token.class
+seleniumGridTest\RotatingProxyGrid.class
 cucumberBddTest\runner\APITestRunner.class
+seleniumGridTest\GridProxyExample.class
 cucumberBddTest\uiStepDef\PracticeFormStepDefs.class
 cucumberBddTest\utility\TestBook.class
 cucumberBddTest\apiTestManager\BookStoreEndPoints.class
