@@ -75,7 +75,7 @@ public class AppiumServerManager {
             caps.setCapability("deviceName", "emulator-5554");
             caps.setCapability("automationName", "UIAutomator2");
             caps.setCapability("browserName", "Chrome");
-            caps.setCapability("chromedriverExecutable", "C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\APPIUMSetUp\\drivers\\chromedriver_74\\chromedriver.exe");
+            caps.setCapability("chromedriverExecutable", "C:\\Users\\Abhilasha\\Documents\\DOCUMENT\\StudyDocumentFolder\\IDE\\APPIUMSetUp\\drivers\\chromedriver_113.0.5672.63\\chromedriver.exe");
             caps.setCapability("noReset", true);
             return caps;
         } catch (Exception ex) {
@@ -87,7 +87,7 @@ public class AppiumServerManager {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "emulator-5554");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10");
+        capabilities.setCapability("platformVersion", "14");
         capabilities.setCapability("automationName", "UIAutomator2");
         capabilities.setCapability("appPackage", "com.google.android.calculator");
         capabilities.setCapability("appActivity", "com.android.calculator2.Calculator");

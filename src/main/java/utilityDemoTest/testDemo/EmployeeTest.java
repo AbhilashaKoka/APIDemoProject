@@ -10,10 +10,10 @@ public class EmployeeTest {
         e.EmployeeGroupByAge();
         e.maxAge();
         e.EmployeesMaleAverageAge();
-       e.EmployeesFeMaleAverageAge();
-       e.EmployeesDepartmentCout();
-       e.OldestEmpoyee();
-       e.YoungestEmployee();
-       e.Department();
+        e.EmployeesFeMaleAverageAge();
+        e.EmployeesDepartmentCout();
+        e.OldestEmpoyee();
+        e.YoungestEmployee();
+        e.Department();
     }
 }

@@ -1,16 +1,13 @@
 package seleniumGridTest;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
 public class StandaloneTest extends RemoteDriverSetUp {
-
-    String browserName="Chrome";
-    String servername="standalone";
+   String browserName="Chrome";
+    String servername="node";
 
 
     @Test
@@ -20,9 +17,9 @@ public class StandaloneTest extends RemoteDriverSetUp {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         driver.get("https://demoqa.com");
-        JavascriptExecutor js=(JavascriptExecutor)driver;
-        js = (JavascriptExecutor) driver;
+        JavascriptExecutor js= (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
         WebElement Element_Frames= driver.findElement(By.xpath("//*[@class=\"category-cards\"]//following::div[@class=\"card-body\"]//h5[contains(text(),\"Elements\")]"));
         Element_Frames.click();

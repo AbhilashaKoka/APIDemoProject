@@ -1,0 +1,10 @@
+version: "3"
+services:
+  squares:
+    image: abhilashakoka/latest
+
+
+
+
+
+

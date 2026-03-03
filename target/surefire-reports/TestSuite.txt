@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 26.002 s <<< FAILURE! - in TestSuite
+cleanUp(seleniumperfTest.BaseproxySetUp)  Time elapsed: 22.05 s  <<< FAILURE!
+java.lang.IllegalStateException: Proxy server is already stopped. Cannot re-stop.
+

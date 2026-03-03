@@ -1,4 +1,3 @@
-
 C:\Users\Abhilasha>npm install appium --chromedriver_version="74.0.3729"
 https://github.com/appium/java-client
 
@@ -44,18 +43,14 @@ appium-doctor -h
 ------------------------------------------------------------------------------------------------------
 to install correct version
 npm uninstall -g appium
-
+-------------------------------------------------------------------------------------------------------
 where appium
 del "C:\Users\Abhilasha\AppData\Roaming\npm\appium"
 del "C:\Users\Abhilasha\AppData\Roaming\npm\appium.cmd"
-
-
+-------------------------------------------------------------------------------------------
 npm view appium versions --json
-
 npm install -g appium@3.0.0-rc.2
-
 appium -v
-
 npm list -g appium
 npm config get prefix
 
@@ -74,6 +69,7 @@ C:\Users\Abhilasha>appium -v
 3.0.0-rc.2
 
 npm list -g appium
+npm view appium versions --json
 
 C:\Users\Abhilasha>appium driver list
 √ Listing available drivers

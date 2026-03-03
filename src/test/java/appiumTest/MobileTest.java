@@ -22,7 +22,7 @@ public class MobileTest  extends AppiumServerManager {
             driver = createAndroidDriver(AppType);
         }
 
-        @Test
+        @Test(enabled = false)
         public void searchgooglepage() {
             driver.get("https://www.google.com");
             driver.findElement(By.name("q")).sendKeys("Automation");

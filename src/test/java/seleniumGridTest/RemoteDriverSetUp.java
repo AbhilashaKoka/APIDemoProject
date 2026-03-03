@@ -1,5 +1,4 @@
 package seleniumGridTest;
-
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -18,22 +17,19 @@ public class RemoteDriverSetUp {
     static String jarPath = "src/test/resource/driver/selenium-server-4.25.0.jar";
     public static RemoteWebDriver driver;
 
-
-
-
     public static RemoteWebDriver setup(String browser, String  servername) throws IOException, InterruptedException {
         startSeleniumGridServer(jarPath,servername);
       if (browser.equalsIgnoreCase("Chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
-             driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), chromeOptions));
+             driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444/"), chromeOptions));
         }
         else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), firefoxOptions));
+            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444/"), firefoxOptions));
 
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();
-            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444"), edgeOptions));
+            driver = (new RemoteWebDriver(new URL("http://"+getLocalHostAddress()+":4444/"), edgeOptions));
         }
         else {
             throw new Error("Browser configuration is not defined!!");
@@ -59,12 +55,12 @@ public class RemoteDriverSetUp {
                     startStandaloneServer(jarPath);
                 break;
                 case "node":
-                    startNodeServer(jarPath);
+                    startHubNodeServer(jarPath);
                 break;
                 case "distributed":
                 startDistributedServer(jarPath);
                 break;
-               default:
+                default:
                 System.out.println("Invalid server type: " + serverType);
                 break;
         }
@@ -104,7 +100,7 @@ public class RemoteDriverSetUp {
 
 
 
-    public static void startNodeServer(String jarPath) throws IOException, InterruptedException {
+    public static void startHubNodeServer(String jarPath) throws IOException, InterruptedException {
         Process hubprocess = launchSeleniumHubServer(jarPath);
         logServerOutput(hubprocess);
         int exitCode1 = hubprocess.waitFor();
@@ -133,7 +129,7 @@ public class RemoteDriverSetUp {
 
 
     private static Process launchSeleniumHubServer(String jarPath) throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "hub");
+        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "hub","--host","192.168.1.100","--port","5555");
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
         System.out.println("Selenium Hub Server started.");
@@ -144,8 +140,8 @@ public class RemoteDriverSetUp {
 
 
     private static Process launchSeleniumNodeProcess(String jarPath) throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--log", "node.log");
-      //  ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--hub" , "http://"+getLocalHostAddress()+":"+getPort());
+       ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--log", "node.log","--hub","http://192.168.1.100:5555","--port","5556");
+       //  ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarPath, "node", "--hub" , "http://"+getLocalHostAddress()+":"+getPort());
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
         System.out.println("Selenium Node Server started.");
@@ -220,10 +216,6 @@ private static Process launchBrowserNode(String jarPath) throws IOException {
     return process;
 }
 
-
-
-
-
     private static void killExistingJavaProcesses() throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("tasklist");
         processBuilder.redirectErrorStream(true);
@@ -260,7 +252,6 @@ private static Process launchBrowserNode(String jarPath) throws IOException {
             InetAddress localAddress = InetAddress.getLocalHost();
             System.out.println("Local IP Address: " + localAddress.getHostAddress());
             str= localAddress.getHostAddress();
-
         } catch (UnknownHostException e) {
             System.err.println("Could not get IP address: " + e.getMessage());
         }
@@ -281,8 +272,7 @@ private static Process launchBrowserNode(String jarPath) throws IOException {
         return port;
     }
 
-
-    }
+  }
 
 
 
