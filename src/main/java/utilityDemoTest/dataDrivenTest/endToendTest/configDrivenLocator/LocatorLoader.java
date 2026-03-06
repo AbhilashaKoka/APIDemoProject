@@ -6,7 +6,9 @@ import java.util.Map;
 
 public class LocatorLoader{
 
-    public static Map<String, Map<String, String>> load(String filePath){
+    public static Map<String, Map<String, String>> load(String env){
+        String filePath = "locators_" + env + ".json";
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.readValue(new File(filePath),

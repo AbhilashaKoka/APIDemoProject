@@ -6,8 +6,9 @@ public class LocatorFactory {
     private static Map<String, Map<String, String>> locators;
 
     static {
+        String env = System.getProperty("env", "qa"); // default to QA
         // Load JSON/YAML once at startup
-        locators = LocatorLoader.load("locators.json");
+        locators = LocatorLoader.load(env);
     }
 
     public static By get(String page, String element) {

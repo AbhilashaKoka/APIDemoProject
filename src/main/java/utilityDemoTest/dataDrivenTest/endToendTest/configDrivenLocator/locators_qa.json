@@ -1,0 +1,10 @@
+{
+  "LoginPage": {
+    "usernameField": "id:userId",
+    "passwordField": "css:input[type='password']",
+    "loginButton": "xpath://button[text()='Login']"
+  },
+  "DashboardPage": {
+    "welcomeMessage": "css:div.welcome-banner"
+  }
+}
