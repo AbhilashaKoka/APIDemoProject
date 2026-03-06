@@ -1,8 +1,10 @@
 seleniumUITest\TestNGTestClass.class
 cucumberBddTest\model\bookstoreResponse\Book.class
 cucumberBddTest\runner\UITestRunner.class
+seleniumGeoLocationTest\GeoLocationTest.class
 cucumberBddTest\model\bookstoreRequest\RemoveBookRequest.class
 seleniumperfTest\SeleniumBrowserMobWithProxy.class
+seleniumGeoLocationTest\MultiRegionGeoTest.class
 cucumberBddTest\uiStepDef\CheckBoxStepDefs.class
 seleniumUITest\SeleniumDemoTest.class
 appiumTest\MobileTest.class
@@ -26,6 +28,7 @@ cucumberBddTest\apiStepDef\BookStoreEndToEndSteps.class
 cucumberBddTest\uiStepDef\AlertsStepdefs.class
 DataDrivenTest\TestMethod.class
 seleniumperfTest\BaseproxySetUp.class
+seleniumGeoLocationTest\MultiRegionGeoTest$Region.class
 cucumberBddTest\testStepDef\BookSteps.class
 cucumberBddTest\model\bookstoreRequest\ISBN.class
 cucumberBddTest\Hooks\BaseSetup.class

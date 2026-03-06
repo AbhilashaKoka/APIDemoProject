@@ -68,13 +68,17 @@ utilityDemoTest\stringTest\GetCharacterFromString.class
 utilityDemoTest\programInJavaTest\NumberOperation.class
 utilityDemoTest\dbTest\UpdateRecord.class
 seleniumUITest\manager\PageObjectManager.class
+utilityDemoTest\dataDrivenTest\endToendTest\configDrivenLocator\LocatorFactory.class
+utilityDemoTest\dataDrivenTest\endToendTest\LoginPage.class
 seleniumUITest\pages\CheckBoxPage.class
 utilityDemoTest\dateTest\TestFile.class
 seleniumUITest\pages\ProgressBarPage.class
 utilityDemoTest\testDemo\Test3.class
 seleniumUITest\testDataClass\TextBoxDetails.class
+utilityDemoTest\dataDrivenTest\endToendTest\configDrivenLocator\LocatorLoader.class
 seleniumUITest\pages\WebTablePage.class
 seleniumUITest\testDataClass\PracticeFormsDetails.class
+utilityDemoTest\dataDrivenTest\endToendTest\configDrivenLocator\LoginPage1.class
 utilityDemoTest\stringTest\PalindromeChec.class
 seleniumUITest\pages\MenuPage.class
 utilityDemoTest\testDemo\DeriDerived.class

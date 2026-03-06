@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class TestNGTestClass extends BaseSetUp{
 
    @Test(description = "Verify textBox",enabled = true,priority = 1)
-       public void TestButton() {
+   public void TestButton() {
               Assert.assertEquals( SeleniumDemoTest.HandlingButton(), true);
         }
 
@@ -23,7 +23,7 @@ public class TestNGTestClass extends BaseSetUp{
    }
 
     @Test(description = "verify BrowserWindow",enabled = false)
-     public void TestBrowserWindow() throws InterruptedException {
+    public void TestBrowserWindow() throws InterruptedException {
        Assert.assertEquals(SeleniumDemoTest.HandlingBrowserWindow(),true);
    }
 
@@ -33,12 +33,12 @@ public class TestNGTestClass extends BaseSetUp{
    }
 
     @Test(description = "verify Alert",enabled = false)
-     public void TestAlert() {
+    public void TestAlert() {
         Assert.assertEquals( SeleniumDemoTest.HandlingAlert(),true);
    }
 
     @Test(description = "verify Accordion",enabled = false)
-      public void TestAccordion() {
+    public void TestAccordion() {
          Assert.assertEquals(SeleniumDemoTest.HandlingAccordion(),true);
    }
 
