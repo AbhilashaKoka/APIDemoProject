@@ -30,6 +30,7 @@ DataDrivenTest\TestMethod.class
 seleniumperfTest\BaseproxySetUp.class
 seleniumGeoLocationTest\MultiRegionGeoTest$Region.class
 cucumberBddTest\testStepDef\BookSteps.class
+restassuredTest\utilities\AgeValidationTest.class
 cucumberBddTest\model\bookstoreRequest\ISBN.class
 cucumberBddTest\Hooks\BaseSetup.class
 cucumberBddTest\apiUtility\JwtUtils.class

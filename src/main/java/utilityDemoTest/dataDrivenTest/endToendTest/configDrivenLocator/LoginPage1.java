@@ -22,5 +22,6 @@ import org.openqa.selenium.WebDriver;
 //- Team-friendly: Non-developers can edit locators without touching Java.
 //- Scalable: Extend to multiple environments (locators.qa.json, locators.prod.json).
 //- Maintainable: Centralized locator management reduces duplication.
-
+//mvn test -Denv=qa
+//mvn test -Denv=prod
 
