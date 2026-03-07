@@ -1,0 +1,14 @@
+parameters:
+  age:
+    min: 18
+    max: 60
+  amount:
+    min: 100
+    max: 1000
+  tenure:
+    min: 1
+    max: 30
+
+expectedStatus:
+  valid: 200
+  invalid: 400

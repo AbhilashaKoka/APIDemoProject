@@ -1,0 +1,17 @@
+parameters:
+  customer.age:
+    min: 18
+    max: 60
+  customer.address.zip:
+    min: 100000
+    max: 999999
+  transactions[].amount:
+    min: 100
+    max: 1000
+
+expectedStatus:
+  valid: 200
+  invalid: 400
+
+endpoint: /validateCustomer
+method: POST

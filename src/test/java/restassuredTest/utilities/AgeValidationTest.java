@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class AgeValidationTest {
 
-    // ✅ Equivalence Partitioning (EP)
+    //  Equivalence Partitioning (EP)
     @DataProvider(name = "equivalencePartitions")
     public Object[][] equivalencePartitions() {
         return new Object[][] {
@@ -27,7 +27,7 @@ public class AgeValidationTest {
                 "EP failed for age: " + age);
     }
 
-    // ✅ Boundary Value Analysis (BVA)
+    // Boundary Value Analysis (BVA)
     @DataProvider(name = "boundaryValues")
     public Object[][] boundaryValues() {
         return new Object[][] {
